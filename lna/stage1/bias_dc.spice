@@ -1,0 +1,32 @@
+* ============================================================
+* Bias experiment: fixed Vbe vs current mirror, -40 to +125 C
+* A: Q1 biased by a fixed 0.86 V   (what we had before)
+* B: Q1 biased by the current mirror (what the LNA now uses)
+* ============================================================
+.lib cornerHBT.lib hbt_typ
+.param temp=27
+.options temp=27
+* A: fixed Vbe
+XQa ca ba 0 0 npn13G2 Nx=8
+Vba ba 0 0.86
+Vca ca 0 1.04
+* B: mirror with emitter-follower helper and matched base resistors
+Iref vcc cr 0.92m
+XQr cr br 0 0 npn13G2 Nx=1
+XQf vcc cr vbn 0 npn13G2 Nx=1
+Ief vbn 0 50u
+Rref vbn br 40k
+Rb vbn bb 5k
+XQb cb bb 0 0 npn13G2 Nx=8
+Vcb cb 0 1.04
+Vcc vcc 0 2.5
+.control
+foreach t -40 0 27 85 125
+  option temp=$t
+  op
+  let ia=i(vca)*-1e3
+  let ib=i(vcb)*-1e3
+  echo "T=$t  fixedVbe Ic=$&ia mA   mirror Ic=$&ib mA"
+end
+.endc
+.end

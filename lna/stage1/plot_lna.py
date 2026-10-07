@@ -1,14 +1,17 @@
-"""Plot LNA stage-1 results: S-parameters, noise figure, stability.
-Run after:  ngspice -b lna_stage1.spice
+"""Plot LNA results: S-parameters, noise figure, stability.
+Run:  python3 plot_lna.py              (reads lna_stage1*.txt)
+      python3 plot_lna.py lna_bias     (reads lna_bias*.txt)
 """
+import sys
+prefix = sys.argv[1] if len(sys.argv) > 1 else "lna_stage1"
 import warnings; warnings.filterwarnings("ignore")
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-d = np.genfromtxt("lna_stage1.txt", names=True)
-s = np.genfromtxt("lna_stage1_stab.txt", names=True)
+d = np.genfromtxt(prefix + ".txt", names=True)
+s = np.genfromtxt(prefix + "_stab.txt", names=True)
 f = d["frequency"] / 1e9
 band = (24.0, 24.25)
 
@@ -36,7 +39,7 @@ ax[2].axhline(1, c="r", ls="--")
 ax[2].set_xlabel("Frequency [GHz]"); ax[2].set_title("Stability, 1-100 GHz")
 ax[2].grid(alpha=0.3, which="both"); ax[2].legend(fontsize=8)
 
-plt.tight_layout(); plt.savefig("lna_stage1.png", dpi=150)
+plt.tight_layout(); plt.savefig(prefix + ".png", dpi=150)
 
 i = np.argmin(abs(d["frequency"] - 24.125e9))
 inb = (d["frequency"] >= 24e9) & (d["frequency"] <= 24.25e9)
@@ -46,4 +49,4 @@ print(f"Worst in band:  S21 >= {d['s21db'][inb].min():.1f} dB   S11 <= {d['s11db
       f"NF <= {d['nfdb'][inb].max():.2f} dB")
 ok = (s["kfac"] > 1).all() and (s["magdlt"] < 1).all()
 print(f"Unconditionally stable 1-100 GHz: {'YES' if ok else 'NO'}   (min K = {s['kfac'].min():.2f})")
-print("Saved lna_stage1.png")
+print(f"Saved {prefix}.png")
