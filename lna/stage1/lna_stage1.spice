@@ -1,0 +1,78 @@
+* ============================================================
+* 24 GHz LNA - stage 1: cascode HBT with inductive degeneration
+* IHP SG13G2, ideal passives (first pass)
+* Outputs: lna_stage1.txt       S-params, NF, K over 18-30 GHz
+*          lna_stage1_stab.txt  stability (K, |Delta|) over 1-100 GHz
+* ============================================================
+.lib cornerHBT.lib hbt_typ
+.param temp=27
+
+* ---------------- design parameters (optimized values, ideal-ish passives) ----
+.param NX1=8          $ input transistor size (emitter stripes)
+.param NX2=8          $ cascode transistor size
+.param LE=32p         $ emitter degeneration inductor
+.param LB=609p        $ base (input match) inductor
+.param LC=683p        $ collector load inductor
+.param COUT=51f      $ output series capacitor (part of output match)
+.param VBE1=0.86      $ Q1 bias -> Ic ~ 6.2 mA
+.param VCAS=1.9       $ cascode base voltage
+.param VCC=2.5        $ supply
+.param RP=500         $ resistor across Lc (stability / gain control)
+.param QL=15          $ assumed on-chip inductor quality factor at 24 GHz
+.param W0=1.5158e11   $ 2*pi*24.125 GHz
+
+* ---------------- RF ports ----------------
+V1 p1 0 dc 0 ac 1 portnum 1 z0 50
+V2 p2 0 dc 0 ac 0 portnum 2 z0 50
+
+* ---------------- input: DC block + Lb (inductors have series loss R = w0*L/QL) ----------------
+Cin  p1 in  10p
+Lb   in b1x {LB}
+RLb  b1x b1 {W0*LB/QL}
+* bias feed (ideal RF choke for now; becomes a real bias network later)
+Lbias vb1 b1 1
+Vb1   vb1 0  {VBE1}
+
+* ---------------- Q1: input transistor + Le ----------------
+XQ1 c1 b1 e1 0 npn13G2 Nx={NX1}
+Le  e1 e1x {LE}
+RLe e1x 0 {W0*LE/QL}
+
+* ---------------- Q2: cascode, base at AC ground ----------------
+XQ2 out b2 c1 0 npn13G2 Nx={NX2}
+Vcas b2 0 {VCAS}
+
+* ---------------- load + output match ----------------
+Lc   vcc cx {LC}
+RLc  cx out {W0*LC/QL}
+Rp   vcc out {RP}
+Vcc  vcc 0  {VCC}
+Cout out p2 {COUT}
+
+.control
+set noaskquit
+op
+let ic1 = -i(vcc)*1e3
+echo "Supply current (mA):  $&ic1"
+
+* ---- band analysis: 18-30 GHz with noise
+sp lin 121 18e9 30e9 1
+let s11db = db(S_1_1)
+let s21db = db(S_2_1)
+let s12db = db(S_1_2)
+let s22db = db(S_2_2)
+let nfdb  = real(NF)
+let nfmindb = real(NFmin)
+let dlt  = S_1_1*S_2_2 - S_1_2*S_2_1
+let kfac = (1 - mag(S_1_1)^2 - mag(S_2_2)^2 + mag(dlt)^2)/(2*mag(S_1_2*S_2_1))
+set wr_singlescale
+set wr_vecnames
+wrdata lna_stage1.txt s11db s21db s12db s22db nfdb nfmindb kfac
+* ---- stability analysis: 1-100 GHz (must be K>1 and |Delta|<1 everywhere)
+sp lin 199 1e9 100e9 0
+let dlt  = S_1_1*S_2_2 - S_1_2*S_2_1
+let kfac = (1 - mag(S_1_1)^2 - mag(S_2_2)^2 + mag(dlt)^2)/(2*mag(S_1_2*S_2_1))
+let magdlt = mag(dlt)
+wrdata lna_stage1_stab.txt kfac magdlt
+.endc
+.end

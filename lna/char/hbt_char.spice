@@ -1,0 +1,57 @@
+* ============================================================
+* npn13G2 HBT characterization  (IHP SG13G2, ngspice)
+* Sweeps Vbe and records per bias point:
+*   Ic      collector current
+*   fT      transit frequency, from |h21| measured at 5 GHz
+*   NFmin   minimum noise figure at 24.125 GHz
+*   Zopt    optimum source impedance at 24.125 GHz (Ropt + jXopt)
+*   Rn      noise resistance at 24.125 GHz
+* Output file: hbt_char.txt
+* ============================================================
+.lib cornerHBT.lib hbt_typ
+.param temp=27
+
+* --- device size: number of emitter stripes (try 1, 4, 8)
+.param NX=8
+
+* --- 50 ohm RF ports for S-parameter + noise analysis
+V1 p1 0 dc 0 ac 1 portnum 1 z0 50
+V2 p2 0 dc 0 ac 0 portnum 2 z0 50
+
+* --- ideal bias tees: huge C passes RF, huge L passes DC
+Cb1 p1 b 1
+Cb2 p2 c 1
+Lb  bfeed b 1
+Lc  cfeed c 1
+
+* --- DC bias
+Vbe bfeed 0 0.85
+Vce cfeed 0 1.2
+
+* --- device under test (pins: collector base emitter substrate)
+XQ1 c b 0 0 npn13G2 Nx={NX}
+
+.control
+set noaskquit
+shell rm -f hbt_char.txt
+echo "vbe ic_mA ft_GHz nfmin_dB ropt_ohm xopt_ohm rn_ohm" > hbt_char.txt
+foreach vbx 0.80 0.82 0.84 0.86 0.87 0.88 0.89 0.90 0.91 0.92 0.93 0.94 0.95 0.96 0.98 1.00 1.02 1.04
+  alter vbe dc = $vbx
+  op
+  let ic = -i(vce)*1e3
+  set icv = "$&ic"
+  * fT: |h21| x frequency, measured at 5 GHz (well below fT)
+  sp lin 1 5e9 5e9 0
+  let ft = mag(Y_2_1/Y_1_1)*5
+  set ftv = "$&ft"
+  * noise parameters at the radar frequency
+  sp lin 1 24.125e9 24.125e9 1
+  let zopt = 50*(1+SOpt)/(1-SOpt)
+  let ropt = real(zopt)
+  let xopt = imag(zopt)
+  let nfm  = real(NFmin)
+  let rnv  = real(Rn)
+  echo "$vbx $icv $ftv $&nfm $&ropt $&xopt $&rnv" >> hbt_char.txt
+end
+.endc
+.end
