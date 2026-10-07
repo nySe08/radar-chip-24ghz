@@ -30,10 +30,10 @@ CONFIG = {
     "pt_dbm": 5.0,              # PA output
     "g_tx_dbi": 10.0,
     "g_rx_dbi": 10.0,
-    "tx_rx_isolation_db": 35.0,
+    "tx_rx_isolation_db": 33.0,
     # RX chain (Friis cascade, in order)
     "input_loss_db": 1.5,       # pads / bondwire / matching
-    "lna_gain_db": 18.0, "lna_nf_db": 5.0, "lna_ip1db_dbm": -20.0,
+    "lna_gain_db": 19.8, "lna_nf_db": 2.46, "lna_ip1db_dbm": -17.7,
     "mixer_gain_db": 10.0, "mixer_nf_db": 15.0,
     # detection
     "processing_loss_db": 3.0,
