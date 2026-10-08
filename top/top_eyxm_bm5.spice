@@ -1,0 +1,69 @@
+* ============================================================
+* 24 GHz FMCW radar transceiver - TOP-LEVEL testbench (IHP SG13G2)
+* All six blocks connected. Outside world modelled:
+*   TX antenna = 50 ohm;  PLL input = 50 ohm per pin
+*   RX antenna = 50 ohm source carrying
+*     - a target echo: tone at f_LO + FBEAT, power PECHO
+*     - TX leakage: copy of the TX antenna voltage, ISO dB weaker
+* ============================================================
+.lib cornerHBT.lib hbt_bcs
+.lib cornerMOShv.lib mos_ff
+.param temp=27
+.options temp=-40
+.include blocks/lna.sp
+.include blocks/mixer.sp
+.include blocks/vco.sp
+.include blocks/lobuf.sp
+.include blocks/div4.sp
+.include blocks/pa.sp
+
+.param VCC=2.5 VTUNE=1.25
+* PA-driver current: reduced from 2 mA to 1.3 mA at integration (fast-cold PA overdrive)
+.param ID2PA=1.3m
+.param FECHO=24.0e9 PECHO=-120 ISO=33 LEAK=0
+* matched 50-ohm source: available power P -> open-circuit amplitude 2*sqrt(2*50*P)
+.param VECHO={2*sqrt(100*1e-3*10**(PECHO/10))}
+.param KLEAK={LEAK*2*10**(-ISO/20)}
+
+Vcc vcc 0 {VCC}
+Vtune vtune 0 {VTUNE}
+
+* ---------------- the chip ----------------
+Xvco  vco_p vco_n vtune vcc vco
+Xbuf  vco_p vco_n lo_p lo_n pa_p pa_n div_p div_n vcc lobuf ID2={ID2PA}
+Xmix  rx_amp lo_p lo_n if_p if_n vcc mixer
+Xlna  rx_in rx_amp vcc lna
+Xpa   pa_p tx_out vcc pa
+Xdiv  div_p div_n pll_p pll_n vcc div4
+* DC references for nodes between two series coupling capacitors (found at integration:
+* LNA Cout -> mixer Cdc, buffer CC -> PA Cin). 20 kohm barely loads the RF signal.
+Rbl1 rx_amp 0 20k
+Rbl2 pa_p 0 20k
+Rbl3 pa_n 0 20k
+* unused side of the PA driver: same load as the PA input sees
+Cdum  pa_n pa_dum 1p
+Rdum  pa_dum 0 1k
+
+* ---------------- outside world ----------------
+Rtx  tx_out 0 50
+Cx1  pll_p pllp 10p
+Cx2  pll_n plln 10p
+Rx1  pllp 0 50
+Rx2  plln 0 50
+* RX antenna: leakage (copy of TX) + echo, through 50 ohm
+Eleak rx1 0 tx_out 0 {KLEAK}
+Vecho rx2 rx1 dc 0 sin(0 {VECHO} {FECHO})
+Rsrx  rx2 rx_in 50
+
+.ic v(div_n)=1.198715e+00 v(div_p)=1.198715e+00 v(if_n)=1.965097e+00 v(if_p)=1.965097e+00 v(lo_n)=1.898404e+00 v(lo_p)=1.898404e+00 v(pa_dum)=0.000000e+00 v(pa_n)=0.000000e+00 v(pa_p)=0.000000e+00 v(pll_n)=2.300053e+00 v(pll_p)=2.300053e+00 v(plln)=0.000000e+00 v(pllp)=0.000000e+00 v(rx1)=0.000000e+00 v(rx2)=0.000000e+00 v(rx_amp)=0.000000e+00 v(rx_in)=0.000000e+00 v(tx_out)=0.000000e+00 v(vcc)=2.500000e+00 v(vco_n)=2.494989e+00 v(vco_p)=2.494989e+00 v(vtune)=1.250000e+00 v(xbuf.b1)=1.363424e+00 v(xbuf.b2)=1.363424e+00 v(xbuf.d1n)=2.500000e+00 v(xbuf.d1p)=2.500000e+00 v(xbuf.d2n)=2.500000e+00 v(xbuf.d2p)=2.500000e+00 v(xbuf.d3n)=2.500000e+00 v(xbuf.d3p)=2.500000e+00 v(xbuf.dt1)=4.803533e-01 v(xbuf.dt2)=4.909114e-01 v(xbuf.dt3)=4.874933e-01 v(xbuf.ef1)=1.592458e+00 v(xbuf.ef2)=1.592458e+00 v(xbuf.vbd)=1.350000e+00 v(xbuf.xq11.s1)=1.240199e-09 v(xbuf.xq11.t)=1.230496e+01 v(xbuf.xq12.s1)=1.240199e-09 v(xbuf.xq12.t)=1.230496e+01 v(xbuf.xq21.s1)=1.243656e-09 v(xbuf.xq21.t)=7.957227e+00 v(xbuf.xq22.s1)=1.243656e-09 v(xbuf.xq22.t)=7.957227e+00 v(xbuf.xq31.s1)=1.242671e-09 v(xbuf.xq31.t)=9.196764e+00 v(xbuf.xq32.s1)=1.242671e-09 v(xbuf.xq32.t)=9.196764e+00 v(xbuf.xqe1.s1)=1.235402e-09 v(xbuf.xqe1.t)=8.281310e+00 v(xbuf.xqe2.s1)=1.235402e-09 v(xbuf.xqe2.t)=8.281310e+00 v(xdiv.c2n)=1.198033e+00 v(xdiv.c2p)=1.198033e+00 v(xdiv.eo)=6.890463e-01 v(xdiv.m1q)=2.300585e+00 v(xdiv.m1qb)=2.300585e+00 v(xdiv.m2q)=2.300079e+00 v(xdiv.m2qb)=2.300079e+00 v(xdiv.o1)=1.594687e+00 v(xdiv.o2)=1.594687e+00 v(xdiv.s1q)=2.300585e+00 v(xdiv.s1qb)=2.300585e+00 v(xdiv.s2q)=2.300079e+00 v(xdiv.s2qb)=2.300079e+00 v(xdiv.vbo)=1.600000e+00 v(xdiv.vck)=1.200000e+00 v(xdiv.xm1.ed)=1.419765e+00 v(xdiv.xm1.eh)=1.419765e+00 v(xdiv.xm1.et)=2.972336e-01 v(xdiv.xm1.xc1.s1)=5.562124e-10 v(xdiv.xm1.xc1.t)=9.556302e+00 v(xdiv.xm1.xc2.s1)=5.562124e-10 v(xdiv.xm1.xc2.t)=9.556302e+00 v(xdiv.xm1.xd1.s1)=9.144241e-10 v(xdiv.xm1.xd1.t)=3.747997e+00 v(xdiv.xm1.xd2.s1)=9.144241e-10 v(xdiv.xm1.xd2.t)=3.747997e+00 v(xdiv.xm1.xh1.s1)=9.144241e-10 v(xdiv.xm1.xh1.t)=3.747997e+00 v(xdiv.xm1.xh2.s1)=9.144241e-10 v(xdiv.xm1.xh2.t)=3.747997e+00 v(xdiv.xm2.ed)=1.430232e+00 v(xdiv.xm2.eh)=1.430232e+00 v(xdiv.xm2.et)=3.097566e-01 v(xdiv.xm2.xc1.s1)=5.643220e-10 v(xdiv.xm2.xc1.t)=6.359215e+00 v(xdiv.xm2.xc2.s1)=5.643220e-10 v(xdiv.xm2.xc2.t)=6.359215e+00 v(xdiv.xm2.xd1.s1)=9.161631e-10 v(xdiv.xm2.xd1.t)=2.467622e+00 v(xdiv.xm2.xd2.s1)=9.161631e-10 v(xdiv.xm2.xd2.t)=2.467622e+00 v(xdiv.xm2.xh1.s1)=9.161631e-10 v(xdiv.xm2.xh1.t)=2.467622e+00 v(xdiv.xm2.xh2.s1)=9.161631e-10 v(xdiv.xm2.xh2.t)=2.467622e+00 v(xdiv.xo1.s1)=1.582450e-09 v(xdiv.xo1.t)=2.100502e+01 v(xdiv.xo2.s1)=1.582450e-09 v(xdiv.xo2.t)=2.100502e+01 v(xdiv.xs1.ed)=1.419765e+00 v(xdiv.xs1.eh)=1.419765e+00 v(xdiv.xs1.et)=2.972336e-01 v(xdiv.xs1.xc1.s1)=5.562124e-10 v(xdiv.xs1.xc1.t)=9.556302e+00 v(xdiv.xs1.xc2.s1)=5.562124e-10 v(xdiv.xs1.xc2.t)=9.556302e+00 v(xdiv.xs1.xd1.s1)=9.144241e-10 v(xdiv.xs1.xd1.t)=3.747997e+00 v(xdiv.xs1.xd2.s1)=9.144241e-10 v(xdiv.xs1.xd2.t)=3.747997e+00 v(xdiv.xs1.xh1.s1)=9.144241e-10 v(xdiv.xs1.xh1.t)=3.747997e+00 v(xdiv.xs1.xh2.s1)=9.144241e-10 v(xdiv.xs1.xh2.t)=3.747997e+00 v(xdiv.xs2.ed)=1.430232e+00 v(xdiv.xs2.eh)=1.430232e+00 v(xdiv.xs2.et)=3.097566e-01 v(xdiv.xs2.xc1.s1)=5.643220e-10 v(xdiv.xs2.xc1.t)=6.359215e+00 v(xdiv.xs2.xc2.s1)=5.643220e-10 v(xdiv.xs2.xc2.t)=6.359215e+00 v(xdiv.xs2.xd1.s1)=9.161631e-10 v(xdiv.xs2.xd1.t)=2.467622e+00 v(xdiv.xs2.xd2.s1)=9.161631e-10 v(xdiv.xs2.xd2.t)=2.467622e+00 v(xdiv.xs2.xh1.s1)=9.161631e-10 v(xdiv.xs2.xh1.t)=2.467622e+00 v(xdiv.xs2.xh2.s1)=9.161631e-10 v(xdiv.xs2.xh2.t)=2.467622e+00 v(xlna.b1)=8.918424e-01 v(xlna.b1x)=8.918424e-01 v(xlna.b2)=1.893994e+00 v(xlna.br)=9.038074e-01 v(xlna.c1)=1.006550e+00 v(xlna.cr)=1.733643e+00 v(xlna.cx)=2.500000e+00 v(xlna.e1)=1.414299e-03 v(xlna.e1x)=1.414299e-03 v(xlna.in)=8.918424e-01 v(xlna.out)=2.470246e+00 v(xlna.vbn)=9.006928e-01 v(xlna.xq1.s1)=1.083814e-09 v(xlna.xq1.t)=7.679539e+00 v(xlna.xq2.s1)=2.693807e-09 v(xlna.xq2.t)=1.117773e+01 v(xlna.xqf.s1)=9.992007e-10 v(xlna.xqf.t)=9.385733e-01 v(xlna.xqr.s1)=6.789853e-10 v(xlna.xqr.t)=1.810507e+01 v(xmix.b3)=1.177906e+00 v(xmix.e3)=2.676885e-01 v(xmix.vb3)=1.178000e+00 v(xmix.vlo)=1.900000e+00 v(xmix.x)=9.899607e-01 v(xmix.xq3.s1)=6.686560e-10 v(xmix.xq3.t)=8.404950e+00 v(xmix.xq4.s1)=9.651489e-10 v(xmix.xq4.t)=1.058137e+01 v(xmix.xq5.s1)=9.651489e-10 v(xmix.xq5.t)=1.058137e+01 v(xpa.b1)=9.261763e-01 v(xpa.br)=9.293800e-01 v(xpa.c1)=7.362546e-01 v(xpa.col)=2.470522e+00 v(xpa.cr)=1.761524e+00 v(xpa.e1)=2.688285e-02 v(xpa.er)=3.107532e-02 v(xpa.lx)=2.500000e+00 v(xpa.vbn)=9.283919e-01 v(xpa.vcas)=1.600000e+00 v(xpa.xq1.s1)=7.811519e-10 v(xpa.xq1.t)=6.663724e+00 v(xpa.xq2.s1)=8.547262e-09 v(xpa.xq2.t)=7.848396e+00 v(xpa.xqf.s1)=9.991946e-10 v(xpa.xqf.t)=9.294125e-01 v(xpa.xqr.s1)=6.924209e-10 v(xpa.xqr.t)=1.526209e+01 v(xvco.b6)=1.503904e+00 v(xvco.b7)=1.503904e+00 v(xvco.g1)=1.250000e+00 v(xvco.g2)=1.250000e+00 v(xvco.t1)=2.500000e+00 v(xvco.t2)=2.500000e+00 v(xvco.tail)=6.278678e-01 v(xvco.vbb)=1.500000e+00 v(xvco.vgb)=1.250000e+00 v(xvco.xq6.s1)=1.736249e-09 v(xvco.xq6.t)=9.136501e+00 v(xvco.xq7.s1)=1.736249e-09 v(xvco.xq7.t)=9.136501e+00
+.control
+set noaskquit
+op
+let itot = -i(vcc)*1e3
+echo "Total supply current (mA): $&itot"
+tran 0.5p 12n 0 0.5p uic
+let vd = v(vco_p)-v(vco_n)
+let vif = v(if_p)-v(if_n)
+wrdata top_eyxm_bm5.txt vd vif v(tx_out) v(pllp) v(rx_amp) v(lo_p) v(pa_p)
+.endc
+.end

@@ -1,0 +1,67 @@
+* ============================================================
+* 24 GHz FMCW radar transceiver - TOP-LEVEL testbench (IHP SG13G2)
+* All six blocks connected. Outside world modelled:
+*   TX antenna = 50 ohm;  PLL input = 50 ohm per pin
+*   RX antenna = 50 ohm source carrying
+*     - a target echo: tone at f_LO + FBEAT, power PECHO
+*     - TX leakage: copy of the TX antenna voltage, ISO dB weaker
+* ============================================================
+.lib cornerHBT.lib hbt_typ
+.lib cornerMOShv.lib mos_tt
+.param temp=27
+.include blocks/lna.sp
+.include blocks/mixer.sp
+.include blocks/vco.sp
+.include blocks/lobuf.sp
+.include blocks/div4.sp
+.include blocks/pa.sp
+
+.param VCC=2.5 VTUNE=1.25
+* PA-driver current: reduced from 2 mA to 1.3 mA at integration (fast-cold PA overdrive)
+.param ID2PA=1.3m
+.param FECHO=24.0e9 PECHO=-40 ISO=33 LEAK=1
+* matched 50-ohm source: available power P -> open-circuit amplitude 2*sqrt(2*50*P)
+.param VECHO={2*sqrt(100*1e-3*10**(PECHO/10))}
+.param KLEAK={LEAK*2*10**(-ISO/20)}
+
+Vcc vcc 0 {VCC}
+Vtune vtune 0 {VTUNE}
+
+* ---------------- the chip ----------------
+Xvco  vco_p vco_n vtune vcc vco
+Xbuf  vco_p vco_n lo_p lo_n pa_p pa_n div_p div_n vcc lobuf ID2={ID2PA}
+Xmix  rx_amp lo_p lo_n if_p if_n vcc mixer
+Xlna  rx_in rx_amp vcc lna
+Xpa   pa_p tx_out vcc pa
+Xdiv  div_p div_n pll_p pll_n vcc div4
+* DC references for nodes between two series coupling capacitors (found at integration:
+* LNA Cout -> mixer Cdc, buffer CC -> PA Cin). 20 kohm barely loads the RF signal.
+Rbl1 rx_amp 0 20k
+Rbl2 pa_p 0 20k
+Rbl3 pa_n 0 20k
+* unused side of the PA driver: same load as the PA input sees
+Cdum  pa_n pa_dum 1p
+Rdum  pa_dum 0 1k
+
+* ---------------- outside world ----------------
+Rtx  tx_out 0 50
+Cx1  pll_p pllp 10p
+Cx2  pll_n plln 10p
+Rx1  pllp 0 50
+Rx2  plln 0 50
+* RX antenna: leakage (copy of TX) + echo, through 50 ohm
+Eleak rx1 0 tx_out 0 {KLEAK}
+Vecho rx2 rx1 dc 0 sin(0 {VECHO} {FECHO})
+Rsrx  rx2 rx_in 50
+
+.control
+set noaskquit
+op
+let itot = -i(vcc)*1e3
+echo "Total supply current (mA): $&itot"
+tran 0.5p 30n 0 0.5p
+let vd = v(vco_p)-v(vco_n)
+let vif = v(if_p)-v(if_n)
+wrdata chip_tran.txt vd vif v(tx_out) v(pllp) v(rx_amp) v(lo_p) v(pa_p)
+.endc
+.end
