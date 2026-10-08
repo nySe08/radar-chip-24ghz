@@ -1,0 +1,53 @@
+* ============================================================
+* 24 GHz cross-coupled LC VCO  (IHP SG13G2)
+*  - tank: center-tapped inductor (2 x LH, assumed Q = 15)
+*  - tuning: sg13_hv_svaricap NX=10, AC-coupled (CCV), gates at VGB,
+*            well driven by VTUNE (from the PLL)
+*  - core: cross-coupled npn13G2 pair, AC-coupled bases, tail ITAIL
+*  - CLOAD: placeholder for the buffers that will follow
+* Run via run_vco.py, or alone:  ngspice -b vco.spice  -> vco_tran.txt
+* Note: if a hot-corner run fails to find an operating point, set
+* SELFT=0 (self-heating off) and add ~10 C to the temperature.
+* ============================================================
+.lib cornerHBT.lib hbt_typ
+.lib cornerMOShv.lib mos_tt
+.param temp=27
+.param LH=330p QL=15 W0=1.5158e11      $ half-inductor (diff L = 660 pH), Q, 2*pi*24.125G
+.param NXQ=4 ITAIL=3m VBB=1.5 CCB=200f RBB=2k    $ core transistors, tail current, base bias
+.param NXV=10 CCV=250f VGB=1.25 RGB=10k VTUNE=1.25  $ varactor size, coupling cap, gate bias, tuning V
+.param CLOAD=10f VCC=2.5 SELFT=1
+* tank: center-tapped inductor (two halves, each with loss)
+L1 vcc t1 {LH}
+R1 t1 outp {W0*LH/QL}
+L2 vcc t2 {LH}
+R2 t2 outn {W0*LH/QL}
+* varactor, AC-coupled, gates biased at VGB, well = Vtune
+Ccv1 outp g1 {CCV}
+Ccv2 outn g2 {CCV}
+Rg1 vgb g1 {RGB}
+Rg2 vgb g2 {RGB}
+Vgb vgb 0 {VGB}
+XV1 g1 vt g2 0 sg13_hv_svaricap l=0.3u w=9.74u Nx={NXV}
+Vt vt 0 {VTUNE}
+* cross-coupled pair with AC-coupled bases
+XQ6 outp b6 tail 0 npn13G2 Nx={NXQ} selft={SELFT}
+XQ7 outn b7 tail 0 npn13G2 Nx={NXQ} selft={SELFT}
+Cb6 outn b6 {CCB}
+Cb7 outp b7 {CCB}
+Rb6 vbb b6 {RBB}
+Rb7 vbb b7 {RBB}
+Vbb vbb 0 {VBB}
+It tail 0 {ITAIL}
+* load (stand-in for buffers)
+Cl1 outp 0 {CLOAD}
+Cl2 outn 0 {CLOAD}
+* start-up kick
+Ik outp 0 pulse(0 1m 0 5p 5p 10p 1)
+Vcc vcc 0 {VCC}
+.control
+set noaskquit
+tran 0.5p 6n
+let vd = v(outp)-v(outn)
+wrdata vco_tran.txt vd v(outp)
+.endc
+.end

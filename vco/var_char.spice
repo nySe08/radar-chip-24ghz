@@ -1,0 +1,36 @@
+* ============================================================
+* Varactor characterization: IHP sg13_hv_svaricap (differential MOS varactor)
+* Measures, at 24.125 GHz, versus gate-to-well voltage VGW:
+*   Cdiff  differential capacitance between G1 and G2 [fF]
+*   Q      quality factor (= how lossy it is; higher is better)
+* Gates sit at VG = 2.5 V; the well W (the tuning node) is swept,
+* so VGW = 2.5 V - Vwell.
+* Output file: var_char.txt
+* ============================================================
+.lib cornerMOShv.lib mos_tt
+.param temp=27
+
+* --- device size: W, L per finger and number of fingers NXV (max 10)
+.param LV=0.3u WV=9.74u NXV=4
+
+* --- differential AC drive: +0.5 V on G1, -0.5 V on G2 (1 V differential)
+V1 g1 0 dc 2.5 ac 0.5
+V2 g2 0 dc 2.5 ac 0.5 180
+Vt w 0 1.0
+XV1 g1 w g2 0 sg13_hv_svaricap l={LV} w={WV} Nx={NXV}
+
+.control
+set noaskquit
+shell rm -f var_char.txt
+echo "vgw cdiff_fF q" > var_char.txt
+foreach vt 0 0.5 1.0 1.5 1.75 2.0 2.25 2.5 2.75 3.0 3.25 3.5 3.75 4.0 4.5
+  alter vt dc = $vt
+  ac lin 1 24.125e9 24.125e9
+  let y   = -i(v1)/1
+  let c   = imag(y)/(2*pi*24.125e9)*1e15
+  let q   = imag(y)/real(y)
+  let vgw = 2.5 - $vt
+  echo "$&vgw $&c $&q" >> var_char.txt
+end
+.endc
+.end
