@@ -15,8 +15,8 @@ import numpy as np
 NGSPICE = os.environ.get("NGSPICE", "ngspice")
 FB = 100e6                                   # beat (IF) frequency used for the echo test
 
-def simulate(params=None, corner=None, temp=None, tstop="30n"):
-    s = open("chip_tb.spice").read()
+def simulate(params=None, corner=None, temp=None, tstop="30n", netlist="chip_tb.spice", outfile="chip_tran.txt"):
+    s = open(netlist).read()
     for k, v in (params or {}).items():
         s, n = re.subn(rf"(\.param .*?\b{k}=)\S+", rf"\g<1>{v}", s, count=1)
         if not n: sys.exit("parameter not found: " + k)
@@ -37,7 +37,7 @@ def simulate(params=None, corner=None, temp=None, tstop="30n"):
           if "nan" not in x.group(2)]
     # 2) transient from that point
     s2 = s.replace(".control", ".ic " + " ".join(ic) + "\n.control", 1)
-    s2 = re.sub(r"tran 0.5p \S+ 0 0.5p", f"tran 0.5p {tstop} 0 0.5p uic", s2).replace("chip_tran.txt", tag + ".txt")
+    s2 = re.sub(r"tran 0.5p \S+ 0 0.5p", f"tran 0.5p {tstop} 0 0.5p uic", s2).replace(outfile, tag + ".txt")
     open(tag + ".spice", "w").write(s2)
     subprocess.run([NGSPICE, "-b", tag + ".spice"], capture_output=True)
     d = np.loadtxt(tag + ".txt", skiprows=1)

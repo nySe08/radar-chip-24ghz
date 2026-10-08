@@ -1,0 +1,103 @@
+* ============================================================
+* 24 GHz LNA - REALIZATION step 1: PDK resistors (rppd/rhigh) and RF MIM capacitors
+* (inductors still ideal with Q=15; bias reference currents still ideal)
+* IHP SG13G2, ideal passives (first pass)
+* Outputs: lna_real.txt             S-params, NF, K over 18-30 GHz
+*          lna_real_stab.txt    stability (K, |Delta|) over 1-100 GHz
+* ============================================================
+.lib cornerHBT.lib hbt_typ
+.lib cornerCAP.lib cap_typ
+.lib cornerRES.lib res_typ
+.param temp=27
+
+* ---------------- design parameters (optimized values, ideal-ish passives) ----
+.param NX1=8          $ input transistor size (emitter stripes)
+.param NX2=8          $ cascode transistor size
+.param LE=32p         $ emitter degeneration inductor
+.param LB=609p        $ base (input match) inductor
+.param LC=546p        $ collector load inductor (re-tuned for the real 7x7 um output MIM)
+.param WCOUT=7u        $ output MIM size (min 7 um)
+.param LRP=2.6u        $ RP length (rppd, w=2u) -> ~370 ohm, re-tuned with LC
+.param IREF=0.92m     $ reference current -> Ic1 ~ 6.0 mA at 27 C
+.param RB=5k        $ bias resistor into Q1 base (RF isolation; bigger = less noise)
+.param RREF=40k       $ matched resistor in reference path (= RB x 8)
+.param R1=6k          $ cascode divider, top
+.param R2=19k         $ cascode divider, bottom  -> VCAS ~ 1.9 V
+.param CBYP=5p        $ bypass capacitors (ideal for now)
+.param VCC=2.5        $ supply
+.param RP=500         $ resistor across Lc (stability / gain control)
+.param QL=15          $ assumed on-chip inductor quality factor at 24 GHz
+.param W0=1.5158e11   $ 2*pi*24.125 GHz
+
+* ---------------- RF ports ----------------
+V1 p1 0 dc 0 ac 1 portnum 1 z0 50
+V2 p2 0 dc 0 ac 0 portnum 2 z0 50
+
+* ---------------- input: DC block + Lb (inductors have series loss R = w0*L/QL) ----------------
+* DC block: MIM sized near self-resonance at 24 GHz (lowest impedance)
+XCin in p1 0 cap_rfcmim w=33u l=33u
+Lb   in b1x {LB}
+RLb  b1x b1 {W0*LB/QL}
+* ---------------- Q1 bias: current mirror ----------------
+* Qr is a 1-stripe copy of Q1; Qf is an emitter-follower 'beta helper'
+* that supplies the base currents so they don't steal from Iref.
+* Rref/Rb ratio = 8 so the base-current voltage drops match.
+Iref vcc cr {IREF}
+XQr  cr br 0 0 npn13G2 Nx=1
+XQf  vcc cr vbn 0 npn13G2 Nx=1
+Ief  vbn 0 50u
+XRref vbn br 0 rhigh w=1u l=28.12u
+XRb  vbn b1 0 rppd w=1u l=19.08u
+XCbn1 vbn 0 0 cap_rfcmim w=33u l=33u
+XCbn2 vbn 0 0 cap_rfcmim w=33u l=33u
+
+* ---------------- Q1: input transistor + Le ----------------
+XQ1 c1 b1 e1 0 npn13G2 Nx={NX1}
+Le  e1 e1x {LE}
+RLe e1x 0 {W0*LE/QL}
+
+* ---------------- Q2: cascode, base at AC ground ----------------
+XQ2 out b2 c1 0 npn13G2 Nx={NX2}
+* cascode base: resistor divider from VCC + bypass cap (AC ground)
+XRc1 vcc b2 0 rppd w=1u l=22.95u
+XRc2 b2 0 0 rhigh w=1u l=13.30u
+XCcas1 b2 0 0 cap_rfcmim w=33u l=33u
+XCcas2 b2 0 0 cap_rfcmim w=33u l=33u
+
+* ---------------- load + output match ----------------
+Lc   vcc cx {LC}
+RLc  cx out {W0*LC/QL}
+XRp  vcc out 0 rppd w=2u l={LRP}
+Vcc  vcc 0  {VCC}
+* output cap: smallest legal RF MIM is 7x7 um (~76 fF); output match re-tuned around it
+XCout p2 out 0 cap_rfcmim w={WCOUT} l={WCOUT}
+
+.control
+set noaskquit
+op
+let itot = -i(vcc)*1e3
+let vcas = v(b2)
+let vb1 = v(b1)
+echo "Total supply current (mA): $&itot   Vcas = $&vcas V   Vb1 = $&vb1 V"
+
+* ---- band analysis: 18-30 GHz with noise
+sp lin 121 18e9 30e9 1
+let s11db = db(S_1_1)
+let s21db = db(S_2_1)
+let s12db = db(S_1_2)
+let s22db = db(S_2_2)
+let nfdb  = real(NF)
+let nfmindb = real(NFmin)
+let dlt  = S_1_1*S_2_2 - S_1_2*S_2_1
+let kfac = (1 - mag(S_1_1)^2 - mag(S_2_2)^2 + mag(dlt)^2)/(2*mag(S_1_2*S_2_1))
+set wr_singlescale
+set wr_vecnames
+wrdata lna_real.txt s11db s21db s12db s22db nfdb nfmindb kfac
+* ---- stability analysis: 1-100 GHz (must be K>1 and |Delta|<1 everywhere)
+sp lin 199 1e9 100e9 0
+let dlt  = S_1_1*S_2_2 - S_1_2*S_2_1
+let kfac = (1 - mag(S_1_1)^2 - mag(S_2_2)^2 + mag(dlt)^2)/(2*mag(S_1_2*S_2_1))
+let magdlt = mag(dlt)
+wrdata lna_real_stab.txt kfac magdlt
+.endc
+.end

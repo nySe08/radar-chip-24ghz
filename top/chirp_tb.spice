@@ -1,0 +1,85 @@
+* ============================================================
+* 24 GHz FMCW radar transceiver - END-TO-END CHIRP DEMO (transistor level)
+* Vtune is ramped -> the VCO chirps. Two targets = delayed, attenuated copies of
+* the transmitted signal (ideal delay lines), plus TX leakage, at the RX antenna.
+* Each target must appear at the IF output as a beat frequency = slope x delay.
+* Time-scaled chirp (80 ns instead of 128 us); same physics, faster to simulate.
+* All six blocks connected. Outside world modelled:
+*   TX antenna = 50 ohm;  PLL input = 50 ohm per pin
+*   RX antenna = 50 ohm source carrying
+*     - a target echo: tone at f_LO + FBEAT, power PECHO
+*     - TX leakage: copy of the TX antenna voltage, ISO dB weaker
+* ============================================================
+.lib cornerHBT.lib hbt_typ
+.lib cornerMOShv.lib mos_tt
+.param temp=27
+* tighter solver tolerance: avoids a time-step collapse in the VCO during the chirp
+.options reltol=1e-4
+.include blocks/lna.sp
+.include blocks/mixer.sp
+.include blocks/vco.sp
+.include blocks/lobuf.sp
+.include blocks/div4.sp
+.include blocks/pa.sp
+
+.param VCC=2.5 VTUNE=1.25
+* PA-driver current: reduced from 2 mA to 1.3 mA at integration (fast-cold PA overdrive)
+.param ID2PA=1.3m
+.param ISO=33 LEAK=1
+* matched 50-ohm source: available power P -> open-circuit amplitude 2*sqrt(2*50*P)
+.param KLEAK={LEAK*2*10**(-ISO/20)}
+
+Vcc vcc 0 {VCC}
+* chirp: hold 10 ns (start-up), then ramp Vtune
+.param V0=1.40 V1=1.70 TR=80n
+Vtune vtsrc 0 pwl(0 {V0} 10n {V0} {10n+TR} {V1})
+* loop-filter-like source impedance on the tuning line (as a PLL would drive it)
+Rvt vtsrc vtune 100
+Cvt vtune 0 1p
+
+* ---------------- the chip ----------------
+* self-heating off in the VCO core for this long chirp run (ngspice convergence; negligible at 3 mA)
+Xvco  vco_p vco_n vtune vcc vco SELFT=0
+Xbuf  vco_p vco_n lo_p lo_n pa_p pa_n div_p div_n vcc lobuf ID2={ID2PA}
+Xmix  rx_amp lo_p lo_n if_p if_n vcc mixer
+Xlna  rx_in rx_amp vcc lna
+Xpa   pa_p tx_out vcc pa
+Xdiv  div_p div_n pll_p pll_n vcc div4
+* DC references for nodes between two series coupling capacitors (found at integration:
+* LNA Cout -> mixer Cdc, buffer CC -> PA Cin). 20 kohm barely loads the RF signal.
+Rbl1 rx_amp 0 20k
+Rbl2 pa_p 0 20k
+Rbl3 pa_n 0 20k
+* unused side of the PA driver: same load as the PA input sees
+Cdum  pa_n pa_dum 1p
+Rdum  pa_dum 0 1k
+
+* ---------------- outside world ----------------
+Rtx  tx_out 0 50
+Cx1  pll_p pllp 10p
+Cx2  pll_n plln 10p
+Rx1  pllp 0 50
+Rx2  plln 0 50
+* ---------------- targets: delayed copies of the TX signal ----------------
+.param TD1=4n TD2=8n A1=-35 A2=-41
+Ebuf tb 0 tx_out 0 1
+Rb1 tb t1i 50
+T1  t1i 0 t1o 0 Z0=50 TD={TD1}
+Rt1 t1o 0 50
+Rb2 tb t2i 50
+T2  t2i 0 t2o 0 Z0=50 TD={TD2}
+Rt2 t2o 0 50
+* RX antenna (50 ohm source) = target 1 + target 2 + TX leakage
+* (delay-line output is half the TX voltage; source open-circuit voltage is twice the incident wave)
+.param K1={4*10**(A1/20)} K2={4*10**(A2/20)}
+Brx rx1 0 V = {K1}*v(t1o) + {K2}*v(t2o) + {KLEAK}*v(tx_out)
+Rsrx rx1 rx_in 50
+
+.control
+set noaskquit
+tran 0.5p 90n 0 0.5p
+let vd = v(vco_p)-v(vco_n)
+let vif = v(if_p)-v(if_n)
+wrdata chirp_tran.txt vd vif v(tx_out) v(vtune)
+.endc
+.end
