@@ -1,0 +1,50 @@
+import schemdraw
+import schemdraw.elements as elm
+schemdraw.config(fontsize=11, lw=1.2)
+B = lambda **k: elm.BjtNpn(circle=True, **k).theta(0)
+with schemdraw.Drawing(file='cml_latch.png', dpi=170, show=False) as d:
+    # data pair (facing each other)
+    qd1 = d.add(B().at((1.5, 2)).anchor('base'))
+    qd2 = d.add(B().reverse().at((4.5, 2)).anchor('base'))
+    d.add(elm.Line().at(qd1.emitter).to((2.25, 1.0))); d.add(elm.Line().at(qd2.emitter).to((3.75, 1.0)))
+    d.add(elm.Line().at((2.25, 1.0)).to((3.75, 1.0))); d.add(elm.Dot().at((3.0, 1.0)))
+    # hold pair
+    qh1 = d.add(B().at((6, 2)).anchor('base'))
+    qh2 = d.add(B().reverse().at((9, 2)).anchor('base'))
+    d.add(elm.Line().at(qh1.emitter).to((6.75, 1.0))); d.add(elm.Line().at(qh2.emitter).to((8.25, 1.0)))
+    d.add(elm.Line().at((6.75, 1.0)).to((8.25, 1.0))); d.add(elm.Dot().at((7.5, 1.0)))
+    # clock pair
+    qc1 = d.add(B().at((2.25, -0.4)).anchor('base'))
+    qc2 = d.add(B().reverse().at((8.25, -0.4)).anchor('base'))
+    d.add(elm.Line().at((3.0, 1.0)).to(qc1.collector)); d.add(elm.Line().at((7.5, 1.0)).to(qc2.collector))
+    d.add(elm.Line().at(qc1.emitter).to((3.0, -1.5))); d.add(elm.Line().at(qc2.emitter).to((7.5, -1.5)))
+    d.add(elm.Line().at((3.0, -1.5)).to((7.5, -1.5))); d.add(elm.Dot().at((5.25, -1.5)))
+    d.add(elm.SourceI().down().at((5.25, -1.5)).to((5.25, -3.0)).label('Itail\n1.5 mA', loc='bottom'))
+    d.add(elm.Ground())
+    # output nodes: Qbar bus (y=3.4) and Q bus (y=3.9)
+    d.add(elm.Line().at(qd1.collector).to((2.25, 3.4))); d.add(elm.Line().at(qh1.collector).to((6.75, 3.4)))
+    d.add(elm.Line().at((1.2, 3.4)).to((9.6, 3.4)))
+    d.add(elm.Line().at(qd2.collector).to((3.75, 3.9))); d.add(elm.Line().at(qh2.collector).to((8.25, 3.9)))
+    d.add(elm.Line().at((3.75, 3.9)).to((10.2, 3.9)))
+    for p in [(2.25, 3.4), (6.75, 3.4), (3.75, 3.9), (8.25, 3.9)]: d.add(elm.Dot().at(p))
+    # loads and supply
+    d.add(elm.Resistor().up().at((1.2, 3.4)).to((1.2, 5.6)).label('RL 266 Ω', loc='top'))
+    d.add(elm.Resistor().up().at((9.3, 3.9)).to((9.3, 5.6)).label('RL 266 Ω', loc='bottom'))
+    d.add(elm.Dot().at((9.3, 3.9)))
+    d.add(elm.Line().at((1.2, 5.6)).to((9.3, 5.6)))
+    d.add(elm.Line().up().at((5.25, 5.6)).length(0.3)); d.add(elm.Vdd().label('VCC'))
+    # hold-pair cross coupling
+    d.add(elm.Line().at(qh1.base).to((5.6, 2))); d.add(elm.Line().at((5.6, 2)).to((5.6, 3.9))); d.add(elm.Dot().at((5.6, 3.9)))
+    d.add(elm.Line().at(qh2.base).to((9.6, 2))); d.add(elm.Line().at((9.6, 2)).to((9.6, 3.4))); d.add(elm.Dot().at((9.6, 3.4)))
+    # terminals
+    d.add(elm.Line().at((1.2, 3.4)).to((0.3, 3.4))); d.add(elm.Dot(open=True).at((0.3, 3.4)).label('Q̄', loc='left'))
+    d.add(elm.Line().at((10.2, 3.9)).to((10.6, 3.9))); d.add(elm.Dot(open=True).at((10.6, 3.9)).label('Q', loc='right'))
+    d.add(elm.Line().at(qd1.base).to((0.8, 2))); d.add(elm.Dot(open=True).at((0.8, 2)).label('D', loc='left'))
+    d.add(elm.Line().at(qd2.base).to((5.05, 2))); d.add(elm.Dot(open=True).at((5.05, 2)).label('D̄', loc='bottom', ofst=(0, -0.05)))
+    d.add(elm.Line().at(qc1.base).to((1.4, -0.4))); d.add(elm.Dot(open=True).at((1.4, -0.4)).label('CLK', loc='left'))
+    d.add(elm.Line().at(qc2.base).to((9.1, -0.4))); d.add(elm.Dot(open=True).at((9.1, -0.4)).label('CLK̄', loc='right'))
+    # annotations
+    d.add(elm.Label().at((1.0, 0.65)).label('Data pair: copies D\n(active when CLK high)', fontsize=9))
+    d.add(elm.Label().at((9.7, 0.65)).label('Hold pair: remembers\n(active when CLK low)', fontsize=9))
+    d.add(elm.Label().at((5.25, -0.4)).label('Clock pair:\nsteers Itail', fontsize=9))
+    d.add(elm.Label().at((5.25, 6.9)).label('CML latch (one of 4 in the divider), all transistors npn13G2 NX=1', fontsize=12))

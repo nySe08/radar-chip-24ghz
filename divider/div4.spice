@@ -1,0 +1,74 @@
+* ============================================================
+* 24 GHz -> 6 GHz CML static divider (/4) with 50-ohm output driver
+* stage 1: /2 at 24 GHz (fast: NX=1, IT1)
+* stage 2: /2 at 12 GHz (IT2), clocked by stage 1 through AC coupling
+* output driver: differential pair into 50 ohm on-chip back-termination,
+*                pads -> 50 ohm PCB lines to the ADF4159 RF input
+* ============================================================
+.lib cornerHBT.lib hbt_typ
+.param temp=27
+.param IT1=1.5m RL1=266 IT2=1m RL2=400 NXL=1 VCK=1.2 ACK=0.2 FIN=24e9 VCC=2.5
+.param CC=500f RB=5k IOUT=8m NXO=4 ROUT=50 VBO=1.6
+
+* ---- CML latch: clock pair steers current into data pair (copy) or hold pair (store)
+.subckt cml_latch d db ck ckb q qb vcc params: IT=2.5m RL=160 NX=1
+RLp vcc q  {RL}
+RLn vcc qb {RL}
+* data pair (transparent when ck high): D high -> current through Qd1 -> qb low, q high
+Xd1 qb d  ed 0 npn13G2 Nx={NX}
+Xd2 q  db ed 0 npn13G2 Nx={NX}
+* hold pair (cross-coupled, active when ck low)
+Xh1 qb q  eh 0 npn13G2 Nx={NX}
+Xh2 q  qb eh 0 npn13G2 Nx={NX}
+* clock pair
+Xc1 ed ck  et 0 npn13G2 Nx={NX}
+Xc2 eh ckb et 0 npn13G2 Nx={NX}
+It et 0 {IT}
+.ends
+
+
+* ---- stage 1: /2 at the input frequency
+Xm1 s1qb s1q ck ckb m1q m1qb vcc cml_latch IT={IT1} RL={RL1} NX={NXL}
+Xs1 m1q m1qb ckb ck s1q s1qb vcc cml_latch IT={IT1} RL={RL1} NX={NXL}
+* ---- level shift into stage 2 clock (AC coupling + re-bias)
+Cc1 s1q  c2p {CC}
+Cc2 s1qb c2n {CC}
+Rb1 vck c2p {RB}
+Rb2 vck c2n {RB}
+Vck vck 0 {VCK}
+* ---- stage 2: /2 at half the input frequency
+Xm2 s2qb s2q c2p c2n m2q m2qb vcc cml_latch IT={IT2} RL={RL2} NX={NXL}
+Xs2 m2q m2qb c2n c2p s2q s2qb vcc cml_latch IT={IT2} RL={RL2} NX={NXL}
+* ---- output driver: AC-coupled differential pair, 50 ohm back-termination
+Co1 s2q  o1 {CC}
+Co2 s2qb o2 {CC}
+Rbo1 vbo o1 {RB}
+Rbo2 vbo o2 {RB}
+Vbo vbo 0 {VBO}
+Xo1 padn o1 eo 0 npn13G2 Nx={NXO}
+Xo2 padp o2 eo 0 npn13G2 Nx={NXO}
+Io eo 0 {IOUT}
+Rt1 vcc padp {ROUT}
+Rt2 vcc padn {ROUT}
+* ---- off-chip: AC-coupled 50 ohm loads (ADF4159 RF input pins)
+Cx1 padp outp 10p
+Cx2 padn outn 10p
+Rx1 outp 0 50
+Rx2 outn 0 50
+* ---- differential clock (stands in for LO-buffer driver 3)
+Vckp ck  0 dc {VCK} sin({VCK} {ACK} {FIN})
+Vckn ckb 0 dc {VCK} sin({VCK} {-ACK} {FIN})
+Vcc vcc 0 {VCC}
+Ik1 s1q 0 pulse(0 0.5m 0 5p 5p 20p 1)
+Ik2 s2q 0 pulse(0 0.5m 0 5p 5p 20p 1)
+.control
+set noaskquit
+op
+let itot = -i(vcc)*1e3
+echo "Total supply current (mA): $&itot"
+tran 0.25p 6n
+let vo = v(outp)
+let v1 = v(s1q)-v(s1qb)
+wrdata div4.txt vo v1
+.endc
+.end

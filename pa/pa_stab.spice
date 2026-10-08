@@ -1,0 +1,48 @@
+* ============================================================
+* 24 GHz PA - single-ended cascode HBT stage (IHP SG13G2)
+* Drive: one side of LO-buffer driver 2 (source AIN through RSRC)
+* Output: L-match (shunt LC to VCC, series COUT) into 50-ohm antenna
+* ============================================================
+.lib cornerHBT.lib hbt_typ
+.param temp=27
+.param NX1=8 NX2=8 RE1=5 IREF=0.777m RB=1k RREF=8k VCAS=1.6 CBYP=5p
+.param LC=543p COUT=71f QL=15 W0=1.5158e11
+.param AIN=0.35 RSRC=200 FIN=24.125e9 VCC=2.5
+* drive (stands in for one side of buffer driver 2)
+V1 a 0 dc 0 ac 1 portnum 1 z0=200
+Cin a b1 1p
+* bias: current mirror (as in the LNA) - Qr is a 1-stripe copy of Q1
+Iref vcc cr {IREF}
+XQr  cr br er 0 npn13G2 Nx=1
+Rer  er 0 {8*RE1}
+XQf  vcc cr vbn 0 npn13G2 Nx=1
+Ief  vbn 0 50u
+Rref vbn br {RREF}
+Rb   vbn b1 {RB}
+Cbn  vbn 0 {CBYP}
+* Q1: common emitter
+XQ1 c1 b1 e1 0 npn13G2 Nx={NX1}
+Re1 e1 0 {RE1}
+* Q2: cascode (base at AC ground) - high-voltage HBT, it takes the large swing
+XQ2 out vcas c1 0 npn13G2v Nx={NX2}
+Vcas vcas 0 {VCAS}
+Ccas vcas 0 {CBYP}
+* output match: shunt inductor to VCC (with loss), series capacitor to the antenna
+Lc vcc lx {LC}
+RLc lx out {W0*LC/QL}
+Cout out ant {COUT}
+V2 ant 0 dc 0 ac 0 portnum 2 z0=50
+Vcc vcc 0 {VCC}
+.control
+set noaskquit
+set wr_singlescale
+set wr_vecnames
+sp lin 199 1e9 100e9 0
+let dlt = S_1_1*S_2_2 - S_1_2*S_2_1
+let kfac = (1 - mag(S_1_1)^2 - mag(S_2_2)^2 + mag(dlt)^2)/(2*mag(S_1_2*S_2_1))
+let magdlt = mag(dlt)
+let s21 = db(S_2_1)
+wrdata pa_stab.txt kfac magdlt s21
+.endc
+
+.end

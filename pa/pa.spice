@@ -1,0 +1,49 @@
+* ============================================================
+* 24 GHz PA - single-ended cascode HBT stage (IHP SG13G2)
+*  Q1 npn13G2 NX=8 with 5-ohm emitter degeneration (corner robustness)
+*  Q2 npn13G2v NX=8: HIGH-VOLTAGE HBT, takes the large collector swing
+*  Bias: current mirror (as in the LNA)
+*  Output: L-match (shunt LC to VCC, series COUT) into the 50-ohm antenna
+*  Drive: one side of LO-buffer driver 2 (source AIN through RSRC)
+* Run via run_pa.py
+* ============================================================
+.lib cornerHBT.lib hbt_typ
+.param temp=27
+.param NX1=8 NX2=8 RE1=5 IREF=0.777m RB=1k RREF=8k VCAS=1.6 CBYP=5p
+.param LC=543p COUT=71f QL=15 W0=1.5158e11
+.param AIN=0.35 RSRC=200 FIN=24.125e9 VCC=2.5
+* drive (stands in for one side of buffer driver 2)
+Vs src 0 dc 0 sin(0 {AIN} {FIN})
+Rsrc src a {RSRC}
+Cin a b1 1p
+* bias: current mirror (as in the LNA) - Qr is a 1-stripe copy of Q1
+Iref vcc cr {IREF}
+XQr  cr br er 0 npn13G2 Nx=1
+Rer  er 0 {8*RE1}
+XQf  vcc cr vbn 0 npn13G2 Nx=1
+Ief  vbn 0 50u
+Rref vbn br {RREF}
+Rb   vbn b1 {RB}
+Cbn  vbn 0 {CBYP}
+* Q1: common emitter
+XQ1 c1 b1 e1 0 npn13G2 Nx={NX1}
+Re1 e1 0 {RE1}
+* Q2: cascode (base at AC ground) - high-voltage HBT, it takes the large swing
+XQ2 out vcas c1 0 npn13G2v Nx={NX2}
+Vcas vcas 0 {VCAS}
+Ccas vcas 0 {CBYP}
+* output match: shunt inductor to VCC (with loss), series capacitor to the antenna
+Lc vcc lx {LC}
+RLc lx out {W0*LC/QL}
+Cout out ant {COUT}
+Rant ant 0 50
+Vcc vcc 0 {VCC}
+.control
+set noaskquit
+op
+let idc = -i(vcc)*1e3
+echo "DC current (mA): $&idc"
+tran 0.25p 3n
+wrdata pa.txt v(ant) v(out) i(vcc) v(c1) v(vcas)
+.endc
+.end
