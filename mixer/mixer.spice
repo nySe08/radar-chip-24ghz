@@ -1,0 +1,64 @@
+* ============================================================
+* 24 GHz single-balanced active HBT mixer  (IHP SG13G2)
+*  - Q3: RF transconductor with emitter degeneration Re
+*  - Q4/Q5: switching pair driven by a differential LO
+*  - RL || CL: IF load (sets gain, filters LO feedthrough)
+*  - RT: 50 ohm-ish termination that also feeds Q3's base bias
+* Large-signal test: RF tone at LO + 25 MHz -> IF at 25 MHz.
+* (25 MHz is chosen so 24.125 GHz is an exact multiple of the
+*  IF; that keeps the Fourier measurement clean.)
+* Run via run_mixer.py, or alone: ngspice -b mixer.spice
+* ============================================================
+.lib cornerHBT.lib hbt_typ
+.param temp=27
+
+* ---------------- design parameters ----------------
+.param NX3=4          $ transconductor size
+.param NXSW=2         $ switching transistor size (each)
+.param RE=75          $ emitter degeneration -> linearity (and stable gain)
+.param RL=300         $ IF load resistor (each side) -> conversion gain
+.param CL=1.76p       $ IF load capacitor: pole ~300 MHz, filters the LO
+.param RT=60          $ input termination / bias feed resistor
+.param VB3=1.178      $ Q3 base bias -> Ic3 ~ 4 mA
+.param VLODC=1.9      $ LO common-mode (DC) voltage
+.param ALO=0.3        $ LO amplitude, V peak per side
+.param VCC=2.5
+.param FLO=24.125e9   $ LO frequency
+.param FIF=25e6       $ test IF frequency
+.param VRF=0.01       $ RF amplitude at the matched mixer input [V peak]
+
+* ---------------- RF input (50 ohm source) ----------------
+Vrf  src 0 dc 0 sin(0 {2*VRF} {FLO+FIF})
+Rs   src rf 50
+Cdc  rf b3 10p
+Rt   vb3 b3 {RT}
+Vb3  vb3 0 {VB3}
+
+* ---------------- transconductor ----------------
+XQ3  x b3 e3 0 npn13G2 Nx={NX3}
+Re   e3 0 {RE}
+
+* ---------------- LO-driven switching pair ----------------
+Vlop lop 0 dc {VLODC} sin({VLODC} {ALO} {FLO})
+Vlon lon 0 dc {VLODC} sin({VLODC} {-ALO} {FLO})
+XQ4  ifp lop x 0 npn13G2 Nx={NXSW}
+XQ5  ifn lon x 0 npn13G2 Nx={NXSW}
+
+* ---------------- IF load ----------------
+RLp  vcc ifp {RL}
+CLp  vcc ifp {CL}
+RLn  vcc ifn {RL}
+CLn  vcc ifn {CL}
+Vcc  vcc 0 {VCC}
+
+.control
+set noaskquit
+op
+let ic3 = v(e3)/RE*1e3
+echo "Ic3 = $&ic3 mA"
+print v(x) v(e3) v(ifp)
+tran 1p 150n 0 1p
+let vif = v(ifp)-v(ifn)
+fourier 25e6 vif
+.endc
+.end
