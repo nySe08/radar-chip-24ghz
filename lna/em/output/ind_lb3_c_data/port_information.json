@@ -1,0 +1,19 @@
+{
+    "ports": [
+        {
+            "portnumber": 1,
+            "Z0": 50,
+            "direction": "X",
+            "length": 16.1,
+            "width": 2.0,
+            "xmin": -9.18,
+            "xmax": 6.92,
+            "ymin": -26.18,
+            "ymax": -24.18,
+            "zmin": 290.1803,
+            "zmax": 292.1803
+        }
+    ],
+    "unit": 1e-06,
+    "name": "ind_lb3_c"
+}

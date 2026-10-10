@@ -1,0 +1,19 @@
+{
+    "ports": [
+        {
+            "portnumber": 1,
+            "Z0": 50,
+            "direction": "X",
+            "length": 7.040000000000001,
+            "width": 2.0,
+            "xmin": -1.44,
+            "xmax": 5.6000000000000005,
+            "ymin": -22.34,
+            "ymax": -20.34,
+            "zmin": 294.9803,
+            "zmax": 297.9803
+        }
+    ],
+    "unit": 1e-06,
+    "name": "run_ind_lb"
+}

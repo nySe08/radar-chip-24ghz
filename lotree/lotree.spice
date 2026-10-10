@@ -1,0 +1,70 @@
+* ============================================================
+* RX LO distribution tree for the 4-channel chip (IHP SG13G2)
+* pre-driver -> 4 on-chip lines -> 4 channel drivers -> 4 real mixers
+* Measures LO amplitude and phase at each mixer; MM=1 enables transistor mismatch.
+* ============================================================
+.lib cornerHBT.lib hbt_typ_mismatch
+.param temp=27
+.include mixer.sp
+.param MM=0 F0=24.125e9 ALO=0.6
+.param IPRE=2m LPRE=250p RPRE=400 IDRV=2m LDRV=1.8n RDRV=400 RBIAS=5k
+.param LEN1=300u LEN2=300u LEN3=300u LEN4=300u VPH=1.55e8 Z0L=50
+
+.subckt lodrv inp inn outp outn vcc params: I=1.5m L=1.3n R=400 RB=5k MM=0
+Cin1 inp b1 1p
+Cin2 inn b2 1p
+Rb1 vbd b1 {RB}
+Rb2 vbd b2 {RB}
+Vbd vbd 0 1.35
+XQa dp b1 t 0 npn13G2 Nx=2 mm_ok={MM}
+XQb dn b2 t 0 npn13G2 Nx=2 mm_ok={MM}
+It t 0 {I}
+L1 vcc dp {L}
+L2 vcc dn {L}
+R1 vcc dp {R}
+R2 vcc dn {R}
+Cc1 dp outp 500f
+Cc2 dn outn 500f
+.ends lodrv
+
+Vcc vcc 0 2.5
+* LO as delivered by the VCO emitter followers
+Vlp src_p 0 dc 1.8 sin(1.8 {ALO} {F0})
+Vln src_n 0 dc 1.8 sin(1.8 {-ALO} {F0})
+Xpre src_p src_n pp pn vcc lodrv I={IPRE} L={LPRE} R={RPRE} RB={RBIAS} MM={MM}
+* bleed so the line nodes have a DC path (AC-coupled at both ends)
+Rbp pp 0 20k
+Rbn pn 0 20k
+* four on-chip lines (differential pair = two single-ended lines), then channel drivers
+T1p pp 0 a1p 0 Z0={Z0L} TD={LEN1/VPH}
+T1n pn 0 a1n 0 Z0={Z0L} TD={LEN1/VPH}
+T2p pp 0 a2p 0 Z0={Z0L} TD={LEN2/VPH}
+T2n pn 0 a2n 0 Z0={Z0L} TD={LEN2/VPH}
+T3p pp 0 a3p 0 Z0={Z0L} TD={LEN3/VPH}
+T3n pn 0 a3n 0 Z0={Z0L} TD={LEN3/VPH}
+T4p pp 0 a4p 0 Z0={Z0L} TD={LEN4/VPH}
+T4n pn 0 a4n 0 Z0={Z0L} TD={LEN4/VPH}
+Xd1 a1p a1n l1p l1n vcc lodrv I={IDRV} L={LDRV} R={RDRV} RB={RBIAS} MM={MM}
+Xd2 a2p a2n l2p l2n vcc lodrv I={IDRV} L={LDRV} R={RDRV} RB={RBIAS} MM={MM}
+Xd3 a3p a3n l3p l3n vcc lodrv I={IDRV} L={LDRV} R={RDRV} RB={RBIAS} MM={MM}
+Xd4 a4p a4n l4p l4n vcc lodrv I={IDRV} L={LDRV} R={RDRV} RB={RBIAS} MM={MM}
+* the real mixers as loads (RF input terminated in 50 ohm)
+Rr1 r1 0 50
+Rr2 r2 0 50
+Rr3 r3 0 50
+Rr4 r4 0 50
+Xm1 r1 l1p l1n i1p i1n vcc mixer
+Xm2 r2 l2p l2n i2p i2n vcc mixer
+Xm3 r3 l3p l3n i3p i3n vcc mixer
+Xm4 r4 l4p l4n i4p i4n vcc mixer
+.control
+set noaskquit
+tran 0.25p 2.5n 0 0.25p
+let v1 = v(l1p)-v(l1n)
+let v2 = v(l2p)-v(l2n)
+let v3 = v(l3p)-v(l3n)
+let v4 = v(l4p)-v(l4n)
+let vpre = v(pp)-v(pn)
+wrdata lotree.txt v1 v2 v3 v4 vpre
+.endc
+.end
