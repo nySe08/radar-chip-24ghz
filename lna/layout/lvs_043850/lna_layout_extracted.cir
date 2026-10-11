@@ -1,0 +1,20 @@
+* Extracted by KLayout with SG13G2 LVS runset on : 11/10/2026 04:38
+
+.SUBCKT lna GND IREF RFIN RFOUT VCC
+Q$1 \$66 \$72 GND GND npn13G2 we=70n le=900n Nx=8 m=1
+Q$2 \$84 \$34 \$66 GND npn13G2 we=70n le=900n Nx=8 m=1
+Q$3 IREF \$4 GND GND npn13G2 we=70n le=900n Nx=1 m=1
+Q$4 VCC IREF \$26 GND npn13G2 we=70n le=900n Nx=1 m=1
+R$5 \$26 \$72 GND rppd w=1u l=19.08u ps=0u b=0 m=1
+R$6 \$34 VCC GND rppd w=1u l=22.95u ps=0u b=0 m=1
+R$7 \$84 VCC GND rppd w=2u l=2.66u ps=0u b=0 m=1
+R$8 \$4 \$26 GND rhigh w=1u l=28.12u ps=0u b=0 m=1
+R$9 GND \$26 GND rhigh w=1u l=12.03u ps=0u b=0 m=1
+R$10 GND \$34 GND rhigh w=1u l=13.3u ps=0u b=0 m=1
+C$11 VCC GND GND rfcmim w=33u l=33u A=1089p P=132u m=2 wfeed=3u
+C$12 \$26 GND GND rfcmim w=33u l=33u A=1089p P=132u m=1 wfeed=3u
+C$13 \$34 GND GND rfcmim w=33u l=33u A=1089p P=132u m=2 wfeed=3u
+C$15 RFOUT \$84 GND rfcmim w=7u l=7u A=49p P=28u m=1 wfeed=3u
+C$17 \$57 RFIN GND rfcmim w=33u l=33u A=1089p P=132u m=1 wfeed=3u
+R$18 GND GND ptap1 A=20p P=40u
+.ENDS lna

@@ -1,0 +1,36 @@
+* ============================================================
+* 24 GHz LNA - LVS reference netlist (matches the generated layout lna_layout.gds)
+* Same circuit as lna_ind.spice, with the realization changes:
+*   - Iref supplied from a pad (IREF) instead of an ideal source
+*   - ideal 50 uA sink Ief  -> resistor Rief (rhigh, 17.2 kohm)
+*   - Cbn: one 33x33 um MIM (was two)
+*   - VCC decoupling Cdec (2 x 33x33 um) added; substrate taps (ptap1) to GND
+*   - Le is a plain TopMetal2 strip (no device): for LVS the emitter of Q1 is connected to GND
+* Conventions as extracted by IHP's deck: npn size as Nx, substrate terminal = GND (tied by the taps),
+* parallel devices combined (m=2), the five 2x2 um taps combined into one ptap1 (A=20p, P=40u).
+* ============================================================
+.SUBCKT lna GND IREF RFIN RFOUT VCC
+* --- RF path
+Cin   in    RFIN  GND rfcmim w=33u l=33u m=1 wfeed=3u
+Lb    in    b1    GND inductor w=7u s=2.1u d=68.66u nr_r=2
+Q1    c1    b1    GND  GND npn13G2 we=70n le=900n Nx=8 m=1
+Q2    out   b2    c1   GND npn13G2 we=70n le=900n Nx=8 m=1
+Lc    out   VCC   GND inductor w=6.5u s=2.1u d=63.15u nr_r=2
+RP    out   VCC   GND rppd w=2u l=2.66u ps=0u b=0 m=1
+Cout  RFOUT out   GND rfcmim w=7u l=7u m=1 wfeed=3u
+* --- bias mirror
+Qr    IREF  br    GND  GND npn13G2 we=70n le=900n Nx=1 m=1
+Qf    VCC   IREF  vbn  GND npn13G2 we=70n le=900n Nx=1 m=1
+Rref  br    vbn   GND rhigh w=1u l=28.12u ps=0u b=0 m=1
+Rief  GND   vbn   GND rhigh w=1u l=12.03u ps=0u b=0 m=1
+Rb    vbn   b1    GND rppd w=1u l=19.08u ps=0u b=0 m=1
+Cbn   vbn   GND   GND rfcmim w=33u l=33u m=1 wfeed=3u
+* --- cascode bias
+R1    b2    VCC   GND rppd w=1u l=22.95u ps=0u b=0 m=1
+R2    GND   b2    GND rhigh w=1u l=13.3u ps=0u b=0 m=1
+Ccas  b2    GND   GND rfcmim w=33u l=33u m=2 wfeed=3u
+* --- VCC decoupling
+Cdec  VCC   GND   GND rfcmim w=33u l=33u m=2 wfeed=3u
+* --- substrate taps (5 x 2x2 um, combined)
+Rtap  GND   GND   ptap1 A=20p P=40u
+.ENDS lna

@@ -1,0 +1,9 @@
+11-Oct-2026 03:30:57 | INFO    | KLayout version detected: 0.30.12 (required >= 0.30.5)
+11-Oct-2026 03:30:57 | INFO    | Using DRC JSON file: /foss/pdks/ihp-sg13g2/libs.tech/klayout/python/sg13g2_pycell_lib/sg13g2_tech_mod.json
+11-Oct-2026 03:30:57 | INFO    | Running IHP-SG13G2 main checks on design /foss/designs/radar-chip/lna/layout/lna_layout.gds, topcell: lna
+11-Oct-2026 03:31:07 | INFO    | Running IHP-SG13G2 sg13g2_maximal checks on design /foss/designs/radar-chip/lna/layout/lna_layout.gds, topcell: lna
+11-Oct-2026 03:31:16 | INFO    | Completed running Sg13g2_maximal checks.
+11-Oct-2026 03:31:17 | INFO    | =====================================================================================
+11-Oct-2026 03:31:17 | INFO    | ✅ --- KLayout DRC Check Passed: No DRC violations detected in the layout. --- ✅
+11-Oct-2026 03:31:17 | INFO    | =====================================================================================
+11-Oct-2026 03:31:17 | INFO    | Total DRC Run time: 20.38 seconds (including execution, analysis, and reporting)

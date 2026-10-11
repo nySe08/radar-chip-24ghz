@@ -1,0 +1,21 @@
+# Logfile created on 2026-10-11 04:20:54 +0200 by logger.rb/v1.5.3
+2026-10-11 04:20:54 +0200: Memory Usage (458896K) : Starting running SG13G2 Klayout LVS runset on /foss/designs/radar-chip/lna/layout/lna_layout.gds
+2026-10-11 04:20:54 +0200: Memory Usage (458896K) : Ruby Version for klayout: 3.2.3
+2026-10-11 04:20:54 +0200: Memory Usage (460532K) : Loading database to memory is complete.
+2026-10-11 04:20:54 +0200: Memory Usage (460532K) : SG13G2 Klayout LVS runset output at: /foss/designs/radar-chip/lna/layout/lvs_042050/lna_layout.lvsdb
+2026-10-11 04:20:54 +0200: Memory Usage (460532K) : Evaluate switches.
+2026-10-11 04:20:54 +0200: Memory Usage (460532K) : Extracted netlist with net names: true
+2026-10-11 04:20:54 +0200: Memory Usage (460532K) : Extracted netlist with comments in details: false
+2026-10-11 04:20:54 +0200: Memory Usage (460532K) : Selected NET_ONLY option: false
+2026-10-11 04:20:54 +0200: Memory Usage (460532K) : Selected LAYOUT_NETLIST option: (none)
+2026-10-11 04:20:54 +0200: Memory Usage (460532K) : Selected IGNORE_TOP_PORTS_MISMATCH option: 
+2026-10-11 04:20:54 +0200: Memory Usage (460532K) : Selected IMPLICIT_NETS option: (none)
+2026-10-11 04:20:54 +0200: Memory Usage (460532K) : Selected TOP_LVL_PINS option: false
+2026-10-11 04:20:54 +0200: Memory Usage (460532K) : Selected COMBINE DEVICES option: false
+2026-10-11 04:20:54 +0200: Memory Usage (460532K) : Selected PURGE option: false
+2026-10-11 04:20:54 +0200: Memory Usage (460532K) : Selected PURGE_NETS option: false
+2026-10-11 04:20:54 +0200: Memory Usage (460532K) : Selected SIMPLIFY option: true
+2026-10-11 04:20:54 +0200: Memory Usage (460532K) : Selected SERIES_RES option: true
+2026-10-11 04:20:54 +0200: Memory Usage (460532K) : Selected PARALLEL_RES option: true
+2026-10-11 04:20:54 +0200: Memory Usage (460532K) : Selected DISABLE_TAP_EXTRACTION option: false
+2026-10-11 04:20:54 +0200: Memory Usage (460532K) : flat  mode is enabled.

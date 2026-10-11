@@ -1,0 +1,9 @@
+# Logfile created on 2026-10-11 03:52:26 +0200 by logger.rb/v1.5.3
+2026-10-11 03:52:26 +0200: Memory Usage (457292K) : Starting running IHP-SG13G2 Klayout DRC maximum runset on /foss/designs/radar-chip/lna/layout/lna_layout.gds
+2026-10-11 03:52:26 +0200: Memory Usage (457292K) : Ruby Version for klayout: 3.2.3
+2026-10-11 03:52:26 +0200: Memory Usage (458844K) : Loading database to memory is complete.
+2026-10-11 03:52:26 +0200: Memory Usage (458844K) : IHP-SG13G2 Klayout DRC maximum runset output at: /foss/designs/radar-chip/lna/layout/drc_035212_deep/lna_layout_lna_sg13g2_maximal.lyrdb
+2026-10-11 03:52:26 +0200: Memory Usage (458972K) : Evaluate switches.
+2026-10-11 03:52:26 +0200: Memory Usage (458972K) : Klayout will use 16 thread(s)
+2026-10-11 03:52:26 +0200: Memory Usage (458972K) : deep mode is enabled for sg13g2_maximal runset.
+2026-10-11 03:52:34 +0200: Memory Usage (504136K) : KLayout DRC run for maximum ruleSet completed in 8.04 seconds

@@ -1,0 +1,22 @@
+* Extracted by KLayout with SG13G2 LVS runset on : 11/10/2026 04:29
+
+.SUBCKT lna GND IREF LA LA$1 LB LB$1 RFIN RFOUT VCC
+Q$1 \$66 LB GND GND npn13G2 we=70n le=900n Nx=8 m=1
+Q$2 LA$1 \$34 \$66 GND npn13G2 we=70n le=900n Nx=8 m=1
+Q$3 IREF \$4 GND GND npn13G2 we=70n le=900n Nx=1 m=1
+Q$4 VCC IREF \$26 GND npn13G2 we=70n le=900n Nx=1 m=1
+R$5 \$26 LB GND rppd w=1u l=19.08u ps=0u b=0 m=1
+R$6 \$34 VCC GND rppd w=1u l=22.95u ps=0u b=0 m=1
+R$7 LA$1 VCC GND rppd w=2u l=2.66u ps=0u b=0 m=1
+R$8 \$4 \$26 GND rhigh w=1u l=28.12u ps=0u b=0 m=1
+R$9 GND \$26 GND rhigh w=1u l=12.03u ps=0u b=0 m=1
+R$10 GND \$34 GND rhigh w=1u l=13.3u ps=0u b=0 m=1
+C$11 VCC GND GND rfcmim w=33u l=33u A=1089p P=132u m=2 wfeed=3u
+C$12 \$26 GND GND rfcmim w=33u l=33u A=1089p P=132u m=1 wfeed=3u
+C$13 \$34 GND GND rfcmim w=33u l=33u A=1089p P=132u m=2 wfeed=3u
+C$15 RFOUT LA$1 GND rfcmim w=7u l=7u A=49p P=28u m=1 wfeed=3u
+C$17 LA RFIN GND rfcmim w=33u l=33u A=1089p P=132u m=1 wfeed=3u
+L$18 LA LB GND inductor w=7u s=2.097u d=68.686u nr_r=2
+L$19 LA$1 LB$1 GND inductor w=3.86u s=2.1u d=49.89u nr_r=4
+R$20 GND GND ptap1 A=20p P=40u
+.ENDS lna
