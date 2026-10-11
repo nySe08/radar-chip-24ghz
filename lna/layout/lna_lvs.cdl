@@ -15,8 +15,8 @@ Cin   in    RFIN  GND rfcmim w=33u l=33u m=1 wfeed=3u
 Lb    in    b1    GND inductor w=7u s=2.1u d=68.66u nr_r=2
 Q1    c1    b1    GND  GND npn13G2 we=70n le=900n Nx=8 m=1
 Q2    out   b2    c1   GND npn13G2 we=70n le=900n Nx=8 m=1
-Lc    out   VCC   GND inductor w=6.5u s=2.1u d=63.15u nr_r=2
-RP    out   VCC   GND rppd w=2u l=2.66u ps=0u b=0 m=1
+Lc    out   VCC   GND inductor w=5u s=2.1u d=55.83u nr_r=2
+RP    out   VCC   GND rppd w=2u l=5.37u ps=0u b=0 m=1
 Cout  RFOUT out   GND rfcmim w=7u l=7u m=1 wfeed=3u
 * --- bias mirror
 Qr    IREF  br    GND  GND npn13G2 we=70n le=900n Nx=1 m=1

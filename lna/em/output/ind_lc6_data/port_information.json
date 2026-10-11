@@ -1,0 +1,19 @@
+{
+    "ports": [
+        {
+            "portnumber": 1,
+            "Z0": 50,
+            "direction": "X",
+            "length": 2.1,
+            "width": 5.0,
+            "xmin": -1.05,
+            "xmax": 1.05,
+            "ymin": -1.0,
+            "ymax": 4.0,
+            "zmin": 290.1803,
+            "zmax": 292.1803
+        }
+    ],
+    "unit": 1e-06,
+    "name": "ind_lc6"
+}

@@ -1,0 +1,203 @@
+* ============================================================
+* 24 GHz LNA - POST-LAYOUT model: EM-calibrated devices + layout interconnect + pads (RF pads: TM1 bottom)
+* (inductors still ideal with Q=15; bias reference currents still ideal)
+* IHP SG13G2, ideal passives (first pass)
+* Outputs: lna_post.txt             S-params, NF, K over 18-30 GHz
+*          lna_post_stab.txt    stability (K, |Delta|) over 1-100 GHz
+* ============================================================
+.lib cornerHBT.lib hbt_typ
+.lib cornerCAP.lib cap_typ
+.lib cornerRES.lib res_typ
+
+* ---- inductors: TopMetal2 octagonal spirals, pi-models (analytical, before EM) ----
+.subckt ind_lb p1 p2
+* octagonal TopMetal2 spiral: w=7.0u s=2.1u d_in=68.66u turns=2  L=602.0p Q(24GHz)=14.3 (EM-cal.)  d_out=100.9u
+Ls p1 mid 6.020276e-10
+Rs mid p2 6.37063
+Cox1 p1 s1 6.3555e-15
+Rsi1 s1 0 254311.92
+Csi1 s1 0 1.9661e-15
+Cox2 p2 s2 6.3555e-15
+Rsi2 s2 0 254311.92
+Csi2 s2 0 1.9661e-15
+.ends ind_lb
+.subckt ind_le p1 p2
+* straight TopMetal2 strip: l=47u w=10u  L=24.0p
+Ls p1 mid 2.3994e-11
+Rs mid p2 0.3459
+Cox1 p1 0 7.624e-16
+Cox2 p2 0 7.624e-16
+.ends ind_le
+.subckt ind_lc p1 p2
+* octagonal TopMetal2 spiral: w=5.0u s=2.1u d_in=55.83u turns=2  L=441.9p Q(24GHz)=11.3 (EM-cal.)  d_out=80.0u
+Ls p1 mid 4.419081e-10
+Rs mid p2 5.95304
+Cox1 p1 s1 3.6382e-15
+Rsi1 s1 0 444246.57
+Csi1 s1 0 1.1255e-15
+Cox2 p2 s2 3.6382e-15
+Rsi2 s2 0 444246.57
+Csi2 s2 0 1.1255e-15
+.ends ind_lc
+
+.param temp=27
+
+* ---------------- design parameters (optimized values, ideal-ish passives) ----
+.param NX1=8          $ input transistor size (emitter stripes)
+.param NX2=8          $ cascode transistor size
+.param LE=32p         $ emitter degeneration inductor
+.param LB=609p        $ base (input match) inductor
+.param LC=546p        $ collector load inductor (re-tuned for the real 7x7 um output MIM)
+.param WCOUT=7u        $ output MIM size (min 7 um)
+.param LRP=5.37u        $ RP length (rppd, w=2u) -> ~370 ohm, re-tuned with LC
+.param IREF=0.92m     $ reference current -> Ic1 ~ 6.0 mA at 27 C
+.param RB=5k        $ bias resistor into Q1 base (RF isolation; bigger = less noise)
+.param RREF=40k       $ matched resistor in reference path (= RB x 8)
+.param R1=6k          $ cascode divider, top
+.param R2=19k         $ cascode divider, bottom  -> VCAS ~ 1.9 V
+.param CBYP=5p        $ bypass capacitors (ideal for now)
+.param VCC=2.5        $ supply
+.param RP=500         $ resistor across Lc (stability / gain control)
+.param QL=15          $ assumed on-chip inductor quality factor at 24 GHz
+.param W0=1.5158e11   $ 2*pi*24.125 GHz
+
+* ---------------- RF ports ----------------
+V1 pad1 0 dc 0 ac 1 portnum 1 z0 50
+V2 pad2 0 dc 0 ac 0 portnum 2 z0 50
+
+* ---------------- input: DC block + Lb (inductors have series loss R = w0*L/QL) ----------------
+* DC block: MIM sized near self-resonance at 24 GHz (lowest impedance)
+XCin in p1 0 cap_rfcmim w=33u l=33u
+Xlb inL bL ind_lb
+* ---------------- Q1 bias: current mirror ----------------
+* Qr is a 1-stripe copy of Q1; Qf is an emitter-follower 'beta helper'
+* that supplies the base currents so they don't steal from Iref.
+* Rref/Rb ratio = 8 so the base-current voltage drops match.
+Iref vcc cr {IREF}
+XQr  cr br 0 0 npn13G2 Nx=1
+XQf  vcc cr vbn 0 npn13G2 Nx=1
+XRief vbn 0 0 rhigh w=1u l=12.03u
+XRref vbn br 0 rhigh w=1u l=28.12u
+XRb  vbn b1 0 rppd w=1u l=19.08u
+XCbn1 vbn 0 0 cap_rfcmim w=33u l=33u
+
+* ---------------- Q1: input transistor + Le ----------------
+XQ1 c1 b1 e1 0 npn13G2 Nx={NX1}
+
+
+* ---------------- Q2: cascode, base at AC ground ----------------
+XQ2 q2c b2 c1 0 npn13G2 Nx={NX2}
+* cascode base: resistor divider from VCC + bypass cap (AC ground)
+XRc1 vcc b2 0 rppd w=1u l=22.95u
+XRc2 b2 0 0 rhigh w=1u l=13.30u
+XCcas1 b2 0 0 cap_rfcmim w=33u l=33u
+XCcas2 b2 0 0 cap_rfcmim w=33u l=33u
+
+* ---------------- load + output match ----------------
+Xlc vccL out ind_lc
+XRp  vccR out 0 rppd w=2u l={LRP}
+Vcc  vcc 0  {VCC}
+* output cap: smallest legal RF MIM is 7x7 um (~76 fF); output match re-tuned around it
+
+* ======== layout interconnect (post-layout) ========
+* ---- RF signal pads (bottom metal TM1): C = 42 fF each, via the lossy substrate
+Cpad1 pad1 sp1 4.1552e-14
+Rsp1 sp1 0 20
+Cpad2 pad2 sp2 4.1552e-14
+Rsp2 sp2 0 20
+* rfin: 64 um x 10 um, h=6.68 um -> Z0=60 ohm, L=22.3 pH, C=6.3 fF
+L_rfin pad1 rfin_m 2.2296e-11
+R_rfin rfin_m p1 0.1794
+C_rfina pad1 0 3.1336e-15
+C_rfinb p1 0 3.1336e-15
+* cin_lb: 51 um x 5 um, h=1.88 um -> Z0=42 ohm, L=12.8 pH, C=7.2 fF
+L_cin_lb in cin_lb_m 1.2841e-11
+R_cin_lb cin_lb_m inL 0.2859
+C_cin_lba in 0 3.6173e-15
+C_cin_lbb inL 0 3.6173e-15
+* lb_q1: 21 um x 4 um, h=1.88 um -> Z0=49 ohm, L=6.0 pH, C=2.6 fF
+L_lb_q1 bL lb_q1_m 6.0431e-12
+R_lb_q1 lb_q1_m b1v 0.1472
+C_lb_q1a bL 0 1.2794e-15
+C_lb_q1b b1v 0 1.2794e-15
+Lv_b1 b1v b1 4p
+* Q1 emitter -> Le: M2 stub + via M2-TM2 + TM2 strip (47 um over the plane) + via to the plane
+Lle_v1 e1 e1a 4p
+* le_strip: 47 um x 10 um, h=6.68 um -> Z0=60 ohm, L=16.4 pH, C=4.6 fF
+L_le_strip e1a le_strip_m 1.6374e-11
+R_le_strip le_strip_m e1b 0.1318
+C_le_stripa e1a 0 2.3012e-15
+C_le_stripb e1b 0 2.3012e-15
+Lle_v2 e1b 0 3p
+Cc1 c1 0 5.5f
+Lv_q2c q2c q2cv 5p
+* out: 127 um x 6 um, h=6.68 um -> Z0=77 ohm, L=56.2 pH, C=9.4 fF
+L_out q2cv out_m 5.6215e-11
+R_out out_m outT 0.5934
+C_outa q2cv 0 4.7230e-15
+C_outb outT 0 4.7230e-15
+Lv_lca outT out 3p
+* vcc1: 12 um x 8 um, h=6.68 um -> Z0=67 ohm, L=4.7 pH, C=1.0 fF
+L_vcc1 vccL vcc1_m 4.6594e-12
+R_vcc1 vcc1_m vccR 0.0420
+C_vcc1a vccL 0 5.1868e-16
+C_vcc1b vccR 0 5.1868e-16
+* vcc2: 72 um x 8 um, h=6.68 um -> Z0=67 ohm, L=28.0 pH, C=6.2 fF
+L_vcc2 vccR vcc2_m 2.7957e-11
+R_vcc2 vcc2_m vd1 0.2523
+C_vcc2a vccR 0 3.1121e-15
+C_vcc2b vd1 0 3.1121e-15
+* vcc3: 55 um x 8 um, h=6.68 um -> Z0=67 ohm, L=21.4 pH, C=4.8 fF
+L_vcc3 vd1 vcc3_m 2.1356e-11
+R_vcc3 vcc3_m vd2 0.1927
+C_vcc3a vd1 0 2.3773e-15
+C_vcc3b vd2 0 2.3773e-15
+* vcc4: 102 um x 8 um, h=6.68 um -> Z0=67 ohm, L=39.6 pH, C=8.8 fF
+L_vcc4 vd2 vcc4_m 3.9605e-11
+R_vcc4 vcc4_m vcc 0.3574
+C_vcc4a vd2 0 4.4088e-15
+C_vcc4b vcc 0 4.4088e-15
+XCdec1 vd1 0 0 cap_rfcmim w=33u l=33u
+XCdec2 vd2 0 0 cap_rfcmim w=33u l=33u
+* rfo1: 42 um x 5 um, h=1.88 um -> Z0=42 ohm, L=10.6 pH, C=6.0 fF
+L_rfo1 p2c rfo1_m 1.0575e-11
+R_rfo1 rfo1_m p2v 0.2355
+C_rfo1a p2c 0 2.9789e-15
+C_rfo1b p2v 0 2.9789e-15
+Lv_rfo p2v p2w 3p
+* rfo2: 185 um x 10 um, h=6.68 um -> Z0=60 ohm, L=64.4 pH, C=18.1 fF
+L_rfo2 p2w rfo2_m 6.4450e-11
+R_rfo2 rfo2_m pad2 0.5186
+C_rfo2a p2w 0 9.0580e-15
+C_rfo2b pad2 0 9.0580e-15
+XCout p2c out 0 cap_rfcmim w={WCOUT} l={WCOUT}
+
+.control
+set noaskquit
+op
+let itot = -i(vcc)*1e3
+let vcas = v(b2)
+let vb1 = v(b1)
+echo "Total supply current (mA): $&itot   Vcas = $&vcas V   Vb1 = $&vb1 V"
+
+* ---- band analysis: 18-30 GHz with noise
+sp lin 121 18e9 30e9 1
+let s11db = db(S_1_1)
+let s21db = db(S_2_1)
+let s12db = db(S_1_2)
+let s22db = db(S_2_2)
+let nfdb  = real(NF)
+let nfmindb = real(NFmin)
+let dlt  = S_1_1*S_2_2 - S_1_2*S_2_1
+let kfac = (1 - mag(S_1_1)^2 - mag(S_2_2)^2 + mag(dlt)^2)/(2*mag(S_1_2*S_2_1))
+set wr_singlescale
+set wr_vecnames
+wrdata lna_post.txt s11db s21db s12db s22db nfdb nfmindb kfac
+* ---- stability analysis: 1-100 GHz (must be K>1 and |Delta|<1 everywhere)
+sp lin 199 1e9 100e9 0
+let dlt  = S_1_1*S_2_2 - S_1_2*S_2_1
+let kfac = (1 - mag(S_1_1)^2 - mag(S_2_2)^2 + mag(dlt)^2)/(2*mag(S_1_2*S_2_1))
+let magdlt = mag(dlt)
+wrdata lna_post_stab.txt kfac magdlt
+.endc
+.end

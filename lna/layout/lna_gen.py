@@ -91,16 +91,17 @@ def via(x, y, b, t, n=4, nt=2):
 
 # ======================= placement =======================
 for i, y in enumerate((160, 260, 360)):
-    place(f"pin{i}", "bondpad", 50, y, shape="square"); place(f"pout{i}", "bondpad", 650, y, shape="square")
+    sig = dict(bottomMetal="TM1") if i == 1 else {}       # RF signal pads: TopMetal1+2 only (half the pad capacitance)
+    place(f"pin{i}", "bondpad", 50, y, shape="square", **sig); place(f"pout{i}", "bondpad", 650, y, shape="square", **sig)
 for x, n in zip((170, 280, 390, 500), ("Iref", "GND1", "VCC", "GND2")):
     place(f"p{n}", "bondpad", x, 50, shape="square")
 place("Lb", "inductor2", 220, 300, w="7u", s="2.1u", d="68.66u", nr_r=2, subE=False)
-place("Lc", "inductor2", 400, 300, w="6.5u", s="2.1u", d="63.15u", nr_r=2, subE=False)
+place("Lc", "inductor2", 400, 300, w="5u", s="2.1u", d="52.04u", nr_r=2, subE=False)    # post-layout re-tune (was 6.5u/63.15u)
 place("Cin", "rfcmim", 190, 285, rot=180, w="33u", l="33u")      # PLUS (TM1) faces Lb, MINUS (M5) faces the pad
 place("Q1", "npn13G2", 240, 280, rot=180, Nx=8)                   # base faces up (towards Lb), collector down
 place("Q2", "npn13G2", 262, 280, Nx=8)                            # collector up (towards Lc), base down
 place("Cout", "rfcmim", 385, 278, rot=180, w="7u", l="7u")        # MINUS (M5) faces the out node, PLUS faces the pad
-place("RP", "rppd", 409, 283, rot=90, w="2u", l="2.66u")          # rotated: pins left (out) and right (VCC)
+place("RP", "rppd", 409, 283, rot=90, w="2u", l="5.37u")          # rotated: pins left (out) and right (VCC); post-layout 5.37u
 place("Cdec1", "rfcmim", 430, 205, w="33u", l="33u")              # on-chip VCC decoupling (VCC -> GND)
 place("Cdec2", "rfcmim", 430, 150, w="33u", l="33u")
 
