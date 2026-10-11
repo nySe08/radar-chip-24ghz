@@ -1,0 +1,3 @@
+Simulation using automatic thread count set by solver
+Host name: 14c43469462d 
+openEMS solve time for this excitation: 401 seconds

@@ -11,33 +11,33 @@
 
 * ---- inductors: TopMetal2 octagonal spirals, pi-models (analytical, before EM) ----
 .subckt ind_lb p1 p2
-* octagonal TopMetal2 spiral: w=7.0u s=2.1u d_in=68.66u turns=2  L=622.5p Q(24GHz)=16.1 (EM-cal.)  d_out=100.9u
-Ls p1 mid 6.224613e-10
-Rs mid p2 5.86079
-Cox1 p1 s1 6.3551e-15
-Rsi1 s1 0 254326.92
-Csi1 s1 0 1.9660e-15
-Cox2 p2 s2 6.3551e-15
-Rsi2 s2 0 254326.92
-Csi2 s2 0 1.9660e-15
+* octagonal TopMetal2 spiral: w=7.0u s=2.1u d_in=68.66u turns=2  L=602.0p Q(24GHz)=14.3 (EM-cal.)  d_out=100.9u
+Ls p1 mid 6.020276e-10
+Rs mid p2 6.37063
+Cox1 p1 s1 6.3555e-15
+Rsi1 s1 0 254311.92
+Csi1 s1 0 1.9661e-15
+Cox2 p2 s2 6.3555e-15
+Rsi2 s2 0 254311.92
+Csi2 s2 0 1.9661e-15
 .ends ind_lb
 .subckt ind_le p1 p2
-* straight TopMetal2 strip: l=49u w=10u  L=24.9p
-Ls p1 mid 2.4934e-11
-Rs mid p2 0.3558
-Cox1 p1 0 7.841e-16
-Cox2 p2 0 7.841e-16
+* straight TopMetal2 strip: l=47u w=10u  L=24.0p
+Ls p1 mid 2.3994e-11
+Rs mid p2 0.3459
+Cox1 p1 0 7.624e-16
+Cox2 p2 0 7.624e-16
 .ends ind_le
 .subckt ind_lc p1 p2
-* octagonal TopMetal2 spiral: w=6.5u s=2.1u d_in=63.15u turns=2  L=571.1p Q(24GHz)=14.9 (EM-cal.)  d_out=93.3u
-Ls p1 mid 5.710649e-10
-Rs mid p2 5.82682
-Cox1 p1 s1 5.4479e-15
-Rsi1 s1 0 296678.28
-Csi1 s1 0 1.6853e-15
-Cox2 p2 s2 5.4479e-15
-Rsi2 s2 0 296678.28
-Csi2 s2 0 1.6853e-15
+* octagonal TopMetal2 spiral: w=6.5u s=2.1u d_in=63.15u turns=2  L=534.6p Q(24GHz)=13.9 (EM-cal.)  d_out=93.3u
+Ls p1 mid 5.345728e-10
+Rs mid p2 5.85005
+Cox1 p1 s1 5.4482e-15
+Rsi1 s1 0 296659.32
+Csi1 s1 0 1.6854e-15
+Cox2 p2 s2 5.4482e-15
+Rsi2 s2 0 296659.32
+Csi2 s2 0 1.6854e-15
 .ends ind_lc
 
 .param temp=27
@@ -49,7 +49,7 @@ Csi2 s2 0 1.6853e-15
 .param LB=609p        $ base (input match) inductor
 .param LC=546p        $ collector load inductor (re-tuned for the real 7x7 um output MIM)
 .param WCOUT=7u        $ output MIM size (min 7 um)
-.param LRP=2.38u        $ RP length (rppd, w=2u) -> ~370 ohm, re-tuned with LC
+.param LRP=2.66u        $ RP length (rppd, w=2u) -> ~370 ohm, re-tuned with LC
 .param IREF=0.92m     $ reference current -> Ic1 ~ 6.0 mA at 27 C
 .param RB=5k        $ bias resistor into Q1 base (RF isolation; bigger = less noise)
 .param RREF=40k       $ matched resistor in reference path (= RB x 8)
