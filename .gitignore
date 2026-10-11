@@ -1,0 +1,7 @@
+# KLayout autosave backups
+**/backups/
+# temporary simulation files
+_*.spice
+_*.txt
+*_tmp.spice
+__pycache__/
