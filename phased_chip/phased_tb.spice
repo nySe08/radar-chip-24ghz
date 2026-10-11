@@ -1,0 +1,81 @@
+* ============================================================
+* 24 GHz FMCW radar - 2 TX / 4 RX PHASED-ARRAY CHIP, top level (IHP SG13G2)
+* VCO -> LO distribution -> 4 RX channels (LNA+mixer) and 2 switchable PAs, /4 divider.
+* Test: TX1 on, TX2 off; a plane wave (echo) arrives at the 4 RX antennas from angle THETA:
+*   element k sees phase  -180*k*sin(THETA) deg  (lambda/2 spacing)  -> must reappear at the 4 IFs.
+* ============================================================
+.lib cornerHBT.lib hbt_typ
+.lib cornerMOShv.lib mos_tt
+.lib cornerMOSlv.lib mos_tt
+.param temp=27
+.options reltol=1e-4
+.include blocks/lna.sp
+.include blocks/mixer.sp
+.include blocks/vco.sp
+.include blocks/lodist.sp
+.include blocks/div4.sp
+.include blocks/pa_en.sp
+.param VCC=2.5 VTUNE=1.25 EN1B=0 EN2B=1.2
+.param FECHO=24.0e9 PECHO=-40 THETA=20
+.param VECHO={2*sqrt(100*1e-3*10**(PECHO/10))}
+.param DPH={180*sin(THETA*3.14159265/180)}
+Vcc vcc 0 {VCC}
+Vtune vtune 0 {VTUNE}
+Ven1 en1 0 {EN1B}
+Ven2 en2 0 {EN2B}
+* ---------------- chip ----------------
+Xvco vco_p vco_n vtune vcc vco
+Xlo  vco_p vco_n l1p l1n l2p l2n l3p l3n l4p l4n t1p t1n t2p t2n dvp dvn vcc lodist
+Xpa1 t1p tx1 en1 vcc pa_en
+Xpa2 t2p tx2 en2 vcc pa_en
+Cdm1 t1n dm1 1p
+Rdm1 dm1 0 1k
+Cdm2 t2n dm2 1p
+Rdm2 dm2 0 1k
+Rbl1 t1p 0 20k
+Rbl2 t2p 0 20k
+Rbl3 t1n 0 20k
+Rbl4 t2n 0 20k
+Xdiv dvp dvn pll_p pll_n vcc div4
+* 4 receive channels
+Xlna1 rx1 a1 vcc lna
+Xlna2 rx2 a2 vcc lna
+Xlna3 rx3 a3 vcc lna
+Xlna4 rx4 a4 vcc lna
+Rba1 a1 0 20k
+Rba2 a2 0 20k
+Rba3 a3 0 20k
+Rba4 a4 0 20k
+Xmx1 a1 l1p l1n i1p i1n vcc mixer
+Xmx2 a2 l2p l2n i2p i2n vcc mixer
+Xmx3 a3 l3p l3n i3p i3n vcc mixer
+Xmx4 a4 l4p l4n i4p i4n vcc mixer
+* ---------------- outside world ----------------
+Rtx1 tx1 0 50
+Rtx2 tx2 0 50
+Cx1 pll_p pllp 10p
+Cx2 pll_n plln 10p
+Rx1 pllp 0 50
+Rx2 plln 0 50
+* plane wave from angle THETA at the 4 RX antennas (50-ohm sources)
+Ve1 s1 0 dc 0 sin(0 {VECHO} {FECHO} 0 0 0)
+Ve2 s2 0 dc 0 sin(0 {VECHO} {FECHO} 0 0 {-1*DPH})
+Ve3 s3 0 dc 0 sin(0 {VECHO} {FECHO} 0 0 {-2*DPH})
+Ve4 s4 0 dc 0 sin(0 {VECHO} {FECHO} 0 0 {-3*DPH})
+Rs1 s1 rx1 50
+Rs2 s2 rx2 50
+Rs3 s3 rx3 50
+Rs4 s4 rx4 50
+.control
+set noaskquit
+tran 0.5p 30n 0 0.5p
+let vd = v(vco_p)-v(vco_n)
+let if1 = v(i1p)-v(i1n)
+let if2 = v(i2p)-v(i2n)
+let if3 = v(i3p)-v(i3n)
+let if4 = v(i4p)-v(i4n)
+let lo1 = v(l1p)-v(l1n)
+let lo4 = v(l4p)-v(l4n)
+wrdata phased_tran.txt vd if1 if2 if3 if4 v(tx1) v(tx2) v(pllp) lo1 lo4
+.endc
+.end
