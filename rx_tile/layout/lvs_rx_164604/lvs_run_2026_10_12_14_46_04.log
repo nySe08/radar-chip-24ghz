@@ -1,0 +1,23 @@
+12-Oct-2026 16:46:05 | INFO    | Your Klayout version is: KLayout 0.30.12 (required >= 0.30.5)
+12-Oct-2026 16:46:05 | INFO    | Running SG13G2 LVS checks on design /foss/designs/radar-chip/rx_tile/layout/rx_tile.gds on cell rx
+12-Oct-2026 16:46:08 | ERROR   | KLayout run failed with exit code 1.
+12-Oct-2026 16:46:08 | ERROR   | KLayout stderr: ERROR: In /foss/pdks/ihp-sg13g2/libs.tech/klayout/tech/lvs/sg13g2.lvs: 'source': Cell name rx not found in input layout
+12-Oct-2026 16:46:08 | ERROR   | KLayout stderr: ERROR: RuntimeError: 'source': Cell name rx not found in input layout in Executable::execute
+12-Oct-2026 16:46:08 | INFO    | ==============================================================================
+12-Oct-2026 16:46:08 | INFO    | Important Summary
+12-Oct-2026 16:46:08 | INFO    | +------------------+---------------------------------------------------------------------+
+12-Oct-2026 16:46:08 | INFO    | | Status           | PASS                                                                |
+12-Oct-2026 16:46:08 | INFO    | | Mode             | COMPARE                                                             |
+12-Oct-2026 16:46:08 | INFO    | | Outcome          | Comparison mode: completed (no explicit PASS/FAIL signature found). |
+12-Oct-2026 16:46:08 | INFO    | | Layout           | rx_tile.gds                                                         |
+12-Oct-2026 16:46:08 | INFO    | | Top Cell         | rx                                                                  |
+12-Oct-2026 16:46:08 | INFO    | | Results Dir      | /foss/designs/radar-chip/rx_tile/layout/lvs_rx_164604               |
+12-Oct-2026 16:46:08 | INFO    | | Warnings         | 0                                                                   |
+12-Oct-2026 16:46:08 | INFO    | | Errors           | 3                                                                   |
+12-Oct-2026 16:46:08 | INFO    | | Run Time (s)     | 4.034                                                               |
+12-Oct-2026 16:46:08 | INFO    | +------------------+---------------------------------------------------------------------+
+12-Oct-2026 16:46:08 | ERROR   | Key errors:
+12-Oct-2026 16:46:08 | ERROR   |   - KLayout run failed with exit code 1.
+12-Oct-2026 16:46:08 | ERROR   |   - KLayout stderr: ERROR: In /foss/pdks/ihp-sg13g2/libs.tech/klayout/tech/lvs/sg13g2.lvs: 'source': Cell name rx not found in input layout
+12-Oct-2026 16:46:08 | ERROR   |   - KLayout stderr: ERROR: RuntimeError: 'source': Cell name rx not found in input layout in Executable::execute
+12-Oct-2026 16:46:08 | INFO    | ==============================================================================

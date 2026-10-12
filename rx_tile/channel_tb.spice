@@ -1,0 +1,32 @@
+* RX channel tile test: LO (from the H-tree) -> channel driver -> mixer LO; RF -> LNA -> mixer -> IF
+.lib cornerHBT.lib hbt_typ
+.lib cornerCAP.lib cap_typ
+.lib cornerRES.lib res_typ
+.param temp=27
+.param RTL=1.86u
+.include lna.sp
+.include mixer.sp
+.include mixer_real.sp
+.include lodrv.sp
+.param FLO=24.0e9 FB=100e6 ALO=0.24 PRF=-40 REAL=1
+.param VRF={2*sqrt(100*1e-3*10**(PRF/10))}
+.param VCC=2.5
+Vcc vcc 0 {VCC}
+* LO as delivered by the RX pre-driver through the H-tree (AC-coupled differential)
+Vlp lp 0 dc 0 sin(0 {ALO} {FLO})
+Vln ln 0 dc 0 sin(0 {-ALO} {FLO})
+* RF at the LNA input (50-ohm source)
+Vrf s 0 dc 0 sin(0 {VRF} {FLO+FB})
+Rs s rfin 50
+Xlna rfin a vcc lna
+Rba a 0 20k
+XDRV
+XMIX
+.control
+set noaskquit
+tran 0.5p 32n 0 0.5p
+let vif = v(ifp)-v(ifn)
+let vlo = v(mlp)-v(mln)
+wrdata ch.txt vif vlo
+.endc
+.end

@@ -1,0 +1,18 @@
+12-Oct-2026 16:53:30 | INFO    | Your Klayout version is: KLayout 0.30.12 (required >= 0.30.5)
+12-Oct-2026 16:53:30 | INFO    | Running SG13G2 LVS checks on design /foss/designs/radar-chip/rx_tile/layout/rx_tile.gds on cell rx_tile
+12-Oct-2026 16:53:37 | INFO    | ==============================================================================
+12-Oct-2026 16:53:37 | INFO    | Important Summary
+12-Oct-2026 16:53:37 | INFO    | +------------------+--------------------------------------------------------------+
+12-Oct-2026 16:53:37 | INFO    | | Status           | FAIL                                                         |
+12-Oct-2026 16:53:37 | INFO    | | Mode             | COMPARE                                                      |
+12-Oct-2026 16:53:37 | INFO    | | Outcome          | Comparison mode: FAIL (netlists do not match).               |
+12-Oct-2026 16:53:37 | INFO    | | Layout           | rx_tile.gds                                                  |
+12-Oct-2026 16:53:37 | INFO    | | Top Cell         | rx_tile                                                      |
+12-Oct-2026 16:53:37 | INFO    | | Results Dir      | /foss/designs/radar-chip/rx_tile/layout/lvs_rx_tile_165329   |
+12-Oct-2026 16:53:37 | INFO    | | Warnings         | 0                                                            |
+12-Oct-2026 16:53:37 | INFO    | | Errors           | 1                                                            |
+12-Oct-2026 16:53:37 | INFO    | | Run Time (s)     | 7.189                                                        |
+12-Oct-2026 16:53:37 | INFO    | +------------------+--------------------------------------------------------------+
+12-Oct-2026 16:53:37 | ERROR   | Key errors:
+12-Oct-2026 16:53:37 | ERROR   |   - 2026-10-12 16:53:36 +0200: Memory Usage (499932K) : ERROR : Netlists don't match
+12-Oct-2026 16:53:37 | INFO    | ==============================================================================

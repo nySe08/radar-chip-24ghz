@@ -1,0 +1,64 @@
+* ============================================================
+* RX channel tile (LNA + mixer + resistive LO driver) - LVS reference netlist for rx_tile.gds
+* Conventions as extracted by IHP's deck: npn size as Nx, substrate terminal = GND (tied by the taps),
+* parallel devices combined (Ccas m=2, Cdec m=2), 5 taps (2x2 um) combined into one ptap1 (A=20p, P=40u),
+* inductor terminals and cmim (cap_cmim, 2 terminals) as the deck extracts them. Le is a plain TopMetal2 strip: Q1's emitter is on GND.
+* Cout couples the LNA directly into the mixer input (b3): the mixer's own DC block Cdc was removed - two
+* series DC blocks left the node between them with no DC path (found by simulating this netlist).
+* ============================================================
+.SUBCKT rx_tile GND IFN IFP IREF LON LOP RFIN VCC
+* ---------------- LNA ----------------
+Cin   in     RFIN   GND rfcmim w=33u l=33u m=1 wfeed=3u
+Lb    in     b1     GND inductor w=7u s=2.1u d=68.66u nr_r=2
+Q1    c1     b1     GND  GND npn13G2 we=70n le=900n Nx=8 m=1
+Q2    out    b2     c1   GND npn13G2 we=70n le=900n Nx=8 m=1
+Lc    VCC    out    GND inductor w=5u s=2.1u d=55.83u nr_r=2
+RP    out    VCC    GND rppd w=2u l=5.37u ps=0u b=0 m=1
+Cout  b3     out    GND rfcmim w=7u l=7u m=1 wfeed=3u
+Qr    IREF   br     GND  GND npn13G2 we=70n le=900n Nx=1 m=1
+Qf    VCC    IREF   vbn  GND npn13G2 we=70n le=900n Nx=1 m=1
+Rref  br     vbn    GND rhigh w=1u l=28.12u ps=0u b=0 m=1
+Rief  GND    vbn    GND rhigh w=1u l=12.03u ps=0u b=0 m=1
+Rb    vbn    b1     GND rppd w=1u l=19.08u ps=0u b=0 m=1
+Cbn   vbn    GND    GND rfcmim w=33u l=33u m=1 wfeed=3u
+R1    b2     VCC    GND rppd w=1u l=22.95u ps=0u b=0 m=1
+R2    b2     GND    GND rhigh w=1u l=13.3u ps=0u b=0 m=1
+Ccas  b2     GND    GND rfcmim w=33u l=33u m=2 wfeed=3u
+Cdec  VCC    GND    GND rfcmim w=33u l=33u m=2 wfeed=3u
+* ---------------- mixer ----------------
+Rt    vb3    b3     GND rsil w=1u l=7.55u ps=0u b=0 m=1
+Rrf   vb3    VCC    GND rppd w=1u l=4.37u ps=0u b=0 m=1
+Qrf   vb3    vb3    erf  GND npn13G2 we=70n le=900n Nx=1 m=1
+Rerf  GND    erf    GND rsil w=1u l=38.2u ps=0u b=0 m=1
+Cb3   vb3    GND    GND rfcmim w=33u l=33u m=1 wfeed=3u
+Q3    x      b3     e3   GND npn13G2 we=70n le=900n Nx=4 m=1
+Re    GND    e3     GND rsil w=1u l=9.55u ps=0u b=0 m=1
+Rd1   vlo    VCC    GND rppd w=1u l=22.95u ps=0u b=0 m=1
+Rd2   GND    vlo    GND rhigh w=1u l=13.3u ps=0u b=0 m=1
+Cvl   vlo    GND    GND rfcmim w=33u l=33u m=1 wfeed=3u
+Rl1   vlo    mlop    GND rppd w=1u l=7.47u ps=0u b=0 m=1
+Rl2   vlo    mlon    GND rppd w=1u l=7.47u ps=0u b=0 m=1
+Q4    IFP    mlop    x    GND npn13G2 we=70n le=900n Nx=2 m=1
+Q5    IFN    mlon    x    GND npn13G2 we=70n le=900n Nx=2 m=1
+RLp   IFP    VCC    GND rppd w=2u l=2.05u ps=0u b=0 m=1
+RLn   IFN    VCC    GND rppd w=2u l=2.05u ps=0u b=0 m=1
+CLp   VCC    IFP    cap_cmim w=34.3u l=34.3u m=1
+CLn   VCC    IFN    cap_cmim w=34.3u l=34.3u m=1
+* ---------------- channel LO driver (resistive load) ----------------
+Ci1   LOP    b1d    GND rfcmim w=25u l=25u m=1 wfeed=3u
+Ci2   LON    b2d    GND rfcmim w=25u l=25u m=1 wfeed=3u
+Rv1   VCC    vbd    GND rppd w=1u l=17.53u ps=0u b=0 m=1
+Rv2   GND    vbd    GND rppd w=1u l=20.63u ps=0u b=0 m=1
+Cvb   vbd    GND    GND rfcmim w=33u l=33u m=1 wfeed=3u
+Rb1   b1d    vbd    GND rppd w=1u l=19.08u ps=0u b=0 m=1
+Rb2   b2d    vbd    GND rppd w=1u l=19.08u ps=0u b=0 m=1
+Qa    dp     b1d    t    GND npn13G2 we=70n le=900n Nx=2 m=1
+Qb    dn     b2d    t    GND npn13G2 we=70n le=900n Nx=2 m=1
+Rtail GND    t      GND rppd w=2u l=0.79u ps=0u b=0 m=1
+RLd1  VCC    dp     GND rppd w=2u l=1.28u ps=0u b=0 m=1
+RLd2  VCC    dn     GND rppd w=2u l=1.28u ps=0u b=0 m=1
+Cc1   dp     mlop    GND rfcmim w=12u l=12u m=1 wfeed=3u
+Cc2   dn     mlon    GND rfcmim w=12u l=12u m=1 wfeed=3u
+* ---------------- substrate taps (5 x 2x2 um, combined) ----------------
+Rtap  GND    GND    ptap1 A=20p P=40u
+.ENDS rx_tile

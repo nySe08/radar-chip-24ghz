@@ -1,0 +1,27 @@
+* Simulate with:  ngspice -b tile_tb.spice   (needs the PDK .lib files and .spiceinit, as in rx_tile/)
+* RX tile: simulation of the LVS reference netlist (same stimulus as the verified channel test ch_run.py)
+.lib cornerHBT.lib hbt_typ
+.lib cornerCAP.lib cap_typ
+.lib cornerRES.lib res_typ
+.param temp=27
+.include ind_models.sp
+.include rx_tile_sim.sp
+.param FLO=24.0e9 FB=100e6 ALO=0.24 PRF=-40
+.param VRF={2*sqrt(100*1e-3*10**(PRF/10))}
+Vcc vcc 0 2.5
+Iref vcc iref 0.92m
+Vlp lp 0 dc 0 sin(0 {ALO} {FLO})
+Vln ln 0 dc 0 sin(0 {-ALO} {FLO})
+Vrf s 0 dc 0 sin(0 {VRF} {FLO+FB})
+Rs s rfin 50
+Xt 0 ifn ifp iref ln lp rfin vcc rx_tile
+.control
+set noaskquit
+op
+print i(vcc) v(xt.b1) v(xt.b2) v(xt.vbn) v(xt.vb3) v(xt.vlo) v(xt.vbd) v(xt.out) v(ifp) v(ifn)
+tran 0.5p 32n 0 0.5p
+let vif = v(ifp)-v(ifn)
+let vlo = v(xt.mlop)-v(xt.mlon)
+wrdata tile_tran.txt vif vlo
+.endc
+.end

@@ -1,0 +1,16 @@
+12-Oct-2026 16:55:47 | INFO    | Your Klayout version is: KLayout 0.30.12 (required >= 0.30.5)
+12-Oct-2026 16:55:47 | INFO    | Running SG13G2 LVS checks on design /foss/designs/radar-chip/rx_tile/layout/rx_tile.gds on cell rx_tile
+12-Oct-2026 16:55:53 | INFO    | ==============================================================================
+12-Oct-2026 16:55:53 | INFO    | Important Summary
+12-Oct-2026 16:55:53 | INFO    | +------------------+--------------------------------------------------------------+
+12-Oct-2026 16:55:53 | INFO    | | Status           | PASS                                                         |
+12-Oct-2026 16:55:53 | INFO    | | Mode             | COMPARE                                                      |
+12-Oct-2026 16:55:53 | INFO    | | Outcome          | Comparison mode: PASS (netlists match).                      |
+12-Oct-2026 16:55:53 | INFO    | | Layout           | rx_tile.gds                                                  |
+12-Oct-2026 16:55:53 | INFO    | | Top Cell         | rx_tile                                                      |
+12-Oct-2026 16:55:53 | INFO    | | Results Dir      | /foss/designs/radar-chip/rx_tile/layout/lvs_rx_tile_165546   |
+12-Oct-2026 16:55:53 | INFO    | | Warnings         | 0                                                            |
+12-Oct-2026 16:55:53 | INFO    | | Errors           | 0                                                            |
+12-Oct-2026 16:55:53 | INFO    | | Run Time (s)     | 6.579                                                        |
+12-Oct-2026 16:55:53 | INFO    | +------------------+--------------------------------------------------------------+
+12-Oct-2026 16:55:53 | INFO    | ==============================================================================
