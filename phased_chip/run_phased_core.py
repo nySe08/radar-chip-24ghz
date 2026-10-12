@@ -24,8 +24,9 @@ def simulate(params=None, corner=None, temp=None, tstop="30n", netlist="phased_t
     if temp is not None: s = s.replace(".param temp=27", f".param temp=27\n.options temp={temp}")
     tag = os.path.basename(tempfile.mktemp(prefix="top_", dir="."))
     # 1) DC without the varactor
-    open(tag + "_vco.sp", "w").write(open("blocks/vco.sp").read().replace("XV1 g1 vtune g2", "*XV1 g1 vtune g2"))
-    sop = s.replace(".include blocks/vco.sp", ".include " + tag + "_vco.sp")
+    vco_inc = re.search(r"^\.include (blocks/vco\w*\.sp)", s, re.M).group(1)      # whichever VCO block is used
+    open(tag + "_vco.sp", "w").write(open(vco_inc).read().replace("XV1 g1 vtune g2", "*XV1 g1 vtune g2"))
+    sop = s.replace(".include " + vco_inc, ".include " + tag + "_vco.sp")
     sop = sop[:sop.index(".control")] + '.control\nop\nprint all\nlet itot=-i(vcc)*1e3\necho "ITOT $&itot"\n.endc\n.end\n'
     open(tag + "_op.spice", "w").write(sop)
     out = subprocess.run([NGSPICE, "-b", tag + "_op.spice"], capture_output=True, text=True).stdout
