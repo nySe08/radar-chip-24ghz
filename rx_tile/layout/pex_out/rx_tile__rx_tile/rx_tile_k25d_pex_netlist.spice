@@ -1,0 +1,9 @@
+*********************************************************
+*** NGSPICE file created by KLayout-PEX 0.4.4
+*** -----------------------------------------------------
+***     Extraction Engine: KPEX/2.5D
+***     Technology: ihp_sg13g2
+***     Date: 2026-10-16 05:32:08
+*********************************************************
+
+.SUBCKT rx_tile GND IFN IFP IREF LON LOP RFIN VCC

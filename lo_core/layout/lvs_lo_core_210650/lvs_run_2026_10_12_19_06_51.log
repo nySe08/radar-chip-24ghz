@@ -1,0 +1,18 @@
+12-Oct-2026 21:06:52 | INFO    | Your Klayout version is: KLayout 0.30.12 (required >= 0.30.5)
+12-Oct-2026 21:06:52 | INFO    | Running SG13G2 LVS checks on design /foss/designs/radar-chip/lo_core/layout/lo_core.gds on cell lo_core
+12-Oct-2026 21:07:02 | INFO    | ==============================================================================
+12-Oct-2026 21:07:02 | INFO    | Important Summary
+12-Oct-2026 21:07:02 | INFO    | +------------------+--------------------------------------------------------------+
+12-Oct-2026 21:07:02 | INFO    | | Status           | FAIL                                                         |
+12-Oct-2026 21:07:02 | INFO    | | Mode             | COMPARE                                                      |
+12-Oct-2026 21:07:02 | INFO    | | Outcome          | Comparison mode: FAIL (netlists do not match).               |
+12-Oct-2026 21:07:02 | INFO    | | Layout           | lo_core.gds                                                  |
+12-Oct-2026 21:07:02 | INFO    | | Top Cell         | lo_core                                                      |
+12-Oct-2026 21:07:02 | INFO    | | Results Dir      | /foss/designs/radar-chip/lo_core/layout/lvs_lo_core_210650   |
+12-Oct-2026 21:07:02 | INFO    | | Warnings         | 0                                                            |
+12-Oct-2026 21:07:02 | INFO    | | Errors           | 1                                                            |
+12-Oct-2026 21:07:02 | INFO    | | Run Time (s)     | 10.811                                                       |
+12-Oct-2026 21:07:02 | INFO    | +------------------+--------------------------------------------------------------+
+12-Oct-2026 21:07:02 | ERROR   | Key errors:
+12-Oct-2026 21:07:02 | ERROR   |   - 2026-10-12 21:07:01 +0200: Memory Usage (505672K) : ERROR : Netlists don't match
+12-Oct-2026 21:07:02 | INFO    | ==============================================================================

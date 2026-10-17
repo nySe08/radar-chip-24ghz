@@ -5,3 +5,9 @@ _*.spice
 _*.txt
 *_tmp.spice
 __pycache__/
+*.pyc
+tx/_tx.spice
+tx/tx_out.txt
+tx/tx_wave.txt
+tx/.spiceinit
+floorplan/*.gds

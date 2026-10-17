@@ -1,0 +1,24 @@
+* RX tile: input match, LNA gain into the mixer input, noise figure at 24.1 GHz (LO off, mixer biased)
+.lib cornerHBT.lib hbt_typ
+.lib cornerCAP.lib cap_typ
+.lib cornerRES.lib res_typ
+.param temp=27
+.include ind_models.sp
+.include NETLIST
+Vcc vcc 0 2.5
+Iref vcc iref 0.92m
+Vrf s 0 dc 0 ac 1
+Rs s rfin 50
+Xt 0 ifn ifp iref 0 0 rfin vcc rx_tile
+.control
+set noaskquit
+ac lin 1 24.1e9 24.1e9
+let gam = 2*v(rfin)-1
+let s11 = db(gam)
+let g = db(v(xt.b3)/0.5)
+print s11 g
+noise v(xt.b3) vrf lin 1 24.1e9 24.1e9
+setplot noise1
+print inoise_spectrum
+.endc
+.end

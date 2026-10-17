@@ -1,0 +1,60 @@
+* Extracted by KLayout with SG13G2 LVS runset on : 16/10/2026 05:30
+
+.SUBCKT rx_tile GND IFN IFP IREF LON LOP RFIN VCC
+C$1 \$6 RFIN GND rfcmim w=33u l=33u A=1089p P=132u m=1 wfeed=3u
+C$2 \$12 GND GND rfcmim w=33u l=33u A=1089p P=132u m=1 wfeed=3u
+C$3 \$30 GND GND rfcmim w=33u l=33u A=1089p P=132u m=1 wfeed=3u
+C$4 \$30 GND GND rfcmim w=33u l=33u A=1089p P=132u m=1 wfeed=3u
+C$5 LON \$80 GND rfcmim w=25u l=25u A=625p P=100u m=1 wfeed=3u
+C$6 VCC GND GND rfcmim w=33u l=33u A=1089p P=132u m=1 wfeed=3u
+C$7 LOP \$78 GND rfcmim w=25u l=25u A=625p P=100u m=1 wfeed=3u
+C$8 \$82 \$68 GND rfcmim w=12u l=12u A=144p P=48u m=1 wfeed=3u
+C$9 \$89 GND GND rfcmim w=33u l=33u A=1089p P=132u m=1 wfeed=3u
+C$10 VCC GND GND rfcmim w=33u l=33u A=1089p P=132u m=1 wfeed=3u
+C$11 \$49 GND GND rfcmim w=33u l=33u A=1089p P=132u m=1 wfeed=3u
+C$12 \$38 \$34 GND rfcmim w=7u l=7u A=49p P=28u m=1 wfeed=3u
+C$13 \$47 GND GND rfcmim w=33u l=33u A=1089p P=132u m=1 wfeed=3u
+C$14 \$86 \$67 GND rfcmim w=12u l=12u A=144p P=48u m=1 wfeed=3u
+R$15 GND \$12 GND rhigh w=1u l=12.03u ps=0u b=0 m=1
+R$16 \$8 \$12 GND rhigh w=1u l=28.12u ps=0u b=0 m=1
+Q$17 \$26 \$19 GND GND npn13G2 we=70n le=900n Nx=8 m=1
+Q$18 \$34 \$30 \$26 GND npn13G2 we=70n le=900n Nx=8 m=1
+R$19 \$34 VCC GND rppd w=2u l=5.37u ps=0u b=0 m=1
+R$20 GND GND ptap1 A=4p P=8u
+R$21 GND GND ptap1 A=4p P=8u
+R$22 GND GND ptap1 A=4p P=8u
+R$23 GND GND ptap1 A=4p P=8u
+R$24 GND GND ptap1 A=4p P=8u
+C$25 VCC IFP cap_cmim w=34.3u l=34.3u A=1176.49p P=137.2u m=1
+C$26 VCC IFN cap_cmim w=34.3u l=34.3u A=1176.49p P=137.2u m=1
+R$27 VCC \$82 GND rppd w=2u l=1.28u ps=0u b=0 m=1
+R$28 VCC \$86 GND rppd w=2u l=1.28u ps=0u b=0 m=1
+R$29 GND \$84 GND rppd w=2u l=0.79u ps=0u b=0 m=1
+R$30 \$12 \$19 GND rppd w=1u l=19.08u ps=0u b=0 m=1
+R$31 \$80 \$89 GND rppd w=1u l=19.08u ps=0u b=0 m=1
+R$32 \$78 \$89 GND rppd w=1u l=19.08u ps=0u b=0 m=1
+R$33 GND \$89 GND rppd w=1u l=20.63u ps=0u b=0 m=1
+R$34 VCC \$89 GND rppd w=1u l=17.53u ps=0u b=0 m=1
+Q$35 \$64 \$38 \$61 GND npn13G2 we=70n le=900n Nx=4 m=1
+R$36 \$30 GND GND rhigh w=1u l=13.3u ps=0u b=0 m=1
+R$37 GND \$47 GND rhigh w=1u l=13.3u ps=0u b=0 m=1
+R$38 \$47 VCC GND rppd w=1u l=22.95u ps=0u b=0 m=1
+R$39 \$30 VCC GND rppd w=1u l=22.95u ps=0u b=0 m=1
+R$40 GND \$53 GND rsil w=1u l=38.2u ps=0u b=0 m=1
+R$41 \$49 VCC GND rppd w=1u l=4.37u ps=0u b=0 m=1
+Q$42 IREF \$8 GND GND npn13G2 we=70n le=900n Nx=1 m=1
+Q$43 VCC IREF \$12 GND npn13G2 we=70n le=900n Nx=1 m=1
+Q$44 \$49 \$49 \$53 GND npn13G2 we=70n le=900n Nx=1 m=1
+R$45 IFP VCC GND rppd w=2u l=2.05u ps=0u b=0 m=1
+R$46 IFN VCC GND rppd w=2u l=2.05u ps=0u b=0 m=1
+R$47 \$47 \$68 GND rppd w=1u l=7.47u ps=0u b=0 m=1
+R$48 \$47 \$67 GND rppd w=1u l=7.47u ps=0u b=0 m=1
+Q$49 \$82 \$80 \$84 GND npn13G2 we=70n le=900n Nx=2 m=1
+Q$50 IFP \$67 \$64 GND npn13G2 we=70n le=900n Nx=2 m=1
+Q$51 IFN \$68 \$64 GND npn13G2 we=70n le=900n Nx=2 m=1
+Q$52 \$86 \$78 \$84 GND npn13G2 we=70n le=900n Nx=2 m=1
+R$53 GND \$61 GND rsil w=1u l=9.55u ps=0u b=0 m=1
+R$54 \$49 \$38 GND rsil w=1u l=7.55u ps=0u b=0 m=1
+L$55 VCC \$34 GND inductor w=4u s=2.097u d=44.026u nr_r=2
+L$56 \$19 \$6 GND inductor w=5u s=2.097u d=54.526u nr_r=2
+.ENDS rx_tile

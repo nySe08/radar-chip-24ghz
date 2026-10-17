@@ -96,7 +96,7 @@ for i, y in enumerate((160, 260, 360)):
 for x, n in zip((170, 280, 390, 500), ("Iref", "GND1", "VCC", "GND2")):
     place(f"p{n}", "bondpad", x, 50, shape="square")
 place("Lb", "inductor2", 220, 300, w="7u", s="2.1u", d="68.66u", nr_r=2, subE=False)
-place("Lc", "inductor2", 400, 300, w="5u", s="2.1u", d="52.04u", nr_r=2, subE=False)    # post-layout re-tune (was 6.5u/63.15u)
+place("Lc", "inductor2", 400, 300, w="4u", s="2.1u", d="44u", nr_r=2, subE=False)       # re-tuned vs extraction: EM 335 pH, Q 8.1 (was 5u/55.83u)
 place("Cin", "rfcmim", 190, 285, rot=180, w="33u", l="33u")      # PLUS (TM1) faces Lb, MINUS (M5) faces the pad
 place("Q1", "npn13G2", 240, 280, rot=180, Nx=8)                   # base faces up (towards Lb), collector down
 place("Q2", "npn13G2", 262, 280, Nx=8)                            # collector up (towards Lc), base down
@@ -155,11 +155,11 @@ rect("Metal1", q2c.left, q2c.bottom, q2c.right, q2c.top + 6.5)
 vo = (q2c.center().x, q2c.top + 4.6); via(*vo, "Metal1", "TopMetal2")
 # Lc leads: TopMetal1 stubs that only touch the lead ends; vias stay outside the inductor marker area
 rect("TopMetal1", lca.left, lca.bottom - 9.5, lca.right, lca.bottom)
-rect("TopMetal1", lcb.left, lcb.bottom - 9.5, lcb.right, lcb.bottom)
+rect("TopMetal1", lcb.left, lcb.bottom - 9.5, lcb.right + 4.0, lcb.bottom)   # widened right: the VCC via sits 3 um outboard
 vla = (lca.center().x, lca.bottom - 7.0); via(*vla, "TopMetal1", "TopMetal2")
 wire("TopMetal2", [vo, (vo[0], 292), (vla[0], 292), vla], 6)
 # --- VCC: Lc LB lead (TM1) -> TM2 -> VCC pad
-vlb = (lcb.center().x, lcb.bottom - 5.5); via(*vlb, "TopMetal1", "TopMetal2")
+vlb = (lcb.center().x + 3.0, lcb.bottom - 5.5); via(*vlb, "TopMetal1", "TopMetal2")   # 3 um outboard: >= 2 um TM2 space to the out node (4 um coil: leads closer)
 wire("TopMetal2", [vlb, (vlb[0] + 12, vlb[1]), (vlb[0] + 12, 110), (390, 110), (390, 90)], 8, start_ext=0)
 # --- out node: extend the TM2 out line down next to Lc's lead, for RP and Cout
 rect("TopMetal2", vla[0] - 3, 283, vla[0] + 3, 292)
@@ -293,6 +293,10 @@ top.shapes(LY["Metal4"]).insert(gnd.decompose_trapezoids_to_region(1))
 lt = ly.layer(134, 25)
 for name, key in (("RFIN", "pin1"), ("RFOUT", "pout1"), ("VCC", "pVCC"), ("IREF", "pIref"), ("GND", "pGND1")):
     c = DEV[key].dbbox().center(); top.shapes(lt).insert(pya.DText(name, c.x, c.y))
+
+# Metal4 cheesing for IHP's density rule (RF-aware: fine mesh under lines, big holes elsewhere, nofill marker)
+import cheese
+print("Metal4 cheesing (IHP density, RF-aware):", cheese.cheese(ly, top, keep_points=[(5, 465)]))   # keep the check's plane probe solid
 
 # editable version (PCells regenerate from their parameters) ...
 ly.write("lna_layout_pcells.gds")

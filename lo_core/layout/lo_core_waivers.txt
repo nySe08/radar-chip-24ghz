@@ -1,0 +1,2 @@
+# reviewed findings for lo_core - format: <exact FAIL message up to ' - '> | <reason>
+kpex LVS: 2 unmatched device(s), layout ids {2, 5} / reference ids {41, 42} | kpex 0.4.4 own LVS pairs the RX pre-driver's symmetric input caps (CPRX_i1/i2) crosswise; IHP LVS passes; the hybrid model swaps PRX_B1/B2 (reviewed 2026-10-16)

@@ -1,13 +1,15 @@
 * ---------------- PA with enable (TDM-MIMO): en_b high (1.2 V) = PA off ----------------
 * ports: in (one side of a PA driver, AC-coupled)  out (to TX antenna)  enb  vcc
-.subckt pa_em in out enb vcc
+.subckt pa_em in out enb vcc RREFL=3.73u
 .param RE1=5 IREF=0.777m RB=1k RREF=8k VCAS=1.6 CBYP=5p LC=505p COUT=71f QL=24.3 W0=1.5158e11
 Cin  in b1 1p
-Iref vcc cr {IREF}
+* reference current from VCC through a resistor (~1 kohm -> ~0.78 mA); was an ideal source
+XRif vcc cr 0 rppd w=1u l={RREFL}
 XQr  cr br er 0 npn13G2 Nx=1
 Rer  er 0 {8*RE1}
 XQf  vcc cr vbn 0 npn13G2 Nx=1
-Ief  vbn 0 50u
+* bias-follower sink: resistor (~18 kohm -> ~50 uA); was an ideal source
+XRief vbn 0 0 rhigh w=1u l=12.6u
 Rref vbn br {RREF}
 Rb   vbn b1 {RB}
 Cbn  vbn 0 {CBYP}

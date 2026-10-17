@@ -1,0 +1,956 @@
+[2026-10-16 04:26:51,431] [INFO]    GDS input file passed, running in LVS mode
+[2026-10-16 04:26:51,463] [INFO]    Found cell lo_core in GDS lo_core.gds (only top cell)
+[2026-10-16 04:26:51,672] [SUBPROCESS]    Tool     Found    Effective range
+[2026-10-16 04:26:51,677] [SUBPROCESS]    KLayout  0.30.12  >=0.30.1,>=0.30.2,>=0.30.3
+[2026-10-16 04:26:51,703] [INFO]    Cache miss: extracted LVSDB does not exist
+[2026-10-16 04:26:51,706] [SUBPROCESS]    pex_out/.kpex_cache/ihp-sg13g2/foss/designs/radar-chip/lo_core/layout/lo_core.gds/lo_core.lvsdb.gz
+[2026-10-16 04:26:51,708] [SUBPROCESS]    klayout -b -r /usr/local/lib/python3.12/dist-packages/klayout_pex/pdk/ihp-sg13g2/libs.tech/kpex/sg13g2.lvs -rd input=/foss/designs/radar-chip/lo_core/layout/lo_core.gds -rd report=/foss/designs/radar-chip/lo_core/layout/pex_out/lo_core__lo_core/lo_core.lvsdb.gz -rd schematic=/foss/designs/radar-chip/lo_core/layout/lo_core_lvs_kpex.cdl -rd thr=22 -rd run_mode=deep -rd spice_net_names=true -rd spice_comments=false -rd scale=false -rd verbose=false -rd schematic_simplify=false -rd net_only=false -rd top_lvl_pins=true -rd combine=false -rd combine_devices=false -rd purge=false -rd purge_nets=false -rd no_simplify=true
+[2026-10-16 04:26:51,712] [SUBPROCESS]    pex_out/lo_core__lo_core/lo_core_lvs.log
+[2026-10-16 04:26:54,685] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (459652K) : Starting running SG13G2 Klayout LVS runset on /foss/designs/radar-chip/lo_core/layout/lo_core.gds
+[2026-10-16 04:26:54,689] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (459652K) : Ruby Version for klayout: 3.2.3
+[2026-10-16 04:26:54,691] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (461216K) : Loading database to memory is complete.
+[2026-10-16 04:26:54,693] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (461216K) : SG13G2 Klayout LVS runset output at: /foss/designs/radar-chip/lo_core/layout/pex_out/lo_core__lo_core/lo_core.lvsdb.gz
+[2026-10-16 04:26:54,696] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (461216K) : Evaluate switches.
+[2026-10-16 04:26:54,697] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (461216K) : Extracted netlist with net names: true
+[2026-10-16 04:26:54,699] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (461216K) : Extracted netlist with comments in details: false
+[2026-10-16 04:26:54,701] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (461216K) : Selected NET_ONLY option: false
+[2026-10-16 04:26:54,703] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (461216K) : Selected LAYOUT_NETLIST option: (none)
+[2026-10-16 04:26:54,705] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (461216K) : Selected IGNORE_TOP_PORTS_MISMATCH option: 
+[2026-10-16 04:26:54,706] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (461216K) : Selected IMPLICIT_NETS option: (none)
+[2026-10-16 04:26:54,708] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (461216K) : Selected TOP_LVL_PINS option: true
+[2026-10-16 04:26:54,710] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (461216K) : Selected COMBINE DEVICES option: false
+[2026-10-16 04:26:54,712] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (461216K) : Selected PURGE option: false
+[2026-10-16 04:26:54,713] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (461216K) : Selected PURGE_NETS option: false
+[2026-10-16 04:26:54,715] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (461216K) : Selected SIMPLIFY option: false
+[2026-10-16 04:26:54,717] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (461216K) : Selected SERIES_RES option: true
+[2026-10-16 04:26:54,719] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (461216K) : Selected PARALLEL_RES option: true
+[2026-10-16 04:26:54,720] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (461216K) : Selected DISABLE_TAP_EXTRACTION option: false
+[2026-10-16 04:26:54,722] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (461216K) : deep  mode is enabled.
+[2026-10-16 04:26:54,724] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (462700K) : Netlist file: /foss/designs/radar-chip/lo_core/layout/lo_core_lvs_kpex.cdl
+[2026-10-16 04:26:54,726] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (462700K) : SG13G2 Klayout LVS extracted netlist file at: lo_core_extracted.cir
+[2026-10-16 04:26:54,728] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (462700K) : Applying SRAM integration support.
+[2026-10-16 04:26:54,730] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (462700K) : Starting SG13G2 LVS runset
+[2026-10-16 04:26:54,733] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (462700K) : Read in polygons from layers.
+[2026-10-16 04:26:54,736] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (464348K) : activ_drw has 422 polygons
+[2026-10-16 04:26:54,741] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (464348K) : activ_filler has 0 polygons
+[2026-10-16 04:26:54,746] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (464348K) : activ has 422 polygons
+[2026-10-16 04:26:54,749] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (464348K) : activ_pin has 0 polygons
+[2026-10-16 04:26:54,751] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (464348K) : activ_mask has 107 polygons
+[2026-10-16 04:26:54,753] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (464348K) : activ_nofill has 3 polygons
+[2026-10-16 04:26:54,755] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (464348K) : activ_OPC has 0 polygons
+[2026-10-16 04:26:54,758] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (464348K) : activ_iOPC has 0 polygons
+[2026-10-16 04:26:54,761] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (464476K) : activ_noqrc has 30 polygons
+[2026-10-16 04:26:54,763] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (464476K) : biwind_drw has 0 polygons
+[2026-10-16 04:26:54,765] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (464988K) : biwind_OPC has 0 polygons
+[2026-10-16 04:26:54,767] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (464988K) : gatpoly_drw has 285 polygons
+[2026-10-16 04:26:54,769] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (465116K) : gatpoly_filler has 0 polygons
+[2026-10-16 04:26:54,771] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (465244K) : gatpoly has 285 polygons
+[2026-10-16 04:26:54,773] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (465244K) : gatpoly_pin has 2 polygons
+[2026-10-16 04:26:54,775] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (465372K) : gatpoly_nofill has 3 polygons
+[2026-10-16 04:26:54,777] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (465372K) : gatpoly_OPC has 0 polygons
+[2026-10-16 04:26:54,779] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (465372K) : gatpoly_iOPC has 0 polygons
+[2026-10-16 04:26:54,781] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (465372K) : gatpoly_noqrc has 0 polygons
+[2026-10-16 04:26:54,783] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (465532K) : cont_drw has 35627 polygons
+[2026-10-16 04:26:54,785] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (465660K) : cont_OPC has 0 polygons
+[2026-10-16 04:26:54,787] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (465660K) : nsd_drw has 48 polygons
+[2026-10-16 04:26:54,789] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (465788K) : nsd_block has 107 polygons
+[2026-10-16 04:26:54,792] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (465916K) : metal1_drw has 975 polygons
+[2026-10-16 04:26:54,794] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (465916K) : metal1_filler has 0 polygons
+[2026-10-16 04:26:54,796] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (466044K) : metal1_slit has 0 polygons
+[2026-10-16 04:26:54,798] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (466300K) : metal1 has 975 polygons
+[2026-10-16 04:26:54,801] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (466428K) : metal1_pin has 540 polygons
+[2026-10-16 04:26:54,803] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (466556K) : metal1_mask has 0 polygons
+[2026-10-16 04:26:54,805] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (466556K) : metal1_nofill has 3 polygons
+[2026-10-16 04:26:54,808] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (466812K) : metal1_text has 0 polygons
+[2026-10-16 04:26:54,810] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (466940K) : metal1_OPC has 0 polygons
+[2026-10-16 04:26:54,811] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (466940K) : metal1_noqrc has 30 polygons
+[2026-10-16 04:26:54,813] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (467068K) : metal1_res has 0 polygons
+[2026-10-16 04:26:54,816] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (467068K) : metal1_iprobe has 0 polygons
+[2026-10-16 04:26:54,818] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (467196K) : metal1_diffprb has 0 polygons
+[2026-10-16 04:26:54,820] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (467324K) : passiv_drw has 0 polygons
+[2026-10-16 04:26:54,822] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (467324K) : passiv_pin has 0 polygons
+[2026-10-16 04:26:54,824] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (467452K) : passiv_sbump has 0 polygons
+[2026-10-16 04:26:54,827] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (467452K) : passiv_pillar has 0 polygons
+[2026-10-16 04:26:54,829] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (467580K) : passiv_pdl has 0 polygons
+[2026-10-16 04:26:54,831] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (467580K) : metal2_drw has 454 polygons
+[2026-10-16 04:26:54,833] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (467708K) : metal2_filler has 0 polygons
+[2026-10-16 04:26:54,836] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (467836K) : metal2_slit has 0 polygons
+[2026-10-16 04:26:54,842] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (467964K) : metal2 has 454 polygons
+[2026-10-16 04:26:54,847] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (468092K) : metal2_pin has 86 polygons
+[2026-10-16 04:26:54,851] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (468092K) : metal2_mask has 0 polygons
+[2026-10-16 04:26:54,854] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (468220K) : metal2_nofill has 3 polygons
+[2026-10-16 04:26:54,857] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (468220K) : metal2_text has 1 polygons
+[2026-10-16 04:26:54,861] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (468348K) : metal2_OPC has 0 polygons
+[2026-10-16 04:26:54,863] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (468476K) : metal2_noqrc has 30 polygons
+[2026-10-16 04:26:54,866] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (468476K) : metal2_res has 0 polygons
+[2026-10-16 04:26:54,868] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (468604K) : metal2_iprobe has 0 polygons
+[2026-10-16 04:26:54,871] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (468604K) : metal2_diffprb has 0 polygons
+[2026-10-16 04:26:54,873] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (468732K) : baspoly_drw has 0 polygons
+[2026-10-16 04:26:54,875] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (468860K) : baspoly_pin has 0 polygons
+[2026-10-16 04:26:54,877] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (468860K) : psd_drw has 372 polygons
+[2026-10-16 04:26:54,879] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (468988K) : nldb_drw has 0 polygons
+[2026-10-16 04:26:54,881] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (468988K) : digibnd_drw has 0 polygons
+[2026-10-16 04:26:54,883] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (469116K) : via1_drw has 4593 polygons
+[2026-10-16 04:26:54,885] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (469116K) : backmetal1_drw has 0 polygons
+[2026-10-16 04:26:54,887] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (469244K) : backmetal1_pin has 0 polygons
+[2026-10-16 04:26:54,889] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (469372K) : backmetal1_mask has 0 polygons
+[2026-10-16 04:26:54,891] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (469372K) : backmetal1_filler has 0 polygons
+[2026-10-16 04:26:54,893] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (469500K) : backmetal1_nofill has 0 polygons
+[2026-10-16 04:26:54,896] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (469500K) : backmetal1_slit has 0 polygons
+[2026-10-16 04:26:54,898] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (469628K) : backmetal1_text has 0 polygons
+[2026-10-16 04:26:54,900] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (469756K) : backmetal1_OPC has 0 polygons
+[2026-10-16 04:26:54,902] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (469756K) : backmetal1_noqrc has 0 polygons
+[2026-10-16 04:26:54,904] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (469884K) : backmetal1_res has 0 polygons
+[2026-10-16 04:26:54,906] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (469884K) : backmetal1_iprobe has 0 polygons
+[2026-10-16 04:26:54,907] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (470012K) : backmetal1_diffprb has 0 polygons
+[2026-10-16 04:26:54,909] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (470140K) : backpassiv_drw has 0 polygons
+[2026-10-16 04:26:54,915] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (470140K) : res_drw has 0 polygons
+[2026-10-16 04:26:54,917] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (470268K) : sram_drw has 0 polygons
+[2026-10-16 04:26:54,919] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (470268K) : trans_drw has 43 polygons
+[2026-10-16 04:26:54,920] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (470396K) : ind_drw has 3 polygons
+[2026-10-16 04:26:54,922] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (470396K) : ind_pin has 9 polygons
+[2026-10-16 04:26:54,924] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (470524K) : ind_text has 9 polygons
+[2026-10-16 04:26:54,926] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (470652K) : salblock_drw has 67 polygons
+[2026-10-16 04:26:54,928] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (470652K) : via2_drw has 3362 polygons
+[2026-10-16 04:26:54,930] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (470780K) : metal3_drw has 317 polygons
+[2026-10-16 04:26:54,932] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (470780K) : metal3_filler has 0 polygons
+[2026-10-16 04:26:54,933] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (470908K) : metal3_slit has 0 polygons
+[2026-10-16 04:26:54,935] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (471036K) : metal3 has 317 polygons
+[2026-10-16 04:26:54,937] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (471164K) : metal3_pin has 0 polygons
+[2026-10-16 04:26:54,938] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (471164K) : metal3_mask has 0 polygons
+[2026-10-16 04:26:54,940] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (471292K) : metal3_nofill has 3 polygons
+[2026-10-16 04:26:54,942] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (471292K) : metal3_text has 1 polygons
+[2026-10-16 04:26:54,944] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (471420K) : metal3_OPC has 0 polygons
+[2026-10-16 04:26:54,945] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (471548K) : metal3_noqrc has 30 polygons
+[2026-10-16 04:26:54,947] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (471548K) : metal3_res has 0 polygons
+[2026-10-16 04:26:54,949] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (471676K) : metal3_iprobe has 0 polygons
+[2026-10-16 04:26:54,951] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (471676K) : metal3_diffprb has 0 polygons
+[2026-10-16 04:26:54,953] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (471804K) : nwell_drw has 1 polygons
+[2026-10-16 04:26:54,955] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (471932K) : nwell_pin has 0 polygons
+[2026-10-16 04:26:54,957] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (471932K) : nwell_text has 0 polygons
+[2026-10-16 04:26:54,958] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (472060K) : nbulay_drw has 1 polygons
+[2026-10-16 04:26:54,960] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (472060K) : nbulay_pin has 0 polygons
+[2026-10-16 04:26:54,962] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (472188K) : nbulay_block has 0 polygons
+[2026-10-16 04:26:54,964] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (472188K) : emwind_drw has 107 polygons
+[2026-10-16 04:26:54,966] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (472316K) : emwind_OPC has 0 polygons
+[2026-10-16 04:26:54,968] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (472316K) : deepco_drw has 0 polygons
+[2026-10-16 04:26:54,969] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (472444K) : mim_drw has 30 polygons
+[2026-10-16 04:26:54,971] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (472444K) : edgeseal_drw has 0 polygons
+[2026-10-16 04:26:54,973] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (472572K) : substrate_drw has 0 polygons
+[2026-10-16 04:26:54,976] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (472700K) : substrate_text has 0 polygons
+[2026-10-16 04:26:54,978] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (472700K) : dfpad_drw has 0 polygons
+[2026-10-16 04:26:54,980] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (472828K) : dfpad_pillar has 0 polygons
+[2026-10-16 04:26:54,982] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (472828K) : dfpad_sbump has 0 polygons
+[2026-10-16 04:26:54,983] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (472956K) : thickgateox_drw has 1 polygons
+[2026-10-16 04:26:54,985] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (472956K) : pldb_drw has 0 polygons
+[2026-10-16 04:26:54,987] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (473084K) : pwell_drw has 0 polygons
+[2026-10-16 04:26:54,989] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (473084K) : pwell_pin has 0 polygons
+[2026-10-16 04:26:54,990] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (473212K) : pwell_block has 33 polygons
+[2026-10-16 04:26:54,992] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (473340K) : ic_drw has 0 polygons
+[2026-10-16 04:26:54,994] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (473340K) : via3_drw has 2210 polygons
+[2026-10-16 04:26:54,995] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (473468K) : metal4_drw has 5522 polygons
+[2026-10-16 04:26:54,997] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (473724K) : metal4_filler has 0 polygons
+[2026-10-16 04:26:54,999] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (473724K) : metal4_slit has 0 polygons
+[2026-10-16 04:26:55,000] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (474108K) : metal4 has 5522 polygons
+[2026-10-16 04:26:55,002] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (474236K) : metal4_pin has 0 polygons
+[2026-10-16 04:26:55,004] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (474236K) : metal4_mask has 0 polygons
+[2026-10-16 04:26:55,006] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (474508K) : metal4_nofill has 480 polygons
+[2026-10-16 04:26:55,008] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (474636K) : metal4_text has 1 polygons
+[2026-10-16 04:26:55,009] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (474636K) : metal4_OPC has 0 polygons
+[2026-10-16 04:26:55,011] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (474764K) : metal4_noqrc has 30 polygons
+[2026-10-16 04:26:55,013] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (474892K) : metal4_res has 0 polygons
+[2026-10-16 04:26:55,015] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (474892K) : metal4_iprobe has 0 polygons
+[2026-10-16 04:26:55,018] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (474892K) : metal4_diffprb has 0 polygons
+[2026-10-16 04:26:55,020] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (475020K) : heattrans_drw has 119 polygons
+[2026-10-16 04:26:55,023] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (475020K) : heatres_drw has 67 polygons
+[2026-10-16 04:26:55,025] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (475148K) : fbe_drw has 0 polygons
+[2026-10-16 04:26:55,027] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (475276K) : empoly_drw has 0 polygons
+[2026-10-16 04:26:55,029] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (475276K) : digisub_drw has 0 polygons
+[2026-10-16 04:26:55,031] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (475404K) : text_drw has 443 polygons
+[2026-10-16 04:26:55,033] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (475404K) : via4_drw has 1442 polygons
+[2026-10-16 04:26:55,034] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (475532K) : metal5_drw has 237 polygons
+[2026-10-16 04:26:55,036] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (475660K) : metal5_filler has 0 polygons
+[2026-10-16 04:26:55,038] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (475660K) : metal5_slit has 0 polygons
+[2026-10-16 04:26:55,040] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (475788K) : metal5 has 237 polygons
+[2026-10-16 04:26:55,042] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (475916K) : metal5_pin has 90 polygons
+[2026-10-16 04:26:55,044] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (476044K) : metal5_mask has 0 polygons
+[2026-10-16 04:26:55,046] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (476044K) : metal5_nofill has 3 polygons
+[2026-10-16 04:26:55,047] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (476172K) : metal5_text has 0 polygons
+[2026-10-16 04:26:55,049] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (476172K) : metal5_OPC has 0 polygons
+[2026-10-16 04:26:55,051] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (476300K) : metal5_noqrc has 30 polygons
+[2026-10-16 04:26:55,053] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (476428K) : metal5_res has 0 polygons
+[2026-10-16 04:26:55,055] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (476428K) : metal5_iprobe has 0 polygons
+[2026-10-16 04:26:55,057] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (476556K) : metal5_diffprb has 0 polygons
+[2026-10-16 04:26:55,059] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (476556K) : radhard_drw has 0 polygons
+[2026-10-16 04:26:55,060] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (476684K) : memcap_drw has 0 polygons
+[2026-10-16 04:26:55,062] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (476812K) : varicap_drw has 0 polygons
+[2026-10-16 04:26:55,064] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (476812K) : intbondvia_drw has 0 polygons
+[2026-10-16 04:26:55,066] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (476940K) : intbondmet_drw has 0 polygons
+[2026-10-16 04:26:55,068] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (476940K) : devbondvia_drw has 0 polygons
+[2026-10-16 04:26:55,070] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (477068K) : devbondmet_drw has 0 polygons
+[2026-10-16 04:26:55,072] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (477196K) : devtrench_drw has 0 polygons
+[2026-10-16 04:26:55,074] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (477196K) : redist_drw has 0 polygons
+[2026-10-16 04:26:55,076] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (477324K) : graphbot_drw has 0 polygons
+[2026-10-16 04:26:55,078] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (477324K) : graphtop_drw has 0 polygons
+[2026-10-16 04:26:55,079] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (477452K) : antvia1_drw has 0 polygons
+[2026-10-16 04:26:55,081] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (477452K) : antmetal2_drw has 0 polygons
+[2026-10-16 04:26:55,084] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (477580K) : graphcont_drw has 0 polygons
+[2026-10-16 04:26:55,086] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (477580K) : siwg_drw has 0 polygons
+[2026-10-16 04:26:55,088] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (477708K) : siwg_filler has 0 polygons
+[2026-10-16 04:26:55,090] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (477836K) : siwg_nofill has 0 polygons
+[2026-10-16 04:26:55,092] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (477836K) : sigrating_drw has 0 polygons
+[2026-10-16 04:26:55,094] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (477964K) : singrating_drw has 0 polygons
+[2026-10-16 04:26:55,096] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (477964K) : graphpas_drw has 0 polygons
+[2026-10-16 04:26:55,099] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (478092K) : emwind3_drw has 0 polygons
+[2026-10-16 04:26:55,101] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (478092K) : emwihv3_drw has 0 polygons
+[2026-10-16 04:26:55,103] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (478220K) : redbulay_drw has 0 polygons
+[2026-10-16 04:26:55,104] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (478220K) : smos_drw has 0 polygons
+[2026-10-16 04:26:55,107] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (478348K) : graphpad_drw has 0 polygons
+[2026-10-16 04:26:55,109] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (478476K) : polimide_drw has 0 polygons
+[2026-10-16 04:26:55,113] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (478476K) : polimide_pin has 0 polygons
+[2026-10-16 04:26:55,118] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (478604K) : recog_drw has 0 polygons
+[2026-10-16 04:26:55,121] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (478604K) : recog_pin has 0 polygons
+[2026-10-16 04:26:55,123] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (478732K) : recog_esd has 0 polygons
+[2026-10-16 04:26:55,126] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (478732K) : recog_diode has 0 polygons
+[2026-10-16 04:26:55,129] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (478860K) : recog_tsv has 0 polygons
+[2026-10-16 04:26:55,132] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (478988K) : recog_iprobe has 0 polygons
+[2026-10-16 04:26:55,134] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (478988K) : recog_diffprb has 0 polygons
+[2026-10-16 04:26:55,137] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (479116K) : recog_pillar has 0 polygons
+[2026-10-16 04:26:55,139] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (479116K) : recog_sbump has 0 polygons
+[2026-10-16 04:26:55,141] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (479244K) : recog_otp has 0 polygons
+[2026-10-16 04:26:55,143] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (479244K) : recog_pdiode has 0 polygons
+[2026-10-16 04:26:55,145] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (479372K) : recog_mom has 0 polygons
+[2026-10-16 04:26:55,148] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (479500K) : recog_momf has 0 polygons
+[2026-10-16 04:26:55,150] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (479500K) : recog_pcm has 0 polygons
+[2026-10-16 04:26:55,152] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (479628K) : colopen_drw has 0 polygons
+[2026-10-16 04:26:55,154] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (479628K) : graphmetal1_drw has 0 polygons
+[2026-10-16 04:26:55,156] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (479756K) : graphmetal1_filler has 0 polygons
+[2026-10-16 04:26:55,159] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (479884K) : graphmetal1_nofill has 0 polygons
+[2026-10-16 04:26:55,161] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (479884K) : graphmetal1_slit has 0 polygons
+[2026-10-16 04:26:55,164] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (480012K) : graphmetal1_OPC has 0 polygons
+[2026-10-16 04:26:55,166] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (480012K) : graphmet1l_drw has 0 polygons
+[2026-10-16 04:26:55,168] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (480140K) : graphmet1l_filler has 0 polygons
+[2026-10-16 04:26:55,171] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (480140K) : graphmet1l_nofill has 0 polygons
+[2026-10-16 04:26:55,173] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (480268K) : graphmet1l_slit has 0 polygons
+[2026-10-16 04:26:55,176] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (480396K) : graphmet1l_OPC has 0 polygons
+[2026-10-16 04:26:55,178] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (480396K) : extblock_drw has 201 polygons
+[2026-10-16 04:26:55,180] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (480524K) : nldd_drw has 0 polygons
+[2026-10-16 04:26:55,182] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (480524K) : pldd_drw has 0 polygons
+[2026-10-16 04:26:55,185] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (480652K) : next_drw has 0 polygons
+[2026-10-16 04:26:55,188] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (480780K) : pext_drw has 0 polygons
+[2026-10-16 04:26:55,192] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (480908K) : nexthv_drw has 0 polygons
+[2026-10-16 04:26:55,194] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (480908K) : pexthv_drw has 0 polygons
+[2026-10-16 04:26:55,196] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (481036K) : graphgate_drw has 0 polygons
+[2026-10-16 04:26:55,199] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (481036K) : sinwg_drw has 0 polygons
+[2026-10-16 04:26:55,202] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (481164K) : sinwg_filler has 0 polygons
+[2026-10-16 04:26:55,204] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (481164K) : sinwg_nofill has 0 polygons
+[2026-10-16 04:26:55,206] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (481292K) : mempad_drw has 0 polygons
+[2026-10-16 04:26:55,208] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (481420K) : topvia1_drw has 304 polygons
+[2026-10-16 04:26:55,210] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (481420K) : topmetal1_drw has 189 polygons
+[2026-10-16 04:26:55,212] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (481548K) : topmetal1_filler has 0 polygons
+[2026-10-16 04:26:55,214] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (481548K) : topmetal1_slit has 0 polygons
+[2026-10-16 04:26:55,216] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (481676K) : topmetal1 has 189 polygons
+[2026-10-16 04:26:55,218] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (481804K) : topmetal1_pin has 102 polygons
+[2026-10-16 04:26:55,221] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (481804K) : topmetal1_mask has 0 polygons
+[2026-10-16 04:26:55,224] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (481804K) : topmetal1_nofill has 3 polygons
+[2026-10-16 04:26:55,229] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (481804K) : topmetal1_text has 2 polygons
+[2026-10-16 04:26:55,232] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (481804K) : topmetal1_noqrc has 30 polygons
+[2026-10-16 04:26:55,235] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (481804K) : topmetal1_res has 0 polygons
+[2026-10-16 04:26:55,237] [SUBPROCESS]    2026-10-16 04:26:54 +0200: Memory Usage (481804K) : topmetal1_iprobe has 0 polygons
+[2026-10-16 04:26:55,239] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : topmetal1_diffprb has 0 polygons
+[2026-10-16 04:26:55,241] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : inldpwl_drw has 0 polygons
+[2026-10-16 04:26:55,243] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : polyres_drw has 67 polygons
+[2026-10-16 04:26:55,245] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : polyres_pin has 0 polygons
+[2026-10-16 04:26:55,248] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : vmim_drw has 13795 polygons
+[2026-10-16 04:26:55,251] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : nbulaycut_drw has 0 polygons
+[2026-10-16 04:26:55,253] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : antmetal1_drw has 0 polygons
+[2026-10-16 04:26:55,255] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : topvia2_drw has 226 polygons
+[2026-10-16 04:26:55,258] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : topmetal2_drw has 104 polygons
+[2026-10-16 04:26:55,260] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : topmetal2_filler has 0 polygons
+[2026-10-16 04:26:55,262] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : topmetal2_slit has 0 polygons
+[2026-10-16 04:26:55,264] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : topmetal2 has 104 polygons
+[2026-10-16 04:26:55,267] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : topmetal2_pin has 6 polygons
+[2026-10-16 04:26:55,269] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : topmetal2_mask has 0 polygons
+[2026-10-16 04:26:55,271] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : topmetal2_nofill has 3 polygons
+[2026-10-16 04:26:55,273] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : topmetal2_text has 5 polygons
+[2026-10-16 04:26:55,276] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : topmetal2_noqrc has 0 polygons
+[2026-10-16 04:26:55,278] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : topmetal2_res has 0 polygons
+[2026-10-16 04:26:55,280] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : topmetal2_iprobe has 0 polygons
+[2026-10-16 04:26:55,283] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : topmetal2_diffprb has 0 polygons
+[2026-10-16 04:26:55,285] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : snsring_drw has 0 polygons
+[2026-10-16 04:26:55,287] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : sensor_drw has 0 polygons
+[2026-10-16 04:26:55,289] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : snsarms_drw has 0 polygons
+[2026-10-16 04:26:55,291] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : snscmosvia_drw has 0 polygons
+[2026-10-16 04:26:55,293] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : colwind_drw has 0 polygons
+[2026-10-16 04:26:55,296] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : flm_drw has 0 polygons
+[2026-10-16 04:26:55,298] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : hafniumox_drw has 0 polygons
+[2026-10-16 04:26:55,300] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : memvia_drw has 0 polygons
+[2026-10-16 04:26:55,302] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : thinfilmres_drw has 0 polygons
+[2026-10-16 04:26:55,305] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : rfmem_drw has 0 polygons
+[2026-10-16 04:26:55,307] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : norcx_drw has 3 polygons
+[2026-10-16 04:26:55,309] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : norcx_m2m3 has 0 polygons
+[2026-10-16 04:26:55,311] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : norcx_m2m4 has 0 polygons
+[2026-10-16 04:26:55,313] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : norcx_m2m5 has 0 polygons
+[2026-10-16 04:26:55,316] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : norcx_m2tm1 has 0 polygons
+[2026-10-16 04:26:55,318] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : norcx_m2tm2 has 0 polygons
+[2026-10-16 04:26:55,320] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : norcx_m3m4 has 0 polygons
+[2026-10-16 04:26:55,322] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : norcx_m3m5 has 0 polygons
+[2026-10-16 04:26:55,324] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : norcx_m3tm1 has 0 polygons
+[2026-10-16 04:26:55,327] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : norcx_m3tm2 has 0 polygons
+[2026-10-16 04:26:55,330] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : norcx_m4m5 has 0 polygons
+[2026-10-16 04:26:55,334] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : norcx_m4tm1 has 0 polygons
+[2026-10-16 04:26:55,337] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : norcx_m4tm2 has 0 polygons
+[2026-10-16 04:26:55,339] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : norcx_m5tm1 has 0 polygons
+[2026-10-16 04:26:55,341] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : norcx_m5tm2 has 0 polygons
+[2026-10-16 04:26:55,343] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : norcx_tm1tm2 has 0 polygons
+[2026-10-16 04:26:55,345] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : norcx_m1sub has 0 polygons
+[2026-10-16 04:26:55,347] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : norcx_m2sub has 0 polygons
+[2026-10-16 04:26:55,350] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : norcx_m3sub has 0 polygons
+[2026-10-16 04:26:55,352] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : norcx_m4sub has 0 polygons
+[2026-10-16 04:26:55,353] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : norcx_m5sub has 0 polygons
+[2026-10-16 04:26:55,355] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : norcx_tm1sub has 0 polygons
+[2026-10-16 04:26:55,358] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : norcx_tm2sub has 0 polygons
+[2026-10-16 04:26:55,360] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : snsbotvia_drw has 0 polygons
+[2026-10-16 04:26:59,483] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : snstopvia_drw has 0 polygons
+[2026-10-16 04:26:59,486] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : deepvia_drw has 0 polygons
+[2026-10-16 04:26:59,488] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : fgetch_drw has 0 polygons
+[2026-10-16 04:26:59,489] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : ctrgat_drw has 0 polygons
+[2026-10-16 04:26:59,491] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : fgimp_drw has 0 polygons
+[2026-10-16 04:26:59,492] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : emwihv_drw has 0 polygons
+[2026-10-16 04:26:59,494] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : lbe_drw has 0 polygons
+[2026-10-16 04:26:59,496] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : alcustop_drw has 0 polygons
+[2026-10-16 04:26:59,497] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : nometfiller_drw has 0 polygons
+[2026-10-16 04:26:59,499] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : prboundary_drw has 0 polygons
+[2026-10-16 04:26:59,500] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : exchange0_drw has 0 polygons
+[2026-10-16 04:26:59,502] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : exchange0_pin has 0 polygons
+[2026-10-16 04:26:59,503] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : exchange0_text has 0 polygons
+[2026-10-16 04:26:59,505] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : exchange1_drw has 0 polygons
+[2026-10-16 04:26:59,507] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : exchange1_pin has 0 polygons
+[2026-10-16 04:26:59,509] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : exchange1_text has 0 polygons
+[2026-10-16 04:26:59,510] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : exchange2_drw has 0 polygons
+[2026-10-16 04:26:59,512] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : exchange2_pin has 0 polygons
+[2026-10-16 04:26:59,514] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : exchange2_text has 0 polygons
+[2026-10-16 04:26:59,516] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : exchange3_drw has 0 polygons
+[2026-10-16 04:26:59,517] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : exchange3_pin has 0 polygons
+[2026-10-16 04:26:59,519] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : exchange3_text has 0 polygons
+[2026-10-16 04:26:59,521] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : exchange4_drw has 0 polygons
+[2026-10-16 04:26:59,522] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : exchange4_pin has 0 polygons
+[2026-10-16 04:26:59,524] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : exchange4_text has 0 polygons
+[2026-10-16 04:26:59,525] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : isonwell_drw has 0 polygons
+[2026-10-16 04:26:59,527] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : Total no. of polygons in the design is 73452
+[2026-10-16 04:26:59,529] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : Starting base layers derivations
+[2026-10-16 04:26:59,531] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (481804K) : Starting general LVS derivations
+[2026-10-16 04:26:59,533] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (485168K) : Starting MOSFET DERIVATIONS
+[2026-10-16 04:26:59,535] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (486192K) : Starting NMOS DERIVATIONS
+[2026-10-16 04:26:59,537] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (486192K) : Starting PMOS DERIVATIONS
+[2026-10-16 04:26:59,538] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (486192K) : Starting RF-MOSFET DERIVATIONS
+[2026-10-16 04:26:59,540] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (486192K) : Starting RF-NMOS DERIVATIONS
+[2026-10-16 04:26:59,542] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (486192K) : Starting RF-PMOS DERIVATIONS
+[2026-10-16 04:26:59,544] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (486192K) : Starting BJT DERIVATIONS
+[2026-10-16 04:26:59,545] [SUBPROCESS]    2026-10-16 04:26:55 +0200: Memory Usage (486192K) : Starting NPN-BJT DERIVATIONS
+[2026-10-16 04:26:59,547] [SUBPROCESS]    2026-10-16 04:26:56 +0200: Memory Usage (486192K) : Starting PNP-BJT DERIVATIONS
+[2026-10-16 04:26:59,548] [SUBPROCESS]    2026-10-16 04:26:56 +0200: Memory Usage (486192K) : Starting DIODE DERIVATIONS
+[2026-10-16 04:26:59,550] [SUBPROCESS]    2026-10-16 04:26:56 +0200: Memory Usage (486192K) : Starting RESISTOR DERIVATIONS
+[2026-10-16 04:26:59,552] [SUBPROCESS]    2026-10-16 04:26:56 +0200: Memory Usage (486368K) : Starting CAP DERIVATIONS
+[2026-10-16 04:26:59,554] [SUBPROCESS]    2026-10-16 04:26:57 +0200: Memory Usage (486640K) : Starting CAP_CMOM DERIVATIONS
+[2026-10-16 04:26:59,556] [SUBPROCESS]    2026-10-16 04:26:57 +0200: Memory Usage (486640K) : Starting CAP_CMOMF DERIVATIONS
+[2026-10-16 04:26:59,559] [SUBPROCESS]    2026-10-16 04:26:57 +0200: Memory Usage (486640K) : Starting ESD DERIVATIONS
+[2026-10-16 04:26:59,561] [SUBPROCESS]    2026-10-16 04:26:58 +0200: Memory Usage (486640K) : Starting Inductor DERIVATIONS
+[2026-10-16 04:26:59,564] [SUBPROCESS]    2026-10-16 04:26:58 +0200: Memory Usage (486988K) : Starting Taps DERIVATIONS
+[2026-10-16 04:26:59,565] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487116K) : Starting SG13G2 LVS connectivity setup
+[2026-10-16 04:26:59,567] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487116K) : Starting SG13G2 LVS connectivity setup (Inter-layer)
+[2026-10-16 04:26:59,569] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487116K) : Starting SG13G2 LVS connectivity setup (Global)
+[2026-10-16 04:26:59,571] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487116K) : Starting LVS MOSFET CONNECTIONS
+[2026-10-16 04:26:59,573] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487116K) : Starting LVS RF-MOSFET CONNECTIONS
+[2026-10-16 04:26:59,574] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487116K) : Starting LVS BJT CONNECTIONS
+[2026-10-16 04:26:59,576] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487116K) : Starting LVS DIODE CONNECTIONS
+[2026-10-16 04:26:59,578] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487116K) : Starting RESISTOR CONNECTIONS
+[2026-10-16 04:26:59,579] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487116K) : Starting LVS CAP CONNECTIONS
+[2026-10-16 04:26:59,581] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487116K) : Starting CAP_CMOM CONNECTIONS
+[2026-10-16 04:26:59,583] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487116K) : Starting CAP_CMOMF CONNECTIONS
+[2026-10-16 04:26:59,584] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487116K) : Starting ESD CONNECTIONS
+[2026-10-16 04:26:59,586] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487116K) : Starting Inductor CONNECTIONS
+[2026-10-16 04:26:59,588] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487116K) : Starting LVS Taps CONNECTIONS
+[2026-10-16 04:26:59,589] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487116K) : Starting SG13G2 LVS DEVICES EXTRACTION
+[2026-10-16 04:26:59,591] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487116K) : Starting MOSFET EXTRACTION
+[2026-10-16 04:26:59,592] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487116K) : Starting NMOS EXTRACTION
+[2026-10-16 04:26:59,594] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487116K) : Extraction of NMOS-LV transistor
+[2026-10-16 04:26:59,596] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487244K) : Extraction of NMOS-HV transistor
+[2026-10-16 04:26:59,597] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487244K) : Starting PMOS EXTRACTION
+[2026-10-16 04:26:59,599] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487244K) : Extraction of PMOS-LV transistor
+[2026-10-16 04:26:59,601] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487244K) : Extraction of PMOS-HV transistor
+[2026-10-16 04:26:59,603] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487244K) : Starting RF-MOSFET EXTRACTION
+[2026-10-16 04:26:59,605] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487244K) : Extraction of RF-NMOS-LV transistor
+[2026-10-16 04:26:59,607] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487244K) : Extraction of RF-NMOS-HV transistor
+[2026-10-16 04:26:59,609] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487244K) : Extraction of RF-PMOS-LV transistor
+[2026-10-16 04:26:59,610] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487244K) : Extraction of RF-PMOS-HV transistor
+[2026-10-16 04:26:59,612] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487244K) : Starting BJT EXTRACTION
+[2026-10-16 04:26:59,614] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487244K) : Starting NPN-BJT EXTRACTION
+[2026-10-16 04:26:59,615] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487244K) : Extraction of npn13G2 BJT transistor
+[2026-10-16 04:26:59,617] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487244K) : Extraction of npn13G2L BJT transistor
+[2026-10-16 04:26:59,619] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487244K) : Extraction of npn13G2V BJT transistor
+[2026-10-16 04:26:59,620] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487244K) : Starting PNP-BJT EXTRACTION
+[2026-10-16 04:26:59,622] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487244K) : Extracting pnpMPA BJT
+[2026-10-16 04:26:59,624] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487244K) : Starting DIODE EXTRACTION
+[2026-10-16 04:26:59,625] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487244K) : Extracting dantenna diode
+[2026-10-16 04:26:59,627] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487244K) : Extracting dpantenna diode
+[2026-10-16 04:26:59,629] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487244K) : Extracting schottky_nbl1 diode
+[2026-10-16 04:26:59,631] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487244K) : Extracting isolbox diode
+[2026-10-16 04:26:59,633] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487244K) : Starting RESISTOR EXTRACTION
+[2026-10-16 04:26:59,636] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487244K) : Extracting rsil resistor
+[2026-10-16 04:26:59,638] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487244K) : Extracting rppd resistor
+[2026-10-16 04:26:59,640] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487244K) : Extracting rhigh resistor
+[2026-10-16 04:26:59,642] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487244K) : Extracting res_metal1 resistor
+[2026-10-16 04:26:59,644] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487244K) : Extracting res_metal2 resistor
+[2026-10-16 04:26:59,646] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487244K) : Extracting res_metal3 resistor
+[2026-10-16 04:26:59,647] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (487244K) : Extracting res_metal4 resistor
+[2026-10-16 04:26:59,649] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489164K) : Extracting res_metal5 resistor
+[2026-10-16 04:26:59,651] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489164K) : Extracting res_topmetal1 resistor
+[2026-10-16 04:26:59,653] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489164K) : Extracting res_topmetal2 resistor
+[2026-10-16 04:26:59,655] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489164K) : Starting CAP EXTRACTION
+[2026-10-16 04:26:59,656] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489164K) : Extracting cap_cmim device
+[2026-10-16 04:26:59,658] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489164K) : Extracting rfcmim device
+[2026-10-16 04:26:59,659] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489164K) : Extracting sg13_hv_svaricap varactor
+[2026-10-16 04:27:00,237] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489164K) : Extracting cap_cmomi device
+[2026-10-16 04:27:00,240] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489164K) : Extracting cap_cmomf device
+[2026-10-16 04:27:00,242] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489164K) : Extracting sg13_moscap_n capacitor
+[2026-10-16 04:27:00,249] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489164K) : Extracting sg13_moscap_p capacitor
+[2026-10-16 04:27:00,253] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489164K) : Starting ESD EXTRACTION
+[2026-10-16 04:27:00,256] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489164K) : Extracting diodevdd_2kv ESD device
+[2026-10-16 04:27:00,258] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489164K) : Extracting diodevdd_4kv ESD device
+[2026-10-16 04:27:00,260] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489164K) : Extracting diodevss_2kv ESD device
+[2026-10-16 04:27:00,261] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489164K) : Extracting diodevss_4kv ESD device
+[2026-10-16 04:27:00,263] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489164K) : Extracting idiodevdd_2kv ESD device
+[2026-10-16 04:27:00,264] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489164K) : Extracting idiodevdd_4kv ESD device
+[2026-10-16 04:27:00,266] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489164K) : Extracting idiodevss_2kv ESD device
+[2026-10-16 04:27:00,268] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489164K) : Extracting idiodevss_4kv ESD device
+[2026-10-16 04:27:00,270] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489164K) : Extracting nmoscl_2 ESD device
+[2026-10-16 04:27:00,271] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489164K) : Extracting nmoscl_4 ESD device
+[2026-10-16 04:27:00,273] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489164K) : Starting Inductor EXTRACTION
+[2026-10-16 04:27:00,275] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489164K) : Extracting Inductor2 device
+[2026-10-16 04:27:00,277] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489164K) : Extracting Inductor3 device
+[2026-10-16 04:27:00,279] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489324K) : Starting Taps EXTRACTION
+[2026-10-16 04:27:00,281] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489324K) : Extracting ntap1 device
+[2026-10-16 04:27:00,283] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489324K) : Extracting ptap1 device
+[2026-10-16 04:27:00,284] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489324K) : Starting SG13G2 LVS RF MOS Model Mapping
+[2026-10-16 04:27:00,286] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489324K) : [layout_netlist] Apply RF MOS model mapping and rfmode parameter.
+[2026-10-16 04:27:00,288] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489324K) : Starting SG13G2 LVS Options Preparations
+[2026-10-16 04:27:00,290] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489324K) : SG13G2 LVS flow: extraction -> alignment -> option preparation -> comparison.
+[2026-10-16 04:27:00,292] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489324K) : Starting SG13G2 LVS Alignment
+[2026-10-16 04:27:00,294] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489452K) : Starting SG13G2 LVS Simplification
+[2026-10-16 04:27:00,296] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489452K) : [layout_netlist] simplify: SKIPPED
+[2026-10-16 04:27:00,298] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489452K) : [layout_netlist] make_top_level_pins: ENABLED
+[2026-10-16 04:27:00,300] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489452K) : [layout_netlist] combine_devices: SKIPPED
+[2026-10-16 04:27:00,302] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489452K) : [layout_netlist] purge: SKIPPED
+[2026-10-16 04:27:00,304] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489452K) : [layout_netlist] purge_nets: SKIPPED
+[2026-10-16 04:27:00,309] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489452K) : [schematic_netlist] simplify: SKIPPED
+[2026-10-16 04:27:00,312] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489452K) : [schematic_netlist] make_top_level_pins: ENABLED
+[2026-10-16 04:27:00,316] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489452K) : [schematic_netlist] combine_devices: SKIPPED
+[2026-10-16 04:27:00,320] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489452K) : [schematic_netlist] purge: SKIPPED
+[2026-10-16 04:27:00,323] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489452K) : [schematic_netlist] purge_nets: SKIPPED
+[2026-10-16 04:27:00,327] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489452K) : Starting SG13G2 LVS Comparison in strict port mode.
+[2026-10-16 04:27:00,329] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489452K) : flag_missing_ports enabled: missing/mislabeled top-level ports are treated as errors.
+[2026-10-16 04:27:00,331] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489452K) : xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+[2026-10-16 04:27:00,333] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489452K) : ERROR : Netlists don't match
+[2026-10-16 04:27:00,335] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489452K) : xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+[2026-10-16 04:27:00,337] [SUBPROCESS]    2026-10-16 04:26:59 +0200: Memory Usage (489452K) : LVS Total Run time 5.286247 seconds
+[2026-10-16 04:27:00,444] [INFO]    klayout LVS succeeded after 8.73s
+[2026-10-16 04:27:00,768] [WARNING]    Unable to find info about extracted LVS layer 'cont_drw'
+[2026-10-16 04:27:00,773] [WARNING]    Unable to find info about extracted LVS layer 'ind_pin'
+[2026-10-16 04:27:00,776] [WARNING]    Unable to find info about extracted LVS layer 'nbulay_drw'
+[2026-10-16 04:27:00,779] [WARNING]    Unable to find info about extracted LVS layer 'emwind_drw'
+[2026-10-16 04:27:00,783] [INFO]    (19, 0) -> (via1_drw)
+[2026-10-16 04:27:00,785] [INFO]    (29, 0) -> (via2_drw)
+[2026-10-16 04:27:00,787] [INFO]    (31, 0) -> (nwell_drw)
+[2026-10-16 04:27:00,789] [INFO]    (49, 0) -> (via3_drw)
+[2026-10-16 04:27:00,792] [INFO]    (66, 0) -> (via4_drw)
+[2026-10-16 04:27:00,794] [INFO]    (133, 0) -> (topvia2_drw)
+[2026-10-16 04:27:00,796] [INFO]    (46, 0) -> (pwell pwell_sub)
+[2026-10-16 04:27:00,799] [INFO]    (5, 2) -> (poly_pin_con)
+[2026-10-16 04:27:00,801] [INFO]    (5, 0) -> (poly_con)
+[2026-10-16 04:27:00,803] [INFO]    (8, 0) -> (metal1_con)
+[2026-10-16 04:27:00,805] [INFO]    (10, 0) -> (metal2_con)
+[2026-10-16 04:27:00,807] [INFO]    (30, 0) -> (metal3_con)
+[2026-10-16 04:27:00,809] [INFO]    (50, 0) -> (metal4_con)
+[2026-10-16 04:27:00,811] [INFO]    (126, 0) -> (topmetal1_con)
+[2026-10-16 04:27:00,814] [INFO]    (134, 0) -> (topmetal2_con)
+[2026-10-16 04:27:00,817] [INFO]    (8, 2) -> (metal1_pin_con)
+[2026-10-16 04:27:00,820] [INFO]    (10, 2) -> (metal2_pin_con)
+[2026-10-16 04:27:00,822] [INFO]    (7, 0) -> (nsd_fet)
+[2026-10-16 04:27:00,825] [INFO]    (14, 0) -> (psd_fet)
+[2026-10-16 04:27:00,827] [INFO]    (125, 0) -> (topvia1_n_cap)
+[2026-10-16 04:27:00,829] [INFO]    (65, 144) -> (ntap)
+[2026-10-16 04:27:00,831] [INFO]    (65, 244) -> (ptap)
+[2026-10-16 04:27:00,834] [INFO]    (67, 2) -> (metal5_pin_con)
+[2026-10-16 04:27:00,836] [INFO]    (126, 2) -> (topmetal1_pin_con)
+[2026-10-16 04:27:00,837] [INFO]    (134, 2) -> (topmetal2_pin_con)
+[2026-10-16 04:27:00,840] [INFO]    (67, 0) -> (metal5_n_cap)
+[2026-10-16 04:27:00,842] [INFO]    (6, 4403) -> (cont_poly_con)
+[2026-10-16 04:27:00,844] [INFO]    (6, 4401) -> (cont_nsd_con)
+[2026-10-16 04:40:45,243] [SUBPROCESS]    Device;Net1;Net2;Capacitance [fF];Resistance [Ω]
+[2026-10-16 04:40:45,252] [SUBPROCESS]    C1;$107;$20;0.867;
+[2026-10-16 04:40:45,254] [SUBPROCESS]    C2;$107;$28;0.166;
+[2026-10-16 04:40:45,256] [SUBPROCESS]    C3;$107;$29;0.15;
+[2026-10-16 04:40:45,257] [SUBPROCESS]    C4;$107;$35;0.874;
+[2026-10-16 04:40:45,259] [SUBPROCESS]    C5;$107;$4;0.008;
+[2026-10-16 04:40:45,260] [SUBPROCESS]    C6;$107;$82;0.158;
+[2026-10-16 04:40:45,261] [SUBPROCESS]    C7;$107;GND;2.43;
+[2026-10-16 04:40:45,263] [SUBPROCESS]    C8;$107;VCC;0.005;
+[2026-10-16 04:40:45,265] [SUBPROCESS]    C9;$107;VSUBS;3.609;
+[2026-10-16 04:40:45,266] [SUBPROCESS]    C10;$109;$20;1.027;
+[2026-10-16 04:40:45,268] [SUBPROCESS]    C11;$109;$35;1.199;
+[2026-10-16 04:40:45,270] [SUBPROCESS]    C12;$109;$5;0.008;
+[2026-10-16 04:40:45,271] [SUBPROCESS]    C13;$109;$82;0.164;
+[2026-10-16 04:40:45,273] [SUBPROCESS]    C14;$109;GND;2.151;
+[2026-10-16 04:40:45,274] [SUBPROCESS]    C15;$109;VSUBS;3.534;
+[2026-10-16 04:40:45,276] [SUBPROCESS]    C16;$112;$23;0.867;
+[2026-10-16 04:40:45,278] [SUBPROCESS]    C17;$112;$31;0.166;
+[2026-10-16 04:40:45,279] [SUBPROCESS]    C18;$112;$32;0.15;
+[2026-10-16 04:40:45,281] [SUBPROCESS]    C19;$112;$41;0.874;
+[2026-10-16 04:40:45,283] [SUBPROCESS]    C20;$112;$6;0.008;
+[2026-10-16 04:40:45,284] [SUBPROCESS]    C21;$112;$83;0.158;
+[2026-10-16 04:40:45,286] [SUBPROCESS]    C22;$112;GND;2.277;
+[2026-10-16 04:40:45,288] [SUBPROCESS]    C23;$112;VCC;0.025;
+[2026-10-16 04:40:45,289] [SUBPROCESS]    C24;$112;VSUBS;3.609;
+[2026-10-16 04:40:45,291] [SUBPROCESS]    C25;$114;$23;1.027;
+[2026-10-16 04:40:45,293] [SUBPROCESS]    C26;$114;$41;1.199;
+[2026-10-16 04:40:45,294] [SUBPROCESS]    C27;$114;$7;0.008;
+[2026-10-16 04:40:45,296] [SUBPROCESS]    C28;$114;$83;0.164;
+[2026-10-16 04:40:45,298] [SUBPROCESS]    C29;$114;GND;2.154;
+[2026-10-16 04:40:45,299] [SUBPROCESS]    C30;$114;VSUBS;3.534;
+[2026-10-16 04:40:45,302] [SUBPROCESS]    C31;$144;$155;0.262;
+[2026-10-16 04:40:45,304] [SUBPROCESS]    C32;$144;$157;0.031;
+[2026-10-16 04:40:45,307] [SUBPROCESS]    C33;$144;$158;0.323;
+[2026-10-16 04:40:45,309] [SUBPROCESS]    C34;$144;GND;55.089;
+[2026-10-16 04:40:45,311] [SUBPROCESS]    C35;$144;VCC;0.355;
+[2026-10-16 04:40:45,313] [SUBPROCESS]    C36;$144;VSUBS;18.037;
+[2026-10-16 04:40:45,315] [SUBPROCESS]    C37;$148;$155;0.399;
+[2026-10-16 04:40:45,316] [SUBPROCESS]    C38;$148;$157;0.308;
+[2026-10-16 04:40:45,319] [SUBPROCESS]    C39;$148;$192;2.481;
+[2026-10-16 04:40:45,321] [SUBPROCESS]    C40;$148;GND;7.286;
+[2026-10-16 04:40:45,323] [SUBPROCESS]    C41;$148;VCC;0.044;
+[2026-10-16 04:40:45,325] [SUBPROCESS]    C42;$148;VSUBS;9.665;
+[2026-10-16 04:40:45,328] [SUBPROCESS]    C43;$149;$155;0.853;
+[2026-10-16 04:40:45,330] [SUBPROCESS]    C44;$149;$157;0.321;
+[2026-10-16 04:40:45,332] [SUBPROCESS]    C45;$149;$158;0.722;
+[2026-10-16 04:40:45,333] [SUBPROCESS]    C46;$149;$195;2.494;
+[2026-10-16 04:40:45,335] [SUBPROCESS]    C47;$149;GND;2.598;
+[2026-10-16 04:40:45,337] [SUBPROCESS]    C48;$149;VCC;0.085;
+[2026-10-16 04:40:45,338] [SUBPROCESS]    C49;$149;VSUBS;9.482;
+[2026-10-16 04:40:45,340] [SUBPROCESS]    C50;$155;$157;0.295;
+[2026-10-16 04:40:45,341] [SUBPROCESS]    C51;$155;$158;0.001;
+[2026-10-16 04:40:45,343] [SUBPROCESS]    C52;$155;$195;0.28;
+[2026-10-16 04:40:45,344] [SUBPROCESS]    C53;$155;GND;15.295;
+[2026-10-16 04:40:45,346] [SUBPROCESS]    C54;$155;RXLOP;2.49;
+[2026-10-16 04:40:45,347] [SUBPROCESS]    C55;$155;VCC;0.389;
+[2026-10-16 04:40:45,349] [SUBPROCESS]    C56;$155;VSUBS;15.616;
+[2026-10-16 04:40:45,351] [SUBPROCESS]    C57;$157;$158;0.325;
+[2026-10-16 04:40:45,352] [SUBPROCESS]    C58;$157;GND;3.12;
+[2026-10-16 04:40:45,354] [SUBPROCESS]    C59;$157;VCC;0.038;
+[2026-10-16 04:40:45,356] [SUBPROCESS]    C60;$157;VSUBS;6.136;
+[2026-10-16 04:40:45,357] [SUBPROCESS]    C61;$158;GND;13.766;
+[2026-10-16 04:40:45,359] [SUBPROCESS]    C62;$158;RXLON;2.49;
+[2026-10-16 04:40:45,360] [SUBPROCESS]    C63;$158;VCC;0.996;
+[2026-10-16 04:40:45,362] [SUBPROCESS]    C64;$158;VSUBS;13.304;
+[2026-10-16 04:40:45,364] [SUBPROCESS]    C65;$166;$176;0.262;
+[2026-10-16 04:40:45,366] [SUBPROCESS]    C66;$166;$178;0.051;
+[2026-10-16 04:40:45,368] [SUBPROCESS]    C67;$166;$181;0.323;
+[2026-10-16 04:40:45,369] [SUBPROCESS]    C68;$166;$35;0.009;
+[2026-10-16 04:40:45,371] [SUBPROCESS]    C69;$166;GND;55.336;
+[2026-10-16 04:40:45,373] [SUBPROCESS]    C70;$166;VCC;0.309;
+[2026-10-16 04:40:45,374] [SUBPROCESS]    C71;$166;VSUBS;18.038;
+[2026-10-16 04:40:45,376] [SUBPROCESS]    C72;$17;$27;0.919;
+[2026-10-16 04:40:45,377] [SUBPROCESS]    C73;$17;$3;0.877;
+[2026-10-16 04:40:45,379] [SUBPROCESS]    C74;$17;$4;0.002;
+[2026-10-16 04:40:45,381] [SUBPROCESS]    C75;$17;$5;0.009;
+[2026-10-16 04:40:45,383] [SUBPROCESS]    C76;$17;GND;2.118;
+[2026-10-16 04:40:45,385] [SUBPROCESS]    C77;$17;VSUBS;4.096;
+[2026-10-16 04:40:45,387] [SUBPROCESS]    C78;$176;$177;0.192;
+[2026-10-16 04:40:45,389] [SUBPROCESS]    C79;$176;$178;0.295;
+[2026-10-16 04:40:45,391] [SUBPROCESS]    C80;$176;$7;2.49;
+[2026-10-16 04:40:45,392] [SUBPROCESS]    C81;$176;GND;7.012;
+[2026-10-16 04:40:45,394] [SUBPROCESS]    C82;$176;VCC;0.332;
+[2026-10-16 04:40:45,396] [SUBPROCESS]    C83;$176;VSUBS;10.953;
+[2026-10-16 04:40:45,398] [SUBPROCESS]    C84;$177;$178;0.308;
+[2026-10-16 04:40:45,400] [SUBPROCESS]    C85;$177;$192;2.502;
+[2026-10-16 04:40:45,401] [SUBPROCESS]    C86;$177;BSEL;0.574;
+[2026-10-16 04:40:45,403] [SUBPROCESS]    C87;$177;GND;8.935;
+[2026-10-16 04:40:45,404] [SUBPROCESS]    C88;$177;VCC;0.046;
+[2026-10-16 04:40:45,406] [SUBPROCESS]    C89;$177;VSUBS;8.486;
+[2026-10-16 04:40:45,407] [SUBPROCESS]    C90;$178;$179;0.329;
+[2026-10-16 04:40:45,409] [SUBPROCESS]    C91;$178;$181;0.295;
+[2026-10-16 04:40:45,411] [SUBPROCESS]    C92;$178;GND;3.501;
+[2026-10-16 04:40:45,414] [SUBPROCESS]    C93;$178;VCC;0.145;
+[2026-10-16 04:40:45,418] [SUBPROCESS]    C94;$178;VSUBS;7.688;
+[2026-10-16 04:40:45,420] [SUBPROCESS]    C95;$179;$181;0.42;
+[2026-10-16 04:40:45,422] [SUBPROCESS]    C96;$179;$192;0.37;
+[2026-10-16 04:40:45,424] [SUBPROCESS]    C97;$179;$195;2.494;
+[2026-10-16 04:40:45,426] [SUBPROCESS]    C98;$179;BSEL;0.418;
+[2026-10-16 04:40:45,427] [SUBPROCESS]    C99;$179;GND;5.0;
+[2026-10-16 04:40:45,429] [SUBPROCESS]    C100;$179;VCC;0.064;
+[2026-10-16 04:40:45,431] [SUBPROCESS]    C101;$179;VSUBS;7.695;
+[2026-10-16 04:40:45,432] [SUBPROCESS]    C102;$18;$3;0.287;
+[2026-10-16 04:40:45,434] [SUBPROCESS]    C103;$18;$41;0.091;
+[2026-10-16 04:40:45,436] [SUBPROCESS]    C104;$18;$6;1.862;
+[2026-10-16 04:40:45,438] [SUBPROCESS]    C105;$18;$7;0.23;
+[2026-10-16 04:40:45,439] [SUBPROCESS]    C106;$18;GND;60.448;
+[2026-10-16 04:40:45,441] [SUBPROCESS]    C107;$18;VCC;0.207;
+[2026-10-16 04:40:45,443] [SUBPROCESS]    C108;$18;VSUBS;28.238;
+[2026-10-16 04:40:45,444] [SUBPROCESS]    C109;$181;$6;2.49;
+[2026-10-16 04:40:45,446] [SUBPROCESS]    C110;$181;GND;7.133;
+[2026-10-16 04:40:45,448] [SUBPROCESS]    C111;$181;VCC;0.273;
+[2026-10-16 04:40:45,449] [SUBPROCESS]    C112;$181;VSUBS;11.226;
+[2026-10-16 04:40:45,451] [SUBPROCESS]    C113;$19;$3;0.43;
+[2026-10-16 04:40:45,452] [SUBPROCESS]    C114;$19;GND;0.85;
+[2026-10-16 04:40:45,454] [SUBPROCESS]    C115;$19;VSUBS;2.221;
+[2026-10-16 04:40:45,456] [SUBPROCESS]    C116;$192;$195;4.894;
+[2026-10-16 04:40:45,458] [SUBPROCESS]    C117;$192;$204;0.45;
+[2026-10-16 04:40:45,460] [SUBPROCESS]    C118;$192;$206;0.245;
+[2026-10-16 04:40:45,461] [SUBPROCESS]    C119;$192;$209;0.871;
+[2026-10-16 04:40:45,463] [SUBPROCESS]    C120;$192;$212;0.217;
+[2026-10-16 04:40:45,464] [SUBPROCESS]    C121;$192;$213;0.209;
+[2026-10-16 04:40:45,466] [SUBPROCESS]    C122;$192;$229;1.484;
+[2026-10-16 04:40:45,468] [SUBPROCESS]    C123;$192;$249;2.481;
+[2026-10-16 04:40:45,469] [SUBPROCESS]    C124;$192;BSEL;0.956;
+[2026-10-16 04:40:45,471] [SUBPROCESS]    C125;$192;GND;84.155;
+[2026-10-16 04:40:45,472] [SUBPROCESS]    C126;$192;VCC;1.044;
+[2026-10-16 04:40:45,474] [SUBPROCESS]    C127;$192;VSUBS;60.804;
+[2026-10-16 04:40:45,476] [SUBPROCESS]    C128;$195;$204;0.047;
+[2026-10-16 04:40:45,478] [SUBPROCESS]    C129;$195;$206;0.268;
+[2026-10-16 04:40:45,480] [SUBPROCESS]    C130;$195;$209;0.383;
+[2026-10-16 04:40:45,482] [SUBPROCESS]    C131;$195;$217;0.349;
+[2026-10-16 04:40:45,484] [SUBPROCESS]    C132;$195;$229;1.47;
+[2026-10-16 04:40:45,485] [SUBPROCESS]    C133;$195;$251;2.46;
+[2026-10-16 04:40:45,487] [SUBPROCESS]    C134;$195;BSEL;0.578;
+[2026-10-16 04:40:45,488] [SUBPROCESS]    C135;$195;GND;54.741;
+[2026-10-16 04:40:45,490] [SUBPROCESS]    C136;$195;TXLON;0.062;
+[2026-10-16 04:40:45,492] [SUBPROCESS]    C137;$195;TXLOP;0.516;
+[2026-10-16 04:40:45,494] [SUBPROCESS]    C138;$195;VCC;0.748;
+[2026-10-16 04:40:45,496] [SUBPROCESS]    C139;$195;VSUBS;81.437;
+[2026-10-16 04:40:45,498] [SUBPROCESS]    C140;$20;$203;3.607;
+[2026-10-16 04:40:45,500] [SUBPROCESS]    C141;$20;$27;0.618;
+[2026-10-16 04:40:45,502] [SUBPROCESS]    C142;$20;$28;0.408;
+[2026-10-16 04:40:45,504] [SUBPROCESS]    C143;$20;$29;0.019;
+[2026-10-16 04:40:45,505] [SUBPROCESS]    C144;$20;$3;0.211;
+[2026-10-16 04:40:45,507] [SUBPROCESS]    C145;$20;$35;4.997;
+[2026-10-16 04:40:45,509] [SUBPROCESS]    C146;$20;$4;0.241;
+[2026-10-16 04:40:45,510] [SUBPROCESS]    C147;$20;$49;0.15;
+[2026-10-16 04:40:45,512] [SUBPROCESS]    C148;$20;$5;0.259;
+[2026-10-16 04:40:45,514] [SUBPROCESS]    C149;$20;$82;0.039;
+[2026-10-16 04:40:45,516] [SUBPROCESS]    C150;$20;BSEL;0.832;
+[2026-10-16 04:40:45,520] [SUBPROCESS]    C151;$20;GND;31.049;
+[2026-10-16 04:40:45,525] [SUBPROCESS]    C152;$20;VCC;3.52;
+[2026-10-16 04:40:45,526] [SUBPROCESS]    C153;$20;VSUBS;31.6;
+[2026-10-16 04:40:45,528] [SUBPROCESS]    C154;$203;$218;0.035;
+[2026-10-16 04:40:45,530] [SUBPROCESS]    C155;$203;$219;0.081;
+[2026-10-16 04:40:45,531] [SUBPROCESS]    C156;$203;$227;0.049;
+[2026-10-16 04:40:45,533] [SUBPROCESS]    C157;$203;$234;1.712;
+[2026-10-16 04:40:45,535] [SUBPROCESS]    C158;$203;$282;0.054;
+[2026-10-16 04:40:45,536] [SUBPROCESS]    C159;$203;$3;0.08;
+[2026-10-16 04:40:45,538] [SUBPROCESS]    C160;$203;BSEL;0.589;
+[2026-10-16 04:40:45,540] [SUBPROCESS]    C161;$203;GND;23.2;
+[2026-10-16 04:40:45,541] [SUBPROCESS]    C162;$203;PLLN;0.055;
+[2026-10-16 04:40:45,543] [SUBPROCESS]    C163;$203;PLLP;0.58;
+[2026-10-16 04:40:45,545] [SUBPROCESS]    C164;$203;VCC;0.752;
+[2026-10-16 04:40:45,547] [SUBPROCESS]    C165;$203;VSUBS;11.928;
+[2026-10-16 04:40:45,549] [SUBPROCESS]    C166;$204;$206;1.364;
+[2026-10-16 04:40:45,550] [SUBPROCESS]    C167;$204;$212;0.738;
+[2026-10-16 04:40:45,552] [SUBPROCESS]    C168;$204;$213;1.023;
+[2026-10-16 04:40:45,554] [SUBPROCESS]    C169;$204;$217;0.002;
+[2026-10-16 04:40:45,556] [SUBPROCESS]    C170;$204;BSEL;0.019;
+[2026-10-16 04:40:45,557] [SUBPROCESS]    C171;$204;GND;4.961;
+[2026-10-16 04:40:45,559] [SUBPROCESS]    C172;$204;VSUBS;3.593;
+[2026-10-16 04:40:45,560] [SUBPROCESS]    C173;$206;$212;0.694;
+[2026-10-16 04:40:45,562] [SUBPROCESS]    C174;$206;$213;0.005;
+[2026-10-16 04:40:45,564] [SUBPROCESS]    C175;$206;$217;1.034;
+[2026-10-16 04:40:45,565] [SUBPROCESS]    C176;$206;GND;2.526;
+[2026-10-16 04:40:45,567] [SUBPROCESS]    C177;$206;VSUBS;3.746;
+[2026-10-16 04:40:45,569] [SUBPROCESS]    C178;$209;$250;0.024;
+[2026-10-16 04:40:45,571] [SUBPROCESS]    C179;$209;$258;0.262;
+[2026-10-16 04:40:45,573] [SUBPROCESS]    C180;$209;$260;0.323;
+[2026-10-16 04:40:45,574] [SUBPROCESS]    C181;$209;GND;54.965;
+[2026-10-16 04:40:45,576] [SUBPROCESS]    C182;$209;VCC;0.214;
+[2026-10-16 04:40:45,578] [SUBPROCESS]    C183;$209;VSUBS;17.157;
+[2026-10-16 04:40:45,580] [SUBPROCESS]    C184;$212;$213;1.073;
+[2026-10-16 04:40:45,582] [SUBPROCESS]    C185;$212;$217;0.119;
+[2026-10-16 04:40:45,584] [SUBPROCESS]    C186;$212;$229;0.035;
+[2026-10-16 04:40:45,586] [SUBPROCESS]    C187;$212;BSEL;0.043;
+[2026-10-16 04:40:45,587] [SUBPROCESS]    C188;$212;GND;2.174;
+[2026-10-16 04:40:45,589] [SUBPROCESS]    C189;$212;VSUBS;5.728;
+[2026-10-16 04:40:45,590] [SUBPROCESS]    C190;$213;$217;1.656;
+[2026-10-16 04:40:45,592] [SUBPROCESS]    C191;$213;$229;0.246;
+[2026-10-16 04:40:45,594] [SUBPROCESS]    C192;$213;$241;4.032;
+[2026-10-16 04:40:45,596] [SUBPROCESS]    C193;$213;$243;0.007;
+[2026-10-16 04:40:45,598] [SUBPROCESS]    C194;$213;$283;0.044;
+[2026-10-16 04:40:45,600] [SUBPROCESS]    C195;$213;$284;1.955;
+[2026-10-16 04:40:45,602] [SUBPROCESS]    C196;$213;$288;0.589;
+[2026-10-16 04:40:45,603] [SUBPROCESS]    C197;$213;$292;0.825;
+[2026-10-16 04:40:45,605] [SUBPROCESS]    C198;$213;GND;15.509;
+[2026-10-16 04:40:45,607] [SUBPROCESS]    C199;$213;VCC;2.767;
+[2026-10-16 04:40:45,608] [SUBPROCESS]    C200;$213;VSUBS;15.624;
+[2026-10-16 04:40:45,610] [SUBPROCESS]    C201;$213;VTUNE;0.698;
+[2026-10-16 04:40:45,612] [SUBPROCESS]    C202;$217;$229;0.204;
+[2026-10-16 04:40:45,613] [SUBPROCESS]    C203;$217;$241;0.002;
+[2026-10-16 04:40:45,615] [SUBPROCESS]    C204;$217;$243;3.749;
+[2026-10-16 04:40:45,617] [SUBPROCESS]    C205;$217;$283;1.949;
+[2026-10-16 04:40:45,620] [SUBPROCESS]    C206;$217;$284;0.059;
+[2026-10-16 04:40:45,623] [SUBPROCESS]    C207;$217;$288;0.448;
+[2026-10-16 04:40:45,626] [SUBPROCESS]    C208;$217;$292;0.838;
+[2026-10-16 04:40:45,629] [SUBPROCESS]    C209;$217;GND;14.209;
+[2026-10-16 04:40:45,631] [SUBPROCESS]    C210;$217;VCC;3.088;
+[2026-10-16 04:40:45,633] [SUBPROCESS]    C211;$217;VSUBS;16.147;
+[2026-10-16 04:40:45,634] [SUBPROCESS]    C212;$217;VTUNE;0.006;
+[2026-10-16 04:40:45,636] [SUBPROCESS]    C213;$218;$234;1.442;
+[2026-10-16 04:40:45,638] [SUBPROCESS]    C214;$218;$3;2.045;
+[2026-10-16 04:40:45,639] [SUBPROCESS]    C215;$218;BSEL;0.77;
+[2026-10-16 04:40:45,641] [SUBPROCESS]    C216;$218;GND;3.429;
+[2026-10-16 04:40:45,643] [SUBPROCESS]    C217;$218;VSUBS;6.71;
+[2026-10-16 04:40:45,645] [SUBPROCESS]    C218;$219;$234;1.442;
+[2026-10-16 04:40:45,647] [SUBPROCESS]    C219;$219;$3;2.004;
+[2026-10-16 04:40:45,648] [SUBPROCESS]    C220;$219;BSEL;0.77;
+[2026-10-16 04:40:45,650] [SUBPROCESS]    C221;$219;GND;3.419;
+[2026-10-16 04:40:45,652] [SUBPROCESS]    C222;$219;VSUBS;6.761;
+[2026-10-16 04:40:45,654] [SUBPROCESS]    C223;$22;$3;1.404;
+[2026-10-16 04:40:45,655] [SUBPROCESS]    C224;$22;$30;1.349;
+[2026-10-16 04:40:45,657] [SUBPROCESS]    C225;$22;$6;0.003;
+[2026-10-16 04:40:45,659] [SUBPROCESS]    C226;$22;$7;0.011;
+[2026-10-16 04:40:45,661] [SUBPROCESS]    C227;$22;GND;2.363;
+[2026-10-16 04:40:45,663] [SUBPROCESS]    C228;$22;VSUBS;3.883;
+[2026-10-16 04:40:45,665] [SUBPROCESS]    C229;$227;$234;1.652;
+[2026-10-16 04:40:45,666] [SUBPROCESS]    C230;$227;$35;3.598;
+[2026-10-16 04:40:45,668] [SUBPROCESS]    C231;$227;GND;8.231;
+[2026-10-16 04:40:45,670] [SUBPROCESS]    C232;$227;PLLP;0.042;
+[2026-10-16 04:40:45,671] [SUBPROCESS]    C233;$227;VSUBS;10.276;
+[2026-10-16 04:40:45,673] [SUBPROCESS]    C234;$229;$241;0.012;
+[2026-10-16 04:40:45,675] [SUBPROCESS]    C235;$229;$243;0.012;
+[2026-10-16 04:40:45,677] [SUBPROCESS]    C236;$229;GND;64.812;
+[2026-10-16 04:40:45,678] [SUBPROCESS]    C237;$229;VCC;3.079;
+[2026-10-16 04:40:45,680] [SUBPROCESS]    C238;$229;VSUBS;25.125;
+[2026-10-16 04:40:45,682] [SUBPROCESS]    C239;$23;$3;0.211;
+[2026-10-16 04:40:45,684] [SUBPROCESS]    C240;$23;$30;0.618;
+[2026-10-16 04:40:45,686] [SUBPROCESS]    C241;$23;$31;0.408;
+[2026-10-16 04:40:45,687] [SUBPROCESS]    C242;$23;$32;0.019;
+[2026-10-16 04:40:45,689] [SUBPROCESS]    C243;$23;$4;2.472;
+[2026-10-16 04:40:45,691] [SUBPROCESS]    C244;$23;$41;2.773;
+[2026-10-16 04:40:45,692] [SUBPROCESS]    C245;$23;$5;1.863;
+[2026-10-16 04:40:45,694] [SUBPROCESS]    C246;$23;$53;0.15;
+[2026-10-16 04:40:45,696] [SUBPROCESS]    C247;$23;$6;0.241;
+[2026-10-16 04:40:45,698] [SUBPROCESS]    C248;$23;$7;0.259;
+[2026-10-16 04:40:45,699] [SUBPROCESS]    C249;$23;$83;0.039;
+[2026-10-16 04:40:45,701] [SUBPROCESS]    C250;$23;GND;25.366;
+[2026-10-16 04:40:45,703] [SUBPROCESS]    C251;$23;VCC;1.448;
+[2026-10-16 04:40:45,704] [SUBPROCESS]    C252;$23;VSUBS;22.985;
+[2026-10-16 04:40:45,706] [SUBPROCESS]    C253;$234;$3;0.167;
+[2026-10-16 04:40:45,708] [SUBPROCESS]    C254;$234;BSEL;0.016;
+[2026-10-16 04:40:45,710] [SUBPROCESS]    C255;$234;GND;8.18;
+[2026-10-16 04:40:45,711] [SUBPROCESS]    C256;$234;PLLN;0.609;
+[2026-10-16 04:40:45,713] [SUBPROCESS]    C257;$234;PLLP;0.597;
+[2026-10-16 04:40:45,715] [SUBPROCESS]    C258;$234;VSUBS;16.434;
+[2026-10-16 04:40:45,717] [SUBPROCESS]    C259;$241;$243;11.186;
+[2026-10-16 04:40:45,718] [SUBPROCESS]    C260;$241;GND;2.139;
+[2026-10-16 04:40:45,720] [SUBPROCESS]    C261;$241;VCC;1.129;
+[2026-10-16 04:40:45,724] [SUBPROCESS]    C262;$241;VSUBS;14.897;
+[2026-10-16 04:40:45,728] [SUBPROCESS]    C263;$241;VTUNE;0.27;
+[2026-10-16 04:40:45,733] [SUBPROCESS]    C264;$243;GND;3.025;
+[2026-10-16 04:40:45,735] [SUBPROCESS]    C265;$243;VCC;0.971;
+[2026-10-16 04:40:45,737] [SUBPROCESS]    C266;$243;VSUBS;15.065;
+[2026-10-16 04:40:45,739] [SUBPROCESS]    C267;$243;VTUNE;0.106;
+[2026-10-16 04:40:45,741] [SUBPROCESS]    C268;$249;$250;0.308;
+[2026-10-16 04:40:45,742] [SUBPROCESS]    C269;$249;$258;0.48;
+[2026-10-16 04:40:45,744] [SUBPROCESS]    C270;$249;GND;8.034;
+[2026-10-16 04:40:45,746] [SUBPROCESS]    C271;$249;VCC;0.076;
+[2026-10-16 04:40:45,748] [SUBPROCESS]    C272;$249;VSUBS;9.424;
+[2026-10-16 04:40:45,749] [SUBPROCESS]    C273;$250;$251;0.321;
+[2026-10-16 04:40:45,751] [SUBPROCESS]    C274;$250;$258;0.295;
+[2026-10-16 04:40:45,753] [SUBPROCESS]    C275;$250;$260;0.295;
+[2026-10-16 04:40:45,755] [SUBPROCESS]    C276;$250;GND;2.921;
+[2026-10-16 04:40:45,757] [SUBPROCESS]    C277;$250;VCC;0.081;
+[2026-10-16 04:40:45,759] [SUBPROCESS]    C278;$250;VSUBS;6.084;
+[2026-10-16 04:40:45,761] [SUBPROCESS]    C279;$251;$260;0.697;
+[2026-10-16 04:40:45,763] [SUBPROCESS]    C280;$251;GND;2.602;
+[2026-10-16 04:40:45,764] [SUBPROCESS]    C281;$251;VCC;0.136;
+[2026-10-16 04:40:45,766] [SUBPROCESS]    C282;$251;VSUBS;9.503;
+[2026-10-16 04:40:45,768] [SUBPROCESS]    C283;$258;GND;19.728;
+[2026-10-16 04:40:45,770] [SUBPROCESS]    C284;$258;TXLOP;2.541;
+[2026-10-16 04:40:45,772] [SUBPROCESS]    C285;$258;VCC;0.511;
+[2026-10-16 04:40:45,774] [SUBPROCESS]    C286;$258;VSUBS;15.102;
+[2026-10-16 04:40:45,776] [SUBPROCESS]    C287;$260;GND;18.569;
+[2026-10-16 04:40:45,777] [SUBPROCESS]    C288;$260;TXLON;2.541;
+[2026-10-16 04:40:45,779] [SUBPROCESS]    C289;$260;VCC;1.416;
+[2026-10-16 04:40:45,781] [SUBPROCESS]    C290;$260;VSUBS;15.277;
+[2026-10-16 04:40:45,782] [SUBPROCESS]    C291;$27;$28;0.039;
+[2026-10-16 04:40:45,785] [SUBPROCESS]    C292;$27;$29;0.032;
+[2026-10-16 04:40:45,786] [SUBPROCESS]    C293;$27;$3;0.05;
+[2026-10-16 04:40:45,788] [SUBPROCESS]    C294;$27;$35;0.41;
+[2026-10-16 04:40:45,790] [SUBPROCESS]    C295;$27;$4;0.192;
+[2026-10-16 04:40:45,791] [SUBPROCESS]    C296;$27;$49;0.158;
+[2026-10-16 04:40:45,793] [SUBPROCESS]    C297;$27;$5;0.191;
+[2026-10-16 04:40:45,795] [SUBPROCESS]    C298;$27;$51;0.164;
+[2026-10-16 04:40:45,797] [SUBPROCESS]    C299;$27;GND;5.564;
+[2026-10-16 04:40:45,799] [SUBPROCESS]    C300;$27;VSUBS;10.028;
+[2026-10-16 04:40:45,801] [SUBPROCESS]    C301;$28;$29;1.547;
+[2026-10-16 04:40:45,803] [SUBPROCESS]    C302;$28;$3;0.211;
+[2026-10-16 04:40:45,804] [SUBPROCESS]    C303;$28;$35;0.012;
+[2026-10-16 04:40:45,806] [SUBPROCESS]    C304;$28;$4;0.067;
+[2026-10-16 04:40:45,808] [SUBPROCESS]    C305;$28;$49;0.867;
+[2026-10-16 04:40:45,810] [SUBPROCESS]    C306;$28;$51;1.003;
+[2026-10-16 04:40:45,811] [SUBPROCESS]    C307;$28;$82;0.41;
+[2026-10-16 04:40:45,813] [SUBPROCESS]    C308;$28;GND;12.8;
+[2026-10-16 04:40:45,814] [SUBPROCESS]    C309;$28;VCC;0.308;
+[2026-10-16 04:40:45,816] [SUBPROCESS]    C310;$28;VSUBS;14.05;
+[2026-10-16 04:40:45,818] [SUBPROCESS]    C311;$282;GND;48.015;
+[2026-10-16 04:40:45,820] [SUBPROCESS]    C312;$282;VCC;0.194;
+[2026-10-16 04:40:45,824] [SUBPROCESS]    C313;$282;VSUBS;15.952;
+[2026-10-16 04:40:45,827] [SUBPROCESS]    C314;$283;$288;0.523;
+[2026-10-16 04:40:45,830] [SUBPROCESS]    C315;$283;$292;0.588;
+[2026-10-16 04:40:45,832] [SUBPROCESS]    C316;$283;GND;2.712;
+[2026-10-16 04:40:45,834] [SUBPROCESS]    C317;$283;VSUBS;10.435;
+[2026-10-16 04:40:45,835] [SUBPROCESS]    C318;$283;VTUNE;0.241;
+[2026-10-16 04:40:45,837] [SUBPROCESS]    C319;$284;$288;0.533;
+[2026-10-16 04:40:45,839] [SUBPROCESS]    C320;$284;$292;0.588;
+[2026-10-16 04:40:45,841] [SUBPROCESS]    C321;$284;GND;2.827;
+[2026-10-16 04:40:45,843] [SUBPROCESS]    C322;$284;VSUBS;11.067;
+[2026-10-16 04:40:45,844] [SUBPROCESS]    C323;$288;$292;0.262;
+[2026-10-16 04:40:45,846] [SUBPROCESS]    C324;$288;GND;60.144;
+[2026-10-16 04:40:45,848] [SUBPROCESS]    C325;$288;VCC;0.135;
+[2026-10-16 04:40:45,850] [SUBPROCESS]    C326;$288;VSUBS;22.845;
+[2026-10-16 04:40:45,851] [SUBPROCESS]    C327;$288;VTUNE;0.24;
+[2026-10-16 04:40:45,853] [SUBPROCESS]    C328;$29;$3;0.22;
+[2026-10-16 04:40:45,855] [SUBPROCESS]    C329;$29;$35;0.01;
+[2026-10-16 04:40:45,857] [SUBPROCESS]    C330;$29;$4;0.001;
+[2026-10-16 04:40:45,859] [SUBPROCESS]    C331;$29;$49;0.874;
+[2026-10-16 04:40:45,860] [SUBPROCESS]    C332;$29;$51;1.197;
+[2026-10-16 04:40:45,862] [SUBPROCESS]    C333;$29;$82;0.618;
+[2026-10-16 04:40:45,864] [SUBPROCESS]    C334;$29;GND;10.308;
+[2026-10-16 04:40:45,866] [SUBPROCESS]    C335;$29;VCC;0.468;
+[2026-10-16 04:40:45,867] [SUBPROCESS]    C336;$29;VSUBS;17.058;
+[2026-10-16 04:40:45,869] [SUBPROCESS]    C337;$292;GND;3.633;
+[2026-10-16 04:40:45,871] [SUBPROCESS]    C338;$292;VSUBS;6.968;
+[2026-10-16 04:40:45,872] [SUBPROCESS]    C339;$3;$30;0.075;
+[2026-10-16 04:40:45,874] [SUBPROCESS]    C340;$3;$31;0.211;
+[2026-10-16 04:40:45,876] [SUBPROCESS]    C341;$3;$32;0.22;
+[2026-10-16 04:40:45,878] [SUBPROCESS]    C342;$3;$35;0.22;
+[2026-10-16 04:40:45,880] [SUBPROCESS]    C343;$3;$4;1.235;
+[2026-10-16 04:40:45,881] [SUBPROCESS]    C344;$3;$41;0.22;
+[2026-10-16 04:40:45,883] [SUBPROCESS]    C345;$3;$5;0.299;
+[2026-10-16 04:40:45,885] [SUBPROCESS]    C346;$3;$6;0.773;
+[2026-10-16 04:40:45,888] [SUBPROCESS]    C347;$3;$7;0.303;
+[2026-10-16 04:40:45,890] [SUBPROCESS]    C348;$3;$73;0.877;
+[2026-10-16 04:40:45,891] [SUBPROCESS]    C349;$3;$77;1.404;
+[2026-10-16 04:40:45,893] [SUBPROCESS]    C350;$3;$82;0.05;
+[2026-10-16 04:40:45,895] [SUBPROCESS]    C351;$3;$83;0.075;
+[2026-10-16 04:40:45,897] [SUBPROCESS]    C352;$3;BSEL;1.019;
+[2026-10-16 04:40:45,899] [SUBPROCESS]    C353;$3;GND;65.432;
+[2026-10-16 04:40:45,901] [SUBPROCESS]    C354;$3;VCC;0.268;
+[2026-10-16 04:40:45,902] [SUBPROCESS]    C355;$3;VSUBS;131.02;
+[2026-10-16 04:40:45,904] [SUBPROCESS]    C356;$30;$31;0.039;
+[2026-10-16 04:40:45,906] [SUBPROCESS]    C357;$30;$32;0.032;
+[2026-10-16 04:40:45,907] [SUBPROCESS]    C358;$30;$41;0.41;
+[2026-10-16 04:40:45,909] [SUBPROCESS]    C359;$30;$53;0.158;
+[2026-10-16 04:40:45,911] [SUBPROCESS]    C360;$30;$55;0.164;
+[2026-10-16 04:40:45,912] [SUBPROCESS]    C361;$30;$6;0.192;
+[2026-10-16 04:40:45,914] [SUBPROCESS]    C362;$30;$7;0.191;
+[2026-10-16 04:40:45,916] [SUBPROCESS]    C363;$30;GND;6.516;
+[2026-10-16 04:40:45,917] [SUBPROCESS]    C364;$30;VSUBS;11.532;
+[2026-10-16 04:40:45,919] [SUBPROCESS]    C365;$31;$32;1.58;
+[2026-10-16 04:40:45,921] [SUBPROCESS]    C366;$31;$41;0.012;
+[2026-10-16 04:40:45,922] [SUBPROCESS]    C367;$31;$53;0.867;
+[2026-10-16 04:40:45,924] [SUBPROCESS]    C368;$31;$55;1.003;
+[2026-10-16 04:40:45,926] [SUBPROCESS]    C369;$31;$6;0.067;
+[2026-10-16 04:40:45,928] [SUBPROCESS]    C370;$31;$83;0.41;
+[2026-10-16 04:40:45,930] [SUBPROCESS]    C371;$31;GND;13.435;
+[2026-10-16 04:40:45,931] [SUBPROCESS]    C372;$31;VCC;0.325;
+[2026-10-16 04:40:45,933] [SUBPROCESS]    C373;$31;VSUBS;14.39;
+[2026-10-16 04:40:45,935] [SUBPROCESS]    C374;$32;$41;0.01;
+[2026-10-16 04:40:45,936] [SUBPROCESS]    C375;$32;$53;0.874;
+[2026-10-16 04:40:45,938] [SUBPROCESS]    C376;$32;$55;1.197;
+[2026-10-16 04:40:45,940] [SUBPROCESS]    C377;$32;$6;0.001;
+[2026-10-16 04:40:45,941] [SUBPROCESS]    C378;$32;$83;0.618;
+[2026-10-16 04:40:45,943] [SUBPROCESS]    C379;$32;GND;10.125;
+[2026-10-16 04:40:45,945] [SUBPROCESS]    C380;$32;VCC;0.479;
+[2026-10-16 04:40:45,946] [SUBPROCESS]    C381;$32;VSUBS;17.385;
+[2026-10-16 04:40:45,948] [SUBPROCESS]    C382;$35;$4;0.307;
+[2026-10-16 04:40:45,949] [SUBPROCESS]    C383;$35;$49;0.166;
+[2026-10-16 04:40:45,951] [SUBPROCESS]    C384;$35;$5;0.396;
+[2026-10-16 04:40:45,953] [SUBPROCESS]    C385;$35;$82;0.032;
+[2026-10-16 04:40:45,954] [SUBPROCESS]    C386;$35;BSEL;0.039;
+[2026-10-16 04:40:45,956] [SUBPROCESS]    C387;$35;GND;60.715;
+[2026-10-16 04:40:45,957] [SUBPROCESS]    C388;$35;VCC;1.924;
+[2026-10-16 04:40:45,959] [SUBPROCESS]    C389;$35;VSUBS;31.396;
+[2026-10-16 04:40:45,961] [SUBPROCESS]    C390;$4;$41;1.707;
+[2026-10-16 04:40:45,963] [SUBPROCESS]    C391;$4;$5;5.482;
+[2026-10-16 04:40:45,964] [SUBPROCESS]    C392;$4;$51;0.008;
+[2026-10-16 04:40:45,966] [SUBPROCESS]    C393;$4;$6;0.154;
+[2026-10-16 04:40:45,967] [SUBPROCESS]    C394;$4;$82;0.192;
+[2026-10-16 04:40:45,969] [SUBPROCESS]    C395;$4;GND;47.979;
+[2026-10-16 04:40:45,971] [SUBPROCESS]    C396;$4;VCC;1.095;
+[2026-10-16 04:40:45,972] [SUBPROCESS]    C397;$4;VSUBS;30.984;
+[2026-10-16 04:40:45,974] [SUBPROCESS]    C398;$41;$53;0.166;
+[2026-10-16 04:40:45,975] [SUBPROCESS]    C399;$41;$6;0.307;
+[2026-10-16 04:40:45,977] [SUBPROCESS]    C400;$41;$7;0.396;
+[2026-10-16 04:40:45,979] [SUBPROCESS]    C401;$41;$83;0.032;
+[2026-10-16 04:40:45,980] [SUBPROCESS]    C402;$41;GND;22.45;
+[2026-10-16 04:40:45,982] [SUBPROCESS]    C403;$41;VCC;0.246;
+[2026-10-16 04:40:45,984] [SUBPROCESS]    C404;$41;VSUBS;23.99;
+[2026-10-16 04:40:45,985] [SUBPROCESS]    C405;$49;$5;0.008;
+[2026-10-16 04:40:45,987] [SUBPROCESS]    C406;$49;GND;1.973;
+[2026-10-16 04:40:45,988] [SUBPROCESS]    C407;$49;VSUBS;3.609;
+[2026-10-16 04:40:45,990] [SUBPROCESS]    C408;$5;$82;0.192;
+[2026-10-16 04:40:45,992] [SUBPROCESS]    C409;$5;GND;26.602;
+[2026-10-16 04:40:45,993] [SUBPROCESS]    C410;$5;VCC;0.79;
+[2026-10-16 04:40:45,995] [SUBPROCESS]    C411;$5;VSUBS;33.518;
+[2026-10-16 04:40:45,996] [SUBPROCESS]    C412;$51;GND;1.982;
+[2026-10-16 04:40:45,998] [SUBPROCESS]    C413;$51;VSUBS;3.534;
+[2026-10-16 04:40:45,999] [SUBPROCESS]    C414;$53;$7;0.008;
+[2026-10-16 04:40:46,000] [SUBPROCESS]    C415;$53;GND;2.197;
+[2026-10-16 04:40:46,002] [SUBPROCESS]    C416;$53;VSUBS;3.609;
+[2026-10-16 04:40:46,003] [SUBPROCESS]    C417;$55;$6;0.008;
+[2026-10-16 04:40:46,005] [SUBPROCESS]    C418;$55;GND;2.244;
+[2026-10-16 04:40:46,006] [SUBPROCESS]    C419;$55;VSUBS;3.534;
+[2026-10-16 04:40:46,008] [SUBPROCESS]    C420;$6;$7;2.177;
+[2026-10-16 04:40:46,010] [SUBPROCESS]    C421;$6;$83;0.191;
+[2026-10-16 04:40:46,011] [SUBPROCESS]    C422;$6;GND;44.26;
+[2026-10-16 04:40:46,013] [SUBPROCESS]    C423;$6;VCC;0.056;
+[2026-10-16 04:40:46,015] [SUBPROCESS]    C424;$6;VSUBS;33.745;
+[2026-10-16 04:40:46,016] [SUBPROCESS]    C425;$7;$83;0.192;
+[2026-10-16 04:40:46,018] [SUBPROCESS]    C426;$7;GND;25.879;
+[2026-10-16 04:40:46,019] [SUBPROCESS]    C427;$7;VSUBS;34.044;
+[2026-10-16 04:40:46,021] [SUBPROCESS]    C428;$73;$82;0.919;
+[2026-10-16 04:40:46,022] [SUBPROCESS]    C429;$73;GND;2.18;
+[2026-10-16 04:40:46,024] [SUBPROCESS]    C430;$73;VSUBS;4.099;
+[2026-10-16 04:40:46,025] [SUBPROCESS]    C431;$77;$83;1.349;
+[2026-10-16 04:40:46,027] [SUBPROCESS]    C432;$77;GND;2.434;
+[2026-10-16 04:40:46,028] [SUBPROCESS]    C433;$77;VSUBS;3.888;
+[2026-10-16 04:40:46,030] [SUBPROCESS]    C434;$82;GND;5.078;
+[2026-10-16 04:40:46,031] [SUBPROCESS]    C435;$82;VCC;0.033;
+[2026-10-16 04:40:46,033] [SUBPROCESS]    C436;$82;VSUBS;10.028;
+[2026-10-16 04:40:46,035] [SUBPROCESS]    C437;$83;GND;5.644;
+[2026-10-16 04:40:46,036] [SUBPROCESS]    C438;$83;VCC;0.015;
+[2026-10-16 04:40:46,038] [SUBPROCESS]    C439;$83;VSUBS;11.532;
+[2026-10-16 04:40:46,040] [SUBPROCESS]    C440;BSEL;GND;39.268;
+[2026-10-16 04:40:46,042] [SUBPROCESS]    C441;BSEL;VCC;0.144;
+[2026-10-16 04:40:46,044] [SUBPROCESS]    C442;BSEL;VSUBS;29.254;
+[2026-10-16 04:40:46,046] [SUBPROCESS]    C443;GND;PLLN;5.701;
+[2026-10-16 04:40:46,048] [SUBPROCESS]    C444;GND;PLLP;8.929;
+[2026-10-16 04:40:46,049] [SUBPROCESS]    C445;GND;RXLON;12.026;
+[2026-10-16 04:40:46,051] [SUBPROCESS]    C446;GND;RXLOP;13.094;
+[2026-10-16 04:40:46,053] [SUBPROCESS]    C447;GND;TXLON;7.107;
+[2026-10-16 04:40:46,054] [SUBPROCESS]    C448;GND;TXLOP;12.795;
+[2026-10-16 04:40:46,056] [SUBPROCESS]    C449;GND;VCC;211.057;
+[2026-10-16 04:40:46,058] [SUBPROCESS]    C450;GND;VSUBS;5665.445;
+[2026-10-16 04:40:46,059] [SUBPROCESS]    C451;GND;VTUNE;27.397;
+[2026-10-16 04:40:46,061] [SUBPROCESS]    C452;PLLN;PLLP;1.298;
+[2026-10-16 04:40:46,062] [SUBPROCESS]    C453;PLLN;VCC;0.661;
+[2026-10-16 04:40:46,064] [SUBPROCESS]    C454;PLLN;VSUBS;6.248;
+[2026-10-16 04:40:46,066] [SUBPROCESS]    C455;PLLP;VCC;1.303;
+[2026-10-16 04:40:46,067] [SUBPROCESS]    C456;PLLP;VSUBS;7.159;
+[2026-10-16 04:40:46,069] [SUBPROCESS]    C457;RXLON;VSUBS;8.739;
+[2026-10-16 04:40:46,070] [SUBPROCESS]    C458;RXLOP;VSUBS;8.637;
+[2026-10-16 04:40:46,072] [SUBPROCESS]    C459;TXLON;TXLOP;1.22;
+[2026-10-16 04:40:46,074] [SUBPROCESS]    C460;TXLON;VSUBS;7.249;
+[2026-10-16 04:40:46,076] [SUBPROCESS]    C461;TXLOP;VCC;0.09;
+[2026-10-16 04:40:46,077] [SUBPROCESS]    C462;TXLOP;VSUBS;8.906;
+[2026-10-16 04:40:46,079] [SUBPROCESS]    C463;VCC;VSUBS;133.354;
+[2026-10-16 04:40:46,081] [SUBPROCESS]    C464;VCC;VTUNE;0.248;
+[2026-10-16 04:40:46,083] [SUBPROCESS]    C465;VSUBS;VTUNE;42.581;
+[2026-10-16 04:40:46,085] [SUBPROCESS]    /foss/designs/radar-chip/lo_core/layout/pex_out/lo_core__lo_core/lo_core_k25d_pex_netlist.csv

@@ -67,6 +67,9 @@ class Builder:
         x, y = G(x), G(y)
         p = dict(b_layer=b, t_layer=t, vn_columns=n, vn_rows=n, vt1_columns=nt, vt1_rows=nt, vt2_columns=nt, vt2_rows=nt)
         self.top.insert(pya.DCellInstArray(ihp.pcell(self.ly, "via_stack", **p), pya.DCplxTrans(1, 0, False, x, y)))
+        if n == 1:                                       # single-cut stacks: landings alone are below the min metal area (0.144 um2)
+            for name in ("Metal2", "Metal3", "Metal4", "Metal5"):
+                if ORDER.index(b) <= ORDER.index(name) <= ORDER.index(t): self.rect(name, x - 0.2, y - 0.2, x + 0.2, y + 0.2)
         self.VIAS.append((x, y, b, t))
     def gnd_via(self, x, y, layer, patch=None):
         x, y = G(x), G(y)                                            # snap first: the patch must be on-grid too
@@ -74,6 +77,55 @@ class Builder:
         else: self.via(x, y, "Metal4", layer)
         p = patch or (x - 3, y - 3, x + 3, y + 3)
         self.GPATCH.append(tuple(G(v) for v in p))
+    def ring_ground(self, key, cutout_keys=(), coil_keys=()):
+        """Ground a MIM's substrate ring (TIE). If the MIM sits in a plane cut-out, strap out in the shortest of the four
+        directions whose end lands on real plane: outside every cut-out, coil area and signal-via hole."""
+        t = self.pin(key, "TIE"); tc = t.center()
+        if key not in cutout_keys: self.gnd_via(tc.x, tc.y, "Metal1"); return
+        cuts = [self.DEV[k].dbbox().enlarged(3.0, 3.0) for k in cutout_keys] + [self.DEV[k].dbbox() for k in coil_keys]
+        cuts += [pya.DBox(x - 4, y - 4, x + 4, y + 4) for (x, y, b, tt) in self.VIAS if "Metal4" not in (b, tt) and ORDER.index(b) < 3 < ORDER.index(tt)]
+        own = self.DEV[key].dbbox().enlarged(3.0, 3.0); best = None
+        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            d = {(1, 0): own.right - tc.x, (-1, 0): tc.x - own.left, (0, 1): own.top - tc.y, (0, -1): tc.y - own.bottom}[(dx, dy)] + 6.0
+            end = pya.DBox(tc.x + dx * d - 3, tc.y + dy * d - 3, tc.x + dx * d + 3, tc.y + dy * d + 3)
+            if any(c.overlaps(end) for c in cuts): continue
+            if best is None or d < best[0]: best = (d, dx, dy)
+        d, dx, dy = best
+        if dx: patch = (min(tc.x, tc.x + dx * (d + 3)), tc.y - 3, max(tc.x, tc.x + dx * (d + 3)), tc.y + 3)
+        else: patch = (tc.x - 3, min(tc.y, tc.y + dy * (d + 3)), tc.x + 3, max(tc.y, tc.y + dy * (d + 3)))
+        self.gnd_via(tc.x, tc.y, "Metal1", patch=patch)
+    def min_area(self, rules=(("Metal2", 0.144), ("Metal3", 0.144), ("Metal4", 0.144), ("Metal5", 0.144))):
+        """IHP M2.d .. M5.d: minimum metal area (whole merged polygons)"""
+        bad = 0
+        for name, amin in rules:
+            r = pya.Region(self.top.begin_shapes_rec(self.LY[name])); r.merge()
+            small = [p for p in r.each() if p.area() * self.ly.dbu ** 2 < amin]; bad += len(small)
+            for p in small[:3]: print(f"  {name} area < {amin} um2 at {p.bbox().to_dtype(self.ly.dbu)}")
+        print(f"min-area check: {'CLEAN' if not bad else f'{bad} findings'}"); return bad
+    def coil_continuity(self, keys):
+        """every coil's LA/LB(/LC) must be ONE piece of metal (its own shapes + any top-level cuts on it). Catches open PCells."""
+        bad = 0
+        for k in keys:
+            inst = self.DEV[k]; bb = inst.dbbox()
+            ly2 = pya.Layout(); ly2.dbu = self.ly.dbu; t2 = ly2.create_cell("c")
+            for (g, d) in ((126, 0), (133, 0), (134, 0)):
+                r = pya.Region(self.top.begin_shapes_rec(self.ly.find_layer(g, d))) & pya.Region(bb.to_itype(self.ly.dbu))
+                t2.shapes(ly2.layer(g, d)).insert(r)
+            l2n = pya.LayoutToNetlist(pya.RecursiveShapeIterator(ly2, t2, []))
+            L = {n: l2n.make_layer(ly2.layer(g, 0), n) for n, g in (("TM1", 126), ("TV2", 133), ("TM2", 134))}
+            for n in L: l2n.connect(L[n])
+            l2n.connect(L["TM1"], L["TV2"]); l2n.connect(L["TV2"], L["TM2"]); l2n.extract_netlist()
+            ids = []
+            for lab in ("LA", "LB", "LC"):
+                try: p = self.pin(k, lab)
+                except Exception: continue
+                c = p.center(); net = None
+                for n in ("TM1", "TM2"):
+                    net = net or l2n.probe_net(L[n], pya.DPoint(c.x, c.y + 0.5))
+                ids.append(net.cluster_id if net else None)
+            ok = len(set(ids)) == 1 and None not in ids
+            if not ok: bad += 1; print(f"  coil {k}: terminals NOT connected ({ids}) - open coil!")
+        print(f"coil continuity: {'CLEAN' if not bad else f'{bad} open coil(s)'}"); return bad
     def text(self, name, x, y, gds=(134, 25)):
         self.top.shapes(self.ly.layer(*gds)).insert(pya.DText(name, G(x), G(y)))
     # ---------------- slotted Metal4 ground plane ----------------
@@ -84,32 +136,42 @@ class Builder:
         for k in hole_keys: holes.insert(self.DEV[k].bbox())
         for k in signal_mim_keys: holes.insert(self.DEV[k].bbox().enlarged(3000))
         for (x1, y1, x2, y2) in extra_holes: holes.insert(pya.Box(um(x1), um(y1), um(x2), um(y2)))
+        sigholes = pya.Region()
         for (x, y, b, t) in self.VIAS:                               # signal via stacks crossing Metal4 get a hole
             if "Metal4" in (b, t): continue
-            if ORDER.index(b) < 3 < ORDER.index(t): holes.insert(pya.Box(um(x - 4), um(y - 4), um(x + 4), um(y + 4)))
+            if ORDER.index(b) < 3 < ORDER.index(t): sigholes.insert(pya.Box(um(x - 4), um(y - 4), um(x + 4), um(y + 4)))
+        holes += sigholes
         slits = pya.Region()
         for xs in range(um(box[0]) + 10000, um(box[2]), 20000):
             for ys in range(um(box[1]) + 10000, um(box[3]), 20000): slits.insert(pya.Box(xs, ys, xs + 3000, ys + 10000))
         slits = slits.inside((plane - holes).sized(-8000))
         patches = pya.Region()
         for (x1, y1, x2, y2) in self.GPATCH: patches.insert(pya.Box(um(x1), um(y1), um(x2), um(y2)))
-        gnd = ((plane - holes - slits) + patches).merged()
+        gnd = ((plane - holes - slits) + (patches - sigholes)).merged()   # a ground patch must never re-fill a signal via's hole
         exempt = pya.Region()
         for k, inst in self.DEV.items():
             if k.startswith(exempt_prefixes): exempt.insert(inst.bbox())
-        for _ in range(10):
+        for _ in range(20):
             wide = (gnd.sized(-15000).sized(15000) & gnd) - exempt
             if wide.is_empty(): break
-            for p in wide.each():
-                c = p.bbox().center(); sx, sy = (c.x // 5) * 5, (c.y // 5) * 5
+            # slit centres must lie in solid metal: points >= 15 um from every edge (the shrunk region), never a bbox centre
+            core = gnd.sized(-15000) & wide.sized(1000)
+            for q in core.each():
+                c = q.bbox().center()
+                if not q.inside(c): c = next(q.each_point_hull())
+                sx, sy = (c.x // 5) * 5, (c.y // 5) * 5
                 gnd -= pya.Region(pya.Box(sx - 1500, sy - 5000, sx + 1500, sy + 5000))
             gnd.merge()
         gnd = (gnd.sized(-150).sized(150) & gnd).merged()             # remove slivers thinner than the 0.2 um min width
         self.top.shapes(self.LY["Metal4"]).insert(gnd.decompose_trapezoids_to_region(1))
     # ---------------- checks ----------------
     def connectivity(self, probes, groups):
-        l2n = pya.LayoutToNetlist(pya.RecursiveShapeIterator(self.ly, self.top, []))
-        R = {n: l2n.make_layer(self.ly.layer(g, 0), n) for n, g in STACK}
+        # coils are devices: their metal (LA-LC-LB is one continuous conductor) is excluded, so only the wiring is checked
+        ly2 = pya.Layout(); ly2.dbu = self.ly.dbu; t2 = ly2.create_cell(self.top.name); t2.copy_tree(self.top)
+        for inst in list(t2.each_inst()):
+            if ly2.cell(inst.cell_index).name.startswith("inductor"): inst.delete()
+        l2n = pya.LayoutToNetlist(pya.RecursiveShapeIterator(ly2, t2, []))
+        R = {n: l2n.make_layer(ly2.layer(g, 0), n) for n, g in STACK}
         for n in R: l2n.connect(R[n])
         for i in range(0, len(STACK) - 2, 2):
             l2n.connect(R[STACK[i][0]], R[STACK[i+1][0]]); l2n.connect(R[STACK[i+1][0]], R[STACK[i+2][0]])

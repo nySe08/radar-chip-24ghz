@@ -1,0 +1,144 @@
+* Extracted by KLayout with SG13G2 LVS runset on : 12/10/2026 21:06
+
+.SUBCKT lo_core G1 G2 LA LA$1 LA$2 LB LB$1 LB$2 LC|VCC PLLN PLLP RXLON RXLOP
++ TXLON TXLOP VTUNE|W
+Q$1 \$18 \$131 \$10 \$1 npn13G2 we=70n le=900n Nx=2 m=1
+Q$2 \$19 \$131 \$11 \$1 npn13G2 we=70n le=900n Nx=3 m=1
+Q$3 \$131 \$131 \$12 \$1 npn13G2 we=70n le=900n Nx=1 m=1
+Q$4 \$44 \$7 \$18 \$1 npn13G2 we=70n le=900n Nx=1 m=1
+Q$5 \$45 \$441 \$44 \$1 npn13G2 we=70n le=900n Nx=1 m=1
+Q$6 \$45 \$46 \$74 \$1 npn13G2 we=70n le=900n Nx=1 m=1
+Q$7 \$46 \$45 \$74 \$1 npn13G2 we=70n le=900n Nx=1 m=1
+Q$8 \$74 \$3 \$18 \$1 npn13G2 we=70n le=900n Nx=1 m=1
+Q$9 \$47 \$8 \$19 \$1 npn13G2 we=70n le=900n Nx=1 m=1
+Q$10 \$49 \$42 \$47 \$1 npn13G2 we=70n le=900n Nx=1 m=1
+Q$11 \$48 \$49 \$75 \$1 npn13G2 we=70n le=900n Nx=1 m=1
+Q$12 \$49 \$48 \$75 \$1 npn13G2 we=70n le=900n Nx=1 m=1
+Q$13 \$46 \$41 \$44 \$1 npn13G2 we=70n le=900n Nx=1 m=1
+Q$14 \$48 \$257 \$47 \$1 npn13G2 we=70n le=900n Nx=1 m=1
+Q$15 \$75 \$4 \$19 \$1 npn13G2 we=70n le=900n Nx=1 m=1
+Q$16 \$156 \$3 \$135 \$1 npn13G2 we=70n le=900n Nx=1 m=1
+Q$17 \$441 \$46 \$156 \$1 npn13G2 we=70n le=900n Nx=1 m=1
+Q$18 \$41 \$45 \$156 \$1 npn13G2 we=70n le=900n Nx=1 m=1
+Q$19 \$135 \$131 \$134 \$1 npn13G2 we=70n le=900n Nx=2 m=1
+Q$20 \$441 \$41 \$183 \$1 npn13G2 we=70n le=900n Nx=1 m=1
+Q$21 \$183 \$7 \$135 \$1 npn13G2 we=70n le=900n Nx=1 m=1
+Q$22 \$157 \$4 \$136 \$1 npn13G2 we=70n le=900n Nx=1 m=1
+Q$23 \$257 \$49 \$157 \$1 npn13G2 we=70n le=900n Nx=1 m=1
+Q$24 \$42 \$48 \$157 \$1 npn13G2 we=70n le=900n Nx=1 m=1
+Q$25 \$136 \$131 \$140 \$1 npn13G2 we=70n le=900n Nx=3 m=1
+Q$26 \$257 \$42 \$184 \$1 npn13G2 we=70n le=900n Nx=1 m=1
+Q$27 \$42 \$257 \$184 \$1 npn13G2 we=70n le=900n Nx=1 m=1
+Q$28 \$184 \$8 \$136 \$1 npn13G2 we=70n le=900n Nx=1 m=1
+Q$29 \$41 \$441 \$183 \$1 npn13G2 we=70n le=900n Nx=1 m=1
+Q$30 \$407 \$131 \$413 \$1 npn13G2 we=70n le=900n Nx=10 m=1
+Q$31 \$407 \$131 \$414 \$1 npn13G2 we=70n le=900n Nx=10 m=1
+Q$32 \$305 \$347 \$338 \$1 npn13G2 we=70n le=900n Nx=2 m=1
+Q$33 \$306 \$348 \$338 \$1 npn13G2 we=70n le=900n Nx=2 m=1
+Q$34 LA \$273 \$270 \$1 npn13G2 we=70n le=900n Nx=2 m=1
+Q$35 LC|VCC LA$2 \$330 \$1 npn13G2 we=70n le=900n Nx=2 m=1
+Q$36 LC|VCC LB$2 \$331 \$1 npn13G2 we=70n le=900n Nx=2 m=1
+Q$37 LB \$276 \$270 \$1 npn13G2 we=70n le=900n Nx=2 m=1
+Q$38 PLLN \$380 \$407 \$1 npn13G2 we=70n le=900n Nx=4 m=1
+Q$39 PLLP \$431 \$407 \$1 npn13G2 we=70n le=900n Nx=4 m=1
+Q$40 LA$1 \$459 \$430 \$1 npn13G2 we=70n le=900n Nx=2 m=1
+Q$41 LB$1 \$465 \$430 \$1 npn13G2 we=70n le=900n Nx=2 m=1
+Q$42 LA$2 \$519 \$537 \$1 npn13G2 we=70n le=900n Nx=4 m=1
+Q$43 LB$2 \$520 \$537 \$1 npn13G2 we=70n le=900n Nx=4 m=1
+R$44 \$6 LC|VCC \$1 rppd w=1u l=15.21u ps=0u b=0 m=1
+R$45 \$1 \$6 \$1 rppd w=1u l=22.95u ps=0u b=0 m=1
+R$46 \$8 \$6 \$1 rppd w=1u l=7.47u ps=0u b=0 m=1
+R$47 \$4 \$6 \$1 rppd w=1u l=7.47u ps=0u b=0 m=1
+R$48 \$1 \$10 \$1 rppd w=4u l=2.05u ps=0u b=0 m=1
+R$49 \$1 \$11 \$1 rppd w=4u l=1.28u ps=0u b=0 m=1
+R$50 \$1 \$12 \$1 rppd w=2u l=2.05u ps=0u b=0 m=1
+R$51 \$45 LC|VCC \$1 rppd w=2u l=2.83u ps=0u b=0 m=1
+R$52 \$46 LC|VCC \$1 rppd w=2u l=2.83u ps=0u b=0 m=1
+R$53 \$48 LC|VCC \$1 rppd w=2u l=1.79u ps=0u b=0 m=1
+R$54 \$49 LC|VCC \$1 rppd w=2u l=1.79u ps=0u b=0 m=1
+R$55 \$131 LC|VCC \$1 rppd w=1u l=11.34u ps=0u b=0 m=1
+R$56 \$1 \$134 \$1 rppd w=4u l=2.05u ps=0u b=0 m=1
+R$57 \$1 \$140 \$1 rppd w=4u l=1.28u ps=0u b=0 m=1
+R$58 \$441 LC|VCC \$1 rppd w=2u l=2.83u ps=0u b=0 m=1
+R$59 \$41 LC|VCC \$1 rppd w=2u l=2.83u ps=0u b=0 m=1
+R$60 \$257 LC|VCC \$1 rppd w=2u l=1.79u ps=0u b=0 m=1
+R$61 \$42 LC|VCC \$1 rppd w=2u l=1.79u ps=0u b=0 m=1
+R$62 \$7 \$6 \$1 rppd w=1u l=19.08u ps=0u b=0 m=1
+R$63 \$3 \$6 \$1 rppd w=1u l=19.08u ps=0u b=0 m=1
+R$64 LC|VCC \$241 \$1 rppd w=1u l=17.53u ps=0u b=0 m=1
+R$65 \$1 \$241 \$1 rppd w=1u l=20.63u ps=0u b=0 m=1
+R$66 \$241 \$273 \$1 rppd w=1u l=19.08u ps=0u b=0 m=1
+R$67 \$1 \$270 \$1 rppd w=2u l=0.94u ps=0u b=0 m=1
+R$68 \$241 \$276 \$1 rppd w=1u l=19.08u ps=0u b=0 m=1
+R$69 LC|VCC LA \$1 rppd w=2u l=2.83u ps=0u b=0 m=1
+R$70 LC|VCC LB \$1 rppd w=2u l=2.83u ps=0u b=0 m=1
+R$71 LC|VCC \$298 \$1 rppd w=1u l=17.53u ps=0u b=0 m=1
+R$72 \$1 \$298 \$1 rppd w=1u l=20.63u ps=0u b=0 m=1
+R$73 \$298 \$347 \$1 rppd w=1u l=19.08u ps=0u b=0 m=1
+R$74 \$298 \$348 \$1 rppd w=1u l=19.08u ps=0u b=0 m=1
+R$75 \$1 \$338 \$1 rppd w=2u l=1.86u ps=0u b=0 m=1
+R$76 LC|VCC \$305 \$1 rppd w=2u l=2.05u ps=0u b=0 m=1
+R$77 LC|VCC \$306 \$1 rppd w=2u l=2.05u ps=0u b=0 m=1
+R$78 \$1 \$330 \$1 rppd w=2u l=8.24u ps=0u b=0 m=1
+R$79 \$1 \$331 \$1 rppd w=2u l=8.24u ps=0u b=0 m=1
+R$80 LC|VCC \$367 \$1 rppd w=1u l=17.53u ps=0u b=0 m=1
+R$81 \$1 \$367 \$1 rppd w=1u l=20.63u ps=0u b=0 m=1
+R$82 \$1 \$413 \$1 rppd w=8u l=0.66u ps=0u b=0 m=1
+R$83 \$1 \$414 \$1 rppd w=8u l=0.66u ps=0u b=0 m=1
+R$84 \$367 \$459 \$1 rppd w=1u l=19.08u ps=0u b=0 m=1
+R$85 \$367 \$465 \$1 rppd w=1u l=19.08u ps=0u b=0 m=1
+R$86 \$1 \$430 \$1 rppd w=2u l=1.86u ps=0u b=0 m=1
+R$87 PLLN LC|VCC \$1 rppd w=10u l=1.66u ps=0u b=0 m=1
+R$88 PLLP LC|VCC \$1 rppd w=10u l=1.66u ps=0u b=0 m=1
+R$89 LC|VCC LA$1 \$1 rppd w=2u l=2.83u ps=0u b=0 m=1
+R$90 LC|VCC LB$1 \$1 rppd w=2u l=2.83u ps=0u b=0 m=1
+R$91 LC|VCC \$503 \$1 rppd w=1u l=15.21u ps=0u b=0 m=1
+R$92 \$1 \$503 \$1 rppd w=1u l=22.95u ps=0u b=0 m=1
+R$93 \$506 LC|VCC \$1 rppd w=1u l=17.14u ps=0u b=0 m=1
+R$94 \$380 \$506 \$1 rppd w=1u l=19.08u ps=0u b=0 m=1
+R$95 \$431 \$506 \$1 rppd w=1u l=19.08u ps=0u b=0 m=1
+R$96 \$1 \$537 \$1 rppd w=2u l=1.41u ps=0u b=0 m=1
+R$97 \$503 \$519 \$1 rppd w=1u l=7.47u ps=0u b=0 m=1
+R$98 \$503 \$520 \$1 rppd w=1u l=7.47u ps=0u b=0 m=1
+R$99 \$1 RXLOP \$1 rhigh w=1u l=14u ps=0u b=0 m=1
+R$100 \$1 RXLON \$1 rhigh w=1u l=14u ps=0u b=0 m=1
+R$101 \$1 TXLOP \$1 rhigh w=1u l=14u ps=0u b=0 m=1
+R$102 \$1 TXLON \$1 rhigh w=1u l=14u ps=0u b=0 m=1
+R$103 \$502 G1 \$1 rhigh w=1u l=7u ps=0u b=0 m=1
+R$104 \$502 G2 \$1 rhigh w=1u l=7u ps=0u b=0 m=1
+R$105 \$502 LC|VCC \$1 rhigh w=1u l=13.3u ps=0u b=0 m=1
+R$106 \$502 \$1 \$1 rhigh w=1u l=13.3u ps=0u b=0 m=1
+R$107 \$1 \$506 \$1 rhigh w=1u l=5.53u ps=0u b=0 m=1
+C$108 \$6 \$1 \$1 rfcmim w=33u l=33u A=1089p P=132u m=1 wfeed=3u
+C$109 \$131 \$1 \$1 rfcmim w=25u l=25u A=625p P=100u m=1 wfeed=3u
+C$110 \$241 \$1 \$1 rfcmim w=33u l=33u A=1089p P=132u m=1 wfeed=3u
+C$111 LA RXLOP \$1 rfcmim w=12u l=12u A=144p P=48u m=1 wfeed=3u
+C$112 LB RXLON \$1 rfcmim w=12u l=12u A=144p P=48u m=1 wfeed=3u
+C$113 \$42 \$7 \$1 rfcmim w=18.2u l=18.2u A=331.24p P=72.8u m=1 wfeed=3u
+C$114 \$257 \$3 \$1 rfcmim w=18.2u l=18.2u A=331.24p P=72.8u m=1 wfeed=3u
+C$115 \$298 \$1 \$1 rfcmim w=33u l=33u A=1089p P=132u m=1 wfeed=3u
+C$116 \$305 \$8 \$1 rfcmim w=12u l=12u A=144p P=48u m=1 wfeed=3u
+C$117 \$306 \$4 \$1 rfcmim w=12u l=12u A=144p P=48u m=1 wfeed=3u
+C$118 \$330 \$273 \$1 rfcmim w=25u l=25u A=625p P=100u m=1 wfeed=3u
+C$119 \$331 \$276 \$1 rfcmim w=25u l=25u A=625p P=100u m=1 wfeed=3u
+C$120 \$367 \$1 \$1 rfcmim w=33u l=33u A=1089p P=132u m=1 wfeed=3u
+C$121 LA$1 TXLOP \$1 rfcmim w=12u l=12u A=144p P=48u m=1 wfeed=3u
+C$122 LB$1 TXLON \$1 rfcmim w=12u l=12u A=144p P=48u m=1 wfeed=3u
+C$123 \$41 \$380 \$1 rfcmim w=18.2u l=18.2u A=331.24p P=72.8u m=1 wfeed=3u
+C$124 \$330 \$347 \$1 rfcmim w=25u l=25u A=625p P=100u m=1 wfeed=3u
+C$125 \$331 \$348 \$1 rfcmim w=25u l=25u A=625p P=100u m=1 wfeed=3u
+C$126 \$441 \$431 \$1 rfcmim w=18.2u l=18.2u A=331.24p P=72.8u m=1 wfeed=3u
+C$127 \$502 \$1 \$1 rfcmim w=33u l=33u A=1089p P=132u m=1 wfeed=3u
+C$128 LA$2 G1 \$1 rfcmim w=11.3u l=11.3u A=127.69p P=45.2u m=1 wfeed=3u
+C$129 LB$2 G2 \$1 rfcmim w=11.3u l=11.3u A=127.69p P=45.2u m=1 wfeed=3u
+C$130 \$503 \$1 \$1 rfcmim w=33u l=33u A=1089p P=132u m=1 wfeed=3u
+C$131 \$506 \$1 \$1 rfcmim w=33u l=33u A=1089p P=132u m=1 wfeed=3u
+C$132 LB$2 \$519 \$1 rfcmim w=11.5u l=11.5u A=132.25p P=46u m=1 wfeed=3u
+C$133 LA$2 \$520 \$1 rfcmim w=11.5u l=11.5u A=132.25p P=46u m=1 wfeed=3u
+C$134 \$330 \$459 \$1 rfcmim w=25u l=25u A=625p P=100u m=1 wfeed=3u
+C$135 \$331 \$465 \$1 rfcmim w=25u l=25u A=625p P=100u m=1 wfeed=3u
+C$136 G1 VTUNE|W G2 \$1 sg13_hv_svaricap w=9.74u l=0.3u Nx=10
+L$137 LB LC|VCC LA \$1 inductor3 w=4u s=2.097u d=65.386u nr_r=2
+L$138 LA$2 LC|VCC LB$2 \$1 inductor3 w=6u s=2.097u d=70.906u nr_r=2
+L$139 LA$1 LC|VCC LB$1 \$1 inductor3 w=4u s=2.097u d=83.496u nr_r=2
+.ENDS lo_core

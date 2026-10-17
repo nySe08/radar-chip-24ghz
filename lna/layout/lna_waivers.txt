@@ -1,0 +1,3 @@
+# reviewed findings for lna - format: <exact FAIL message up to ' - '> | <reason>
+kpex LVS: 3 unmatched net(s), reference nets {B2, GND, VCC} | kpex 0.4.4 own LVS: decoupling MIMs read as another MIM type and substrate-tie devices on these nets; IHP LVS passes (reviewed 2026-10-16)
+kpex LVS: 6 unmatched device(s), layout ids {4, 7, 9, 10, 11, 12} / reference ids {} | same root cause: 4 substrate ties + 2 decoupling MIMs unpaired in kpex 0.4.4 LVS; IHP LVS passes (reviewed 2026-10-16)

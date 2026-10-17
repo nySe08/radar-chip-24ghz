@@ -1,0 +1,604 @@
+[2026-10-16 05:30:45,147] [INFO]    GDS input file passed, running in LVS mode
+[2026-10-16 05:30:45,169] [INFO]    Found cell rx_tile in GDS rx_tile.gds (only top cell)
+[2026-10-16 05:30:45,388] [SUBPROCESS]    Tool     Found    Effective range
+[2026-10-16 05:30:45,391] [SUBPROCESS]    KLayout  0.30.12  >=0.30.1,>=0.30.2,>=0.30.3
+[2026-10-16 05:30:45,420] [INFO]    Cache miss: extracted LVSDB does not exist
+[2026-10-16 05:30:45,422] [SUBPROCESS]    pex_out/.kpex_cache/ihp-sg13g2/foss/designs/radar-chip/rx_tile/layout/rx_tile.gds/rx_tile.lvsdb.gz
+[2026-10-16 05:30:45,424] [SUBPROCESS]    klayout -b -r /usr/local/lib/python3.12/dist-packages/klayout_pex/pdk/ihp-sg13g2/libs.tech/kpex/sg13g2.lvs -rd input=/foss/designs/radar-chip/rx_tile/layout/rx_tile.gds -rd report=/foss/designs/radar-chip/rx_tile/layout/pex_out/rx_tile__rx_tile/rx_tile.lvsdb.gz -rd schematic=/foss/designs/radar-chip/rx_tile/layout/rx_tile_lvs_kpex.cdl -rd thr=22 -rd run_mode=deep -rd spice_net_names=true -rd spice_comments=false -rd scale=false -rd verbose=false -rd schematic_simplify=false -rd net_only=false -rd top_lvl_pins=true -rd combine=false -rd combine_devices=false -rd purge=false -rd purge_nets=false -rd no_simplify=true
+[2026-10-16 05:30:45,427] [SUBPROCESS]    pex_out/rx_tile__rx_tile/rx_tile_lvs.log
+[2026-10-16 05:30:48,320] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (459656K) : Starting running SG13G2 Klayout LVS runset on /foss/designs/radar-chip/rx_tile/layout/rx_tile.gds
+[2026-10-16 05:30:48,323] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (459656K) : Ruby Version for klayout: 3.2.3
+[2026-10-16 05:30:48,325] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (461364K) : Loading database to memory is complete.
+[2026-10-16 05:30:48,327] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (461364K) : SG13G2 Klayout LVS runset output at: /foss/designs/radar-chip/rx_tile/layout/pex_out/rx_tile__rx_tile/rx_tile.lvsdb.gz
+[2026-10-16 05:30:48,329] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (461364K) : Evaluate switches.
+[2026-10-16 05:30:48,330] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (461364K) : Extracted netlist with net names: true
+[2026-10-16 05:30:48,332] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (461364K) : Extracted netlist with comments in details: false
+[2026-10-16 05:30:48,334] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (461364K) : Selected NET_ONLY option: false
+[2026-10-16 05:30:48,336] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (461364K) : Selected LAYOUT_NETLIST option: (none)
+[2026-10-16 05:30:48,338] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (461364K) : Selected IGNORE_TOP_PORTS_MISMATCH option: 
+[2026-10-16 05:30:48,340] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (461364K) : Selected IMPLICIT_NETS option: (none)
+[2026-10-16 05:30:48,344] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (461364K) : Selected TOP_LVL_PINS option: true
+[2026-10-16 05:30:48,348] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (461364K) : Selected COMBINE DEVICES option: false
+[2026-10-16 05:30:48,351] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (461364K) : Selected PURGE option: false
+[2026-10-16 05:30:48,353] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (461364K) : Selected PURGE_NETS option: false
+[2026-10-16 05:30:48,355] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (461364K) : Selected SIMPLIFY option: false
+[2026-10-16 05:30:48,357] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (461364K) : Selected SERIES_RES option: true
+[2026-10-16 05:30:48,359] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (461364K) : Selected PARALLEL_RES option: true
+[2026-10-16 05:30:48,361] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (461364K) : Selected DISABLE_TAP_EXTRACTION option: false
+[2026-10-16 05:30:48,363] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (461364K) : deep  mode is enabled.
+[2026-10-16 05:30:48,365] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (462892K) : Netlist file: /foss/designs/radar-chip/rx_tile/layout/rx_tile_lvs_kpex.cdl
+[2026-10-16 05:30:48,367] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (462892K) : SG13G2 Klayout LVS extracted netlist file at: rx_tile_extracted.cir
+[2026-10-16 05:30:48,369] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (462892K) : Applying SRAM integration support.
+[2026-10-16 05:30:48,371] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (462892K) : Starting SG13G2 LVS runset
+[2026-10-16 05:30:48,373] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (462892K) : Read in polygons from layers.
+[2026-10-16 05:30:48,375] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (464192K) : activ_drw has 151 polygons
+[2026-10-16 05:30:48,377] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (464192K) : activ_filler has 0 polygons
+[2026-10-16 05:30:48,378] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (464192K) : activ has 151 polygons
+[2026-10-16 05:30:48,380] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (464192K) : activ_pin has 0 polygons
+[2026-10-16 05:30:48,382] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (464192K) : activ_mask has 31 polygons
+[2026-10-16 05:30:48,384] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (464192K) : activ_nofill has 2 polygons
+[2026-10-16 05:30:48,386] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (464192K) : activ_OPC has 0 polygons
+[2026-10-16 05:30:48,388] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (464192K) : activ_iOPC has 0 polygons
+[2026-10-16 05:30:48,390] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (464192K) : activ_noqrc has 14 polygons
+[2026-10-16 05:30:48,392] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (464192K) : biwind_drw has 0 polygons
+[2026-10-16 05:30:48,395] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (464192K) : biwind_OPC has 0 polygons
+[2026-10-16 05:30:48,397] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (464832K) : gatpoly_drw has 78 polygons
+[2026-10-16 05:30:48,399] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (464832K) : gatpoly_filler has 0 polygons
+[2026-10-16 05:30:48,400] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (464960K) : gatpoly has 78 polygons
+[2026-10-16 05:30:48,402] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (465088K) : gatpoly_pin has 0 polygons
+[2026-10-16 05:30:48,404] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (465088K) : gatpoly_nofill has 2 polygons
+[2026-10-16 05:30:48,406] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (465216K) : gatpoly_OPC has 0 polygons
+[2026-10-16 05:30:48,408] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (465216K) : gatpoly_iOPC has 0 polygons
+[2026-10-16 05:30:48,412] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (465216K) : gatpoly_noqrc has 0 polygons
+[2026-10-16 05:30:48,416] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (465376K) : cont_drw has 23025 polygons
+[2026-10-16 05:30:48,419] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (465376K) : cont_OPC has 0 polygons
+[2026-10-16 05:30:48,421] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (465376K) : nsd_drw has 16 polygons
+[2026-10-16 05:30:48,423] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (465376K) : nsd_block has 31 polygons
+[2026-10-16 05:30:48,425] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (465376K) : metal1_drw has 310 polygons
+[2026-10-16 05:30:48,427] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (465504K) : metal1_filler has 0 polygons
+[2026-10-16 05:30:48,430] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (465504K) : metal1_slit has 0 polygons
+[2026-10-16 05:30:48,432] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (465632K) : metal1 has 310 polygons
+[2026-10-16 05:30:48,434] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (465632K) : metal1_pin has 179 polygons
+[2026-10-16 05:30:48,436] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (465760K) : metal1_mask has 0 polygons
+[2026-10-16 05:30:48,438] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (465888K) : metal1_nofill has 2 polygons
+[2026-10-16 05:30:48,440] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (466068K) : metal1_text has 0 polygons
+[2026-10-16 05:30:48,442] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (466196K) : metal1_OPC has 0 polygons
+[2026-10-16 05:30:48,444] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (466196K) : metal1_noqrc has 14 polygons
+[2026-10-16 05:30:48,446] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (466324K) : metal1_res has 0 polygons
+[2026-10-16 05:30:48,448] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (466452K) : metal1_iprobe has 0 polygons
+[2026-10-16 05:30:48,450] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (466452K) : metal1_diffprb has 0 polygons
+[2026-10-16 05:30:48,451] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (466580K) : passiv_drw has 0 polygons
+[2026-10-16 05:30:48,453] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (466580K) : passiv_pin has 0 polygons
+[2026-10-16 05:30:48,455] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (466708K) : passiv_sbump has 0 polygons
+[2026-10-16 05:30:48,457] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (466836K) : passiv_pillar has 0 polygons
+[2026-10-16 05:30:48,459] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (466836K) : passiv_pdl has 0 polygons
+[2026-10-16 05:30:48,461] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (466964K) : metal2_drw has 125 polygons
+[2026-10-16 05:30:48,463] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (466964K) : metal2_filler has 0 polygons
+[2026-10-16 05:30:48,465] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (467092K) : metal2_slit has 0 polygons
+[2026-10-16 05:30:48,466] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (467220K) : metal2 has 125 polygons
+[2026-10-16 05:30:48,468] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (467348K) : metal2_pin has 20 polygons
+[2026-10-16 05:30:48,471] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (467348K) : metal2_mask has 0 polygons
+[2026-10-16 05:30:48,473] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (467476K) : metal2_nofill has 2 polygons
+[2026-10-16 05:30:48,475] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (467476K) : metal2_text has 0 polygons
+[2026-10-16 05:30:48,477] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (467604K) : metal2_OPC has 0 polygons
+[2026-10-16 05:30:48,479] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (467732K) : metal2_noqrc has 14 polygons
+[2026-10-16 05:30:48,481] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (467732K) : metal2_res has 0 polygons
+[2026-10-16 05:30:48,484] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (467860K) : metal2_iprobe has 0 polygons
+[2026-10-16 05:30:48,487] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (467860K) : metal2_diffprb has 0 polygons
+[2026-10-16 05:30:48,490] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (467988K) : baspoly_drw has 0 polygons
+[2026-10-16 05:30:48,492] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (467988K) : baspoly_pin has 0 polygons
+[2026-10-16 05:30:48,494] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (468116K) : psd_drw has 138 polygons
+[2026-10-16 05:30:48,496] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (468244K) : nldb_drw has 0 polygons
+[2026-10-16 05:30:48,498] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (468244K) : digibnd_drw has 0 polygons
+[2026-10-16 05:30:48,500] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (468372K) : via1_drw has 1464 polygons
+[2026-10-16 05:30:48,502] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (468372K) : backmetal1_drw has 0 polygons
+[2026-10-16 05:30:48,504] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (468500K) : backmetal1_pin has 0 polygons
+[2026-10-16 05:30:48,506] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (468500K) : backmetal1_mask has 0 polygons
+[2026-10-16 05:30:48,508] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (468628K) : backmetal1_filler has 0 polygons
+[2026-10-16 05:30:48,510] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (468628K) : backmetal1_nofill has 0 polygons
+[2026-10-16 05:30:48,512] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (468756K) : backmetal1_slit has 0 polygons
+[2026-10-16 05:30:48,514] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (468884K) : backmetal1_text has 0 polygons
+[2026-10-16 05:30:48,516] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (468884K) : backmetal1_OPC has 0 polygons
+[2026-10-16 05:30:48,518] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (469012K) : backmetal1_noqrc has 0 polygons
+[2026-10-16 05:30:48,519] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (469012K) : backmetal1_res has 0 polygons
+[2026-10-16 05:30:48,521] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (469140K) : backmetal1_iprobe has 0 polygons
+[2026-10-16 05:30:48,523] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (469268K) : backmetal1_diffprb has 0 polygons
+[2026-10-16 05:30:48,525] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (469268K) : backpassiv_drw has 0 polygons
+[2026-10-16 05:30:48,528] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (469396K) : res_drw has 3 polygons
+[2026-10-16 05:30:48,530] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (469396K) : sram_drw has 0 polygons
+[2026-10-16 05:30:48,531] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (469524K) : trans_drw has 10 polygons
+[2026-10-16 05:30:48,533] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (469524K) : ind_drw has 2 polygons
+[2026-10-16 05:30:48,535] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (469652K) : ind_pin has 4 polygons
+[2026-10-16 05:30:48,537] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (469908K) : ind_text has 4 polygons
+[2026-10-16 05:30:48,540] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (469908K) : salblock_drw has 20 polygons
+[2026-10-16 05:30:48,543] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (470036K) : via2_drw has 1024 polygons
+[2026-10-16 05:30:48,545] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (470036K) : metal3_drw has 87 polygons
+[2026-10-16 05:30:48,547] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (470164K) : metal3_filler has 0 polygons
+[2026-10-16 05:30:48,549] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (470292K) : metal3_slit has 0 polygons
+[2026-10-16 05:30:48,553] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (470420K) : metal3 has 87 polygons
+[2026-10-16 05:30:48,557] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (470420K) : metal3_pin has 0 polygons
+[2026-10-16 05:30:48,560] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (470548K) : metal3_mask has 0 polygons
+[2026-10-16 05:30:48,563] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (470676K) : metal3_nofill has 2 polygons
+[2026-10-16 05:30:48,565] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (470676K) : metal3_text has 0 polygons
+[2026-10-16 05:30:48,567] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (470804K) : metal3_OPC has 0 polygons
+[2026-10-16 05:30:48,569] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (470804K) : metal3_noqrc has 14 polygons
+[2026-10-16 05:30:48,571] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (470932K) : metal3_res has 0 polygons
+[2026-10-16 05:30:48,572] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (471060K) : metal3_iprobe has 0 polygons
+[2026-10-16 05:30:48,575] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (471060K) : metal3_diffprb has 0 polygons
+[2026-10-16 05:30:48,577] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (471188K) : nwell_drw has 0 polygons
+[2026-10-16 05:30:48,580] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (471188K) : nwell_pin has 0 polygons
+[2026-10-16 05:30:48,582] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (471316K) : nwell_text has 0 polygons
+[2026-10-16 05:30:48,584] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (471316K) : nbulay_drw has 0 polygons
+[2026-10-16 05:30:48,586] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (471444K) : nbulay_pin has 0 polygons
+[2026-10-16 05:30:48,588] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (471444K) : nbulay_block has 0 polygons
+[2026-10-16 05:30:48,590] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (471572K) : emwind_drw has 31 polygons
+[2026-10-16 05:30:48,592] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (471572K) : emwind_OPC has 0 polygons
+[2026-10-16 05:30:48,593] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (471700K) : deepco_drw has 0 polygons
+[2026-10-16 05:30:48,595] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (471700K) : mim_drw has 16 polygons
+[2026-10-16 05:30:48,597] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (471828K) : edgeseal_drw has 0 polygons
+[2026-10-16 05:30:48,599] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (471956K) : substrate_drw has 10 polygons
+[2026-10-16 05:30:48,601] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (471956K) : substrate_text has 0 polygons
+[2026-10-16 05:30:48,603] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (472084K) : dfpad_drw has 0 polygons
+[2026-10-16 05:30:48,605] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (472084K) : dfpad_pillar has 0 polygons
+[2026-10-16 05:30:48,607] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (472212K) : dfpad_sbump has 0 polygons
+[2026-10-16 05:30:48,609] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (472212K) : thickgateox_drw has 0 polygons
+[2026-10-16 05:30:48,611] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (472340K) : pldb_drw has 0 polygons
+[2026-10-16 05:30:48,613] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (472340K) : pwell_drw has 0 polygons
+[2026-10-16 05:30:48,615] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (472468K) : pwell_pin has 0 polygons
+[2026-10-16 05:30:48,617] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (472596K) : pwell_block has 16 polygons
+[2026-10-16 05:30:48,620] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (472596K) : ic_drw has 0 polygons
+[2026-10-16 05:30:48,627] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (472724K) : via3_drw has 944 polygons
+[2026-10-16 05:30:48,633] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (472724K) : metal4_drw has 1648 polygons
+[2026-10-16 05:30:48,636] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (472852K) : metal4_filler has 0 polygons
+[2026-10-16 05:30:48,639] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (472980K) : metal4_slit has 0 polygons
+[2026-10-16 05:30:48,641] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (473236K) : metal4 has 1648 polygons
+[2026-10-16 05:30:48,643] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (473236K) : metal4_pin has 0 polygons
+[2026-10-16 05:30:48,645] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (473364K) : metal4_mask has 0 polygons
+[2026-10-16 05:30:48,647] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (473492K) : metal4_nofill has 174 polygons
+[2026-10-16 05:30:48,649] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (473492K) : metal4_text has 1 polygons
+[2026-10-16 05:30:48,651] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (473620K) : metal4_OPC has 0 polygons
+[2026-10-16 05:30:48,653] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (473748K) : metal4_noqrc has 14 polygons
+[2026-10-16 05:30:48,655] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (473748K) : metal4_res has 0 polygons
+[2026-10-16 05:30:48,657] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (473876K) : metal4_iprobe has 0 polygons
+[2026-10-16 05:30:48,659] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (473876K) : metal4_diffprb has 0 polygons
+[2026-10-16 05:30:48,661] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (473876K) : heattrans_drw has 31 polygons
+[2026-10-16 05:30:48,663] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (474004K) : heatres_drw has 23 polygons
+[2026-10-16 05:30:48,665] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (474004K) : fbe_drw has 0 polygons
+[2026-10-16 05:30:48,667] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (474132K) : empoly_drw has 0 polygons
+[2026-10-16 05:30:48,669] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (474132K) : digisub_drw has 0 polygons
+[2026-10-16 05:30:48,671] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (474260K) : text_drw has 156 polygons
+[2026-10-16 05:30:48,673] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (474388K) : via4_drw has 656 polygons
+[2026-10-16 05:30:48,675] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (474388K) : metal5_drw has 107 polygons
+[2026-10-16 05:30:48,677] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (474516K) : metal5_filler has 0 polygons
+[2026-10-16 05:30:48,679] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (474516K) : metal5_slit has 0 polygons
+[2026-10-16 05:30:48,681] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (474644K) : metal5 has 107 polygons
+[2026-10-16 05:30:48,683] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (474772K) : metal5_pin has 44 polygons
+[2026-10-16 05:30:48,685] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (474772K) : metal5_mask has 0 polygons
+[2026-10-16 05:30:48,687] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (474900K) : metal5_nofill has 2 polygons
+[2026-10-16 05:30:48,689] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (475028K) : metal5_text has 0 polygons
+[2026-10-16 05:30:48,691] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (475028K) : metal5_OPC has 0 polygons
+[2026-10-16 05:30:48,695] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (475156K) : metal5_noqrc has 14 polygons
+[2026-10-16 05:30:48,699] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (475156K) : metal5_res has 0 polygons
+[2026-10-16 05:30:48,704] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (475284K) : metal5_iprobe has 0 polygons
+[2026-10-16 05:30:48,707] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (475412K) : metal5_diffprb has 0 polygons
+[2026-10-16 05:30:48,710] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (475412K) : radhard_drw has 0 polygons
+[2026-10-16 05:30:48,712] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (475540K) : memcap_drw has 0 polygons
+[2026-10-16 05:30:48,714] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (475540K) : varicap_drw has 0 polygons
+[2026-10-16 05:30:48,716] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (475668K) : intbondvia_drw has 0 polygons
+[2026-10-16 05:30:48,718] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (475796K) : intbondmet_drw has 0 polygons
+[2026-10-16 05:30:48,720] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (475796K) : devbondvia_drw has 0 polygons
+[2026-10-16 05:30:48,723] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (475924K) : devbondmet_drw has 0 polygons
+[2026-10-16 05:30:48,725] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (475924K) : devtrench_drw has 0 polygons
+[2026-10-16 05:30:48,727] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (476052K) : redist_drw has 0 polygons
+[2026-10-16 05:30:48,729] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (476052K) : graphbot_drw has 0 polygons
+[2026-10-16 05:30:48,731] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (476180K) : graphtop_drw has 0 polygons
+[2026-10-16 05:30:48,733] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (476308K) : antvia1_drw has 0 polygons
+[2026-10-16 05:30:48,735] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (476308K) : antmetal2_drw has 0 polygons
+[2026-10-16 05:30:48,737] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (476436K) : graphcont_drw has 0 polygons
+[2026-10-16 05:30:48,739] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (476436K) : siwg_drw has 0 polygons
+[2026-10-16 05:30:48,741] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (476564K) : siwg_filler has 0 polygons
+[2026-10-16 05:30:48,743] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (476564K) : siwg_nofill has 0 polygons
+[2026-10-16 05:30:48,745] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (476564K) : sigrating_drw has 0 polygons
+[2026-10-16 05:30:48,747] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (476564K) : singrating_drw has 0 polygons
+[2026-10-16 05:30:48,749] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (476692K) : graphpas_drw has 0 polygons
+[2026-10-16 05:30:48,752] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (476692K) : emwind3_drw has 0 polygons
+[2026-10-16 05:30:48,754] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (476820K) : emwihv3_drw has 0 polygons
+[2026-10-16 05:30:48,756] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (476820K) : redbulay_drw has 0 polygons
+[2026-10-16 05:30:48,758] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (476948K) : smos_drw has 0 polygons
+[2026-10-16 05:30:48,761] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (477076K) : graphpad_drw has 0 polygons
+[2026-10-16 05:30:48,763] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (477076K) : polimide_drw has 0 polygons
+[2026-10-16 05:30:48,766] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (477204K) : polimide_pin has 0 polygons
+[2026-10-16 05:30:48,772] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (477204K) : recog_drw has 0 polygons
+[2026-10-16 05:30:48,776] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (477332K) : recog_pin has 0 polygons
+[2026-10-16 05:30:48,779] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (477460K) : recog_esd has 0 polygons
+[2026-10-16 05:30:48,781] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (477460K) : recog_diode has 0 polygons
+[2026-10-16 05:30:48,783] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (477588K) : recog_tsv has 0 polygons
+[2026-10-16 05:30:48,786] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (477588K) : recog_iprobe has 0 polygons
+[2026-10-16 05:30:48,788] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (477716K) : recog_diffprb has 0 polygons
+[2026-10-16 05:30:48,791] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (477844K) : recog_pillar has 0 polygons
+[2026-10-16 05:30:48,793] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (477844K) : recog_sbump has 0 polygons
+[2026-10-16 05:30:48,796] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (477972K) : recog_otp has 0 polygons
+[2026-10-16 05:30:48,798] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (477972K) : recog_pdiode has 0 polygons
+[2026-10-16 05:30:48,800] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (478100K) : recog_mom has 0 polygons
+[2026-10-16 05:30:48,803] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (478100K) : recog_momf has 0 polygons
+[2026-10-16 05:30:48,806] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (478228K) : recog_pcm has 0 polygons
+[2026-10-16 05:30:48,808] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (478356K) : colopen_drw has 0 polygons
+[2026-10-16 05:30:48,811] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (478356K) : graphmetal1_drw has 0 polygons
+[2026-10-16 05:30:48,813] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (478484K) : graphmetal1_filler has 0 polygons
+[2026-10-16 05:30:48,816] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (478484K) : graphmetal1_nofill has 0 polygons
+[2026-10-16 05:30:48,819] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (478612K) : graphmetal1_slit has 0 polygons
+[2026-10-16 05:30:48,821] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (478740K) : graphmetal1_OPC has 0 polygons
+[2026-10-16 05:30:48,823] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (478740K) : graphmet1l_drw has 0 polygons
+[2026-10-16 05:30:48,826] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (478868K) : graphmet1l_filler has 0 polygons
+[2026-10-16 05:30:48,828] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (478868K) : graphmet1l_nofill has 0 polygons
+[2026-10-16 05:30:48,830] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (478996K) : graphmet1l_slit has 0 polygons
+[2026-10-16 05:30:48,832] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (479124K) : graphmet1l_OPC has 0 polygons
+[2026-10-16 05:30:48,835] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (479124K) : extblock_drw has 69 polygons
+[2026-10-16 05:30:48,837] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (479252K) : nldd_drw has 0 polygons
+[2026-10-16 05:30:48,839] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (479252K) : pldd_drw has 0 polygons
+[2026-10-16 05:30:48,841] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (479380K) : next_drw has 0 polygons
+[2026-10-16 05:30:48,843] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (479508K) : pext_drw has 0 polygons
+[2026-10-16 05:30:48,845] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (479508K) : nexthv_drw has 0 polygons
+[2026-10-16 05:30:48,847] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (479636K) : pexthv_drw has 0 polygons
+[2026-10-16 05:30:48,849] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (479636K) : graphgate_drw has 0 polygons
+[2026-10-16 05:30:48,852] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (479764K) : sinwg_drw has 0 polygons
+[2026-10-16 05:30:48,854] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (479892K) : sinwg_filler has 0 polygons
+[2026-10-16 05:30:48,856] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (479892K) : sinwg_nofill has 0 polygons
+[2026-10-16 05:30:48,858] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (480020K) : mempad_drw has 0 polygons
+[2026-10-16 05:30:48,864] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (480020K) : topvia1_drw has 116 polygons
+[2026-10-16 05:30:48,871] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (480148K) : topmetal1_drw has 98 polygons
+[2026-10-16 05:30:48,873] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (480276K) : topmetal1_filler has 0 polygons
+[2026-10-16 05:30:48,876] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (480276K) : topmetal1_slit has 0 polygons
+[2026-10-16 05:30:48,878] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (480404K) : topmetal1 has 98 polygons
+[2026-10-16 05:30:48,881] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (480532K) : topmetal1_pin has 52 polygons
+[2026-10-16 05:30:48,883] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (480532K) : topmetal1_mask has 0 polygons
+[2026-10-16 05:30:48,885] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (480660K) : topmetal1_nofill has 2 polygons
+[2026-10-16 05:30:48,887] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (480660K) : topmetal1_text has 0 polygons
+[2026-10-16 05:30:48,890] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (480788K) : topmetal1_noqrc has 14 polygons
+[2026-10-16 05:30:48,892] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (480916K) : topmetal1_res has 0 polygons
+[2026-10-16 05:30:48,894] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (480916K) : topmetal1_iprobe has 0 polygons
+[2026-10-16 05:30:48,896] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (481044K) : topmetal1_diffprb has 0 polygons
+[2026-10-16 05:30:48,899] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (481044K) : inldpwl_drw has 0 polygons
+[2026-10-16 05:30:48,901] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (481300K) : polyres_drw has 23 polygons
+[2026-10-16 05:30:48,903] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (481300K) : polyres_pin has 0 polygons
+[2026-10-16 05:30:48,905] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (481300K) : vmim_drw has 15671 polygons
+[2026-10-16 05:30:48,906] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (481428K) : nbulaycut_drw has 0 polygons
+[2026-10-16 05:30:48,909] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (481556K) : antmetal1_drw has 0 polygons
+[2026-10-16 05:30:48,911] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (481684K) : topvia2_drw has 136 polygons
+[2026-10-16 05:30:48,913] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (481684K) : topmetal2_drw has 62 polygons
+[2026-10-16 05:30:48,915] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (481812K) : topmetal2_filler has 0 polygons
+[2026-10-16 05:30:48,918] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (481812K) : topmetal2_slit has 0 polygons
+[2026-10-16 05:30:48,920] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (481940K) : topmetal2 has 62 polygons
+[2026-10-16 05:30:48,923] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (482068K) : topmetal2_pin has 0 polygons
+[2026-10-16 05:30:48,925] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (482196K) : topmetal2_mask has 0 polygons
+[2026-10-16 05:30:48,927] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (482196K) : topmetal2_nofill has 2 polygons
+[2026-10-16 05:30:48,930] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (482324K) : topmetal2_text has 7 polygons
+[2026-10-16 05:30:48,932] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (482324K) : topmetal2_noqrc has 0 polygons
+[2026-10-16 05:30:48,935] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (482452K) : topmetal2_res has 0 polygons
+[2026-10-16 05:30:48,939] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (482580K) : topmetal2_iprobe has 0 polygons
+[2026-10-16 05:30:48,943] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (482580K) : topmetal2_diffprb has 0 polygons
+[2026-10-16 05:30:48,946] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (482708K) : snsring_drw has 0 polygons
+[2026-10-16 05:30:48,949] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (482836K) : sensor_drw has 0 polygons
+[2026-10-16 05:30:48,952] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (482836K) : snsarms_drw has 0 polygons
+[2026-10-16 05:30:48,956] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (482836K) : snscmosvia_drw has 0 polygons
+[2026-10-16 05:30:48,959] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (482836K) : colwind_drw has 0 polygons
+[2026-10-16 05:30:48,963] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (482836K) : flm_drw has 0 polygons
+[2026-10-16 05:30:48,965] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (482836K) : hafniumox_drw has 0 polygons
+[2026-10-16 05:30:48,967] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (482836K) : memvia_drw has 0 polygons
+[2026-10-16 05:30:48,971] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (482836K) : thinfilmres_drw has 0 polygons
+[2026-10-16 05:30:48,974] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (482836K) : rfmem_drw has 0 polygons
+[2026-10-16 05:30:48,976] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (482836K) : norcx_drw has 2 polygons
+[2026-10-16 05:30:48,979] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (482964K) : norcx_m2m3 has 0 polygons
+[2026-10-16 05:30:48,981] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (482964K) : norcx_m2m4 has 0 polygons
+[2026-10-16 05:30:48,983] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : norcx_m2m5 has 0 polygons
+[2026-10-16 05:30:48,986] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : norcx_m2tm1 has 0 polygons
+[2026-10-16 05:30:48,989] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : norcx_m2tm2 has 0 polygons
+[2026-10-16 05:30:48,992] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : norcx_m3m4 has 0 polygons
+[2026-10-16 05:30:48,994] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : norcx_m3m5 has 0 polygons
+[2026-10-16 05:30:48,996] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : norcx_m3tm1 has 0 polygons
+[2026-10-16 05:30:48,999] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : norcx_m3tm2 has 0 polygons
+[2026-10-16 05:30:49,001] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : norcx_m4m5 has 0 polygons
+[2026-10-16 05:30:49,003] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : norcx_m4tm1 has 0 polygons
+[2026-10-16 05:30:49,006] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : norcx_m4tm2 has 0 polygons
+[2026-10-16 05:30:49,008] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : norcx_m5tm1 has 0 polygons
+[2026-10-16 05:30:49,011] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : norcx_m5tm2 has 0 polygons
+[2026-10-16 05:30:49,013] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : norcx_tm1tm2 has 0 polygons
+[2026-10-16 05:30:49,015] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : norcx_m1sub has 0 polygons
+[2026-10-16 05:30:49,017] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : norcx_m2sub has 0 polygons
+[2026-10-16 05:30:49,019] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : norcx_m3sub has 0 polygons
+[2026-10-16 05:30:49,021] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : norcx_m4sub has 0 polygons
+[2026-10-16 05:30:49,023] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : norcx_m5sub has 0 polygons
+[2026-10-16 05:30:49,025] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : norcx_tm1sub has 0 polygons
+[2026-10-16 05:30:49,028] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : norcx_tm2sub has 0 polygons
+[2026-10-16 05:30:49,030] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : snsbotvia_drw has 0 polygons
+[2026-10-16 05:30:51,910] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : snstopvia_drw has 0 polygons
+[2026-10-16 05:30:51,913] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : deepvia_drw has 0 polygons
+[2026-10-16 05:30:51,915] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : fgetch_drw has 0 polygons
+[2026-10-16 05:30:51,917] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : ctrgat_drw has 0 polygons
+[2026-10-16 05:30:51,919] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : fgimp_drw has 0 polygons
+[2026-10-16 05:30:51,920] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : emwihv_drw has 0 polygons
+[2026-10-16 05:30:51,922] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : lbe_drw has 0 polygons
+[2026-10-16 05:30:51,924] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : alcustop_drw has 0 polygons
+[2026-10-16 05:30:51,925] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : nometfiller_drw has 0 polygons
+[2026-10-16 05:30:51,927] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : prboundary_drw has 0 polygons
+[2026-10-16 05:30:51,929] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : exchange0_drw has 0 polygons
+[2026-10-16 05:30:51,930] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : exchange0_pin has 0 polygons
+[2026-10-16 05:30:51,932] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : exchange0_text has 0 polygons
+[2026-10-16 05:30:51,934] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : exchange1_drw has 0 polygons
+[2026-10-16 05:30:51,935] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : exchange1_pin has 0 polygons
+[2026-10-16 05:30:51,937] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : exchange1_text has 0 polygons
+[2026-10-16 05:30:51,939] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : exchange2_drw has 0 polygons
+[2026-10-16 05:30:51,941] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : exchange2_pin has 0 polygons
+[2026-10-16 05:30:51,942] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : exchange2_text has 0 polygons
+[2026-10-16 05:30:51,946] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : exchange3_drw has 0 polygons
+[2026-10-16 05:30:51,950] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : exchange3_pin has 0 polygons
+[2026-10-16 05:30:51,954] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : exchange3_text has 0 polygons
+[2026-10-16 05:30:51,957] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : exchange4_drw has 0 polygons
+[2026-10-16 05:30:51,959] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : exchange4_pin has 0 polygons
+[2026-10-16 05:30:51,962] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : exchange4_text has 0 polygons
+[2026-10-16 05:30:51,964] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : isonwell_drw has 0 polygons
+[2026-10-16 05:30:51,966] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : Total no. of polygons in the design is 46929
+[2026-10-16 05:30:51,968] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : Starting base layers derivations
+[2026-10-16 05:30:51,970] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (483092K) : Starting general LVS derivations
+[2026-10-16 05:30:51,972] [SUBPROCESS]    2026-10-16 05:30:48 +0200: Memory Usage (486820K) : Starting MOSFET DERIVATIONS
+[2026-10-16 05:30:51,974] [SUBPROCESS]    2026-10-16 05:30:49 +0200: Memory Usage (487716K) : Starting NMOS DERIVATIONS
+[2026-10-16 05:30:51,976] [SUBPROCESS]    2026-10-16 05:30:49 +0200: Memory Usage (487716K) : Starting PMOS DERIVATIONS
+[2026-10-16 05:30:51,977] [SUBPROCESS]    2026-10-16 05:30:49 +0200: Memory Usage (487716K) : Starting RF-MOSFET DERIVATIONS
+[2026-10-16 05:30:51,979] [SUBPROCESS]    2026-10-16 05:30:49 +0200: Memory Usage (487716K) : Starting RF-NMOS DERIVATIONS
+[2026-10-16 05:30:51,981] [SUBPROCESS]    2026-10-16 05:30:49 +0200: Memory Usage (487716K) : Starting RF-PMOS DERIVATIONS
+[2026-10-16 05:30:51,982] [SUBPROCESS]    2026-10-16 05:30:49 +0200: Memory Usage (487716K) : Starting BJT DERIVATIONS
+[2026-10-16 05:30:51,984] [SUBPROCESS]    2026-10-16 05:30:49 +0200: Memory Usage (487716K) : Starting NPN-BJT DERIVATIONS
+[2026-10-16 05:30:51,986] [SUBPROCESS]    2026-10-16 05:30:49 +0200: Memory Usage (487716K) : Starting PNP-BJT DERIVATIONS
+[2026-10-16 05:30:51,987] [SUBPROCESS]    2026-10-16 05:30:49 +0200: Memory Usage (487716K) : Starting DIODE DERIVATIONS
+[2026-10-16 05:30:51,989] [SUBPROCESS]    2026-10-16 05:30:49 +0200: Memory Usage (487716K) : Starting RESISTOR DERIVATIONS
+[2026-10-16 05:30:51,991] [SUBPROCESS]    2026-10-16 05:30:50 +0200: Memory Usage (487976K) : Starting CAP DERIVATIONS
+[2026-10-16 05:30:51,992] [SUBPROCESS]    2026-10-16 05:30:50 +0200: Memory Usage (487976K) : Starting CAP_CMOM DERIVATIONS
+[2026-10-16 05:30:51,994] [SUBPROCESS]    2026-10-16 05:30:50 +0200: Memory Usage (487976K) : Starting CAP_CMOMF DERIVATIONS
+[2026-10-16 05:30:51,996] [SUBPROCESS]    2026-10-16 05:30:50 +0200: Memory Usage (487976K) : Starting ESD DERIVATIONS
+[2026-10-16 05:30:51,998] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (487976K) : Starting Inductor DERIVATIONS
+[2026-10-16 05:30:51,999] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (487976K) : Starting Taps DERIVATIONS
+[2026-10-16 05:30:52,001] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488104K) : Starting SG13G2 LVS connectivity setup
+[2026-10-16 05:30:52,003] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488104K) : Starting SG13G2 LVS connectivity setup (Inter-layer)
+[2026-10-16 05:30:52,005] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488104K) : Starting SG13G2 LVS connectivity setup (Global)
+[2026-10-16 05:30:52,007] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488104K) : Starting LVS MOSFET CONNECTIONS
+[2026-10-16 05:30:52,009] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488104K) : Starting LVS RF-MOSFET CONNECTIONS
+[2026-10-16 05:30:52,011] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488104K) : Starting LVS BJT CONNECTIONS
+[2026-10-16 05:30:52,014] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488104K) : Starting LVS DIODE CONNECTIONS
+[2026-10-16 05:30:52,018] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488104K) : Starting RESISTOR CONNECTIONS
+[2026-10-16 05:30:52,021] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488104K) : Starting LVS CAP CONNECTIONS
+[2026-10-16 05:30:52,023] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488104K) : Starting CAP_CMOM CONNECTIONS
+[2026-10-16 05:30:52,026] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488104K) : Starting CAP_CMOMF CONNECTIONS
+[2026-10-16 05:30:52,028] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488104K) : Starting ESD CONNECTIONS
+[2026-10-16 05:30:52,031] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488104K) : Starting Inductor CONNECTIONS
+[2026-10-16 05:30:52,033] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488104K) : Starting LVS Taps CONNECTIONS
+[2026-10-16 05:30:52,036] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488104K) : Starting SG13G2 LVS DEVICES EXTRACTION
+[2026-10-16 05:30:52,038] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488104K) : Starting MOSFET EXTRACTION
+[2026-10-16 05:30:52,041] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488104K) : Starting NMOS EXTRACTION
+[2026-10-16 05:30:52,043] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488104K) : Extraction of NMOS-LV transistor
+[2026-10-16 05:30:52,045] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488104K) : Extraction of NMOS-HV transistor
+[2026-10-16 05:30:52,047] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488104K) : Starting PMOS EXTRACTION
+[2026-10-16 05:30:52,048] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488104K) : Extraction of PMOS-LV transistor
+[2026-10-16 05:30:52,051] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488104K) : Extraction of PMOS-HV transistor
+[2026-10-16 05:30:52,053] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488104K) : Starting RF-MOSFET EXTRACTION
+[2026-10-16 05:30:52,055] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488104K) : Extraction of RF-NMOS-LV transistor
+[2026-10-16 05:30:52,057] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488104K) : Extraction of RF-NMOS-HV transistor
+[2026-10-16 05:30:52,059] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488104K) : Extraction of RF-PMOS-LV transistor
+[2026-10-16 05:30:52,061] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488104K) : Extraction of RF-PMOS-HV transistor
+[2026-10-16 05:30:52,063] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488104K) : Starting BJT EXTRACTION
+[2026-10-16 05:30:52,065] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488104K) : Starting NPN-BJT EXTRACTION
+[2026-10-16 05:30:52,067] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488104K) : Extraction of npn13G2 BJT transistor
+[2026-10-16 05:30:52,069] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488232K) : Extraction of npn13G2L BJT transistor
+[2026-10-16 05:30:52,071] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488232K) : Extraction of npn13G2V BJT transistor
+[2026-10-16 05:30:52,072] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488232K) : Starting PNP-BJT EXTRACTION
+[2026-10-16 05:30:52,074] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488232K) : Extracting pnpMPA BJT
+[2026-10-16 05:30:52,076] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488232K) : Starting DIODE EXTRACTION
+[2026-10-16 05:30:52,078] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488232K) : Extracting dantenna diode
+[2026-10-16 05:30:52,080] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488232K) : Extracting dpantenna diode
+[2026-10-16 05:30:52,081] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488232K) : Extracting schottky_nbl1 diode
+[2026-10-16 05:30:52,084] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488232K) : Extracting isolbox diode
+[2026-10-16 05:30:52,085] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488232K) : Starting RESISTOR EXTRACTION
+[2026-10-16 05:30:52,087] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488232K) : Extracting rsil resistor
+[2026-10-16 05:30:52,089] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488360K) : Extracting rppd resistor
+[2026-10-16 05:30:52,091] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488360K) : Extracting rhigh resistor
+[2026-10-16 05:30:52,092] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488360K) : Extracting res_metal1 resistor
+[2026-10-16 05:30:52,094] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488360K) : Extracting res_metal2 resistor
+[2026-10-16 05:30:52,096] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488360K) : Extracting res_metal3 resistor
+[2026-10-16 05:30:52,098] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488360K) : Extracting res_metal4 resistor
+[2026-10-16 05:30:52,100] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488360K) : Extracting res_metal5 resistor
+[2026-10-16 05:30:52,102] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488360K) : Extracting res_topmetal1 resistor
+[2026-10-16 05:30:52,104] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488360K) : Extracting res_topmetal2 resistor
+[2026-10-16 05:30:52,105] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488360K) : Starting CAP EXTRACTION
+[2026-10-16 05:30:52,107] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488360K) : Extracting cap_cmim device
+[2026-10-16 05:30:52,109] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488360K) : Extracting rfcmim device
+[2026-10-16 05:30:52,111] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488360K) : Extracting sg13_hv_svaricap varactor
+[2026-10-16 05:30:52,375] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488360K) : Extracting cap_cmomi device
+[2026-10-16 05:30:52,378] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488360K) : Extracting cap_cmomf device
+[2026-10-16 05:30:52,381] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488360K) : Extracting sg13_moscap_n capacitor
+[2026-10-16 05:30:52,383] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488360K) : Extracting sg13_moscap_p capacitor
+[2026-10-16 05:30:52,385] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488360K) : Starting ESD EXTRACTION
+[2026-10-16 05:30:52,387] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488360K) : Extracting diodevdd_2kv ESD device
+[2026-10-16 05:30:52,389] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488360K) : Extracting diodevdd_4kv ESD device
+[2026-10-16 05:30:52,391] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488360K) : Extracting diodevss_2kv ESD device
+[2026-10-16 05:30:52,393] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488360K) : Extracting diodevss_4kv ESD device
+[2026-10-16 05:30:52,394] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488360K) : Extracting idiodevdd_2kv ESD device
+[2026-10-16 05:30:52,396] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488360K) : Extracting idiodevdd_4kv ESD device
+[2026-10-16 05:30:52,398] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488360K) : Extracting idiodevss_2kv ESD device
+[2026-10-16 05:30:52,400] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488360K) : Extracting idiodevss_4kv ESD device
+[2026-10-16 05:30:52,402] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488360K) : Extracting nmoscl_2 ESD device
+[2026-10-16 05:30:52,405] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488360K) : Extracting nmoscl_4 ESD device
+[2026-10-16 05:30:52,408] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488360K) : Starting Inductor EXTRACTION
+[2026-10-16 05:30:52,411] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488360K) : Extracting Inductor2 device
+[2026-10-16 05:30:52,414] [SUBPROCESS]    2026-10-16 05:30:51 +0200: Memory Usage (488676K) : Extracting Inductor3 device
+[2026-10-16 05:30:52,417] [SUBPROCESS]    2026-10-16 05:30:52 +0200: Memory Usage (488676K) : Starting Taps EXTRACTION
+[2026-10-16 05:30:52,419] [SUBPROCESS]    2026-10-16 05:30:52 +0200: Memory Usage (488676K) : Extracting ntap1 device
+[2026-10-16 05:30:52,421] [SUBPROCESS]    2026-10-16 05:30:52 +0200: Memory Usage (488676K) : Extracting ptap1 device
+[2026-10-16 05:30:52,423] [SUBPROCESS]    2026-10-16 05:30:52 +0200: Memory Usage (488676K) : Starting SG13G2 LVS RF MOS Model Mapping
+[2026-10-16 05:30:52,425] [SUBPROCESS]    2026-10-16 05:30:52 +0200: Memory Usage (488676K) : [layout_netlist] Apply RF MOS model mapping and rfmode parameter.
+[2026-10-16 05:30:52,427] [SUBPROCESS]    2026-10-16 05:30:52 +0200: Memory Usage (488676K) : Starting SG13G2 LVS Options Preparations
+[2026-10-16 05:30:52,429] [SUBPROCESS]    2026-10-16 05:30:52 +0200: Memory Usage (488676K) : SG13G2 LVS flow: extraction -> alignment -> option preparation -> comparison.
+[2026-10-16 05:30:52,431] [SUBPROCESS]    2026-10-16 05:30:52 +0200: Memory Usage (488676K) : Starting SG13G2 LVS Alignment
+[2026-10-16 05:30:52,433] [SUBPROCESS]    2026-10-16 05:30:52 +0200: Memory Usage (488804K) : Starting SG13G2 LVS Simplification
+[2026-10-16 05:30:52,435] [SUBPROCESS]    2026-10-16 05:30:52 +0200: Memory Usage (488804K) : [layout_netlist] simplify: SKIPPED
+[2026-10-16 05:30:52,437] [SUBPROCESS]    2026-10-16 05:30:52 +0200: Memory Usage (488804K) : [layout_netlist] make_top_level_pins: ENABLED
+[2026-10-16 05:30:52,439] [SUBPROCESS]    2026-10-16 05:30:52 +0200: Memory Usage (488804K) : [layout_netlist] combine_devices: SKIPPED
+[2026-10-16 05:30:52,441] [SUBPROCESS]    2026-10-16 05:30:52 +0200: Memory Usage (488804K) : [layout_netlist] purge: SKIPPED
+[2026-10-16 05:30:52,443] [SUBPROCESS]    2026-10-16 05:30:52 +0200: Memory Usage (488804K) : [layout_netlist] purge_nets: SKIPPED
+[2026-10-16 05:30:52,445] [SUBPROCESS]    2026-10-16 05:30:52 +0200: Memory Usage (488804K) : [schematic_netlist] simplify: SKIPPED
+[2026-10-16 05:30:52,447] [SUBPROCESS]    2026-10-16 05:30:52 +0200: Memory Usage (488804K) : [schematic_netlist] make_top_level_pins: ENABLED
+[2026-10-16 05:30:52,449] [SUBPROCESS]    2026-10-16 05:30:52 +0200: Memory Usage (488804K) : [schematic_netlist] combine_devices: SKIPPED
+[2026-10-16 05:30:52,451] [SUBPROCESS]    2026-10-16 05:30:52 +0200: Memory Usage (488804K) : [schematic_netlist] purge: SKIPPED
+[2026-10-16 05:30:52,453] [SUBPROCESS]    2026-10-16 05:30:52 +0200: Memory Usage (488804K) : [schematic_netlist] purge_nets: SKIPPED
+[2026-10-16 05:30:52,455] [SUBPROCESS]    2026-10-16 05:30:52 +0200: Memory Usage (488804K) : Starting SG13G2 LVS Comparison in strict port mode.
+[2026-10-16 05:30:52,458] [SUBPROCESS]    2026-10-16 05:30:52 +0200: Memory Usage (488804K) : flag_missing_ports enabled: missing/mislabeled top-level ports are treated as errors.
+[2026-10-16 05:30:52,460] [SUBPROCESS]    2026-10-16 05:30:52 +0200: Memory Usage (488804K) : xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+[2026-10-16 05:30:52,462] [SUBPROCESS]    2026-10-16 05:30:52 +0200: Memory Usage (488804K) : ERROR : Netlists don't match
+[2026-10-16 05:30:52,463] [SUBPROCESS]    2026-10-16 05:30:52 +0200: Memory Usage (488804K) : xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+[2026-10-16 05:30:52,465] [SUBPROCESS]    2026-10-16 05:30:52 +0200: Memory Usage (488804K) : LVS Total Run time 3.911354 seconds
+[2026-10-16 05:30:52,562] [INFO]    klayout LVS succeeded after 7.132s
+[2026-10-16 05:30:52,783] [WARNING]    Unable to find info about extracted LVS layer 'cont_drw'
+[2026-10-16 05:30:52,787] [WARNING]    Unable to find info about extracted LVS layer 'ind_pin'
+[2026-10-16 05:30:52,790] [WARNING]    Unable to find info about extracted LVS layer 'emwind_drw'
+[2026-10-16 05:30:52,795] [INFO]    (19, 0) -> (via1_drw)
+[2026-10-16 05:30:52,797] [INFO]    (29, 0) -> (via2_drw)
+[2026-10-16 05:30:52,800] [INFO]    (49, 0) -> (via3_drw)
+[2026-10-16 05:30:52,802] [INFO]    (66, 0) -> (via4_drw)
+[2026-10-16 05:30:52,806] [INFO]    (133, 0) -> (topvia2_drw)
+[2026-10-16 05:30:52,809] [INFO]    (46, 0) -> (pwell pwell_sub)
+[2026-10-16 05:30:52,812] [INFO]    (5, 0) -> (poly_con)
+[2026-10-16 05:30:52,814] [INFO]    (8, 0) -> (metal1_con)
+[2026-10-16 05:30:52,819] [INFO]    (10, 0) -> (metal2_con)
+[2026-10-16 05:30:52,825] [INFO]    (30, 0) -> (metal3_con)
+[2026-10-16 05:30:52,830] [INFO]    (50, 0) -> (metal4_con)
+[2026-10-16 05:30:52,832] [INFO]    (126, 0) -> (topmetal1_con)
+[2026-10-16 05:30:52,835] [INFO]    (134, 0) -> (topmetal2_con)
+[2026-10-16 05:30:52,838] [INFO]    (10, 2) -> (metal2_pin_con)
+[2026-10-16 05:30:52,841] [INFO]    (65, 244) -> (ptap)
+[2026-10-16 05:30:52,844] [INFO]    (126, 2) -> (topmetal1_pin_con)
+[2026-10-16 05:30:52,847] [INFO]    (67, 2) -> (metal5_pin_con)
+[2026-10-16 05:30:52,850] [INFO]    (8, 2) -> (metal1_pin_con)
+[2026-10-16 05:30:52,853] [INFO]    (125, 0) -> (topvia1_n_cap)
+[2026-10-16 05:30:52,856] [INFO]    (6, 4403) -> (cont_poly_con)
+[2026-10-16 05:30:52,859] [INFO]    (67, 0) -> (metal5_n_cap)
+[2026-10-16 05:32:08,536] [SUBPROCESS]    Device;Net1;Net2;Capacitance [fF];Resistance [Ω]
+[2026-10-16 05:32:08,538] [SUBPROCESS]    C1;$12;$19;0.27;
+[2026-10-16 05:32:08,540] [SUBPROCESS]    C2;$12;$6;0.199;
+[2026-10-16 05:32:08,542] [SUBPROCESS]    C3;$12;$8;0.028;
+[2026-10-16 05:32:08,543] [SUBPROCESS]    C4;$12;GND;43.422;
+[2026-10-16 05:32:08,545] [SUBPROCESS]    C5;$12;IREF;0.917;
+[2026-10-16 05:32:08,547] [SUBPROCESS]    C6;$12;VCC;0.358;
+[2026-10-16 05:32:08,549] [SUBPROCESS]    C7;$12;VSUBS;23.389;
+[2026-10-16 05:32:08,551] [SUBPROCESS]    C8;$19;$26;0.094;
+[2026-10-16 05:32:08,552] [SUBPROCESS]    C9;$19;$30;0.017;
+[2026-10-16 05:32:08,554] [SUBPROCESS]    C10;$19;$6;1.488;
+[2026-10-16 05:32:08,556] [SUBPROCESS]    C11;$19;GND;36.364;
+[2026-10-16 05:32:08,557] [SUBPROCESS]    C12;$19;VCC;0.02;
+[2026-10-16 05:32:08,559] [SUBPROCESS]    C13;$19;VSUBS;23.423;
+[2026-10-16 05:32:08,561] [SUBPROCESS]    C14;$26;$30;1.896;
+[2026-10-16 05:32:08,563] [SUBPROCESS]    C15;$26;$34;1.165;
+[2026-10-16 05:32:08,564] [SUBPROCESS]    C16;$26;GND;8.319;
+[2026-10-16 05:32:08,566] [SUBPROCESS]    C17;$26;VCC;0.062;
+[2026-10-16 05:32:08,568] [SUBPROCESS]    C18;$26;VSUBS;12.467;
+[2026-10-16 05:32:08,569] [SUBPROCESS]    C19;$30;$34;0.101;
+[2026-10-16 05:32:08,572] [SUBPROCESS]    C20;$30;GND;104.876;
+[2026-10-16 05:32:08,574] [SUBPROCESS]    C21;$30;VCC;0.202;
+[2026-10-16 05:32:08,577] [SUBPROCESS]    C22;$30;VSUBS;28.759;
+[2026-10-16 05:32:08,580] [SUBPROCESS]    C23;$34;$38;1.54;
+[2026-10-16 05:32:08,583] [SUBPROCESS]    C24;$34;GND;10.264;
+[2026-10-16 05:32:08,585] [SUBPROCESS]    C25;$34;VCC;1.847;
+[2026-10-16 05:32:08,586] [SUBPROCESS]    C26;$34;VSUBS;9.822;
+[2026-10-16 05:32:08,589] [SUBPROCESS]    C27;$38;$47;0.028;
+[2026-10-16 05:32:08,591] [SUBPROCESS]    C28;$38;$49;0.005;
+[2026-10-16 05:32:08,592] [SUBPROCESS]    C29;$38;$61;0.595;
+[2026-10-16 05:32:08,594] [SUBPROCESS]    C30;$38;$64;0.063;
+[2026-10-16 05:32:08,595] [SUBPROCESS]    C31;$38;GND;23.643;
+[2026-10-16 05:32:08,597] [SUBPROCESS]    C32;$38;VCC;2.362;
+[2026-10-16 05:32:08,599] [SUBPROCESS]    C33;$38;VSUBS;13.827;
+[2026-10-16 05:32:08,601] [SUBPROCESS]    C34;$47;$49;1.043;
+[2026-10-16 05:32:08,602] [SUBPROCESS]    C35;$47;$61;0.353;
+[2026-10-16 05:32:08,604] [SUBPROCESS]    C36;$47;$64;1.038;
+[2026-10-16 05:32:08,606] [SUBPROCESS]    C37;$47;$67;0.015;
+[2026-10-16 05:32:08,608] [SUBPROCESS]    C38;$47;$68;0.021;
+[2026-10-16 05:32:08,610] [SUBPROCESS]    C39;$47;GND;54.306;
+[2026-10-16 05:32:08,612] [SUBPROCESS]    C40;$47;VCC;0.18;
+[2026-10-16 05:32:08,614] [SUBPROCESS]    C41;$47;VSUBS;18.98;
+[2026-10-16 05:32:08,615] [SUBPROCESS]    C42;$49;$53;0.607;
+[2026-10-16 05:32:08,617] [SUBPROCESS]    C43;$49;GND;42.953;
+[2026-10-16 05:32:08,619] [SUBPROCESS]    C44;$49;VCC;0.551;
+[2026-10-16 05:32:08,621] [SUBPROCESS]    C45;$49;VSUBS;18.864;
+[2026-10-16 05:32:08,622] [SUBPROCESS]    C46;$53;GND;2.025;
+[2026-10-16 05:32:08,624] [SUBPROCESS]    C47;$53;VCC;0.082;
+[2026-10-16 05:32:08,626] [SUBPROCESS]    C48;$53;VSUBS;3.265;
+[2026-10-16 05:32:08,627] [SUBPROCESS]    C49;$6;GND;19.15;
+[2026-10-16 05:32:08,629] [SUBPROCESS]    C50;$6;RFIN;7.088;
+[2026-10-16 05:32:08,631] [SUBPROCESS]    C51;$6;VSUBS;18.085;
+[2026-10-16 05:32:08,633] [SUBPROCESS]    C52;$61;$64;0.629;
+[2026-10-16 05:32:08,635] [SUBPROCESS]    C53;$61;GND;1.586;
+[2026-10-16 05:32:08,636] [SUBPROCESS]    C54;$61;VSUBS;2.628;
+[2026-10-16 05:32:08,638] [SUBPROCESS]    C55;$64;$67;0.348;
+[2026-10-16 05:32:08,639] [SUBPROCESS]    C56;$64;$68;0.327;
+[2026-10-16 05:32:08,641] [SUBPROCESS]    C57;$64;GND;4.031;
+[2026-10-16 05:32:08,644] [SUBPROCESS]    C58;$64;IFN;0.289;
+[2026-10-16 05:32:08,647] [SUBPROCESS]    C59;$64;IFP;0.292;
+[2026-10-16 05:32:08,650] [SUBPROCESS]    C60;$64;VSUBS;7.281;
+[2026-10-16 05:32:08,652] [SUBPROCESS]    C61;$67;$86;2.44;
+[2026-10-16 05:32:08,654] [SUBPROCESS]    C62;$67;GND;12.28;
+[2026-10-16 05:32:08,656] [SUBPROCESS]    C63;$67;IFN;0.098;
+[2026-10-16 05:32:08,658] [SUBPROCESS]    C64;$67;IFP;0.077;
+[2026-10-16 05:32:08,660] [SUBPROCESS]    C65;$67;VCC;0.468;
+[2026-10-16 05:32:08,662] [SUBPROCESS]    C66;$67;VSUBS;11.532;
+[2026-10-16 05:32:08,663] [SUBPROCESS]    C67;$68;$82;2.44;
+[2026-10-16 05:32:08,665] [SUBPROCESS]    C68;$68;GND;14.711;
+[2026-10-16 05:32:08,667] [SUBPROCESS]    C69;$68;IFN;0.017;
+[2026-10-16 05:32:08,669] [SUBPROCESS]    C70;$68;VCC;0.674;
+[2026-10-16 05:32:08,670] [SUBPROCESS]    C71;$68;VSUBS;17.182;
+[2026-10-16 05:32:08,672] [SUBPROCESS]    C72;$78;$84;0.372;
+[2026-10-16 05:32:08,674] [SUBPROCESS]    C73;$78;$86;0.086;
+[2026-10-16 05:32:08,676] [SUBPROCESS]    C74;$78;$89;0.057;
+[2026-10-16 05:32:08,677] [SUBPROCESS]    C75;$78;GND;14.082;
+[2026-10-16 05:32:08,679] [SUBPROCESS]    C76;$78;LOP;4.879;
+[2026-10-16 05:32:08,681] [SUBPROCESS]    C77;$78;VCC;0.01;
+[2026-10-16 05:32:08,682] [SUBPROCESS]    C78;$78;VSUBS;6.596;
+[2026-10-16 05:32:08,684] [SUBPROCESS]    C79;$8;GND;2.198;
+[2026-10-16 05:32:08,686] [SUBPROCESS]    C80;$8;IREF;0.076;
+[2026-10-16 05:32:08,687] [SUBPROCESS]    C81;$8;VSUBS;5.484;
+[2026-10-16 05:32:08,689] [SUBPROCESS]    C82;$80;$82;0.086;
+[2026-10-16 05:32:08,691] [SUBPROCESS]    C83;$80;$84;0.434;
+[2026-10-16 05:32:08,693] [SUBPROCESS]    C84;$80;GND;13.493;
+[2026-10-16 05:32:08,695] [SUBPROCESS]    C85;$80;LON;4.879;
+[2026-10-16 05:32:08,696] [SUBPROCESS]    C86;$80;VCC;0.199;
+[2026-10-16 05:32:08,698] [SUBPROCESS]    C87;$80;VSUBS;6.658;
+[2026-10-16 05:32:08,700] [SUBPROCESS]    C88;$82;$84;0.615;
+[2026-10-16 05:32:08,702] [SUBPROCESS]    C89;$82;GND;1.444;
+[2026-10-16 05:32:08,704] [SUBPROCESS]    C90;$82;VCC;1.126;
+[2026-10-16 05:32:08,706] [SUBPROCESS]    C91;$82;VSUBS;5.034;
+[2026-10-16 05:32:08,708] [SUBPROCESS]    C92;$84;$86;0.332;
+[2026-10-16 05:32:08,710] [SUBPROCESS]    C93;$84;GND;3.609;
+[2026-10-16 05:32:08,713] [SUBPROCESS]    C94;$84;VCC;0.236;
+[2026-10-16 05:32:08,715] [SUBPROCESS]    C95;$84;VSUBS;5.933;
+[2026-10-16 05:32:08,718] [SUBPROCESS]    C96;$86;GND;1.469;
+[2026-10-16 05:32:08,720] [SUBPROCESS]    C97;$86;VCC;1.126;
+[2026-10-16 05:32:08,723] [SUBPROCESS]    C98;$86;VSUBS;5.033;
+[2026-10-16 05:32:08,725] [SUBPROCESS]    C99;$89;GND;42.052;
+[2026-10-16 05:32:08,727] [SUBPROCESS]    C100;$89;LOP;0.447;
+[2026-10-16 05:32:08,729] [SUBPROCESS]    C101;$89;VSUBS;17.487;
+[2026-10-16 05:32:08,731] [SUBPROCESS]    C102;GND;IFN;30.953;
+[2026-10-16 05:32:08,732] [SUBPROCESS]    C103;GND;IFP;71.654;
+[2026-10-16 05:32:08,734] [SUBPROCESS]    C104;GND;IREF;18.892;
+[2026-10-16 05:32:08,736] [SUBPROCESS]    C105;GND;LON;16.624;
+[2026-10-16 05:32:08,738] [SUBPROCESS]    C106;GND;LOP;16.979;
+[2026-10-16 05:32:08,740] [SUBPROCESS]    C107;GND;RFIN;4.499;
+[2026-10-16 05:32:08,741] [SUBPROCESS]    C108;GND;VCC;223.259;
+[2026-10-16 05:32:08,743] [SUBPROCESS]    C109;GND;VSUBS;1766.105;
+[2026-10-16 05:32:08,745] [SUBPROCESS]    C110;IFN;IFP;0.723;
+[2026-10-16 05:32:08,747] [SUBPROCESS]    C111;IFN;VCC;7.667;
+[2026-10-16 05:32:08,749] [SUBPROCESS]    C112;IFN;VSUBS;35.592;
+[2026-10-16 05:32:08,750] [SUBPROCESS]    C113;IFP;VCC;8.254;
+[2026-10-16 05:32:08,752] [SUBPROCESS]    C114;IFP;VSUBS;38.403;
+[2026-10-16 05:32:08,754] [SUBPROCESS]    C115;IREF;VCC;0.422;
+[2026-10-16 05:32:08,756] [SUBPROCESS]    C116;IREF;VSUBS;15.102;
+[2026-10-16 05:32:08,758] [SUBPROCESS]    C117;LON;VCC;0.224;
+[2026-10-16 05:32:08,759] [SUBPROCESS]    C118;LON;VSUBS;2.623;
+[2026-10-16 05:32:08,761] [SUBPROCESS]    C119;LOP;VSUBS;2.517;
+[2026-10-16 05:32:08,763] [SUBPROCESS]    C120;RFIN;VSUBS;8.869;
+[2026-10-16 05:32:08,765] [SUBPROCESS]    C121;VCC;VSUBS;60.076;
+[2026-10-16 05:32:08,767] [SUBPROCESS]    /foss/designs/radar-chip/rx_tile/layout/pex_out/rx_tile__rx_tile/rx_tile_k25d_pex_netlist.csv

@@ -1,0 +1,16 @@
+16-Oct-2026 02:13:03 | INFO    | Your Klayout version is: KLayout 0.30.12 (required >= 0.30.5)
+16-Oct-2026 02:13:03 | INFO    | Running SG13G2 LVS checks on design /foss/designs/radar-chip/lna/layout/lna_layout.gds on cell lna
+16-Oct-2026 02:13:11 | INFO    | ==============================================================================
+16-Oct-2026 02:13:11 | INFO    | Important Summary
+16-Oct-2026 02:13:11 | INFO    | +------------------+--------------------------------------------------------------+
+16-Oct-2026 02:13:11 | INFO    | | Status           | PASS                                                         |
+16-Oct-2026 02:13:11 | INFO    | | Mode             | COMPARE                                                      |
+16-Oct-2026 02:13:11 | INFO    | | Outcome          | Comparison mode: PASS (netlists match).                      |
+16-Oct-2026 02:13:11 | INFO    | | Layout           | lna_layout.gds                                               |
+16-Oct-2026 02:13:11 | INFO    | | Top Cell         | lna                                                          |
+16-Oct-2026 02:13:11 | INFO    | | Results Dir      | /foss/designs/radar-chip/lna/layout/lvs_021301               |
+16-Oct-2026 02:13:11 | INFO    | | Warnings         | 0                                                            |
+16-Oct-2026 02:13:11 | INFO    | | Errors           | 0                                                            |
+16-Oct-2026 02:13:11 | INFO    | | Run Time (s)     | 8.605                                                        |
+16-Oct-2026 02:13:11 | INFO    | +------------------+--------------------------------------------------------------+
+16-Oct-2026 02:13:11 | INFO    | ==============================================================================

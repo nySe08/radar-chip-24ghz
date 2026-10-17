@@ -1,0 +1,151 @@
+* Extracted by KLayout with SG13G2 LVS runset on : 15/10/2026 23:32
+
+.SUBCKT lo_core BSEL G1 G2 GND LA LA$1 LA$2 LB LB$1 LB$2 LC|VCC PLLN PLLP RXLON
++ RXLOP TXLON TXLOP VTUNE|W
+M$1 \$384 \$407 \$385 GND sg13_lv_nmos L=0.13u W=24u AS=4.86p AD=4.86p
++ PS=30.86u PD=30.86u rfmode=0
+Q$13 \$17 \$133 \$11 GND npn13G2 we=70n le=900n Nx=6 m=1
+Q$14 \$18 \$133 \$22 GND npn13G2 we=70n le=900n Nx=9 m=1
+Q$15 \$47 \$44 \$46 GND npn13G2 we=70n le=900n Nx=1 m=1
+Q$16 \$48 \$41 \$46 GND npn13G2 we=70n le=900n Nx=1 m=1
+Q$17 \$48 \$47 \$76 GND npn13G2 we=70n le=900n Nx=1 m=1
+Q$18 \$76 \$3 \$17 GND npn13G2 we=70n le=900n Nx=1 m=1
+Q$19 \$49 \$8 \$18 GND npn13G2 we=70n le=900n Nx=1 m=1
+Q$20 \$50 \$45 \$49 GND npn13G2 we=70n le=900n Nx=1 m=1
+Q$21 \$50 \$51 \$77 GND npn13G2 we=70n le=900n Nx=1 m=1
+Q$22 \$133 \$133 \$12 GND npn13G2 we=70n le=900n Nx=1 m=1
+Q$23 \$46 \$7 \$17 GND npn13G2 we=70n le=900n Nx=1 m=1
+Q$24 \$47 \$48 \$76 GND npn13G2 we=70n le=900n Nx=1 m=1
+Q$25 \$51 \$42 \$49 GND npn13G2 we=70n le=900n Nx=1 m=1
+Q$26 \$51 \$50 \$77 GND npn13G2 we=70n le=900n Nx=1 m=1
+Q$27 \$77 \$4 \$18 GND npn13G2 we=70n le=900n Nx=1 m=1
+Q$28 \$44 \$48 \$158 GND npn13G2 we=70n le=900n Nx=1 m=1
+Q$29 \$41 \$47 \$158 GND npn13G2 we=70n le=900n Nx=1 m=1
+Q$30 \$138 \$133 \$137 GND npn13G2 we=70n le=900n Nx=6 m=1
+Q$31 \$44 \$41 \$185 GND npn13G2 we=70n le=900n Nx=1 m=1
+Q$32 \$41 \$44 \$185 GND npn13G2 we=70n le=900n Nx=1 m=1
+Q$33 \$185 \$7 \$138 GND npn13G2 we=70n le=900n Nx=1 m=1
+Q$34 \$139 \$133 \$134 GND npn13G2 we=70n le=900n Nx=9 m=1
+Q$35 \$45 \$42 \$186 GND npn13G2 we=70n le=900n Nx=1 m=1
+Q$36 \$42 \$45 \$186 GND npn13G2 we=70n le=900n Nx=1 m=1
+Q$37 \$186 \$8 \$139 GND npn13G2 we=70n le=900n Nx=1 m=1
+Q$38 \$158 \$3 \$138 GND npn13G2 we=70n le=900n Nx=1 m=1
+Q$39 \$159 \$4 \$139 GND npn13G2 we=70n le=900n Nx=1 m=1
+Q$40 \$45 \$51 \$159 GND npn13G2 we=70n le=900n Nx=1 m=1
+Q$41 \$42 \$50 \$159 GND npn13G2 we=70n le=900n Nx=1 m=1
+Q$42 \$419 \$133 \$399 GND npn13G2 we=70n le=900n Nx=10 m=1
+Q$43 \$419 \$133 \$400 GND npn13G2 we=70n le=900n Nx=10 m=1
+Q$44 \$306 \$349 \$342 GND npn13G2 we=70n le=900n Nx=2 m=1
+Q$45 \$307 \$350 \$342 GND npn13G2 we=70n le=900n Nx=2 m=1
+Q$46 LA \$274 \$268 GND npn13G2 we=70n le=900n Nx=2 m=1
+Q$47 LB \$277 \$268 GND npn13G2 we=70n le=900n Nx=2 m=1
+Q$48 PLLN \$452 \$419 GND npn13G2 we=70n le=900n Nx=4 m=1
+Q$49 PLLP \$453 \$419 GND npn13G2 we=70n le=900n Nx=4 m=1
+Q$50 LC|VCC LA$2 \$333 GND npn13G2 we=70n le=900n Nx=2 m=1
+Q$51 LC|VCC LB$2 \$324 GND npn13G2 we=70n le=900n Nx=2 m=1
+Q$52 LA$1 \$477 \$447 GND npn13G2 we=70n le=900n Nx=2 m=1
+Q$53 LB$1 \$478 \$447 GND npn13G2 we=70n le=900n Nx=2 m=1
+Q$54 LA$2 \$547 \$558 GND npn13G2 we=70n le=900n Nx=4 m=1
+Q$55 LB$2 \$548 \$558 GND npn13G2 we=70n le=900n Nx=4 m=1
+R$56 \$6 LC|VCC GND rppd w=1u l=15.21u ps=0u b=0 m=1
+R$57 GND \$6 GND rppd w=1u l=22.95u ps=0u b=0 m=1
+R$58 \$8 \$6 GND rppd w=1u l=7.47u ps=0u b=0 m=1
+R$59 \$4 \$6 GND rppd w=1u l=7.47u ps=0u b=0 m=1
+R$60 GND \$11 GND rppd w=8u l=1.28u ps=0u b=0 m=1
+R$61 GND \$22 GND rppd w=8u l=0.75u ps=0u b=0 m=1
+R$62 GND \$12 GND rppd w=2u l=2.05u ps=0u b=0 m=1
+R$63 \$47 LC|VCC GND rppd w=2u l=0.76u ps=0u b=0 m=1
+R$64 \$48 LC|VCC GND rppd w=2u l=0.76u ps=0u b=0 m=1
+R$65 \$50 LC|VCC GND rppd w=4u l=1.11u ps=0u b=0 m=1
+R$66 \$51 LC|VCC GND rppd w=4u l=1.11u ps=0u b=0 m=1
+R$67 \$133 LC|VCC GND rppd w=1u l=11.34u ps=0u b=0 m=1
+R$68 GND \$137 GND rppd w=8u l=1.28u ps=0u b=0 m=1
+R$69 GND \$134 GND rppd w=8u l=0.75u ps=0u b=0 m=1
+R$70 \$44 LC|VCC GND rppd w=2u l=0.76u ps=0u b=0 m=1
+R$71 \$41 LC|VCC GND rppd w=2u l=0.76u ps=0u b=0 m=1
+R$72 \$45 LC|VCC GND rppd w=4u l=1.11u ps=0u b=0 m=1
+R$73 \$42 LC|VCC GND rppd w=4u l=1.11u ps=0u b=0 m=1
+R$74 \$7 \$6 GND rppd w=1u l=19.08u ps=0u b=0 m=1
+R$75 \$3 \$6 GND rppd w=1u l=19.08u ps=0u b=0 m=1
+R$76 LC|VCC \$243 GND rppd w=1u l=17.53u ps=0u b=0 m=1
+R$77 GND \$243 GND rppd w=1u l=20.63u ps=0u b=0 m=1
+R$78 \$243 \$274 GND rppd w=1u l=19.08u ps=0u b=0 m=1
+R$79 GND \$268 GND rppd w=2u l=0.53u ps=0u b=0 m=1
+R$80 \$243 \$277 GND rppd w=1u l=19.08u ps=0u b=0 m=1
+R$81 LC|VCC LA GND rppd w=2u l=2.83u ps=0u b=0 m=1
+R$82 LC|VCC LB GND rppd w=2u l=2.83u ps=0u b=0 m=1
+R$83 LC|VCC \$299 GND rppd w=1u l=17.53u ps=0u b=0 m=1
+R$84 GND \$299 GND rppd w=1u l=20.63u ps=0u b=0 m=1
+R$85 \$299 \$349 GND rppd w=1u l=19.08u ps=0u b=0 m=1
+R$86 \$299 \$350 GND rppd w=1u l=19.08u ps=0u b=0 m=1
+R$87 GND \$342 GND rppd w=4u l=1u ps=0u b=0 m=1
+R$88 LC|VCC \$306 GND rppd w=2u l=0.89u ps=0u b=0 m=1
+R$89 LC|VCC \$307 GND rppd w=2u l=0.89u ps=0u b=0 m=1
+R$90 GND \$333 GND rppd w=2u l=5.15u ps=0u b=0 m=1
+R$91 GND \$324 GND rppd w=2u l=5.15u ps=0u b=0 m=1
+R$92 LC|VCC \$368 GND rppd w=1u l=17.53u ps=0u b=0 m=1
+R$93 GND \$368 GND rppd w=1u l=20.63u ps=0u b=0 m=1
+R$94 GND \$399 GND rppd w=16u l=0.97u ps=0u b=0 m=1
+R$95 GND \$400 GND rppd w=16u l=0.97u ps=0u b=0 m=1
+R$96 \$368 \$477 GND rppd w=1u l=19.08u ps=0u b=0 m=1
+R$97 \$368 \$478 GND rppd w=1u l=19.08u ps=0u b=0 m=1
+R$98 GND \$447 GND rppd w=2u l=1.15u ps=0u b=0 m=1
+R$99 PLLN LC|VCC GND rppd w=10u l=1.66u ps=0u b=0 m=1
+R$100 PLLP LC|VCC GND rppd w=10u l=1.66u ps=0u b=0 m=1
+R$101 LC|VCC LA$1 GND rppd w=2u l=2.83u ps=0u b=0 m=1
+R$102 LC|VCC LB$1 GND rppd w=2u l=2.83u ps=0u b=0 m=1
+R$103 LC|VCC \$519 GND rppd w=1u l=15.21u ps=0u b=0 m=1
+R$104 GND \$519 GND rppd w=1u l=22.95u ps=0u b=0 m=1
+R$105 \$524 LC|VCC GND rppd w=1u l=17.14u ps=0u b=0 m=1
+R$106 \$452 \$524 GND rppd w=1u l=19.08u ps=0u b=0 m=1
+R$107 \$453 \$524 GND rppd w=1u l=19.08u ps=0u b=0 m=1
+R$108 GND \$558 GND rppd w=2u l=1.03u ps=0u b=0 m=1
+R$109 \$519 \$547 GND rppd w=1u l=7.47u ps=0u b=0 m=1
+R$110 \$519 \$548 GND rppd w=1u l=7.47u ps=0u b=0 m=1
+R$111 GND RXLOP GND rhigh w=1u l=14u ps=0u b=0 m=1
+R$112 GND RXLON GND rhigh w=1u l=14u ps=0u b=0 m=1
+R$113 GND TXLOP GND rhigh w=1u l=14u ps=0u b=0 m=1
+R$114 GND TXLON GND rhigh w=1u l=14u ps=0u b=0 m=1
+R$115 GND \$384 GND rhigh w=1u l=14u ps=0u b=0 m=1
+R$116 GND \$385 GND rhigh w=1u l=14u ps=0u b=0 m=1
+R$117 BSEL \$407 GND rhigh w=1u l=14u ps=0u b=0 m=1
+R$118 \$518 G1 GND rhigh w=1u l=7u ps=0u b=0 m=1
+R$119 \$518 G2 GND rhigh w=1u l=7u ps=0u b=0 m=1
+R$120 \$518 LC|VCC GND rhigh w=1u l=13.3u ps=0u b=0 m=1
+R$121 \$518 GND GND rhigh w=1u l=13.3u ps=0u b=0 m=1
+R$122 GND \$524 GND rhigh w=1u l=5.53u ps=0u b=0 m=1
+C$123 \$6 GND GND rfcmim w=33u l=33u A=1089p P=132u m=1 wfeed=3u
+C$124 \$133 GND GND rfcmim w=25u l=25u A=625p P=100u m=1 wfeed=3u
+C$125 \$243 GND GND rfcmim w=33u l=33u A=1089p P=132u m=1 wfeed=3u
+C$126 LA RXLOP GND rfcmim w=12u l=12u A=144p P=48u m=1 wfeed=3u
+C$127 LB RXLON GND rfcmim w=12u l=12u A=144p P=48u m=1 wfeed=3u
+C$128 \$42 \$7 GND rfcmim w=8u l=8u A=64p P=32u m=1 wfeed=3u
+C$129 \$299 GND GND rfcmim w=33u l=33u A=1089p P=132u m=1 wfeed=3u
+C$130 \$45 \$3 GND rfcmim w=8u l=8u A=64p P=32u m=1 wfeed=3u
+C$131 \$306 \$8 GND rfcmim w=12u l=12u A=144p P=48u m=1 wfeed=3u
+C$132 \$307 \$4 GND rfcmim w=12u l=12u A=144p P=48u m=1 wfeed=3u
+C$133 \$333 \$274 GND rfcmim w=12u l=12u A=144p P=48u m=1 wfeed=3u
+C$134 \$324 \$277 GND rfcmim w=12u l=12u A=144p P=48u m=1 wfeed=3u
+C$135 \$368 GND GND rfcmim w=33u l=33u A=1089p P=132u m=1 wfeed=3u
+C$136 LA$1 TXLOP GND rfcmim w=12u l=12u A=144p P=48u m=1 wfeed=3u
+C$137 LB$1 TXLON GND rfcmim w=12u l=12u A=144p P=48u m=1 wfeed=3u
+C$138 \$41 \$452 GND rfcmim w=18.2u l=18.2u A=331.24p P=72.8u m=1 wfeed=3u
+C$139 \$324 \$350 GND rfcmim w=12u l=12u A=144p P=48u m=1 wfeed=3u
+C$140 LA$2 \$384 GND rfcmim w=4.5u l=4.5u A=20.25p P=18u m=1 wfeed=3u
+C$141 LB$2 \$385 GND rfcmim w=4.5u l=4.5u A=20.25p P=18u m=1 wfeed=3u
+C$142 \$44 \$453 GND rfcmim w=18.2u l=18.2u A=331.24p P=72.8u m=1 wfeed=3u
+C$143 \$333 \$349 GND rfcmim w=12u l=12u A=144p P=48u m=1 wfeed=3u
+C$144 LA$2 G1 GND rfcmim w=16u l=16u A=256p P=64u m=1 wfeed=3u
+C$145 LB$2 G2 GND rfcmim w=16u l=16u A=256p P=64u m=1 wfeed=3u
+C$146 \$524 GND GND rfcmim w=33u l=33u A=1089p P=132u m=1 wfeed=3u
+C$147 \$518 GND GND rfcmim w=33u l=33u A=1089p P=132u m=1 wfeed=3u
+C$148 \$519 GND GND rfcmim w=33u l=33u A=1089p P=132u m=1 wfeed=3u
+C$149 LB$2 \$547 GND rfcmim w=9u l=9u A=81p P=36u m=1 wfeed=3u
+C$150 LA$2 \$548 GND rfcmim w=9u l=9u A=81p P=36u m=1 wfeed=3u
+C$151 \$333 \$477 GND rfcmim w=12u l=12u A=144p P=48u m=1 wfeed=3u
+C$152 \$324 \$478 GND rfcmim w=12u l=12u A=144p P=48u m=1 wfeed=3u
+C$153 G1 VTUNE|W G2 GND sg13_hv_svaricap w=9.74u l=0.3u Nx=7
+L$154 LB LC|VCC LA GND inductor3 w=4u s=2.097u d=65.386u nr_r=2
+L$155 LA$2 LC|VCC LB$2 GND inductor3 w=10u s=16.11u d=150u nr_r=1
+L$156 LA$1 LC|VCC LB$1 GND inductor3 w=4u s=2.097u d=83.496u nr_r=2
+.ENDS lo_core

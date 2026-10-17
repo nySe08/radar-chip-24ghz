@@ -1,0 +1,16 @@
+13-Oct-2026 16:13:07 | INFO    | Your Klayout version is: KLayout 0.30.12 (required >= 0.30.5)
+13-Oct-2026 16:13:08 | INFO    | Running SG13G2 LVS checks on design /foss/designs/radar-chip/lo_core/layout/lo_core.gds on cell lo_core
+13-Oct-2026 16:13:34 | INFO    | ==============================================================================
+13-Oct-2026 16:13:34 | INFO    | Important Summary
+13-Oct-2026 16:13:34 | INFO    | +------------------+--------------------------------------------------------------+
+13-Oct-2026 16:13:34 | INFO    | | Status           | PASS                                                         |
+13-Oct-2026 16:13:34 | INFO    | | Mode             | COMPARE                                                      |
+13-Oct-2026 16:13:34 | INFO    | | Outcome          | Comparison mode: PASS (netlists match).                      |
+13-Oct-2026 16:13:34 | INFO    | | Layout           | lo_core.gds                                                  |
+13-Oct-2026 16:13:34 | INFO    | | Top Cell         | lo_core                                                      |
+13-Oct-2026 16:13:34 | INFO    | | Results Dir      | /foss/designs/radar-chip/lo_core/layout/lvs_lo_core_161258   |
+13-Oct-2026 16:13:34 | INFO    | | Warnings         | 0                                                            |
+13-Oct-2026 16:13:34 | INFO    | | Errors           | 0                                                            |
+13-Oct-2026 16:13:34 | INFO    | | Run Time (s)     | 32.638                                                       |
+13-Oct-2026 16:13:34 | INFO    | +------------------+--------------------------------------------------------------+
+13-Oct-2026 16:13:34 | INFO    | ==============================================================================

@@ -1,0 +1,32 @@
+* TX path testbench: LO core TX output (ideal source at the LO core's extracted amplitude) -> TX driver -> PA -> pad + ESD -> 50 ohm
+.lib cornerHBT.lib hbt_typ
+.lib cornerMOShv.lib mos_tt
+.lib cornerMOSlv.lib mos_tt
+.lib cornerCAP.lib cap_typ
+.lib cornerRES.lib res_typ
+.param temp=27
+.include blocks/txdrv_real.sp
+.include blocks/pa_final.sp
+.param VCC=2.5 ATX=0.255 FTX=24.15e9 EN1B=0
+Vcc vcc 0 {VCC}
+Ven1 en1 0 {EN1B}
+Vtp txp 0 dc 0 sin(0 {ATX} {FTX})
+Vtn txn 0 dc 0 sin(0 {-ATX} {FTX})
+Xpd1 txp txn t1p t1n vcc DRIVER_INST
+Xpa1 t1p tx1 en1 vcc PA_INST
+* TX output pad (TopMetal1/2 bondpad, substrate model as for the LNA pads)
+Cpadt tx1 spt 41.6f
+Rsubt spt 0 60
+* TX pad ESD coil, EM fit of inductor2 2 turns w 7 um d 77 um: L0 580 pH + loss, self-capacitance (fsr ~51 GHz)
+Lesd tx1 le1 580p
+Rlesd le1 0 4.8
+Cesds tx1 0 16.8f
+Rtx1 tx1 0 50
+.control
+set noaskquit
+option rshunt=1e12
+tran 0.2p 3n 0 0.2p
+wrdata tx_out.txt v(tx1) i(Vcc) v(t1p)
+quit
+.endc
+.end

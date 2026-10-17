@@ -1,0 +1,9 @@
+# Logfile created on 2026-10-15 23:31:38 +0200 by logger.rb/v1.5.3
+2026-10-15 23:31:38 +0200: Memory Usage (458240K) : Starting running IHP-SG13G2 Klayout DRC maximum runset on /foss/designs/radar-chip/lo_core/layout/lo_core.gds
+2026-10-15 23:31:38 +0200: Memory Usage (458240K) : Ruby Version for klayout: 3.2.3
+2026-10-15 23:31:38 +0200: Memory Usage (459792K) : Loading database to memory is complete.
+2026-10-15 23:31:38 +0200: Memory Usage (459792K) : IHP-SG13G2 Klayout DRC maximum runset output at: /foss/designs/radar-chip/lo_core/layout/drc_lo_core_233055_flat/lo_core_lo_core_sg13g2_maximal.lyrdb
+2026-10-15 23:31:38 +0200: Memory Usage (459792K) : Evaluate switches.
+2026-10-15 23:31:38 +0200: Memory Usage (459792K) : Klayout will use 16 thread(s)
+2026-10-15 23:31:38 +0200: Memory Usage (459792K) : flat mode is enabled for sg13g2_maximal runset.
+2026-10-15 23:31:53 +0200: Memory Usage (524320K) : KLayout DRC run for maximum ruleSet completed in 15.31 seconds

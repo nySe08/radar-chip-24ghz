@@ -1,0 +1,12 @@
+[2026-10-15 21:47:16,643] [ERROR]    No PEX engines activated
+[2026-10-15 21:47:16,646] [SUBPROCESS]    
+
+Please activate one or more engines using the arguments:
+[2026-10-15 21:47:16,672] [INFO]    GDS input file passed, running in LVS mode
+[2026-10-15 21:47:16,677] [ERROR]    Can't read GDS file (LVS input) at path lo
+[2026-10-15 21:47:21,734] [ERROR]    No PEX engines activated
+[2026-10-15 21:47:21,739] [SUBPROCESS]    
+
+Please activate one or more engines using the arguments:
+[2026-10-15 21:47:21,746] [INFO]    GDS input file passed, running in LVS mode
+[2026-10-15 21:47:21,750] [ERROR]    Can't read GDS file (LVS input) at path lo

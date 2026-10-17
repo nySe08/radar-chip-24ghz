@@ -1,0 +1,159 @@
+* LO core - reference netlist for KLayout-PEX (multi-finger MOS split into fingers)
+.SUBCKT lo_core BSEL GND PLLN PLLP RXLON RXLOP TXLON TXLOP VCC VTUNE
+Lvco vcop VCC vcon GND inductor3 w=10u s=16.11u d=150.0u nr_r=1
+Cvco_cv1 vcop vco_g1 GND rfcmim w=16u l=16u m=1 wfeed=3u
+Cvco_cv2 vcon vco_g2 GND rfcmim w=16u l=16u m=1 wfeed=3u
+Rvco_g1 vco_vgb vco_g1 GND rhigh w=1u l=7.0u ps=0u b=0 m=1
+Rvco_g2 vco_vgb vco_g2 GND rhigh w=1u l=7.0u ps=0u b=0 m=1
+Rvco_gb1 VCC vco_vgb GND rhigh w=1u l=13.3u ps=0u b=0 m=1
+Rvco_gb2 vco_vgb GND GND rhigh w=1u l=13.3u ps=0u b=0 m=1
+Cvco_gb vco_vgb GND GND rfcmim w=33u l=33u m=1 wfeed=3u
+Cvco_var vco_g1 VTUNE vco_g2 GND sg13_hv_svaricap l=0.3u w=9.74u Nx=7
+Cbs_1 vcop bs_s1 GND rfcmim w=4.5u l=4.5u m=1 wfeed=3u
+Cbs_2 vcon bs_s2 GND rfcmim w=4.5u l=4.5u m=1 wfeed=3u
+Mbs_f0 bs_s1 bs_g bs_s2 GND sg13_lv_nmos w=2u l=0.13u ng=1 m=1
+Mbs_f1 bs_s1 bs_g bs_s2 GND sg13_lv_nmos w=2u l=0.13u ng=1 m=1
+Mbs_f2 bs_s1 bs_g bs_s2 GND sg13_lv_nmos w=2u l=0.13u ng=1 m=1
+Mbs_f3 bs_s1 bs_g bs_s2 GND sg13_lv_nmos w=2u l=0.13u ng=1 m=1
+Mbs_f4 bs_s1 bs_g bs_s2 GND sg13_lv_nmos w=2u l=0.13u ng=1 m=1
+Mbs_f5 bs_s1 bs_g bs_s2 GND sg13_lv_nmos w=2u l=0.13u ng=1 m=1
+Mbs_f6 bs_s1 bs_g bs_s2 GND sg13_lv_nmos w=2u l=0.13u ng=1 m=1
+Mbs_f7 bs_s1 bs_g bs_s2 GND sg13_lv_nmos w=2u l=0.13u ng=1 m=1
+Mbs_f8 bs_s1 bs_g bs_s2 GND sg13_lv_nmos w=2u l=0.13u ng=1 m=1
+Mbs_f9 bs_s1 bs_g bs_s2 GND sg13_lv_nmos w=2u l=0.13u ng=1 m=1
+Mbs_f10 bs_s1 bs_g bs_s2 GND sg13_lv_nmos w=2u l=0.13u ng=1 m=1
+Mbs_f11 bs_s1 bs_g bs_s2 GND sg13_lv_nmos w=2u l=0.13u ng=1 m=1
+Rbs_1 bs_s1 GND GND rhigh w=1u l=14.0u ps=0u b=0 m=1
+Rbs_2 bs_s2 GND GND rhigh w=1u l=14.0u ps=0u b=0 m=1
+Rbs_g BSEL bs_g GND rhigh w=1u l=14.0u ps=0u b=0 m=1
+Qvco_6 vcop vco_b6 vco_tail GND npn13G2 we=70n le=900n Nx=4 m=1
+Qvco_7 vcon vco_b7 vco_tail GND npn13G2 we=70n le=900n Nx=4 m=1
+Cvco_b6 vcon vco_b6 GND rfcmim w=9u l=9u m=1 wfeed=3u
+Cvco_b7 vcop vco_b7 GND rfcmim w=9u l=9u m=1 wfeed=3u
+Rvco_b6 vco_vbb vco_b6 GND rppd w=1u l=7.47u ps=0u b=0 m=1
+Rvco_b7 vco_vbb vco_b7 GND rppd w=1u l=7.47u ps=0u b=0 m=1
+Rvco_bb1 VCC vco_vbb GND rppd w=1u l=15.21u ps=0u b=0 m=1
+Rvco_bb2 vco_vbb GND GND rppd w=1u l=22.95u ps=0u b=0 m=1
+Cvco_bb vco_vbb GND GND rfcmim w=33u l=33u m=1 wfeed=3u
+Rvco_tail vco_tail GND GND rppd w=2u l=1.03u ps=0u b=0 m=1
+Qef_1 VCC vcop efp GND npn13G2 we=70n le=900n Nx=2 m=1
+Qef_2 VCC vcon efn GND npn13G2 we=70n le=900n Nx=2 m=1
+Ref_1 efp GND GND rppd w=2u l=5.15u ps=0u b=0 m=1
+Ref_2 efn GND GND rppd w=2u l=5.15u ps=0u b=0 m=1
+CPRX_i1 efp prx_b1 GND rfcmim w=12u l=12u m=1 wfeed=3u
+CPRX_i2 efn prx_b2 GND rfcmim w=12u l=12u m=1 wfeed=3u
+RPRX_v1 VCC prx_vbd GND rppd w=1u l=17.53u ps=0u b=0 m=1
+RPRX_v2 prx_vbd GND GND rppd w=1u l=20.63u ps=0u b=0 m=1
+CPRX_vb prx_vbd GND GND rfcmim w=33u l=33u m=1 wfeed=3u
+RPRX_b1 prx_vbd prx_b1 GND rppd w=1u l=19.08u ps=0u b=0 m=1
+RPRX_b2 prx_vbd prx_b2 GND rppd w=1u l=19.08u ps=0u b=0 m=1
+QPRX_a prx_dp prx_b1 prx_t GND npn13G2 we=70n le=900n Nx=2 m=1
+QPRX_b prx_dn prx_b2 prx_t GND npn13G2 we=70n le=900n Nx=2 m=1
+RPRX_t prx_t GND GND rppd w=2u l=0.53u ps=0u b=0 m=1
+LPRX prx_dn VCC prx_dp GND inductor3 w=4u s=2.1u d=65.36u nr_r=2
+RPRX_d1 VCC prx_dp GND rppd w=2u l=2.83u ps=0u b=0 m=1
+RPRX_d2 VCC prx_dn GND rppd w=2u l=2.83u ps=0u b=0 m=1
+CPRX_c1 prx_dp RXLOP GND rfcmim w=12u l=12u m=1 wfeed=3u
+CPRX_c2 prx_dn RXLON GND rfcmim w=12u l=12u m=1 wfeed=3u
+Rbl_r1 RXLOP GND GND rhigh w=1u l=14.0u ps=0u b=0 m=1
+Rbl_r2 RXLON GND GND rhigh w=1u l=14.0u ps=0u b=0 m=1
+CPTX_i1 efp ptx_b1 GND rfcmim w=12u l=12u m=1 wfeed=3u
+CPTX_i2 efn ptx_b2 GND rfcmim w=12u l=12u m=1 wfeed=3u
+RPTX_v1 VCC ptx_vbd GND rppd w=1u l=17.53u ps=0u b=0 m=1
+RPTX_v2 ptx_vbd GND GND rppd w=1u l=20.63u ps=0u b=0 m=1
+CPTX_vb ptx_vbd GND GND rfcmim w=33u l=33u m=1 wfeed=3u
+RPTX_b1 ptx_vbd ptx_b1 GND rppd w=1u l=19.08u ps=0u b=0 m=1
+RPTX_b2 ptx_vbd ptx_b2 GND rppd w=1u l=19.08u ps=0u b=0 m=1
+QPTX_a ptx_dp ptx_b1 ptx_t GND npn13G2 we=70n le=900n Nx=2 m=1
+QPTX_b ptx_dn ptx_b2 ptx_t GND npn13G2 we=70n le=900n Nx=2 m=1
+RPTX_t ptx_t GND GND rppd w=2u l=1.15u ps=0u b=0 m=1
+LPTX ptx_dp VCC ptx_dn GND inductor3 w=4u s=2.1u d=83.47u nr_r=2
+RPTX_d1 VCC ptx_dp GND rppd w=2u l=2.83u ps=0u b=0 m=1
+RPTX_d2 VCC ptx_dn GND rppd w=2u l=2.83u ps=0u b=0 m=1
+CPTX_c1 ptx_dp TXLOP GND rfcmim w=12u l=12u m=1 wfeed=3u
+CPTX_c2 ptx_dn TXLON GND rfcmim w=12u l=12u m=1 wfeed=3u
+Rbl_t1 TXLOP GND GND rhigh w=1u l=14.0u ps=0u b=0 m=1
+Rbl_t2 TXLON GND GND rhigh w=1u l=14.0u ps=0u b=0 m=1
+CDDV_i1 efp ddv_b1 GND rfcmim w=12u l=12u m=1 wfeed=3u
+CDDV_i2 efn ddv_b2 GND rfcmim w=12u l=12u m=1 wfeed=3u
+RDDV_v1 VCC ddv_vbd GND rppd w=1u l=17.53u ps=0u b=0 m=1
+RDDV_v2 ddv_vbd GND GND rppd w=1u l=20.63u ps=0u b=0 m=1
+CDDV_vb ddv_vbd GND GND rfcmim w=33u l=33u m=1 wfeed=3u
+RDDV_b1 ddv_vbd ddv_b1 GND rppd w=1u l=19.08u ps=0u b=0 m=1
+RDDV_b2 ddv_vbd ddv_b2 GND rppd w=1u l=19.08u ps=0u b=0 m=1
+QDDV_a ddv_dp ddv_b1 ddv_t GND npn13G2 we=70n le=900n Nx=2 m=1
+QDDV_b ddv_dn ddv_b2 ddv_t GND npn13G2 we=70n le=900n Nx=2 m=1
+RDDV_t ddv_t GND GND rppd w=4u l=1.0u ps=0u b=0 m=1
+RDDV_d1 VCC ddv_dp GND rppd w=2u l=0.89u ps=0u b=0 m=1
+RDDV_d2 VCC ddv_dn GND rppd w=2u l=0.89u ps=0u b=0 m=1
+CDDV_c1 ddv_dp div_ckp GND rfcmim w=12u l=12u m=1 wfeed=3u
+CDDV_c2 ddv_dn div_ckn GND rfcmim w=12u l=12u m=1 wfeed=3u
+Rdiv_ref VCC div_vbt GND rppd w=1u l=9.5u ps=0u b=0 m=1
+Qdiv_br div_vbt div_vbt div_ebr GND npn13G2 we=70n le=900n Nx=1 m=1
+Rdiv_ebr div_ebr GND GND rppd w=2u l=2.05u ps=0u b=0 m=1
+Cdiv_bt div_vbt GND GND rfcmim w=25u l=25u m=1 wfeed=3u
+Rdiv_k1 VCC div_vck GND rppd w=1u l=15.21u ps=0u b=0 m=1
+Rdiv_k2 div_vck GND GND rppd w=1u l=22.95u ps=0u b=0 m=1
+Cdiv_k div_vck GND GND rfcmim w=33u l=33u m=1 wfeed=3u
+Rdiv_ck1 div_vck div_ckp GND rppd w=1u l=7.47u ps=0u b=0 m=1
+Rdiv_ck2 div_vck div_ckn GND rppd w=1u l=7.47u ps=0u b=0 m=1
+RDM1_lp VCC m1q GND rppd w=4u l=1.11u ps=0u b=0 m=1
+RDM1_ln VCC m1qb GND rppd w=4u l=1.11u ps=0u b=0 m=1
+QDM1_d1 m1qb s1qb dm1_ed GND npn13G2 we=70n le=900n Nx=1 m=1
+QDM1_d2 m1q s1q dm1_ed GND npn13G2 we=70n le=900n Nx=1 m=1
+QDM1_h1 m1qb m1q dm1_eh GND npn13G2 we=70n le=900n Nx=1 m=1
+QDM1_h2 m1q m1qb dm1_eh GND npn13G2 we=70n le=900n Nx=1 m=1
+QDM1_c1 dm1_ed div_ckp dm1_et GND npn13G2 we=70n le=900n Nx=1 m=1
+QDM1_c2 dm1_eh div_ckn dm1_et GND npn13G2 we=70n le=900n Nx=1 m=1
+QDM1_t dm1_et div_vbt dm1_etr GND npn13G2 we=70n le=900n Nx=9 m=1
+RDM1_e dm1_etr GND GND rppd w=8u l=0.75u ps=0u b=0 m=1
+RDS1_lp VCC s1q GND rppd w=4u l=1.11u ps=0u b=0 m=1
+RDS1_ln VCC s1qb GND rppd w=4u l=1.11u ps=0u b=0 m=1
+QDS1_d1 s1qb m1q ds1_ed GND npn13G2 we=70n le=900n Nx=1 m=1
+QDS1_d2 s1q m1qb ds1_ed GND npn13G2 we=70n le=900n Nx=1 m=1
+QDS1_h1 s1qb s1q ds1_eh GND npn13G2 we=70n le=900n Nx=1 m=1
+QDS1_h2 s1q s1qb ds1_eh GND npn13G2 we=70n le=900n Nx=1 m=1
+QDS1_c1 ds1_ed div_ckn ds1_et GND npn13G2 we=70n le=900n Nx=1 m=1
+QDS1_c2 ds1_eh div_ckp ds1_et GND npn13G2 we=70n le=900n Nx=1 m=1
+QDS1_t ds1_et div_vbt ds1_etr GND npn13G2 we=70n le=900n Nx=9 m=1
+RDS1_e ds1_etr GND GND rppd w=8u l=0.75u ps=0u b=0 m=1
+Cdiv_c1 s1q c2p GND rfcmim w=8u l=8u m=1 wfeed=3u
+Cdiv_c2 s1qb c2n GND rfcmim w=8u l=8u m=1 wfeed=3u
+Rdiv_b1 div_vck c2p GND rppd w=1u l=19.08u ps=0u b=0 m=1
+Rdiv_b2 div_vck c2n GND rppd w=1u l=19.08u ps=0u b=0 m=1
+RDM2_lp VCC m2q GND rppd w=2u l=0.76u ps=0u b=0 m=1
+RDM2_ln VCC m2qb GND rppd w=2u l=0.76u ps=0u b=0 m=1
+QDM2_d1 m2qb s2qb dm2_ed GND npn13G2 we=70n le=900n Nx=1 m=1
+QDM2_d2 m2q s2q dm2_ed GND npn13G2 we=70n le=900n Nx=1 m=1
+QDM2_h1 m2qb m2q dm2_eh GND npn13G2 we=70n le=900n Nx=1 m=1
+QDM2_h2 m2q m2qb dm2_eh GND npn13G2 we=70n le=900n Nx=1 m=1
+QDM2_c1 dm2_ed c2p dm2_et GND npn13G2 we=70n le=900n Nx=1 m=1
+QDM2_c2 dm2_eh c2n dm2_et GND npn13G2 we=70n le=900n Nx=1 m=1
+QDM2_t dm2_et div_vbt dm2_etr GND npn13G2 we=70n le=900n Nx=6 m=1
+RDM2_e dm2_etr GND GND rppd w=8u l=1.28u ps=0u b=0 m=1
+RDS2_lp VCC s2q GND rppd w=2u l=0.76u ps=0u b=0 m=1
+RDS2_ln VCC s2qb GND rppd w=2u l=0.76u ps=0u b=0 m=1
+QDS2_d1 s2qb m2q ds2_ed GND npn13G2 we=70n le=900n Nx=1 m=1
+QDS2_d2 s2q m2qb ds2_ed GND npn13G2 we=70n le=900n Nx=1 m=1
+QDS2_h1 s2qb s2q ds2_eh GND npn13G2 we=70n le=900n Nx=1 m=1
+QDS2_h2 s2q s2qb ds2_eh GND npn13G2 we=70n le=900n Nx=1 m=1
+QDS2_c1 ds2_ed c2n ds2_et GND npn13G2 we=70n le=900n Nx=1 m=1
+QDS2_c2 ds2_eh c2p ds2_et GND npn13G2 we=70n le=900n Nx=1 m=1
+QDS2_t ds2_et div_vbt ds2_etr GND npn13G2 we=70n le=900n Nx=6 m=1
+RDS2_e ds2_etr GND GND rppd w=8u l=1.28u ps=0u b=0 m=1
+Cdiv_o1 s2q div_o1 GND rfcmim w=18.2u l=18.2u m=1 wfeed=3u
+Cdiv_o2 s2qb div_o2 GND rfcmim w=18.2u l=18.2u m=1 wfeed=3u
+Rdiv_o1 VCC div_vbo GND rppd w=1u l=9.5u ps=0u b=0 m=1
+Rdiv_o2 div_vbo GND GND rhigh w=1u l=5.53u ps=0u b=0 m=1
+Cdiv_bo div_vbo GND GND rfcmim w=33u l=33u m=1 wfeed=3u
+Rdiv_bo1 div_vbo div_o1 GND rppd w=1u l=19.08u ps=0u b=0 m=1
+Rdiv_bo2 div_vbo div_o2 GND rppd w=1u l=19.08u ps=0u b=0 m=1
+Qdiv_o1 PLLN div_o1 div_eo GND npn13G2 we=70n le=900n Nx=4 m=1
+Qdiv_o2 PLLP div_o2 div_eo GND npn13G2 we=70n le=900n Nx=4 m=1
+Qdiv_to1 div_eo div_vbt div_eto1 GND npn13G2 we=70n le=900n Nx=10 m=1
+Qdiv_to2 div_eo div_vbt div_eto2 GND npn13G2 we=70n le=900n Nx=10 m=1
+Rdiv_eo1 div_eto1 GND GND rppd w=16u l=0.68u ps=0u b=0 m=1
+Rdiv_eo2 div_eto2 GND GND rppd w=16u l=0.68u ps=0u b=0 m=1
+Rdiv_t1 VCC PLLP GND rppd w=10u l=1.66u ps=0u b=0 m=1
+Rdiv_t2 VCC PLLN GND rppd w=10u l=1.66u ps=0u b=0 m=1
+.ENDS lo_core

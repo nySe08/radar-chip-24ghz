@@ -6,8 +6,8 @@ rect, wire, via, gnd_via = B.rect, B.wire, B.via, B.gnd_via
 MIM = lambda w: dict(w=f"{w}u", l=f"{w}u")
 # ======================= placement =======================
 # ---------------- LNA (vertical: Lb leads up, Lc leads down, RF core in the band between) ----------------
-place("Lb", "inductor2", 80.5, 161.9, rot=180, w="7u", s="2.1u", d="68.66u", nr_r=2, subE=False)     # y 0..162, leads at the top
-place("Lc", "inductor2", 80.5, 233.0, w="5u", s="2.1u", d="55.83u", nr_r=2, subE=False)             # y 232..373, leads at the bottom
+place("Lb", "inductor2", 80.5, 161.9, rot=180, w="5u", s="2.1u", d="54.5u", nr_r=2, subE=False)    # re-tuned vs extraction: EM 435 pH, Q 11.3     # y 0..162, leads at the top
+place("Lc", "inductor2", 80.5, 233.0, w="4u", s="2.1u", d="44u", nr_r=2, subE=False)      # re-tuned vs extraction: EM 335 pH, Q 8.1             # y 232..373, leads at the bottom
 place("Q1", "npn13G2", 86.0, 176.0, Nx=8)            # base (bottom) faces Lb's lead
 place("Q2", "npn13G2", 86.0, 208.0, Nx=8)            # collector (top) faces Lc's lead
 place("Cin", "rfcmim", 175, 8, **MIM(33))            # near the RF pad, bottom of the side column
@@ -75,9 +75,12 @@ rect("TopMetal1", lbA.left, lbA.top, lbA.right, vb1[1] + 1.4)
 # --- Le: Q1 emitter (M2) -> left -> via -> TM2 strip 47 um -> ground
 rect("Metal2", q1e.left - 9.5, q1e.bottom, q1e.left + 1, q1e.top)
 vle = (q1e.left - 8.0, q1e.center().y); via(*vle, "Metal2", "TopMetal2")
-LEY = 177.0
-rect("TopMetal2", vle[0] + 2, LEY - 5, vle[0] + 2 - 47, LEY + 5)
-gnd_via(vle[0] + 2 - 44, LEY, "TopMetal2")
+LEY = 177.0; X0 = vle[0] + 2
+# L-shaped strip (55 um left + 45 um up, 10 um wide): ~2x the emitter inductance, re-tuned so the input match holds with
+# the extracted capacitance on Q1's base (perpendicular segments do not couple, so their inductances add)
+rect("TopMetal2", X0, LEY - 5, X0 - 55, LEY + 5)
+rect("TopMetal2", X0 - 55, LEY - 5, X0 - 45, LEY + 45)
+gnd_via(X0 - 50, LEY + 40, "TopMetal2")
 # --- c1: Q1 collector (top) -> Metal2 -> Q2 emitter (escape right)
 rect("Metal1", q1c.left, q1c.bottom, q1c.right, q1c.top + 11.5)
 vc1 = (q1c.right - 2.0, q1c.top + 10.3); via(*vc1, "Metal1", "Metal2")
@@ -326,10 +329,10 @@ B.text("GND", 6, 520, gds=(50, 25))
 # ======================= ground plane + checks =======================
 B.ground_plane((0, 0, 290, 548), hole_keys=("Lb", "Lc"), signal_mim_keys=("Cin", "Cout", "Cc1", "Cc2"))
 P = {"RFIN": ("TopMetal2", (vrf[0], 1)), "Cin MINUS": ("Metal5", cim.center()), "Cin PLUS": ("TopMetal1", cip.center()),
-     "Lb left (in)": ("TopMetal1", lbB.center()), "Lb right (b1)": ("TopMetal1", lbA.center()), "Q1 B": ("Metal1", q1b.center()),
+     "Lb left (in)": ("TopMetal1", (lbB.center().x, lbB.top + 1.5)), "Lb right (b1)": ("TopMetal1", (lbA.center().x, lbA.top + 1.5)), "Q1 B": ("Metal1", q1b.center()),
      "Q1 E": ("Metal2", q1e.center()), "GND plane": ("Metal4", (5, 520)), "Q1 C": ("Metal1", q1c.center()), "Q2 E": ("Metal2", q2e.center()),
      "Q2 B": ("Metal1", q2b.center()), "Ccas1 +": ("TopMetal1", pin("Ccas1", "PLUS").center()), "Ccas2 +": ("TopMetal1", pin("Ccas2", "PLUS").center()),
-     "Q2 C": ("Metal1", q2c.center()), "Lc right (out)": ("TopMetal1", lcB.center()), "Lc left (VCC)": ("TopMetal1", lcA.center()),
+     "Q2 C": ("Metal1", q2c.center()), "Lc right (out)": ("TopMetal1", (lcB.center().x, lcB.bottom - 1.5)), "Lc left (VCC)": ("TopMetal1", (lcA.center().x, lcA.bottom - 1.5)),
      "RP right": ("Metal1", rpr.center()), "RP left": ("Metal1", rpl.center()), "Cout MINUS": ("Metal5", com.center()),
      "Cdec1 +": ("TopMetal1", pin("Cdec1", "PLUS").center()), "Cdec2 +": ("TopMetal1", pin("Cdec2", "PLUS").center()),
      "Cout PLUS": ("TopMetal1", cop.center()), "link end": ("TopMetal2", LINK_END),
@@ -363,10 +366,10 @@ P = {"RFIN": ("TopMetal2", (vrf[0], 1)), "Cin MINUS": ("Metal5", cim.center()), 
      **{f"{k} TIE": ("Metal1", pin(k, "TIE").center()) for k in RFMIMS},
      **{f"{k} -": ("Metal5", pin(k, "MINUS").center()) for k in ("Ccas1", "Ccas2", "Cdec1", "Cdec2")},
      **{f"ptap{i}": ("Metal1", pins_of(f"ptap{i}", 8)[0].center()) for i in range(5)}}
-G_ = [["RFIN", "Cin MINUS"], ["Cin PLUS", "Lb left (in)", "Lb right (b1)", "Q1 B", "Rb top"],
+G_ = [["RFIN", "Cin MINUS"], ["Cin PLUS", "Lb left (in)"], ["Lb right (b1)", "Q1 B", "Rb top"],
       ["Q1 E", "GND plane", "Qr E", "Rief bot", "Cbn -", "R2 top", "Rerf bot", "Cb3 -", "Re bot", "Rd2 bot", "Cvl -", "Rtail bot", "Rv2 bot", "Cvb -"] + [f"{k} TIE" for k in RFMIMS] + [f"{k} -" for k in ("Ccas1", "Ccas2", "Cdec1", "Cdec2")] + [f"ptap{i}" for i in range(5)], ["Q1 C", "Q2 E"],
       ["Q2 B", "Ccas1 +", "Ccas2 +", "R1 bot", "R2 bot"],
-      ["Q2 C", "Lc right (out)", "Lc left (VCC)", "RP right", "RP left", "Cout MINUS", "Cdec1 +", "Cdec2 +", "VCC rail", "Qf C", "R1 top", "Rrf top", "Rd1 top", "RLp top", "RLn top", "CLp top", "CLn top", "RD1 bot", "RD2 bot", "Rv1 bot"],
+      ["Q2 C", "Lc right (out)", "RP right", "Cout MINUS"], ["Lc left (VCC)", "RP left", "Cdec1 +", "Cdec2 +", "VCC rail", "Qf C", "R1 top", "Rrf top", "Rd1 top", "RLp top", "RLn top", "CLp top", "CLn top", "RD1 bot", "RD2 bot", "Rv1 bot"],
       ["Cout PLUS", "link end", "Q3 B", "Rt top"], ["Rt bot", "Cb3 +", "Qrf B", "Qrf C", "Rrf bot"],
       ["Qrf E", "Rerf top"], ["Q3 E", "Re top"], ["Q3 C", "Q4 E", "Q5 E"], ["Q4 B", "Rl1 top", "Cc1 -"], ["Q5 B", "Rl2 top", "Cc2 -"],
       ["Rl1 bot", "Rl2 bot", "Rd1 bot", "Rd2 top", "Cvl +"], ["Q4 C", "RLp bot", "CLp bottom", "IFP"], ["Q5 C", "RLn bot", "CLn bottom", "IFN"],
@@ -374,5 +377,7 @@ G_ = [["RFIN", "Cin MINUS"], ["Cin PLUS", "Lb left (in)", "Lb right (b1)", "Q1 B
       ["Qa E", "Qb E", "Rtail top"], ["Rv1 top", "Rv2 top", "Rb1 top", "Rb2 top", "Cvb +"], ["LOP", "Ci1 +"], ["LON", "Ci2 +"],
       ["IREF", "Qr C", "Qf B"], ["Qr B", "Rref bot"], ["Qf E", "Rref top", "Rief top", "Rb bot", "Cbn +"]]
 if __name__ == "__main__":
+    import cheese
+    print("Metal4 cheesing (IHP density, RF-aware):", cheese.cheese(B.ly, B.top))
     B.connectivity(P, G_); B.mini_drc(); B.foreign_in_inductors(); B.floating_metal()
     B.write("rx_tile.gds")
