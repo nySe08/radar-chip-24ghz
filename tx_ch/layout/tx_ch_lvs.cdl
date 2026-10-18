@@ -1,0 +1,55 @@
+* ============================================================
+* TX channel (driver + 24 GHz PA + 2nd-harmonic trap) - LVS reference netlist for tx_ch.gds
+* Conventions as in the signed-off blocks (as IHP's deck extracts them): MIM terminals PLUS MINUS TIE; npn C B E S;
+* parallel devices combined (cascode Q2 m=2); 6 substrate taps (2x2 um) combined into one ptap1 (A=24p, P=48u).
+* Trap branch drawn as OUT -> C2t -> L2 -> GND (series L-C, same circuit as OUT -> L2 -> C2t -> GND in simulation).
+* Cdec1 is supply decoupling at the output coil's VCC lead (layout-only; the simulation's supply is ideal).
+* ============================================================
+.SUBCKT tx_ch ENB GND OUT TXINN TXINP VCC
+* ---------------- driver (the RX tile's channel LO driver, load 1.6 um) ----------------
+Ci1   TXINP  b1d    GND rfcmim w=25u l=25u m=1 wfeed=3u
+Ci2   TXINN  b2d    GND rfcmim w=25u l=25u m=1 wfeed=3u
+Rv1   VCC    vbd    GND rppd w=1u l=17.53u ps=0u b=0 m=1
+Rv2   GND    vbd    GND rppd w=1u l=20.63u ps=0u b=0 m=1
+Cvb   vbd    GND    GND rfcmim w=33u l=33u m=1 wfeed=3u
+Rb1   b1d    vbd    GND rppd w=1u l=19.08u ps=0u b=0 m=1
+Rb2   b2d    vbd    GND rppd w=1u l=19.08u ps=0u b=0 m=1
+Qa    dp     b1d    t    GND npn13G2 we=70n le=900n Nx=2 m=1
+Qb    dn     b2d    t    GND npn13G2 we=70n le=900n Nx=2 m=1
+Rtail GND    t      GND rppd w=2u l=0.79u ps=0u b=0 m=1
+RD1   VCC    dp     GND rppd w=2u l=1.6u ps=0u b=0 m=1
+RD2   VCC    dn     GND rppd w=2u l=1.6u ps=0u b=0 m=1
+Cc1   dp     pin    GND rfcmim w=12u l=12u m=1 wfeed=3u
+Cc2   dn     dmy    GND rfcmim w=12u l=12u m=1 wfeed=3u
+Cd    dmy    dd     GND rfcmim w=7u l=7u m=1 wfeed=3u
+Rd    GND    dd     GND rsil w=1u l=1.3u ps=0u b=0 m=1
+* ---------------- PA input and bias mirror (with enable switches) ----------------
+Cin   pin    b1     GND rfcmim w=25.8u l=25.8u m=1 wfeed=3u
+Rb    vbn    b1     GND rppd w=1u l=3.6u ps=0u b=0 m=1
+Rif   VCC    cr     GND rppd w=1u l=2u ps=0u b=0 m=1
+Qr    cr     br     er   GND npn13G2 we=70n le=900n Nx=1 m=1
+Rer   GND    er     GND rsil w=1u l=4.47u ps=0u b=0 m=1
+Qf    VCC    cr     vbn  GND npn13G2 we=70n le=900n Nx=1 m=1
+Rief  GND    vbn    GND rhigh w=1u l=12.6u ps=0u b=0 m=1
+Rref  vbn    br     GND rhigh w=1u l=5.53u ps=0u b=0 m=1
+Cbn   vbn    GND    GND rfcmim w=37u l=37u m=1 wfeed=3u
+M1    cr     ENB    GND  GND sg13_lv_nmos w=10u l=0.13u ng=1 m=1
+M2    vbn    ENB    GND  GND sg13_lv_nmos w=8u l=0.13u ng=1 m=1
+* ---------------- gain stage and cascode ----------------
+Q1    c1     b1     e1   GND npn13G2 we=70n le=900n Nx=8 m=1
+Re1   GND    e1     GND rsil w=4u l=1.58u ps=0u b=0 m=1
+Q2    col    vcas   c1   GND npn13G2v we=120n le=1u Nx=8 m=2
+Rc1   VCC    vcas   GND rppd w=1u l=3.21u ps=0u b=0 m=1
+Rc2   GND    vcas   GND rppd w=1u l=5.92u ps=0u b=0 m=1
+Ccas  vcas   GND    GND rfcmim w=37u l=37u m=1 wfeed=3u
+Cdec1 VCC    GND    GND rfcmim w=33u l=33u m=1 wfeed=3u
+* ---------------- output network: tank coil, output MIM, 2nd-harmonic trap ----------------
+Lc    VCC    col    GND inductor w=12u s=2.1u d=147u nr_r=1
+Cout  OUT    col    GND rfcmim w=7u l=7u m=1 wfeed=3u
+* IHP's MIM cell draws no feed line below 7 um, so the deck extracts wfeed=0u for the 6.4 um trap MIM
+C2t   OUT    t3     GND rfcmim w=6.4u l=6.4u m=1 wfeed=0u
+* the deck lists a coil's LEFT lead first: L2 is rotated 180 deg, so its left lead (LB) is the ground end
+L2    GND    t3     GND inductor w=12u s=2.1u d=85u nr_r=1
+* ---------------- substrate taps ----------------
+Rtap  GND    GND    ptap1 A=24p P=48u
+.ENDS tx_ch
