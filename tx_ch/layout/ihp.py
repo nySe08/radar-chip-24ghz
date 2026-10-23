@@ -7,9 +7,7 @@ Set PDK_ROOT if the PDK is not in /foss/pdks.
 """
 import sys, os, io, contextlib
 PDK = os.path.join(os.environ.get("PDK_ROOT", "/foss/pdks"), "ihp-sg13g2", "libs.tech", "klayout", "python")
-for p in (PDK, os.path.join(PDK, "pycell4klayout-api", "source", "python"),
-          "/home/claude/pcapi/source/python", "/home/claude",                       # (generator author's sandbox)
-          "/home/claude/pdkdev/ihp-sg13g2/libs.tech/klayout/python"):
+for p in (PDK, os.path.join(PDK, "pycell4klayout-api", "source", "python")):
     if os.path.isdir(p) and p not in sys.path: sys.path.insert(0, p)
 try:
     import pya                                   # running inside KLayout

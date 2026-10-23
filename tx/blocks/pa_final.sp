@@ -3,8 +3,10 @@
 * Output coil: EM model of inductor2, 1 turn, w 12 um, d 147 um (333 pH, Q 24.8 at 24.1 GHz)
 * 2nd-harmonic trap on the 50 ohm side: EM coil (1 turn, w 12, d 85 um: ~175 pH near 48 GHz) + rfcmim 6.4 um
 * Final values are the defaults below (PA mirror reference 2.0 um, output MIM 7 um).
-.subckt pa_final in out enb vcc RREFL=2.0u RC1=3.21u LC=330p QL=24.8 L2=175p R2=1.9 W2=6.4u WC=7u
-XCin  in b1 0 cap_rfcmim w=25.8u l=25.8u
+* Post-layout re-tune (v2): no input MIM (the driver's coupling MIM drives the base directly, so the input port IS the base b1),
+* trap MIM 6.0 um, trap and output MIM in the layout's order and orientation. Interconnect parasitics are not in this
+* schematic netlist: they come from the extraction (see ../post_layout/).
+.subckt pa_final b1 out enb vcc RREFL=2.0u RC1=3.21u LC=330p QL=24.8 L2=175p R2=1.9 W2=6.0u WC=7u
 * bias: reference mirror with beta helper (Qf), enable switches pull the bias down
 XRif  vcc cr 0 rppd w=1u l={RREFL}
 XQr   cr br er 0 npn13G2 Nx=1
@@ -28,10 +30,9 @@ XCcas vcas 0 0 cap_rfcmim w=37u l=37u
 * load: EM model of the 1-turn coil, plus collector parasitic estimate; output MIM
 Lc    vcc lx {LC}
 RLc   lx col {1.5158e11*LC/QL}
-Ccl   col 0 7.1f
-XCout col out 0 cap_rfcmim w={WC} l={WC}
+XCout out col 0 cap_rfcmim w={WC} l={WC}
 * 2nd-harmonic trap, 50 ohm output side: EM trap coil (1t w12 d85: ~175 pH, Q~28 at 48 GHz) + REAL rfcmim
-L2t   out t2 {L2}
-R2t   t2 t3 {R2}
-XC2t  t3 0 0 cap_rfcmim w={W2} l={W2}
+XC2t  out t3 0 cap_rfcmim w={W2} l={W2}
+L2t   t3 t2 {L2}
+R2t   t2 0 {R2}
 .ends pa_final

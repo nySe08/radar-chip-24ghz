@@ -1,4 +1,4 @@
-"""floorplan_v2.py - to-scale floorplans of the test chip and the full 2TX/4RX chip. HYBRID pad ring: IHP sg13g2_io cells (DC + supply, silicon-proven ESD) on the top edge,
+"""floorplan_v2.py - HYBRID pad ring: IHP sg13g2_io cells (DC + supply, silicon-proven ESD) on the top edge,
 custom GSG RF pads with EM-verified ESD coils on the other edges. Real cells everywhere they exist.
 
 Top edge (IO segment): IHP IO cells (80 x 180 um, abut at 80 um pitch), rotated so their pad side faces the die edge,
@@ -7,18 +7,16 @@ core vdd/vss rails tied to GND (the analog and IOVdd/IOVss pads use only iovdd/i
 RF edges: 80 um GSG pads (signal pad TopMetal1/2 only), ESD coils as their real inductor2 PCells
 (RX: 3 turns w5 d86, ~1.48 nH, self-resonant 23.4 GHz; TX: 2 turns w7 d77, ~730 pH at 24 GHz).
 """
-import os, sys
-HERE = os.path.dirname(os.path.abspath(__file__)); REPO = os.path.dirname(HERE)
-sys.path.insert(0, HERE)
+import sys
+sys.path.insert(0, '/home/claude/vcocoil')
 import ihp
 pya = ihp.pya
 import matplotlib; matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 
-IOGDS = os.path.join(os.environ.get("PDK_ROOT", "/foss/pdks"), "ihp-sg13g2", "libs.ref", "sg13g2_io", "gds", "sg13g2_io.gds")
-BLOCKS = {"lo_core": (os.path.join(REPO, "lo_core", "layout", "lo_core.gds"), 860, 640),
-          "rx_tile": (os.path.join(REPO, "rx_tile", "layout", "rx_tile.gds"), 290, 548)}
+IOGDS = "/home/claude/io/sg13g2_io.gds"
+BLOCKS = {"lo_core": ("/home/claude/logen/lo_core.gds", 860, 640), "rx_tile": ("/home/claude/tilegen/rx_tile.gds", 290, 548)}
 PH = {"tx_ch": (440, 400), "lodrv": (150, 150)}
 SEAL, IO_PAD, IO_DEPTH, IO_PITCH = 40.0, 70.0, 180.0, 80.0
 TOP_M = SEAL + 5 + IO_PAD + 5 + IO_DEPTH + 30          # 330 um: seal, bondpad, IO cell, gap to the core
@@ -72,9 +70,9 @@ class Chip:
             self.top.insert(pya.DCellInstArray(c.cell_index(), pya.DTrans(cx - c.dbbox().center().x, cy - c.dbbox().center().y)))
             self.coils.append((coil, cx, cy, c.dbbox().width(), c.dbbox().height()))
     def finish(self, margins):
-        sr = self.ly.cell(ihp.pcell(self.ly, "sealring", w=f"{self.H - 50}u", l=f"{self.W - 50}u"))   # PCell: w = Y extent, l = X extent
+        sr = self.ly.cell(ihp.pcell(self.ly, "sealring", w=f"{self.W - 50}u", l=f"{self.H - 50}u"))
         self.top.insert(pya.DCellInstArray(sr.cell_index(), pya.DTrans(0, 0)))
-        self.ly.write(os.path.join(HERE, f"floorplan_v2_{self.name}.gds"))
+        self.ly.write(f"floorplan_v2_{self.name}.gds")
         # checks: blocks inside the core box, no overlaps between blocks, IO cells, pads and coils
         L, B, R, T = margins
         boxes = [(f"block {r[4]}", pya.DBox(r[0], r[1], r[0] + r[2], r[1] + r[3])) for r in self.rects]
@@ -110,7 +108,7 @@ class Chip:
             ax.text(cx, cy, f"ESD\ncoil {k.upper()}", ha="center", va="center", fontsize=6)
         ax.set_xlim(-20, W + 20); ax.set_ylim(-20, H + 20); ax.set_aspect("equal"); ax.set_xlabel("um")
         ax.set_title(f"{self.name}: {W:.0f} x {H:.0f} um = {W*H/1e6:.2f} mm2  (top: IHP IO cells; red/green: custom RF pads)", fontsize=8.5)
-        fig.tight_layout(); fig.savefig(os.path.join(HERE, f"floorplan_v2_{self.name}.png"), dpi=170); plt.close(fig)
+        fig.tight_layout(); fig.savefig(f"floorplan_v2_{self.name}.png", dpi=170); plt.close(fig)
 
 def test_chip():
     L, B, R, T = 200.0, 220.0, 220.0, TOP_M
@@ -150,6 +148,6 @@ def full_chip():
     c.rf_group(["G", "PLLP", "G", "PLLN", "G"], lo_y + 180 + 311, "left")
     return c.finish((L, B, R, T))
 
-if __name__ == "__main__":   # usage: python3 floorplan/floorplan_v2.py   (from the repository root, inside IIC-OSIC-TOOLS)
+if __name__ == "__main__":
     for name, fn in (("test_chip", test_chip), ("full_chip", full_chip)):
         a, bad = fn(); print(f"{name}: {a:.2f} mm2, checks: {'OK' if not bad else bad[:8]}")

@@ -1,0 +1,50 @@
+* Extracted by KLayout with SG13G2 LVS runset on : 23/10/2026 22:33
+
+.SUBCKT tx_ch ENB GND OUT TXINN TXINP VCC
+C$1 TXINP \$53 GND rfcmim w=25u l=25u A=625p P=100u m=1 wfeed=3u
+C$2 \$68 GND GND rfcmim w=33u l=33u A=1089p P=132u m=1 wfeed=3u
+C$3 \$69 GND GND rfcmim w=37u l=37u A=1369p P=148u m=1 wfeed=3u
+C$4 OUT \$60 GND rfcmim w=7u l=7u A=49p P=28u m=1 wfeed=3u
+C$5 TXINN \$55 GND rfcmim w=25u l=25u A=625p P=100u m=1 wfeed=3u
+C$6 VCC GND GND rfcmim w=33u l=33u A=1089p P=132u m=1 wfeed=3u
+C$7 \$49 \$32 GND rfcmim w=16u l=16u A=256p P=64u m=1 wfeed=3u
+C$8 \$46 \$31 GND rfcmim w=16u l=16u A=256p P=64u m=1 wfeed=3u
+C$9 OUT \$33 GND rfcmim w=6u l=6u A=36p P=24u m=1 wfeed=3u
+C$10 \$32 \$29 GND rfcmim w=7u l=7u A=49p P=28u m=1 wfeed=3u
+C$11 \$7 GND GND rfcmim w=37u l=37u A=1369p P=148u m=1 wfeed=3u
+R$12 \$7 \$31 GND rppd w=1u l=3.6u ps=0u b=0 m=1
+R$13 GND \$67 GND rsil w=4u l=1.58u ps=0u b=0 m=1
+Q$14 \$59 \$31 \$67 GND npn13G2 we=70n le=900n Nx=8 m=1
+L$15 \$33 GND GND inductor w=12u s=2.1u d=85u nr_r=1
+R$16 GND \$69 GND rppd w=1u l=5.92u ps=0u b=0 m=1
+R$17 VCC \$69 GND rppd w=1u l=3.21u ps=0u b=0 m=1
+R$18 VCC \$49 GND rppd w=2u l=0.9u ps=0u b=0 m=1
+R$19 VCC \$46 GND rppd w=2u l=0.9u ps=0u b=0 m=1
+R$20 GND \$45 GND rppd w=2.2u l=0.5u ps=0u b=0 m=1
+M$21 GND ENB \$7 GND sg13_lv_nmos L=0.13u W=8u AS=2.72p AD=2.72p PS=16.68u
++ PD=16.68u rfmode=0
+M$22 GND ENB \$6 GND sg13_lv_nmos L=0.13u W=10u AS=3.4p AD=3.4p PS=20.68u
++ PD=20.68u rfmode=0
+R$23 \$6 VCC GND rppd w=1u l=2u ps=0u b=0 m=1
+R$24 GND \$5 GND rsil w=1u l=4.47u ps=0u b=0 m=1
+R$25 GND \$7 GND rhigh w=1u l=12.6u ps=0u b=0 m=1
+R$26 \$9 \$7 GND rhigh w=1u l=5.53u ps=0u b=0 m=1
+Q$27 \$6 \$9 \$5 GND npn13G2 we=70n le=900n Nx=1 m=1
+Q$28 VCC \$6 \$7 GND npn13G2 we=70n le=900n Nx=1 m=1
+Q$29 \$46 \$53 \$45 GND npn13G2 we=70n le=900n Nx=2 m=1
+Q$30 \$49 \$55 \$45 GND npn13G2 we=70n le=900n Nx=2 m=1
+R$31 GND \$68 GND rppd w=1u l=20.63u ps=0u b=0 m=1
+R$32 VCC \$68 GND rppd w=1u l=17.53u ps=0u b=0 m=1
+R$33 \$53 \$68 GND rppd w=1u l=19.08u ps=0u b=0 m=1
+R$34 \$55 \$68 GND rppd w=1u l=19.08u ps=0u b=0 m=1
+R$35 GND \$29 GND rsil w=1u l=1.3u ps=0u b=0 m=1
+R$36 GND GND ptap1 A=4p P=8u
+R$37 GND GND ptap1 A=4p P=8u
+R$38 GND GND ptap1 A=4p P=8u
+R$39 GND GND ptap1 A=4p P=8u
+R$40 GND GND ptap1 A=4p P=8u
+R$41 GND GND ptap1 A=4p P=8u
+42$42 \$60 \$69 \$59 GND npn13G2v we=120n le=1000n Nx=8 m=1
+43$43 \$60 \$69 \$59 GND npn13G2v we=120n le=1000n Nx=8 m=1
+L$44 VCC \$60 GND inductor w=12u s=2.1u d=147u nr_r=1
+.ENDS tx_ch

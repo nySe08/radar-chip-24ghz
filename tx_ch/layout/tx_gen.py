@@ -14,13 +14,12 @@ place("Lc", "inductor2", 300, 262, w="12u", s="2.1u", d="147u", nr_r=1, subE=Fal
 place("L2", "inductor2", 356, 181, rot=180, w="12u", s="2.1u", d="85u", nr_r=1, subE=False)    # rot 180: LA right (357..369) -> C2t, LB left -> GND
 place("Q2",  "npn13G2V", 300, 248, Nx=8)         # cascode pair side by side, collectors (top) under Lc's LB lead
 place("Q2b", "npn13G2V", 326, 248, Nx=8)
-place("Q1",  "npn13G2",  316, 236, Nx=8)         # gain stage: collector (top) -> cascode emitters, base (bottom) <- Cin, Rb
+place("Q1",  "npn13G2",  316, 236, Nx=8)         # gain stage: collector (top) -> cascode emitters, base (bottom) <- driver Cc1, Rb
 place("Re1", "rsil",     318.5, 226, w="4u", l="1.58u")
 place("Cdec1", "rfcmim", 240, 210, **MIM(33))     # supply decoupling at the coil's VCC lead
 place("Ccas",  "rfcmim", 376, 205, **MIM(37))     # cascode base bypass, right beside the bases
 place("Cout",  "rfcmim", 353, 232, **MIM(7))      # collector -> OUT
-place("C2t",   "rfcmim", 353, 194, **MIM(6.4))    # OUT -> trap coil
-place("Cin",   "rfcmim", 198, 186, **MIM(25.8))   # PA input MIM, left of Q1
+place("C2t",   "rfcmim", 353, 194, **MIM(6.0))    # OUT -> trap coil (re-tuned post-layout: 6.4 -> 6.0 um)
 place("Rb",    "rppd",   306.2, 225, w="1u", l="3.60u")   # base bias feed, at the base
 
 # ======================= PA core wiring =======================
@@ -28,7 +27,7 @@ lcA, lcB = pin("Lc", "LA"), pin("Lc", "LB")
 l2A, l2B = pin("L2", "LA"), pin("L2", "LB")
 q1b, q1c, q1e = pin("Q1", "B"), pin("Q1", "C"), pin("Q1", "E")
 qa = {k: (pin(k, "B"), pin(k, "C"), pin(k, "E")) for k in ("Q2", "Q2b")}
-P_ = {k: (pin(k, "PLUS"), pin(k, "MINUS")) for k in ("Cdec1", "Ccas", "Cout", "C2t", "Cin")}
+P_ = {k: (pin(k, "PLUS"), pin(k, "MINUS")) for k in ("Cdec1", "Ccas", "Cout", "C2t")}
 re0, re1 = ends("Re1"); rb0, rb1 = ends("Rb")
 
 # --- col: both cascode collectors (Metal1, top) -> vias -> TopMetal1 bar -> TopVia2 -> Lc's LB lead (TopMetal2)
@@ -59,12 +58,10 @@ wire("Metal3", [vb2, (vcc_[0], vb2[1]), vcc_], 1.5)
 # --- Q1 emitter (Metal2) -> Re1 top end -> Re1 bottom end -> ground
 via(re1.center().x, re1.center().y, "Metal1", "Metal2"); rect("Metal2", re1.left, re1.bottom, re1.right, q1e.top)
 gnd_via(re0.center().x, re0.center().y - 2.0, "Metal1"); rect("Metal1", re0.left, re0.bottom - 3.0, re0.right, re0.top)
-# --- b1: Q1 base bar (Metal1) -> left: Rb top end, and Metal3 under Cdec1 -> Cin bottom plate (MINUS, Metal5)
-YBP = 229.0                                                   # base pad: Q1's base bar pulled DOWN into a wide pad (as in the RX tile)
-rect("Metal1", rb1.left, YBP, q1b.right, q1b.top)             # (an upward extension would crowd the emitter fingers)
-cim = P_["Cin"][1]; vb1 = (rb1.left + 2.5, YBP + 2.0)
-via(*vb1, "Metal1", "Metal3"); vci = (cim.right + 3.0, vb1[1]); via(*vci, "Metal3", "Metal5")
-wire("Metal3", [vb1, vci], 1.5); wire("Metal5", [vci, (cim.center().x, vci[1]), (cim.center().x, cim.center().y)], 2)
+# --- b1: Q1 base bar (Metal1) pulled down into a wide base pad, extended left to the drive line's riser (x = XB1)
+# (post-layout re-tune: the PA input MIM is gone; the driver's Cc1 feeds the base directly, see the drive line below)
+YBP, XB1 = 229.0, 302.0                                       # base pad: pulled DOWN (an upward extension would crowd the emitters)
+rect("Metal1", XB1 - 1.2, YBP, q1b.right, q1b.top)
 # --- VCC lead: Lc's LA (TopMetal2) down beside Q2 -> Cdec1 top plate (PLUS, TopMetal1)
 rect("TopMetal2", lcA.left, 238.0, lcA.right, lcA.bottom)
 cdp = P_["Cdec1"][0]; vvd = (lcA.right - 3.0, 240.0); via(*vvd, "TopMetal1", "TopMetal2")   # 6 um from Rc1's TopVia2 (TV2.b: 1.06 um)
@@ -87,9 +84,9 @@ place("Rv1", "rppd", 172 + DX, 497 + DY, w="1u", l="17.53u"); place("Rv2", "rppd
 place("Rb1", "rppd", 190 + DX, 497 + DY, w="1u", l="19.08u"); place("Rb2", "rppd", 236 + DX, 497 + DY, w="1u", l="19.08u")
 place("Ci1", "rfcmim", 200 + DX, 534 + DY, rot=270, **MIM(25)); place("Ci2", "rfcmim", 246 + DX, 534 + DY, rot=270, **MIM(25))
 place("Qa", "npn13G2", 212 + DX, 494 + DY, rot=180, Nx=2); place("Qb", "npn13G2", 258 + DX, 494 + DY, rot=180, Nx=2)
-place("Rtail", "rppd", 233 + DX, 487 + DY, w="2u", l="0.79u")
-place("RD1", "rppd", 204 + DX, 487.4 + DY, w="2u", l="1.6u"); place("RD2", "rppd", 250 + DX, 487.4 + DY, w="2u", l="1.6u")   # TX load 1.6 um
-place("Cc1", "rfcmim", 205.6 + DX, 479.9 + DY, rot=270, **MIM(12)); place("Cc2", "rfcmim", 251.6 + DX, 479.9 + DY, rot=270, **MIM(12))
+place("Rtail", "rppd", 233 + DX, 487 + DY, w="2.2u", l="0.5u")  # re-tuned: 2/0.79 -> 2.2/0.5 um (more drive; 0.5 um is the cell minimum)
+place("RD1", "rppd", 204 + DX, 487.4 + DY, w="2u", l="0.9u"); place("RD2", "rppd", 250 + DX, 487.4 + DY, w="2u", l="0.9u")   # re-tuned load 0.9 um (higher output pole)
+place("Cc1", "rfcmim", 205.6 + DX, 479.9 + DY, rot=270, **MIM(16)); place("Cc2", "rfcmim", 251.6 + DX, 479.9 + DY, rot=270, **MIM(16))   # 12 -> 16 um
 place("Cd", "rfcmim", 168, 175, **MIM(7)); place("Rd", "rsil", 186, 170, w="1u", l="1.30u")      # dummy load on the unused output
 
 XR = 2.5                                                      # VCC rail (TopMetal2) along the left edge, below the input ports
@@ -128,10 +125,12 @@ g = (cvbm.right + 3.0, cvbm.center().y); gnd_via(*g, "Metal5"); wire("Metal5", [
 for cp, name, yp in ((ci1p, "TXINP", 285.0), (ci2p, "TXINN", 296.0)):
     x = cp.center().x; rect("TopMetal1", cp.left, cp.bottom, cp.right, yp + 1.1); via(x, yp, "TopMetal1", "TopMetal2")
     wire("TopMetal2", [(x, yp), (0, yp)], 4, end_ext=0); B.text(name, 1.5, yp)
-# --- pin: Cc1 bottom plate (Metal5) -> down -> TopMetal1 under the driver's output caps -> Cin top plate (PLUS)
-YPIN = 192.0; cinp = P_["Cin"][0]
-vpn = (c1m.center().x, YPIN); via(*vpn, "Metal5", "TopMetal1"); wire("Metal5", [(c1m.center().x, c1m.center().y), vpn], 2)
-wire("TopMetal1", [vpn, (cinp.center().x, YPIN), (cinp.center().x, cinp.center().y)], 3)
+# --- b1 drive line: Cc1 bottom plate (Metal5) -> down -> 2 um TopMetal1 at y = 192, BELOW the decoupling MIM (not under it)
+#     -> Metal3 riser at x = XB1 (Metal3: the vbn line crosses here on Metal2) -> the base pad
+YB1L = 192.0
+vpn = (c1m.center().x, YB1L); via(*vpn, "Metal5", "TopMetal1"); wire("Metal5", [(c1m.center().x, c1m.center().y), vpn], 2)
+wire("TopMetal1", [vpn, (XB1, YB1L)], 2)
+via(XB1, YB1L, "Metal3", "TopMetal1"); wire("Metal3", [(XB1, YB1L), (XB1, YBP + 2.0)], 1.5); via(XB1, YBP + 2.0, "Metal1", "Metal3")
 # --- dummy load: Cc2 bottom plate (Metal5, crosses under the pin line) -> Cd top plate; Cd bottom plate -> Rd -> ground
 cdp_, cdm_ = pin("Cd", "PLUS"), pin("Cd", "MINUS"); rd0, rd1 = ends("Rd")
 vdm = (c2m_.center().x, 183.0); via(*vdm, "Metal5", "TopMetal1"); wire("Metal5", [(c2m_.center().x, c2m_.center().y), vdm], 2)
@@ -139,7 +138,7 @@ wire("TopMetal1", [vdm, (cdp_.center().x, vdm[1]), (cdp_.center().x, cdp_.center
 vdd = (rd1.center().x, rd1.center().y); via(*vdd, "Metal1", "Metal5")
 wire("Metal5", [(cdm_.center().x, cdm_.center().y), (vdd[0], cdm_.center().y), vdd], 2)
 gnd_via(rd0.center().x, rd0.center().y - 2.0, "Metal1"); rect("Metal1", rd0.left, rd0.bottom - 3.0, rd0.right, rd0.top)
-# --- VCC feed to the coil's decoupling MIM: rail -> TopMetal2 below the driver -> up beside Cin -> Cdec1 top plate
+# --- VCC feed to the coil's decoupling MIM: rail -> TopMetal2 below the driver -> up beside Cdec1 -> its top plate
 YVF, XVF = 158.0, 246.0; cdp = P_["Cdec1"][0]               # via lands on the top plate itself
 wire("TopMetal2", [(XR, YVF), (XVF, YVF), (XVF, cdp.center().y)], 5); via(XVF, cdp.center().y, "TopMetal1", "TopMetal2")
 
@@ -185,7 +184,7 @@ rect("Metal1", qfc.left, qfc.bottom, qfc.right, 81.0); via(qfc.center().x, 80.0,
 wire("TopMetal2", [(qfc.center().x, 80.0), (XR, 80.0)], 4)
 via(rif1.center().x, rif1.center().y + 0.5, "Metal1", "TopMetal2"); rect("Metal1", rif1.left, rif1.bottom, rif1.right, rif1.top + 1.0)
 wire("TopMetal2", [(rif1.center().x, rif1.center().y + 0.5), (rif1.center().x, 80.0)], 4)
-# vbn -> the PA's base resistor Rb: Metal2 east along y = 95, north through the channel between Cin and Cdec1, east to Rb
+# vbn -> the PA's base resistor Rb: Metal2 east along y = 95, north beside Cdec1 (x = 231.9), east to Rb
 XCH = 231.9; YRB = 221.0
 wire("Metal2", [(rief1.center().x + 4.0, YV), (XCH, YV), (XCH, YRB), (rb0.center().x, YRB)], 1.0)
 via(rb0.center().x, YRB, "Metal1", "Metal2"); rect("Metal1", rb0.left, YRB - 0.6, rb0.right, rb0.top)
@@ -235,7 +234,7 @@ for i, (x, y) in enumerate(TAPS):
 # ======================= stage 4: decap bottom plates, MIM substrate rings, ground plane =======================
 for k in ("Cdec1", "Ccas"):                                   # decoupling / bypass bottom plates -> ground
     m = pin(k, "MINUS"); g = (m.right + 3.0, m.center().y); gnd_via(*g, "Metal5"); wire("Metal5", [(m.center().x, m.center().y), g], 2)
-SIGNAL_MIMS = ("Cin", "Cout", "C2t", "Cc1", "Cc2", "Cd", "Ci1", "Ci2")    # these sit in plane cut-outs (less plate-to-ground C)
+SIGNAL_MIMS = ("Cout", "C2t", "Cc1", "Cc2", "Cd", "Ci1", "Ci2")    # these sit in plane cut-outs (less plate-to-ground C)
 for k, inst in list(B.DEV.items()):
     if B.ly.cell(inst.cell_index).name.startswith("rfcmim"): B.ring_ground(k, cutout_keys=SIGNAL_MIMS, coil_keys=("Lc", "L2"))
 B.text("GND", 6.0, 6.0, gds=(50, 25))
@@ -248,7 +247,7 @@ if __name__ == "__main__":
          "col_cout": ("Metal5", com.center()),
          "c1_q1": ("Metal1", q1c.center()), "c1_q2": ("Metal2", e2.center()), "c1_q2b": ("Metal2", e2b.center()),
          "vcas_q2": ("Metal1", b2.center()), "vcas_q2b": ("Metal1", b2b.center()), "vcas_ccas": ("TopMetal1", ccp.center()),
-         "b1_q1": ("Metal1", q1b.center()), "b1_rb": ("Metal1", rb1.center()), "b1_cin": ("Metal5", cim.center()),
+         "b1_q1": ("Metal1", q1b.center()), "b1_rb": ("Metal1", rb1.center()), "b1_cc": ("Metal5", c1m.center()),
          "e1_q1": ("Metal2", q1e.center()), "e1_re": ("Metal1", re1.center()),
          "vcc_lc": ("TopMetal2", (lcA.center().x, lcA.bottom - 1.0)), "vcc_cdec": ("TopMetal1", cdp.center()),
          "out_cout": ("TopMetal1", cop.center()), "out_c2t": ("TopMetal1", c2p.center()), "out_port": ("TopMetal2", (W - 1, YO)),
@@ -260,7 +259,6 @@ if __name__ == "__main__":
               "t_qa": ("Metal2", qae.center()), "t_qb": ("Metal2", qbe.center()), "t_rt": ("Metal1", rta1.center()),
               "dp_q": ("Metal1", qac.center()), "dp_rd": ("Metal1", rd11_.center()), "dp_cc": ("TopMetal1", cc1p.center()),
               "dn_q": ("Metal1", qbc.center()), "dn_rd": ("Metal1", rd21_.center()), "dn_cc": ("TopMetal1", cc2p.center()),
-              "pin_cc": ("Metal5", c1m.center()), "pin_cin": ("TopMetal1", cinp.center()),
               "dmy_cc": ("Metal5", c2m_.center()), "dmy_cd": ("TopMetal1", cdp_.center()), "dd_cd": ("Metal5", cdm_.center()), "dd_rd": ("Metal1", rd1.center()),
               "cr_qr": ("Metal1", qrc.center()), "cr_qf": ("Metal1", qfb.center()), "cr_rif": ("Metal1", rif0.center()),
               "br_qr": ("Metal1", qrb.center()), "br_rref": ("Metal1", rref0.center()), "er_q": ("Metal2", qre.center()), "er_r": ("Metal1", rer1.center()),
@@ -278,17 +276,17 @@ if __name__ == "__main__":
               "gnd_rc2": ("Metal1", rc20.center()), "gnd_rd": ("Metal1", rd0.center()),
               "gnd_m1s": ("Metal1", (B.DEV["M1"].dbbox().left + 0.15, B.DEV["M1"].dbbox().bottom + 5.0)),
               "gnd_m2s": ("Metal1", (B.DEV["M2"].dbbox().left + 0.15, B.DEV["M2"].dbbox().bottom + 4.0)),
-              "gnd_tie_cin": ("Metal1", pin("Cin", "TIE").center()), "gnd_tie_cout": ("Metal1", pin("Cout", "TIE").center()),
+              "gnd_tie_cout": ("Metal1", pin("Cout", "TIE").center()),
               "gnd_tie_c2t": ("Metal1", pin("C2t", "TIE").center()), "gnd_tie_ci1": ("Metal1", pin("Ci1", "TIE").center()),
               "inp_ci": ("TopMetal1", ci1p.center()), "inp_port": ("TopMetal2", (0.5, 285.0)), "inn_ci": ("TopMetal1", ci2p.center()), "inn_port": ("TopMetal2", (0.5, 296.0))})
     G_ = [("col_q2", "col_q2b", "col_lc", "col_cout"), ("c1_q1", "c1_q2", "c1_q2b"), ("vcas_q2", "vcas_q2b", "vcas_ccas", "vcas_rc1", "vcas_rc2"),
-          ("b1_q1", "b1_rb", "b1_cin"), ("e1_q1", "e1_re"), ("out_cout", "out_c2t", "out_port"), ("t3_c2t", "t3_l2"),
+          ("b1_q1", "b1_rb", "b1_cc"), ("e1_q1", "e1_re"), ("out_cout", "out_c2t", "out_port"), ("t3_c2t", "t3_l2"),
           ("vcc_rail", "vcc_rv1", "vcc_rd1", "vcc_rd2", "vcc_lc", "vcc_cdec", "vcc_qf", "vcc_rif", "vcc_rc1"),
           ("cr_qr", "cr_qf", "cr_rif", "cr_m1"), ("enb_port", "enb_m1", "enb_m2"), ("br_qr", "br_rref"), ("er_q", "er_r"), ("vbn_qf", "vbn_rref", "vbn_rief", "vbn_cbn", "vbn_rb", "vbn_m2"), ("vbd_rv1", "vbd_rv2", "vbd_rb1", "vbd_rb2", "vbd_cvb"),
           ("b1d_q", "b1d_ci", "b1d_rb"), ("b2d_q", "b2d_ci", "b2d_rb"), ("t_qa", "t_qb", "t_rt"), ("dp_q", "dp_rd", "dp_cc"), ("dn_q", "dn_rd", "dn_cc"),
-          ("pin_cc", "pin_cin"), ("dmy_cc", "dmy_cd"), ("dd_cd", "dd_rd"), ("inp_ci", "inp_port"), ("inn_ci", "inn_port"),
+          ("dmy_cc", "dmy_cd"), ("dd_cd", "dd_rd"), ("inp_ci", "inp_port"), ("inn_ci", "inn_port"),
           ("gnd_plane", "gnd_re1", "gnd_l2", "gnd_cdec", "gnd_ccas", "gnd_cbn", "gnd_cvb", "gnd_rtail", "gnd_rv2", "gnd_rief", "gnd_rer",
-           "gnd_rc2", "gnd_rd", "gnd_m1s", "gnd_m2s", "gnd_tie_cin", "gnd_tie_cout", "gnd_tie_c2t", "gnd_tie_ci1")]
+           "gnd_rc2", "gnd_rd", "gnd_m1s", "gnd_m2s", "gnd_tie_cout", "gnd_tie_c2t", "gnd_tie_ci1")]
     B.connectivity(P, G_); B.mini_drc(); B.foreign_in_inductors(); B.min_area(); B.floating_metal(); B.coil_continuity(["Lc", "L2"])
     import cheese
     print("Metal4 cheesing (IHP density, RF-aware):", cheese.cheese(B.ly, B.top))

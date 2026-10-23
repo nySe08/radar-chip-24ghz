@@ -1,9 +1,10 @@
-"""run_tx_final.py - reproduce the final TX-channel results at the three PVT corners.
+"""run_tx_final.py - SCHEMATIC-level check of the final (v2) TX channel at the three PVT corners.
 
-TX driver (txdrv_real, load 1.6 um) -> PA (pa_final) -> TX pad + EM-fitted ESD coil -> 50 ohm.
-The LO core's TX output is a sine at the amplitude extracted from the LO core layout at each corner.
-Expected (ngspice 4x, IHP SG13G2 models):  slow +4.99 / typical +6.78 / fast +5.50 dBm,
-2nd harmonic <= -18.6 dBm, 18.1 mA typical.   Usage:  python3 run_tx_final.py
+TX driver (txdrv_real) -> PA (pa_final) -> TX pad + EM-fitted ESD coil -> 50 ohm, WITHOUT layout parasitics.
+The design was re-tuned against the extracted layout, so its specification is the post-layout result
+(post_layout/tx_postlayout.py). This script only confirms the schematic netlists simulate as expected; note the
+fast-corner 2nd harmonic is -12.8 dBm here because the trap MIM is sized for the layout's parasitics (-19.5 dBm or
+better after layout). Expected (ngspice 42): slow +6.22 / typical +7.29 / fast +4.92 dBm.   Usage: python3 run_tx_final.py
 """
 import sys, txrun
 
@@ -12,13 +13,13 @@ CORNERS = {  # name: (model corners, temperature, VCC, LO-core TX amplitude at t
     "typical": (None, 27, 2.5, 0.255),
     "fast":    (("hbt_bcs", "mos_ff", "cap_bcs", "res_bcs"), -40, 2.625, 0.312),
 }
-EXPECTED = {"slow": 4.99, "typical": 6.78, "fast": 5.50}
+EXPECTED = {"slow": 6.22, "typical": 7.29, "fast": 4.92}   # schematic level, ngspice 42
 
 worst, ok = 99.0, True
 print(f"{'corner':8s} {'Pout [dBm]':>11s} {'H2 [dBm]':>9s} {'I [mA]':>7s}   expected")
 for name, (cor, temp, vcc, atx) in CORNERS.items():
     p, i, h2 = txrun.run(corner=cor, temp=temp, vcc=vcc, atx=atx)
-    worst = min(worst, p); ok &= abs(p - EXPECTED[name]) < 0.3
+    worst = min(worst, p); ok &= abs(p - EXPECTED[name]) < 0.4     # ngspice 47 differs by up to ~0.2 dB
     print(f"{name:8s} {p:11.2f} {h2:9.1f} {i:7.1f}   {EXPECTED[name]:+.2f}")
-print(f"worst-case output {worst:+.2f} dBm (target >= +4.5 dBm): {'PASS' if worst >= 4.5 else 'FAIL'}")
-sys.exit(0 if ok and worst >= 4.5 else 1)
+print("schematic netlists reproduce the expected values" if ok else "MISMATCH against the expected schematic values")
+sys.exit(0 if ok else 1)

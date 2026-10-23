@@ -1,0 +1,8 @@
+== sign-off tx_ch  20261018_013726
+tools: KLayout 0.30.12 | kpex kpex 0.4.4 | ngspice-47
+inputs:
+  50935a9159b0c8aa0d091905732aa313ffdd85a177275f419370fad7bbb80bd9  tx_ch.gds
+  69a4d54923e711dcebc2fb40eecee34c992a7e05bbc8c4ef268a188f0f5a4cb9  tx_ch_lvs.cdl
+  69a4d54923e711dcebc2fb40eecee34c992a7e05bbc8c4ef268a188f0f5a4cb9  tx_ch_lvs_kpex.cdl
+== 1/6 DRC
+bash: run_drc.sh: No such file or directory

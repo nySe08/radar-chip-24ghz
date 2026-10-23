@@ -14,7 +14,7 @@ def _spiceinit():
         src = os.path.join(os.environ.get("PDK_ROOT", "/foss/pdks"), os.environ.get("PDK", "ihp-sg13g2"), "libs.tech", "ngspice", ".spiceinit")
         shutil.copy(src, dst)
 
-def run(driver_inst="txdrv_real RDL=1.6u RTL=0.79u", pa_inst="pa_final", atx=0.255, corner=None, temp=27, vcc=2.5, ftx=24.15e9,
+def run(driver_inst="txdrv_real", pa_inst="pa_final", atx=0.255, corner=None, temp=27, vcc=2.5, ftx=24.15e9,
         tb="tx_tb.spice"):
     _spiceinit()
     s = open(os.path.join(HERE, tb)).read()

@@ -11,3 +11,9 @@ tx/tx_out.txt
 tx/tx_wave.txt
 tx/.spiceinit
 floorplan/*.gds
+tx/post_layout/_*.spice
+tx/post_layout/*.txt
+tx/post_layout/.spiceinit
+drc_*/
+lvs_*/
+pex_out/
